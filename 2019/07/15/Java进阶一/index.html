@@ -15,15 +15,14 @@
 <meta property="og:site_name" content="徐仕强的博客">
 <meta property="og:description" content="文档目标：1. 能够说出Object类的特点、重写Object类的toString和equals方法。2. 能够使用日期类输出当前日期、将日期格式化为字符串的方法、将字符串转换成日期的方法。3. 能够使用System类的数组复制方法、使用System类获取当前毫秒时刻值。4. 能够说出使用StringBuilder类可以解决的问题、使用StringBuilder进行字符串拼接操作。5. 能够说出8">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/img%5CtoString%E6%96%B9%E6%B3%95%E7%9A%84%E8%87%AA%E5%8A%A8%E9%87%8D%E5%86%99.bmp">
 <meta property="og:image" content="http://p.winn.cc/Pa5fxvgXq.jpg">
 <meta property="og:image" content="http://p.winn.cc/ireiCLmsQ.jpg">
 <meta property="article:published_time" content="2019-07-15T10:42:11.000Z">
-<meta property="article:modified_time" content="2020-07-15T11:22:09.938Z">
+<meta property="article:modified_time" content="2020-07-16T02:44:41.092Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/img%5CtoString%E6%96%B9%E6%B3%95%E7%9A%84%E8%87%AA%E5%8A%A8%E9%87%8D%E5%86%99.bmp">
+<meta name="twitter:image" content="http://p.winn.cc/Pa5fxvgXq.jpg">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -73,7 +72,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 6
+			总文章数 7
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -248,8 +247,7 @@
 <h3 id="覆盖重写"><a href="#覆盖重写" class="headerlink" title="覆盖重写"></a>覆盖重写</h3><p>如果不希望使用toString方法的默认行为，则可以对它进行覆盖重写。例如自定义的Person类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Person&#123;"</span> + <span class="string">"name='"</span> + name + <span class="string">'\''</span> + <span class="string">", age="</span> + age + <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 省略构造器与Getter Setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在IntelliJ IDEA中，可以点击<code>Code</code>菜单中的<code>Generate...</code>，也可以使用快捷键<code>alt+insert</code>，点击<code>toString()</code>选项。选择需要包含的成员变量并确定。如下图所示：</p>
-<p><img src="img%5CtoString%E6%96%B9%E6%B3%95%E7%9A%84%E8%87%AA%E5%8A%A8%E9%87%8D%E5%86%99.bmp" alt="toString方法的自动重写"></p>
+<p>在IntelliJ IDEA中，可以点击<code>Code</code>菜单中的<code>Generate...</code>，也可以使用快捷键<code>alt+insert</code>，点击<code>toString()</code>选项。选择需要包含的成员变量并确定。</p>
 <blockquote>
 <p>小贴士： 在我们直接使用输出语句输出对象名的时候,其实通过该对象调用了其toString()方法。</p>
 </blockquote>
@@ -734,11 +732,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hello World
+          Java进阶二
         
       </div>
     </a>
@@ -889,19 +887,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">隐私</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
