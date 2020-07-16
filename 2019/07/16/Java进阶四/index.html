@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://p.winn.cc/Rn8q8i35M.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/img%5C%E6%96%97%E5%9C%B0%E4%B8%BB%E5%88%86%E6%9E%90.png">
 <meta property="article:published_time" content="2019-07-16T07:48:24.000Z">
-<meta property="article:modified_time" content="2020-07-16T07:27:51.859Z">
+<meta property="article:modified_time" content="2020-07-16T07:33:50.807Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -350,43 +350,19 @@
 <p>2:返回的集合是不可变的；</p>
 </blockquote>
 <h2 id="2-2-Debug追踪"><a href="#2-2-Debug追踪" class="headerlink" title="2.2 Debug追踪"></a>2.2 Debug追踪</h2><p><strong>使用IDEA的断点调试功能，查看程序的运行过程</strong></p>
-<ol>
-<li>在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序       </li>
-</ol>
-<ol start="2">
-<li><p>点击Debug运行模式                                                                                                                                                                              </p>
-</li>
-<li><p>程序停止在断点上不再执行，而IDEA最下方打开了Debug调试窗口    </p>
-</li>
-<li><p>Debug调试窗口介绍<br><img src="http://p.winn.cc/1OkG98LC4.jpg" alt="">   </p>
-</li>
-<li><p>快捷键F8，代码向下执行一行,第九行执行完毕，执行到第10行（第10行还未执行）   </p>
-</li>
-</ol>
-<ol start="6">
-<li>切换到控制台面板，控制台显示 请录入一个字符串： 并且等待键盘录入      </li>
-</ol>
-<ol start="7">
-<li>快捷键F8，程序继续向后执行，执行键盘录入操作，在控制台录入数据 ababcea   </li>
-</ol>
-<ol start="8">
-<li>此时到达findChar方法，快捷键F7，进入方法findChar   </li>
-</ol>
-<ol start="9">
-<li>快捷键F8 接续执行，创建了map对象，变量区域显示   </li>
-</ol>
-<ol start="10">
-<li>快捷键F8 接续执行，进入到循环中，循环变量i为 0,F8再继续执行，就获取到变量c赋值为字符‘a’ 字节值97   </li>
-</ol>
-<ol start="11">
-<li>快捷键F8 接续执行，进入到判断语句中，因为该字符 不在Map集合键集中，再按F8执行，进入该判断中   </li>
-</ol>
-<ol start="12">
-<li><p>快捷键F8 接续执行，循环结束，进入下次循环，此时map中已经添加一对儿元素    </p>
-</li>
-<li><p>快捷键F8 接续执行，进入下次循环，再继续上面的操作，我们就可以看到代码每次是如何执行的了   </p>
-</li>
-</ol>
+<p>1.在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序       </p>
+<p>2.点击Debug运行模式                                                                                                                                                                              </p>
+<p>3.程序停止在断点上不再执行，而IDEA最下方打开了Debug调试窗口    </p>
+<p>4.Debug调试窗口介绍<br><img src="http://p.winn.cc/1OkG98LC4.jpg" alt="">   </p>
+<p>5.快捷键F8，代码向下执行一行,第九行执行完毕，执行到第10行（第10行还未执行）   </p>
+<p>6.切换到控制台面板，控制台显示 请录入一个字符串： 并且等待键盘录入      </p>
+<p>7.快捷键F8，程序继续向后执行，执行键盘录入操作，在控制台录入数据 ababcea   </p>
+<p>8.此时到达findChar方法，快捷键F7，进入方法findChar   </p>
+<p>9.快捷键F8 接续执行，创建了map对象，变量区域显示   </p>
+<p>10.快捷键F8 接续执行，进入到循环中，循环变量i为 0,F8再继续执行，就获取到变量c赋值为字符‘a’ 字节值97   </p>
+<p>11.快捷键F8 接续执行，进入到判断语句中，因为该字符 不在Map集合键集中，再按F8执行，进入该判断中   </p>
+<p>12.快捷键F8 接续执行，循环结束，进入下次循环，此时map中已经添加一对儿元素    </p>
+<p>13.快捷键F8 接续执行，进入下次循环，再继续上面的操作，我们就可以看到代码每次是如何执行的了   </p>
 <h1 id="第三章-模拟斗地主洗牌发牌"><a href="#第三章-模拟斗地主洗牌发牌" class="headerlink" title="第三章  模拟斗地主洗牌发牌"></a>第三章  模拟斗地主洗牌发牌</h1><h2 id="3-1-案例介绍"><a href="#3-1-案例介绍" class="headerlink" title="3.1 案例介绍"></a>3.1 案例介绍</h2><p>按照斗地主的规则，完成洗牌发牌的动作。</p>
 <p>具体规则：</p>
 <ol>
