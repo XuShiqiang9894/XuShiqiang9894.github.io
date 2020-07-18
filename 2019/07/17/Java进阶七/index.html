@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="徐仕强的博客">
 <meta property="og:description" content="文档目的：1. 能够理解线程通信概念、理解等待唤醒机制。2. 能够描述Java中线程池运行原理、理解函数式编程相对于面向对象的优点。3. 能够掌握Lambda表达式的标准格式，能够掌握Lambda表达式的省略格式与规则，能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法），能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法），能够明确Lambda的两项使用前提。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://p.winn.cc/aaZHygZg6.jpg">
-<meta property="og:image" content="http://p.winn.cc/WK4E1sRkb.jpg">
-<meta property="og:image" content="http://p.winn.cc/U_p7uJi9v.jpg">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELTYTrXMSQNcGhb4yR7m6hrx6IL6ySn7rEbAH7SNGiwJnP8t5TKyFOgi4qtlR29DpiUHaPaWNsUHlikmFYKN9Fk!/b&bo=3gLMAQAAAAABFyE!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDepnP3jsbN.UoIbyiGZr.vGHuxQeJMBEEBu03bfQ8mvNtOsAgouKMI66vLg5Re7qkhNguHXsDrxJZkJ5TWLHe8!/b&bo=oQLYAQAAAAABF0o!&rf=viewer_4">
 <meta property="article:published_time" content="2019-07-17T06:19:21.000Z">
-<meta property="article:modified_time" content="2020-07-17T06:21:00.626Z">
+<meta property="article:modified_time" content="2020-07-18T03:30:02.108Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://p.winn.cc/aaZHygZg6.jpg">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -267,7 +267,7 @@
 </ol>
 <h2 id="1-3-生产者与消费者问题"><a href="#1-3-生产者与消费者问题" class="headerlink" title="1.3 生产者与消费者问题"></a>1.3 生产者与消费者问题</h2><p>等待唤醒机制其实就是经典的“生产者与消费者”的问题。  </p>
 <p>就拿生产包子消费包子来说等待唤醒机制如何有效利用资源：   </p>
-<p><img src="http://p.winn.cc/aaZHygZg6.jpg" alt="">  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4" alt="">  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">包子铺线程生产包子，吃货线程消费包子。当包子没有时（包子状态为<span class="keyword">false</span>），吃货线程等待，包子铺线程生产包子（即包子状态为<span class="keyword">true</span>），并通知吃货线程（解除吃货的等待状态）,因为已经有包子了，那么包子铺线程进入等待状态。接下来，吃货线程能否进一步执行则取决于锁的获取情况。如果吃货获取到锁，那么就执行吃包子动作，包子吃完（包子状态为<span class="keyword">false</span>），并通知包子铺线程（解除包子铺的等待状态）,吃货线程进入等待。包子铺线程能否进一步执行则取决于锁的获取情况。</span><br></pre></td></tr></table></figure>
 
 <p><strong>代码演示：</strong></p>
@@ -294,7 +294,7 @@
 <li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
 </ul>
 <p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
-<p><img src="http://p.winn.cc/WK4E1sRkb.jpg" alt=""></p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELTYTrXMSQNcGhb4yR7m6hrx6IL6ySn7rEbAH7SNGiwJnP8t5TKyFOgi4qtlR29DpiUHaPaWNsUHlikmFYKN9Fk!/b&bo=3gLMAQAAAAABFyE!&rf=viewer_4" alt=""></p>
 <p>合理利用线程池能够带来三个好处：</p>
 <ol>
 <li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
@@ -302,7 +302,7 @@
 <li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
 </ol>
 <h2 id="2-3-线程池的使用"><a href="#2-3-线程池的使用" class="headerlink" title="2.3 线程池的使用"></a>2.3 线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
-<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。<br><img src="http://p.winn.cc/U_p7uJi9v.jpg" alt=""><br>Executors类中有个创建线程池的方法如下：</p>
+<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDepnP3jsbN.UoIbyiGZr.vGHuxQeJMBEEBu03bfQ8mvNtOsAgouKMI66vLg5Re7qkhNguHXsDrxJZkJ5TWLHe8!/b&bo=oQLYAQAAAAABF0o!&rf=viewer_4" alt=""><br>Executors类中有个创建线程池的方法如下：</p>
 <ul>
 <li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
 </ul>
@@ -779,6 +779,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
@@ -788,10 +792,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
