@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="徐仕强的博客">
 <meta property="og:description" content="文档目标：1. 明白Map集合特点，会使用Map集合添加方法保存数据、”键找值”的方式遍历Map集合、”键值对”的方式遍历Map集合。2. debug找bug小操作。 3. 能够使用HashMap存储自定义键值对的数据。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXE.W6mlasi9tkIwuO5C4EMYhtRmupLPevWVDmWQGvMWuQVL5*4k9jwQ*9r3fI3EGuhhL76RI6ZdiHIEStV2xuQ!/b&bo=rQM6AgAAAAABB7Y!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDL7doRr.ZtJy8evCAbVhmmqjHB81bRUKa6YbDwWtFiCGkGFf6OwU1.PnwESXN1TzTZDZ1ID5*1tt18HaRdmdA8!/b&bo=twTrAAAAAAABF2g!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrENpUF87odoZuTBwEfRqPeWUAGr0TylPOMLtYXby4cWQKbJB92TCxfWA9lQwm18UAVBP4mZRV0GyOKBHFClVv4N0!/b&bo=KgXAAQAAAAABF94!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDrVAj1AE45CvD*Q7LpZUdhaHszZAZjVwPB*DmWtwcwUyAsOrl4glaWXkdXdVGy0V6OKbTSjot.4jh9JC.aUk*Q!/b&bo=mAPWAQAAAAABF3w!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqUzHnt5UO**vo44p*8On83BNs5yFfVwijHSWyt.NicF26NMW12t0CywiatmO7aflSOSazpERGxiu7GHAH87*jUk!/b&bo=dwL1AQAAAAADB6M!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBNcpp9kGQydBRT7wwUQ36eh59dVd.bMpciWJN12tX2E2wEC3ASC.B2ySCUr10bMB3ZPyRdEeu3k0wIJQZIWYPM!/b&bo=UAVYAgAAAAABFz8!&rf=viewer_4">
 <meta property="article:published_time" content="2019-07-16T07:48:24.000Z">
-<meta property="article:modified_time" content="2020-07-18T02:52:26.603Z">
+<meta property="article:modified_time" content="2020-07-18T03:39:56.887Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXE.W6mlasi9tkIwuO5C4EMYhtRmupLPevWVDmWQGvMWuQVL5*4k9jwQ*9r3fI3EGuhhL76RI6ZdiHIEStV2xuQ!/b&bo=rQM6AgAAAAABB7Y!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -237,7 +237,7 @@
 </ul>
 <h1 id="第一章-Map集合"><a href="#第一章-Map集合" class="headerlink" title="第一章 Map集合"></a>第一章 Map集合</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>现实生活中，我们常会看到这样的一种集合：IP地址与主机名，身份证号与个人，系统用户名与系统用户对象等，这种一一对应的关系，就叫做映射。Java提供了专门的集合类用来存放这种对象关系的对象，即<code>java.util.Map</code>接口。</p>
 <p>我们通过查看<code>Map</code>接口描述，发现<code>Map</code>接口下的集合与<code>Collection</code>接口下的集合，它们存储数据的形式不同，如下图。</p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4" alt=""></p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXE.W6mlasi9tkIwuO5C4EMYhtRmupLPevWVDmWQGvMWuQVL5*4k9jwQ*9r3fI3EGuhhL76RI6ZdiHIEStV2xuQ!/b&bo=rQM6AgAAAAABB7Y!&rf=viewer_4" alt=""></p>
 <ul>
 <li><code>Collection</code>中的集合，元素是孤立存在的（理解为单身），向集合中存储元素采用一个个元素的方式存储。</li>
 <li><code>Map</code>中的集合，元素是成对存在的(理解为夫妻)。每个元素由键与值两部分组成，通过键可以找对所对应的值。</li>
@@ -706,19 +706,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">软件安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">隐私</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">隐私</a>
               </li>
             
             <div class="clearfix"></div>
