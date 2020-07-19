@@ -6,27 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java进阶三 | 徐仕强的博客</title>
+  <title>Java进阶十二 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文档目的：1. 了解List集合特点、清楚常见的数据结构、明白数组结构特点。2. 清楚栈结构、队列结构、单向链表结构、Set集合、哈希表的特点。3. 能够使用HashSet集合存储自定义元素、了解可变参数的格式，会使用集合工具类和Comparator比较器进行排序。">
+  <meta name="description" content="文档目的：1. 能够使用@FunctionalInterface注解，能够自定义无参无返回函数式接口，能够自定义有参有返回函数式接口。2. 能够理解Lambda延迟执行的特点、能够使用Lambda作为方法的参数、能够使用Lambda作为方法的返回值。3. 能够使用Supplier、Consumer、Function和Predicate函数式接口。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java进阶三">
-<meta property="og:url" content="http://yoursite.com/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/index.html">
+<meta property="og:title" content="Java进阶十二">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%BA%8C/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="文档目的：1. 了解List集合特点、清楚常见的数据结构、明白数组结构特点。2. 清楚栈结构、队列结构、单向链表结构、Set集合、哈希表的特点。3. 能够使用HashSet集合存储自定义元素、了解可变参数的格式，会使用集合工具类和Comparator比较器进行排序。">
+<meta property="og:description" content="文档目的：1. 能够使用@FunctionalInterface注解，能够自定义无参无返回函数式接口，能够自定义有参有返回函数式接口。2. 能够理解Lambda延迟执行的特点、能够使用Lambda作为方法的参数、能够使用Lambda作为方法的返回值。3. 能够使用Supplier、Consumer、Function和Predicate函数式接口。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEE39tRNSVm7CnQoJBlemQNnXDU61Xwc1Ej2fF*uT42l5sPcjP5C078gGNur5D5LdcMeQgbpWRIYFtgLyyjLaOXI!/b&bo=*gL6AQAAAAABFzc!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEClZek*gfc9N5nsjeDeoogepGwyH1AA.8d1ItyY.wMCiN2vFsYgMxFnDzV5jhLuYYTSh1qGQF6TSQzLYgFfXd84!/b&bo=DgX0AQAAAAABF84!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEL53EGDaoF.wbVYdnfwWvIakShwPSOZddggwek2laqJkNBU94oByZUugjIye0RdNXUdrK6nGsQJnDeifInVOxl8!/b&bo=UAUWAgAAAAABF3E!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJXy784.0JmR55dlzZKukk6ja953ZsCUB0*AuhMH8u2ADW6Is5x8QRYJ3dkVnLHtBNaqD5gZB0FwP9fz5WWQJX0!/b&bo=WQS4AQAAAAABF9Q!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOx23iihCLqwa3*dJFomC7JdZORsI*DocmBiNDtqH6wONzu3sU9gtzIHwa2swqiCCYCeUVkvvt5K2TKONiDdjvU!/b&bo=LgUGAgAAAAABFx8!&rf=viewer_4">
-<meta property="article:published_time" content="2019-07-16T05:55:03.000Z">
-<meta property="article:modified_time" content="2020-07-18T02:43:43.698Z">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGGYSc8AxW.48loV77oD.KCaMiNbl4D4LGy9XbWqWXwpMQKLnCW0Ped87HoIruMHsFofpY.aOt2xv0A649sM9oE!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEAOtRctYV8MEkR51f92JzVsuDDTXSnOkYVpdEqiXpxTzIDoGLtsX9tKCMyXwZn8N*ODcE.heL8yhmJcni7WoqA0!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="article:published_time" content="2019-07-19T04:28:53.000Z">
+<meta property="article:modified_time" content="2020-07-19T04:31:16.659Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGGYSc8AxW.48loV77oD.KCaMiNbl4D4LGy9XbWqWXwpMQKLnCW0Ped87HoIruMHsFofpY.aOt2xv0A649sM9oE!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -181,14 +177,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Java进阶三" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-Java进阶十二" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java进阶三
+      Java进阶十二
     </h1>
   
 
@@ -199,8 +195,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/" class="archive-article-date">
-  	<time datetime="2019-07-16T05:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
+<a href="/2019/07/19/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%BA%8C/" class="archive-article-date">
+  	<time datetime="2019-07-19T04:28:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-19</time>
 </a>
 		<!-- 需要添加的位置 -->
          <!-- 开始添加字数统计-->
@@ -210,7 +206,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.7k字</span>
+        <span class="post-count">3.6k字</span>
       </span>
     </span>
     <span class="post-time">
@@ -218,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">26分</span>
+        <span class="post-count">14分</span>
       </span>
     </span>
 </div>
@@ -229,264 +225,270 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文档目的：1. 了解List集合特点、清楚常见的数据结构、明白数组结构特点。2. 清楚栈结构、队列结构、单向链表结构、Set集合、哈希表的特点。3. 能够使用HashSet集合存储自定义元素、了解可变参数的格式，会使用集合工具类和Comparator比较器进行排序。</p>
+        <p>文档目的：1. 能够使用@FunctionalInterface注解，能够自定义无参无返回函数式接口，能够自定义有参有返回函数式接口。2. 能够理解Lambda延迟执行的特点、能够使用Lambda作为方法的参数、能够使用Lambda作为方法的返回值。3. 能够使用Supplier、Consumer、Function和Predicate函数式接口。</p>
 <a id="more"></a>
-<h1 id="【List、Set、数据结构、Collections】"><a href="#【List、Set、数据结构、Collections】" class="headerlink" title="【List、Set、数据结构、Collections】"></a>【List、Set、数据结构、Collections】</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
-<li>数据结构</li>
-<li>List集合</li>
-<li>Set集合</li>
-<li>Collections</li>
+<h1 id="【函数式接口】"><a href="#【函数式接口】" class="headerlink" title="【函数式接口】"></a>【函数式接口】</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
+<li>自定义函数式接口</li>
+<li>函数式编程</li>
+<li>常用函数式接口  </li>
 </ul>
-<h1 id="第一章-数据结构"><a href="#第一章-数据结构" class="headerlink" title="第一章 数据结构"></a>第一章 数据结构</h1><h2 id="1-1-数据结构有什么用？"><a href="#1-1-数据结构有什么用？" class="headerlink" title="1.1 数据结构有什么用？"></a>1.1 数据结构有什么用？</h2><p>当你用着java里面的容器类很爽的时候，你有没有想过，怎么ArrayList就像一个无限扩充的数组，也好像链表之类的。好用吗？好用，这就是数据结构的用处，只不过你在不知不觉中使用了。</p>
-<p>现实世界的存储，我们使用的工具和建模。每种数据结构有自己的优点和缺点，想想如果Google的数据用的是数组的存储，我们还能方便地查询到所需要的数据吗？而算法，在这么多的数据中如何做到最快的插入，查找，删除，也是在追求更快。</p>
-<p>我们java是面向对象的语言，就好似自动档轿车，C语言好似手动档吉普。数据结构呢？是变速箱的工作原理。你完全可以不知道变速箱怎样工作，就把自动档的车子从 A点 开到 B点，而且未必就比懂得的人慢。写程序这件事，和开车一样，经验可以起到很大作用，但如果你不知道底层是怎么工作的，就永远只能开车，既不会修车，也不能造车。当然了，数据结构内容比较多，细细的学起来也是相对费功夫的，不可能达到一蹴而就。我们将常见的数据结构：堆栈、队列、数组、链表和红黑树 这几种给大家介绍一下，作为数据结构的入门，了解一下它们的特点即可。</p>
-<h2 id="1-2-常见的数据结构"><a href="#1-2-常见的数据结构" class="headerlink" title="1.2 常见的数据结构"></a>1.2 常见的数据结构</h2><p>数据存储的常用结构有：栈、队列、数组、链表和红黑树。我们分别来了解一下：</p>
-<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><ul>
-<li><strong>栈</strong>：<strong>stack</strong>,又称堆栈，它是运算受限的线性表，其限制是仅允许在标的一端进行插入和删除操作，不允许在其他任何位置进行添加、查找、删除等操作。</li>
-</ul>
-<p>简单的说：采用该结构的集合，对元素的存取有如下的特点</p>
-<ul>
-<li><p>先进后出（即，存进去的元素，要在后它后面的元素依次取出后，才能取出该元素）。例如，子弹压进弹夹，先压进去的子弹在下面，后压进去的子弹在上面，当开枪时，先弹出上面的子弹，然后才能弹出下面的子弹。</p>
-</li>
-<li><p>栈的入口、出口的都是栈的顶端位置。</p>
-</li>
-</ul>
-<p>这里两个名词需要注意：</p>
-<ul>
-<li><strong>压栈</strong>：就是存元素。即，把元素存储到栈的顶端位置，栈中已有元素依次向栈底方向移动一个位置。</li>
-<li><strong>弹栈</strong>：就是取元素。即，把栈的顶端位置元素取出，栈中已有元素依次向栈顶方向移动一个位置。</li>
-</ul>
-<ul>
-<li><strong>队列</strong>：<strong>queue</strong>,简称队，它同堆栈一样，也是一种运算受限的线性表，其限制是仅允许在表的一端进行插入，而在表的另一端进行删除。</li>
-</ul>
-<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
-<ul>
-<li>先进先出（即，存进去的元素，要在后它前面的元素依次取出后，才能取出该元素）。例如，小火车过山洞，车头先进去，车尾后进去；车头先出来，车尾后出来。</li>
-<li>队列的入口、出口各占一侧。例如，下图中的左侧为入口，右侧为出口。</li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfeTUYa8NmtZBu8kwwZKiqBR.MrfEUJUXEs1sZNAZItdmWmGWZmoFGzGyNHBt.OVYD447AkRZ3aA7eezv*FJv2M!/b&bo=4ATyAQAAAAABBzc!&rf=viewer_4" alt=""></p>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
-<li><strong>数组</strong>:<strong>Array</strong>,是有序的元素序列，数组是在内存中开辟一段连续的空间，并在此空间存放元素。就像是一排出租屋，有100个房间，从001到100每个房间都有固定编号，通过编号就可以快速找到租房子的人。</li>
-</ul>
-<p>简单的说,采用该结构的集合，对元素的存取有如下的特点：</p>
-<ul>
-<li><p>查找元素快：通过索引，可以快速访问指定位置的元素</p>
-</li>
-<li><p>增删元素慢</p>
-<ul>
-<li><strong>指定索引位置增加元素</strong>：需要创建一个新数组，将指定新元素存储在指定索引位置，再把原数组元素根据索引，复制到新数组对应索引的位置。</li>
-<li><strong>指定索引位置删除元素：</strong>需要创建一个新数组，把原数组元素根据索引，复制到新数组对应索引的位置，原数组中指定索引位置元素不复制到新数组中。</li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEE39tRNSVm7CnQoJBlemQNnXDU61Xwc1Ej2fF*uT42l5sPcjP5C078gGNur5D5LdcMeQgbpWRIYFtgLyyjLaOXI!/b&bo=*gL6AQAAAAABFzc!&rf=viewer_4" alt=""></p>
-</li>
-</ul>
-<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><ul>
-<li><strong>链表</strong>:<strong>linked list</strong>,由一系列结点node（链表中每一个元素称为结点）组成，结点可以在运行时i动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。我们常说的链表结构有单向链表与双向链表，那么这里给大家介绍的是<strong>单向链表</strong>。</li>
-</ul>
-<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
-<ul>
-<li><p>多个结点之间，通过地址进行连接。例如，多个人手拉手，每个人使用自己的右手拉住下个人的左手，依次类推，这样多个人就连在一起了。</p>
-</li>
-<li><p>查找元素慢：想查找某个元素，需要通过连接的节点，依次向后查找指定元素</p>
-</li>
-<li><p>增删元素快：</p>
-<ul>
-<li><p>增加元素：只需要修改连接下个元素的地址即可。</p>
-</li>
-<li><p>删除元素：只需要修改连接下个元素的地址即可。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEClZek*gfc9N5nsjeDeoogepGwyH1AA.8d1ItyY.wMCiN2vFsYgMxFnDzV5jhLuYYTSh1qGQF6TSQzLYgFfXd84!/b&bo=DgX0AQAAAAABF84!&rf=viewer_4" alt=""></p>
-<h4 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h4><ul>
-<li><strong>二叉树</strong>：<strong>binary tree</strong> ,是每个结点不超过2的有序<strong>树（tree）</strong> 。</li>
-</ul>
-<p>简单的理解，就是一种类似于我们生活中树的结构，只不过每个结点上都最多只能有两个子结点。</p>
-<p>二叉树是每个节点最多有两个子树的树结构。顶上的叫根结点，两边被称作“左子树”和“右子树”。</p>
-<p>我们要说的是二叉树的一种比较有意思的叫做<strong>红黑树</strong>，红黑树本身就是一颗二叉查找树，将节点插入后，该树仍然是一颗二叉查找树。也就意味着，树的键值仍然是有序的。</p>
-<p>红黑树的约束:</p>
-<ol>
-<li>节点可以是红色的或者黑色的</li>
-</ol>
-<ol start="2">
-<li>根节点是黑色的</li>
-</ol>
-<ol start="3">
-<li>叶子节点(特指空节点)是黑色的  </li>
-<li>每个红色节点的子节点都是黑色的    </li>
-<li>任何一个节点到其每一个叶子节点的所有路径上黑色节点数相同</li>
-</ol>
-<p>红黑树的特点:</p>
-<p>​    速度特别快,趋近平衡树,查找叶子元素最少和最多次数不多于二倍<br>  <img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEL53EGDaoF.wbVYdnfwWvIakShwPSOZddggwek2laqJkNBU94oByZUugjIye0RdNXUdrK6nGsQJnDeifInVOxl8!/b&bo=UAUWAgAAAAABF3E!&rf=viewer_4" alt=""></p>
-<h1 id="第二章-List集合"><a href="#第二章-List集合" class="headerlink" title="第二章 List集合"></a>第二章 List集合</h1><p>我们掌握了Collection接口的使用后，再来看看Collection接口中的子类，他们都具备那些特性呢？</p>
-<p>接下来，我们一起学习Collection中的常用几个子类（<code>java.util.List</code>集合、<code>java.util.Set</code>集合）。</p>
-<h2 id="2-1-List接口介绍"><a href="#2-1-List接口介绍" class="headerlink" title="2.1 List接口介绍"></a>2.1 List接口介绍</h2><p><code>java.util.List</code>接口继承自<code>Collection</code>接口，是单列集合的一个重要分支，习惯性地会将实现了<code>List</code>接口的对象称为List集合。在List集合中允许出现重复的元素，所有的元素是以一种线性方式进行存储的，在程序中可以通过索引来访问集合中的指定元素。另外，List集合还有一个特点就是元素有序，即元素的存入顺序和取出顺序一致。</p>
-<p>看完API，我们总结一下：</p>
-<p>List接口特点：</p>
-<ol>
-<li>它是一个元素存取有序的集合。例如，存元素的顺序是11、22、33。那么集合中，元素的存储就是按照11、22、33的顺序完成的）。</li>
-<li>它是一个带有索引的集合，通过索引就可以精确的操作集合中的元素（与数组的索引是一个道理）。</li>
-<li>集合中可以有重复的元素，通过元素的equals方法，来比较是否为重复的元素。</li>
-</ol>
+<h1 id="第一章-函数式接口"><a href="#第一章-函数式接口" class="headerlink" title="第一章 函数式接口"></a>第一章 函数式接口</h1><h2 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h2><p>函数式接口在Java中是指：有且仅有一个抽象方法的接口。</p>
+<p>函数式接口，即适用于函数式编程场景的接口。而Java中的函数式编程体现就是Lambda，所以函数式接口就是可以适用于Lambda使用的接口。只有确保接口中有且仅有一个抽象方法，Java中的Lambda才能顺利地进行推导。</p>
 <blockquote>
-<p>tips:我们在基础班的时候已经学习过List接口的子类java.util.ArrayList类，该类中的方法都是来自List中定义。</p>
+<p>备注：“语法糖”是指使用更加方便，但是原理不变的代码语法。例如在遍历集合时使用的for-each语法，其实底层的实现原理仍然是迭代器，这便是“语法糖”。从应用层面来讲，Java中的Lambda可以被当做是匿名内部类的“语法糖”，但是二者在原理上是不同的。   </p>
 </blockquote>
-<h2 id="2-2-List接口中常用方法"><a href="#2-2-List接口中常用方法" class="headerlink" title="2.2 List接口中常用方法"></a>2.2 List接口中常用方法</h2><p>List作为Collection集合的子接口，不但继承了Collection接口中的全部方法，而且还增加了一些根据元素索引来操作集合的特有方法，如下：</p>
-<ul>
-<li><code>public void add(int index, E element)</code>: 将指定的元素，添加到该集合中的指定位置上。</li>
-<li><code>public E get(int index)</code>:返回集合中指定位置的元素。</li>
-<li><code>public E remove(int index)</code>: 移除列表中指定位置的元素, 返回的是被移除的元素。</li>
-<li><code>public E set(int index, E element)</code>:用指定元素替换集合中指定位置的元素,返回值的更新前的元素。</li>
-</ul>
-<p>List集合特有的方法都是跟索引相关，我们在基础班都学习过，那么我们再来复习一遍吧：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 创建List集合对象</span></span><br><span class="line">    	List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// 往 尾部添加 指定元素</span></span><br><span class="line">    	list.add(<span class="string">"图图"</span>);</span><br><span class="line">    	list.add(<span class="string">"小美"</span>);</span><br><span class="line">    	list.add(<span class="string">"不高兴"</span>);</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(list);</span><br><span class="line">    	<span class="comment">// add(int index,String s) 往指定位置添加</span></span><br><span class="line">    	list.add(<span class="number">1</span>,<span class="string">"没头脑"</span>);</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(list);</span><br><span class="line">    	<span class="comment">// String remove(int index) 删除指定位置元素  返回被删除元素</span></span><br><span class="line">    	<span class="comment">// 删除索引位置为2的元素 </span></span><br><span class="line">    	System.out.println(<span class="string">"删除索引位置为2的元素"</span>);</span><br><span class="line">    	System.out.println(list.remove(<span class="number">2</span>));</span><br><span class="line">    	</span><br><span class="line">    	System.out.println(list);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// String set(int index,String s)</span></span><br><span class="line">    	<span class="comment">// 在指定位置 进行 元素替代（改） </span></span><br><span class="line">    	<span class="comment">// 修改指定位置元素</span></span><br><span class="line">    	list.set(<span class="number">0</span>, <span class="string">"三毛"</span>);</span><br><span class="line">    	System.out.println(list);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// String get(int index)  获取指定位置元素</span></span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// 跟size() 方法一起用  来 遍历的 </span></span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;list.size();i++)&#123;</span><br><span class="line">    		System.out.println(list.get(i));</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="comment">//还可以使用增强for</span></span><br><span class="line">    	<span class="keyword">for</span> (String string : list) &#123;</span><br><span class="line">			System.out.println(string);</span><br><span class="line">		&#125;  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="第三章-List的子类"><a href="#第三章-List的子类" class="headerlink" title="第三章 List的子类"></a>第三章 List的子类</h1><h2 id="3-1-ArrayList集合"><a href="#3-1-ArrayList集合" class="headerlink" title="3.1 ArrayList集合"></a>3.1 ArrayList集合</h2><p><code>java.util.ArrayList</code>集合数据存储的结构是数组结构。元素增删慢，查找快，由于日常开发中使用最多的功能为查询数据、遍历数据，所以<code>ArrayList</code>是最常用的集合。</p>
-<p>许多程序员开发时非常随意地使用ArrayList完成任何需求，并不严谨，这种用法是不提倡的。</p>
-<h2 id="3-2-LinkedList集合"><a href="#3-2-LinkedList集合" class="headerlink" title="3.2 LinkedList集合"></a>3.2 LinkedList集合</h2><p><code>java.util.LinkedList</code>集合数据存储的结构是链表结构。方便元素添加、删除的集合。</p>
+<h2 id="1-2-格式"><a href="#1-2-格式" class="headerlink" title="1.2 格式"></a>1.2 格式</h2><p>只要确保接口中有且仅有一个抽象方法即可：  </p>
+<pre><code>修饰符 interface 接口名称 {
+    public abstract 返回值类型 方法名称(可选参数信息); 
+    // 其他非抽象方法内
+}</code></pre><p>由于接口当中抽象方法的 public abstract 是可以省略的，所以定义一个函数式接口很简单：  </p>
+<pre><code>public interface MyFunctionalInterface {
+    void myMethod();
+}  </code></pre><h2 id="1-3-FunctionalInterface注解"><a href="#1-3-FunctionalInterface注解" class="headerlink" title="1.3 @FunctionalInterface注解"></a>1.3 @FunctionalInterface注解</h2><p>与 @Override 注解的作用类似，Java 8中专门为函数式接口引入了一个新的注解： @FunctionalInterface 。该注解可用于一个接口的定义上：   </p>
+<pre><code>@FunctionalInterface
+public interface MyFunctionalInterface {
+    void myMethod();
+}  </code></pre><p>一旦使用该注解来定义接口，编译器将会强制检查该接口是否确实有且仅有一个抽象方法，否则将会报错。需要注意的是，即使不使用该注解，只要满足函数式接口的定义，这仍然是一个函数式接口，使用起来都一样。  </p>
+<h2 id="1-4-自定义函数式接口"><a href="#1-4-自定义函数式接口" class="headerlink" title="1.4 自定义函数式接口"></a>1.4 自定义函数式接口</h2><p>对于刚刚定义好的 MyFunctionalInterface 函数式接口，典型使用场景就是作为方法的参数：  </p>
+<pre><code>public class Demo09FunctionalInterface {
+    // 使用自定义的函数式接口作为方法参数
+    private static void doSomething(MyFunctionalInterface inter) {
+        inter.myMethod(); // 调用自定义的函数式接口方法
+    }
+    public static void main(String[] args) {
+        // 调用使用函数式接口的方法
+        doSomething(() ‐&gt; System.out.println(&quot;Lambda执行啦！&quot;));
+    }
+}</code></pre><h1 id="第二章-函数式编程"><a href="#第二章-函数式编程" class="headerlink" title="第二章 函数式编程"></a>第二章 函数式编程</h1><p>在兼顾面向对象特性的基础上，Java语言通过Lambda表达式与方法引用等，为开发者打开了函数式编程的大门。下面我们做一个初探。  </p>
+<h2 id="2-1-Lambda的延迟执行"><a href="#2-1-Lambda的延迟执行" class="headerlink" title="2.1 Lambda的延迟执行"></a>2.1 Lambda的延迟执行</h2><p>有些场景的代码执行后，结果不一定会被使用，从而造成性能浪费。而Lambda表达式是延迟执行的，这正好可以作为解决方案，提升性能。</p>
+<h2 id="性能浪费的日志案例"><a href="#性能浪费的日志案例" class="headerlink" title="性能浪费的日志案例"></a>性能浪费的日志案例</h2><p>注:日志可以帮助我们快速的定位问题，记录程序运行过程中的情况，以便项目的监控和优化。  </p>
+<p>一种典型的场景就是对参数进行有条件使用，例如对日志消息进行拼接后，在满足条件的情况下进行打印输出：  </p>
+<pre><code>public class Demo01Logger {
+    private static void log(int level, String msg) {
+        if (level == 1) {
+            System.out.println(msg);
+        }
+    }
+    public static void main(String[] args) {
+        String msgA = &quot;Hello&quot;;
+        String msgB = &quot;World&quot;; 
+        String msgC = &quot;Java&quot;;
+        log(1, msgA + msgB + msgC);
+    }
+}  </code></pre><p>这段代码存在问题：无论级别是否满足要求，作为 log 方法的第二个参数，三个字符串一定会首先被拼接并传入方法内，然后才会进行级别判断。如果级别不符合要求，那么字符串的拼接操作就白做了，存在性能浪费。  </p>
 <blockquote>
-<p>LinkedList是一个双向链表。</p>
+<p>备注：SLF4J是应用非常广泛的日志框架，它在记录日志时为了解决这种性能浪费的问题，并不推荐首先进行字符串的拼接，而是将字符串的若干部分作为可变参数传入方法中，仅在日志级别满足要求的情况下才会进行字符串拼接。例如：<code>LOGGER.debug(&quot;变量{}的取值为{}。&quot;, &quot;os&quot;, &quot;macOS&quot;)</code> ，其中的大括号 {} 为占位<br>符。如果满足日志级别要求，则会将“os”和“macOS”两个字符串依次拼接到大括号的位置；否则不会进行字符串拼接。这也是一种可行解决方案，但Lambda可以做到更好。  </p>
 </blockquote>
-<p>实际开发中对一个集合元素的添加与删除经常涉及到首尾操作，而LinkedList提供了大量首尾操作的方法。这些方法我们作为了解即可：</p>
-<ul>
-<li><code>public void addFirst(E e)</code>:将指定元素插入此列表的开头。</li>
-<li><code>public void addLast(E e)</code>:将指定元素添加到此列表的结尾。</li>
-<li><code>public E getFirst()</code>:返回此列表的第一个元素。</li>
-<li><code>public E getLast()</code>:返回此列表的最后一个元素。</li>
-<li><code>public E removeFirst()</code>:移除并返回此列表的第一个元素。</li>
-<li><code>public E removeLast()</code>:移除并返回此列表的最后一个元素。</li>
-<li><code>public E pop()</code>:从此列表所表示的堆栈处弹出一个元素。</li>
-<li><code>public void push(E e)</code>:将元素推入此列表所表示的堆栈。</li>
-<li><code>public boolean isEmpty()</code>：如果列表不包含元素，则返回true。</li>
-</ul>
-<p>LinkedList是List的子类，List中的方法LinkedList都是可以使用，这里就不做详细介绍，我们只需要了解LinkedList的特有方法即可。在开发时，LinkedList集合也可以作为堆栈，队列的结构使用。（了解即可）</p>
-<p>方法演示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedListDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; link = <span class="keyword">new</span> LinkedList&lt;String&gt;();</span><br><span class="line">        <span class="comment">//添加元素</span></span><br><span class="line">        link.addFirst(<span class="string">"abc1"</span>);</span><br><span class="line">        link.addFirst(<span class="string">"abc2"</span>);</span><br><span class="line">        link.addFirst(<span class="string">"abc3"</span>);</span><br><span class="line">        System.out.println(link);</span><br><span class="line">        <span class="comment">// 获取元素</span></span><br><span class="line">        System.out.println(link.getFirst());</span><br><span class="line">        System.out.println(link.getLast());</span><br><span class="line">        <span class="comment">// 删除元素</span></span><br><span class="line">        System.out.println(link.removeFirst());</span><br><span class="line">        System.out.println(link.removeLast());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!link.isEmpty()) &#123; <span class="comment">//判断集合是否为空</span></span><br><span class="line">            System.out.println(link.pop()); <span class="comment">//弹出集合中的栈顶元素</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(link);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="第四章-Set接口"><a href="#第四章-Set接口" class="headerlink" title="第四章 Set接口"></a>第四章 Set接口</h1><p><code>java.util.Set</code>接口和<code>java.util.List</code>接口一样，同样继承自<code>Collection</code>接口，它与<code>Collection</code>接口中的方法基本一致，并没有对<code>Collection</code>接口进行功能上的扩充，只是比<code>Collection</code>接口更加严格了。与<code>List</code>接口不同的是，<code>Set</code>接口中元素无序，并且都会以某种规则保证存入的元素不出现重复。</p>
-<p><code>Set</code>集合有多个子类，这里我们介绍其中的<code>java.util.HashSet</code>、<code>java.util.LinkedHashSet</code>这两个集合。</p>
+<h2 id="体验Lambda的更优写法"><a href="#体验Lambda的更优写法" class="headerlink" title="体验Lambda的更优写法"></a>体验Lambda的更优写法</h2><p>使用Lambda必然需要一个函数式接口：  </p>
+<pre><code>@FunctionalInterface
+public interface MessageBuilder {
+    String buildMessage();
+}  </code></pre><p>然后对 log 方法进行改造：  </p>
+<pre><code>public class Demo02LoggerLambda {
+    private static void log(int level, MessageBuilder builder) {
+        if (level == 1) {
+            System.out.println(builder.buildMessage());
+    }
+}  
+public static void main(String[] args) {
+    String msgA = &quot;Hello&quot;; 
+    String msgB = &quot;World&quot;; 
+    String msgC = &quot;Java&quot;;
+    log(1, () ‐&gt; msgA + msgB + msgC );
+    }
+}  </code></pre><p>这样一来，只有当级别满足要求的时候，才会进行三个字符串的拼接；否则三个字符串将不会进行拼接。  </p>
+<h2 id="证明Lambda的延迟"><a href="#证明Lambda的延迟" class="headerlink" title="证明Lambda的延迟"></a>证明Lambda的延迟</h2><p>下面的代码可以通过结果进行验证：  </p>
+<pre><code>public class Demo03LoggerDelay {
+    private static void log(int level, MessageBuilder builder) {
+        if (level == 1) {
+        System.out.println(builder.buildMessage());
+    }
+}
+    public static void main(String[] args) {
+        String msgA = &quot;Hello&quot;; 
+        String msgB = &quot;World&quot;; 
+        String msgC = &quot;Java&quot;;
+        log(2, () ‐&gt; 
+            { System.out.println(&quot;Lambda执行！&quot;); 
+            return msgA + msgB + msgC;
+        });
+    }
+}   </code></pre><p>从结果中可以看出，在不符合级别要求的情况下，Lambda将不会执行。从而达到节省性能的效果。   </p>
 <blockquote>
-<p>tips:Set集合取出元素的方式可以采用：迭代器、增强for。</p>
+<p>扩展：实际上使用内部类也可以达到同样的效果，只是将代码操作延迟到了另外一个对象当中通过调用方法<br>来完成。而是否调用其所在方法是在条件判断之后才执行的。  </p>
 </blockquote>
-<h2 id="4-1-HashSet集合介绍"><a href="#4-1-HashSet集合介绍" class="headerlink" title="4.1 HashSet集合介绍"></a>4.1 HashSet集合介绍</h2><p><code>java.util.HashSet</code>是<code>Set</code>接口的一个实现类，它所存储的元素是不可重复的，并且元素都是无序的(即存取顺序不一致)。<code>java.util.HashSet</code>底层的实现其实是一个<code>java.util.HashMap</code>支持，由于我们暂时还未学习，先做了解。</p>
-<p><code>HashSet</code>是根据对象的哈希值来确定元素在集合中的存储位置，因此具有良好的存取和查找性能。保证元素唯一性的方式依赖于：<code>hashCode</code>与<code>equals</code>方法。</p>
-<p>我们先来使用一下Set集合存储，看下现象，再进行原理的讲解:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSetDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建 Set集合</span></span><br><span class="line">        HashSet&lt;String&gt;  set = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加元素</span></span><br><span class="line">        set.add(<span class="keyword">new</span> String(<span class="string">"cba"</span>));</span><br><span class="line">        set.add(<span class="string">"abc"</span>);</span><br><span class="line">        set.add(<span class="string">"bac"</span>); </span><br><span class="line">        set.add(<span class="string">"cba"</span>);  </span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="keyword">for</span> (String name : set) &#123;</span><br><span class="line">            System.out.println(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-使用Lambda作为参数和返回值"><a href="#2-2-使用Lambda作为参数和返回值" class="headerlink" title="2.2 使用Lambda作为参数和返回值"></a>2.2 使用Lambda作为参数和返回值</h2><p>如果抛开实现原理不说，Java中的Lambda表达式可以被当作是匿名内部类的替代品。如果方法的参数是一个函数式接口类型，那么就可以使用Lambda表达式进行替代。使用Lambda表达式作为方法参数，其实就是使用函数式接口作为方法参数。  </p>
+<p>例如 java.lang.Runnable 接口就是一个函数式接口，假设有一个 startThread 方法使用该接口作为参数，那么就可以使用Lambda进行传参。这种情况其实和 Thread 类的构造方法参数为 Runnable 没有本质区别。  </p>
+<pre><code>public class Demo04Runnable {
+    private static void startThread(Runnable task) {
+        new Thread(task).start();
+    }
 
-<p>输出结果如下，说明集合中不能存储重复元素：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cba</span><br><span class="line">abc</span><br><span class="line">bac</span><br></pre></td></tr></table></figure>
+    public static void main(String[] args) {
+        startThread(() ‐&gt; System.out.println(&quot;线程任务执行！&quot;));
+    }
+}  </code></pre><p>类似地，如果一个方法的返回值类型是一个函数式接口，那么就可以直接返回一个Lambda表达式。当需要通过一个方法来获取一个 java.util.Comparator 接口类型的对象作为排序器时,就可以调该方法获取。  </p>
+<pre><code>import java.util.Arrays; 
+import java.util.Comparator;
 
+public class Demo06Comparator {
+    private static Comparator&lt;String&gt; newComparator() {
+        return (a, b) ‐&gt; b.length() ‐ a.length();
+    }
+
+    public static void main(String[] args) { 
+        String[] array = { &quot;abc&quot;, &quot;ab&quot;, &quot;abcd&quot; }; 
+        System.out.println(Arrays.toString(array)); 
+        Arrays.sort(array, newComparator()); 
+        System.out.println(Arrays.toString(array));
+    }
+}  </code></pre><p>其中直接return一个Lambda表达式即可。   </p>
+<h1 id="第三章-常用函数式接口"><a href="#第三章-常用函数式接口" class="headerlink" title="第三章 常用函数式接口"></a>第三章 常用函数式接口</h1><p>JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。下面是最简单的几个接口及使用示例。  </p>
+<h2 id="3-1-Supplier接口"><a href="#3-1-Supplier接口" class="headerlink" title="3.1 Supplier接口"></a>3.1 Supplier接口</h2><p><code>java.util.function.Supplier&lt;T&gt;</code> 接口仅包含一个无参的方法：<code>T get()</code> 。用来获取一个泛型参数指定类型的对象数据。由于这是一个函数式接口，这也就意味着对应的Lambda表达式需要“对外提供”一个符合泛型类型的对象数据。   </p>
+<pre><code>import java.util.function.Supplier;
+
+public class Demo08Supplier {
+    private static String getString(Supplier&lt;String&gt; function) {
+        return function.get();
+    }
+
+    public static void main(String[] args) {
+        String msgA = &quot;Hello&quot;; 
+        String msgB = &quot;World&quot;;
+        System.out.println(getString(() ‐&gt; msgA + msgB));
+    }
+}</code></pre><h2 id="3-2-Consumer接口"><a href="#3-2-Consumer接口" class="headerlink" title="3.2 Consumer接口"></a>3.2 Consumer接口</h2><p><code>java.util.function.Consumer&lt;T&gt;</code>接口则正好与Supplier接口相反，它不是生产一个数据，而是消费一个数据，其数据类型由泛型决定。   </p>
+<h3 id="抽象方法：accept"><a href="#抽象方法：accept" class="headerlink" title="抽象方法：accept"></a>抽象方法：accept</h3><p>Consumer 接口中包含抽象方法<code>void accept(T t)</code> ，意为消费一个指定泛型的数据。基本使用如：  </p>
+<pre><code>import java.util.function.Consumer;
+
+public class Demo09Consumer {
+    private static void consumeString(Consumer&lt;String&gt; function) {
+        function.accept(&quot;Hello&quot;);
+    }
+    public static void main(String[] args) {
+        consumeString(s ‐&gt; System.out.println(s));
+    }
+}  </code></pre><p>当然，更好的写法是使用方法引用。   </p>
+<h3 id="默认方法：andThen"><a href="#默认方法：andThen" class="headerlink" title="默认方法：andThen"></a>默认方法：andThen</h3><p>如果一个方法的参数和返回值全都是 Consumer 类型，那么就可以实现效果：消费数据的时候，首先做一个操作，然后再做一个操作，实现组合。而这个方法就是 Consumer 接口中的default方法 andThen 。下面是JDK的源代码：  </p>
+<pre><code>default Consumer&lt;T&gt; andThen(Consumer&lt;? super T&gt; after) {
+    Objects.requireNonNull(after);
+    return (T t) ‐&gt; { accept(t); after.accept(t); };
+}  </code></pre><blockquote>
+<p>备注：<code>java.util.Objects</code> 的 requireNonNull 静态方法将会在参数为null时主动抛出<code>NullPointerException</code>异常。这省去了重复编写if语句和抛出空指针异常的麻烦。   </p>
+</blockquote>
+<p>要想实现组合，需要两个或多个Lambda表达式即可，而 andThen 的语义正是“一步接一步”操作。例如两个步骤组合的情况：  </p>
+<pre><code>import java.util.function.Consumer;
+
+public class Demo10ConsumerAndThen {
+    private static void consumeString(Consumer&lt;String&gt; one, Consumer&lt;String&gt; two) {
+        one.andThen(two).accept(&quot;Hello&quot;);
+    }
+
+    public static void main(String[] args) {
+    consumeString(
+        s ‐&gt; System.out.println(s.toUpperCase()), 
+        s ‐&gt; System.out.println(s.toLowerCase()));
+    }
+}   </code></pre><p>运行结果将会首先打印完全大写的HELLO，然后打印完全小写的hello。当然，通过链式写法可以实现更多步骤的组合。    </p>
+<h2 id="3-3-Predicate接口"><a href="#3-3-Predicate接口" class="headerlink" title="3.3 Predicate接口"></a>3.3 Predicate接口</h2><p>有时候我们需要对某种类型的数据进行判断，从而得到一个boolean值结果。这时可以使用<code>java.util.function.Predicate&lt;T&gt;</code> 接口。  </p>
+<h3 id="抽象方法：test"><a href="#抽象方法：test" class="headerlink" title="抽象方法：test"></a>抽象方法：test</h3><p>Predicate 接口中包含一个抽象方法：<code>boolean test(T t)</code> 。用于条件判断的场景：  </p>
+<pre><code>import java.util.function.Predicate;
+
+public class Demo15PredicateTest {
+        private static void method(Predicate&lt;String&gt; predicate) 
+            { boolean veryLong = predicate.test(&quot;HelloWorld&quot;); 
+            System.out.println(&quot;字符串很长吗：&quot; + veryLong);
+    }
+    public static void main(String[] args) {
+        method(s ‐&gt; s.length() &gt; 5);
+    }
+}  </code></pre><p>条件判断的标准是传入的Lambda表达式逻辑，只要字符串长度大于5则认为很长。  </p>
+<h3 id="默认方法：and"><a href="#默认方法：and" class="headerlink" title="默认方法：and"></a>默认方法：and</h3><p>既然是条件判断，就会存在与、或、非三种常见的逻辑关系。其中将两个 Predicate 条件使用“与”逻辑连接起来实现“并且”的效果时，可以使用default方法 and 。其JDK源码为：   </p>
+<pre><code>default Predicate&lt;T&gt; and(Predicate&lt;? super T&gt; other) {
+    Objects.requireNonNull(other);
+    return (t) ‐&gt; test(t) &amp;&amp; other.test(t);
+}  </code></pre><p>如果要判断一个字符串既要包含大写“H”，又要包含大写“W”，那么：  </p>
+<pre><code>import java.util.function.Predicate;
+
+public class Demo16PredicateAnd {
+    private static void method(Predicate&lt;String&gt; one, Predicate&lt;String&gt; two)
+         { boolean isValid = one.and(two).test(&quot;Helloworld&quot;); 
+        System.out.println(&quot;字符串符合要求吗：&quot; + isValid);
+    }
+    public static void main(String[] args) {
+        method(s ‐&gt; s.contains(&quot;H&quot;), s ‐&gt; s.contains(&quot;W&quot;));
+    }
+}  </code></pre><h3 id="默认方法：or"><a href="#默认方法：or" class="headerlink" title="默认方法：or"></a>默认方法：or</h3><p>与 and 的“与”类似，默认方法 or 实现逻辑关系中的“或”。JDK源码为：   </p>
+<pre><code>default Predicate&lt;T&gt; or(Predicate&lt;? super T&gt; other) {
+    Objects.requireNonNull(other);
+    return (t) ‐&gt; test(t) || other.test(t);
+}  </code></pre><p>如果希望实现逻辑“字符串包含大写H或者包含大写W”，那么代码只需要将“and”修改为“or”名称即可，其他都不变：  </p>
+<pre><code>import java.util.function.Predicate;
+
+public class Demo16PredicateAnd {
+    private static void method(Predicate&lt;String&gt; one, Predicate&lt;String&gt; two) 
+        { boolean isValid = one.or(two).test(&quot;Helloworld&quot;); 
+        System.out.println(&quot;字符串符合要求吗：&quot; + isValid);
+    }
+
+    public static void main(String[] args) {
+        method(s ‐&gt; s.contains(&quot;H&quot;), s ‐&gt; s.contains(&quot;W&quot;));
+    }
+}   </code></pre><h3 id="默认方法：negate"><a href="#默认方法：negate" class="headerlink" title="默认方法：negate"></a>默认方法：negate</h3><p>“与”、“或”已经了解了，剩下的“非”（取反）也会简单。默认方法 negate 的JDK源代码为：  </p>
+<pre><code>default Predicate&lt;T&gt; negate() {
+    return (t) ‐&gt; !test(t);
+}  </code></pre><p>从实现中很容易看出，它是执行了test方法之后，对结果boolean值进行“!”取反而已。一定要在 test 方法调用之前调用 negate 方法，正如 and 和 or 方法一样：  </p>
+<pre><code>import java.util.function.Predicate;
+
+public class Demo17PredicateNegate {
+    private static void method(Predicate&lt;String&gt; predicate) 
+        { boolean veryLong = predicate.negate().test(&quot;HelloWorld&quot;); 
+        System.out.println(&quot;字符串很长吗：&quot; + veryLong);
+    }
+    public static void main(String[] args) {
+        method(s ‐&gt; s.length() &lt; 5);
+    }
+}  </code></pre><h2 id="3-7-Function接口"><a href="#3-7-Function接口" class="headerlink" title="3.7 Function接口"></a>3.7 Function接口</h2><p><code>java.util.function.Function&lt;T,R&gt;</code>接口用来根据一个类型的数据得到另一个类型的数据，前者称为前置条件，后者称为后置条件。  </p>
+<h3 id="抽象方法：apply"><a href="#抽象方法：apply" class="headerlink" title="抽象方法：apply"></a>抽象方法：apply</h3><p>Function 接口中最主要的抽象方法为： <code>R apply(T t)</code>，根据类型T的参数获取类型R的结果。  </p>
+<p>使用的场景例如：将 String 类型转换为 Integer 类型。  </p>
+<pre><code>import java.util.function.Function;
+
+public class Demo11FunctionApply {
+    private static void method(Function&lt;String, Integer&gt; function) {
+        int num = function.apply(&quot;10&quot;); 
+        System.out.println(num + 20);
+    }
+
+    public static void main(String[] args) {
+        method(s ‐&gt; Integer.parseInt(s));
+    }
+}  </code></pre><p>当然，最好是通过方法引用的写法。  </p>
+<h3 id="默认方法：andThen-1"><a href="#默认方法：andThen-1" class="headerlink" title="默认方法：andThen"></a>默认方法：andThen</h3><p>Function 接口中有一个默认的 andThen 方法，用来进行组合操作。JDK源代码如：  </p>
+<pre><code>default &lt;V&gt; Function&lt;T, V&gt; andThen(Function&lt;? super R, ? extends V&gt; after) {
+    Objects.requireNonNull(after);
+    return (T t) ‐&gt; after.apply(apply(t));
+}  </code></pre><p>该方法同样用于“先做什么，再做什么”的场景，和 Consumer 中的 andThen 差不多：  </p>
+<pre><code>import java.util.function.Function;
+
+public class Demo12FunctionAndThen {
+    private static void method(Function&lt;String, Integer&gt; one, Function&lt;Integer, Integer&gt; two) {
+        int num = one.andThen(two).apply(&quot;10&quot;);
+        System.out.println(num + 20);
+    }
+
+    public static void main(String[] args) {
+        method(str‐&gt;Integer.parseInt(str)+10, i ‐&gt; i *= 10);
+    }
+}  </code></pre><p>第一个操作是将字符串解析成为int数字，第二个操作是乘以10。两个操作通过 andThen 按照前后顺序组合到了一起。  </p>
 <blockquote>
-<p>tips:根据结果我们发现字符串”cba”只存储了一个，也就是说重复的元素set集合不存储。</p>
+<p>请注意，Function的前置条件泛型和后置条件泛型可以相同。    </p>
 </blockquote>
-<h2 id="4-2-HashSet集合存储数据的结构（哈希表）"><a href="#4-2-HashSet集合存储数据的结构（哈希表）" class="headerlink" title="4.2  HashSet集合存储数据的结构（哈希表）"></a>4.2  HashSet集合存储数据的结构（哈希表）</h2><p>什么是哈希表呢？</p>
-<p>在<strong>JDK1.8</strong>之前，哈希表底层采用数组+链表实现，即使用链表处理冲突，同一hash值的链表都存储在一个链表里。但是当位于一个桶中的元素较多，即hash值相等的元素较多时，通过key值依次查找的效率较低。而JDK1.8中，哈希表存储采用数组+链表+红黑树实现，当链表长度超过阈值（8）时，将链表转换为红黑树，这样大大减少了查找时间。</p>
-<p>简单的来说，哈希表是由数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的，为了方便大家的理解我们结合一个存储流程图来说明一下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJXy784.0JmR55dlzZKukk6ja953ZsCUB0*AuhMH8u2ADW6Is5x8QRYJ3dkVnLHtBNaqD5gZB0FwP9fz5WWQJX0!/b&bo=WQS4AQAAAAABF9Q!&rf=viewer_4" alt=""></p>
-<p>总而言之，<strong>JDK1.8</strong>引入红黑树大程度优化了HashMap的性能，那么对于我们来讲保证HashSet集合元素的唯一，其实就是根据对象的hashCode和equals方法来决定的。如果我们往集合中存放自定义的对象，那么保证其唯一，就必须复写hashCode和equals方法建立属于当前对象的比较方式。</p>
-<h2 id="4-3-HashSet存储自定义类型元素"><a href="#4-3-HashSet存储自定义类型元素" class="headerlink" title="4.3  HashSet存储自定义类型元素"></a>4.3  HashSet存储自定义类型元素</h2><p>给HashSet中存放自定义类型元素时，需要重写对象中的hashCode和equals方法，建立自己的比较方式，才能保证HashSet集合中的对象唯一<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOx23iihCLqwa3*dJFomC7JdZORsI*DocmBiNDtqH6wONzu3sU9gtzIHwa2swqiCCYCeUVkvvt5K2TKONiDdjvU!/b&bo=LgUGAgAAAAABFx8!&rf=viewer_4" alt=""><br>创建自定义Student类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        Student student = (Student) o;</span><br><span class="line">        <span class="keyword">return</span> age == student.age &amp;&amp;</span><br><span class="line">               Objects.equals(name, student.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSetDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建集合对象   该集合中存储 Student类型对象</span></span><br><span class="line">        HashSet&lt;Student&gt; stuSet = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line">        <span class="comment">//存储 </span></span><br><span class="line">        Student stu = <span class="keyword">new</span> Student(<span class="string">"于谦"</span>, <span class="number">43</span>);</span><br><span class="line">        stuSet.add(stu);</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"郭德纲"</span>, <span class="number">44</span>));</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"于谦"</span>, <span class="number">43</span>));</span><br><span class="line">        stuSet.add(<span class="keyword">new</span> Student(<span class="string">"郭麒麟"</span>, <span class="number">23</span>));</span><br><span class="line">        stuSet.add(stu);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Student stu2 : stuSet) &#123;</span><br><span class="line">            System.out.println(stu2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">Student [name=郭德纲, age=<span class="number">44</span>]</span><br><span class="line">Student [name=于谦, age=<span class="number">43</span>]</span><br><span class="line">Student [name=郭麒麟, age=<span class="number">23</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-4-LinkedHashSet"><a href="#4-4-LinkedHashSet" class="headerlink" title="4.4 LinkedHashSet"></a>4.4 LinkedHashSet</h2><p>我们知道HashSet保证元素唯一，可是元素存放进去是没有顺序的，那么我们要保证有序，怎么办呢？</p>
-<p>在HashSet下面有一个子类<code>java.util.LinkedHashSet</code>，它是链表和哈希表组合的一个数据存储结构。</p>
-<p>演示代码如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedHashSetDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Set&lt;String&gt; set = <span class="keyword">new</span> LinkedHashSet&lt;String&gt;();</span><br><span class="line">		set.add(<span class="string">"bbb"</span>);</span><br><span class="line">		set.add(<span class="string">"aaa"</span>);</span><br><span class="line">		set.add(<span class="string">"abc"</span>);</span><br><span class="line">		set.add(<span class="string">"bbc"</span>);</span><br><span class="line">        Iterator&lt;String&gt; it = set.iterator();</span><br><span class="line">		<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">			System.out.println(it.next());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">  bbb</span><br><span class="line">  aaa</span><br><span class="line">  abc</span><br><span class="line">  bbc</span><br></pre></td></tr></table></figure>
-
-<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>在<strong>JDK1.5</strong>之后，如果我们定义一个方法需要接受多个参数，并且多个参数类型一致，我们可以对其简化成如下格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型... 形参名)&#123;  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实这个书写完全等价与</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型[] 形参名)&#123;  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>只是后面这种定义，在调用时必须传递数组，而前者可以直接传递数据即可。</p>
-<p><strong>JDK1.5</strong>以后。出现了简化操作。<strong>…</strong> 用在参数上，称之为可变参数。</p>
-<p>同样是代表数组，但是在调用这个带有可变参数的方法时，不用创建数组(这就是简单之处)，直接将数组中的元素作为实际参数进行传递，其实编译成的class文件，将这些元素先封装到一个数组中，在进行传递。这些动作都在编译.class文件时，自动完成了。</p>
-<p>代码演示：    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeArgs</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123; <span class="number">1</span>, <span class="number">4</span>, <span class="number">62</span>, <span class="number">431</span>, <span class="number">2</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> sum = getSum(arr);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">        <span class="comment">//  6  7  2 12 2121</span></span><br><span class="line">        <span class="comment">// 求 这几个元素和 6  7  2 12 2121</span></span><br><span class="line">        <span class="keyword">int</span> sum2 = getSum(<span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">12</span>, <span class="number">2121</span>);</span><br><span class="line">        System.out.println(sum2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 完成数组  所有元素的求和 原始写法</span></span><br><span class="line"><span class="comment">     </span></span><br><span class="line"><span class="comment">      public static int getSum(int[] arr)&#123;</span></span><br><span class="line"><span class="comment">        int sum = 0;</span></span><br><span class="line"><span class="comment">        for(int a : arr)&#123;</span></span><br><span class="line"><span class="comment">            sum += a;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        return sum;</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">//可变参数写法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span>... arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">            sum += a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>tips: 上述add方法在同一个类中，只能存在一个。因为会发生调用的不确定性</p>
-<p>注意：如果在方法书写时，这个方法拥有多参数，参数中包含可变参数，可变参数一定要写在参数列表的末尾位置。</p>
-</blockquote>
-<h1 id="第五章-Collections"><a href="#第五章-Collections" class="headerlink" title="第五章  Collections"></a>第五章  Collections</h1><h2 id="5-1-常用功能"><a href="#5-1-常用功能" class="headerlink" title="5.1 常用功能"></a>5.1 常用功能</h2><ul>
-<li><code>java.utils.Collections</code>是集合工具类，用来对集合进行操作。部分方法如下：</li>
-</ul>
-<ul>
-<li><code>public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c, T... elements)</code>:往集合中添加一些元素。</li>
-<li><code>public static void shuffle(List&lt;?&gt; list) 打乱顺序</code>:打乱集合顺序。</li>
-<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list)</code>:将集合中元素按照默认规则排序。</li>
-<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list，Comparator&lt;? super T&gt; )</code>:将集合中元素按照指定规则排序。</li>
-</ul>
-<p>代码演示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">//原来写法</span></span><br><span class="line">        <span class="comment">//list.add(12);</span></span><br><span class="line">        <span class="comment">//list.add(14);</span></span><br><span class="line">        <span class="comment">//list.add(15);</span></span><br><span class="line">        <span class="comment">//list.add(1000);</span></span><br><span class="line">        <span class="comment">//采用工具类 完成 往集合中添加元素  </span></span><br><span class="line">        Collections.addAll(list, <span class="number">5</span>, <span class="number">222</span>, <span class="number">1</span>，<span class="number">2</span>);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        <span class="comment">//排序方法 </span></span><br><span class="line">        Collections.sort(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">[<span class="number">5</span>, <span class="number">222</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">222</span>]</span><br></pre></td></tr></table></figure>
-
-<p>代码演示之后 ，发现我们的集合按照顺序进行了排列，可是这样的顺序是采用默认的顺序，如果想要指定顺序那该怎么办呢？</p>
-<p>我们发现还有个方法没有讲，<code>public static &lt;T&gt; void sort(List&lt;T&gt; list，Comparator&lt;? super T&gt; )</code>:将集合中元素按照指定规则排序。接下来讲解一下指定规则的排列。</p>
-<h2 id="5-2-Comparator比较器"><a href="#5-2-Comparator比较器" class="headerlink" title="5.2 Comparator比较器"></a>5.2 Comparator比较器</h2><p>我们还是先研究这个方法</p>
-<p><code>public static &lt;T&gt; void sort(List&lt;T&gt; list)</code>:将集合中元素按照默认规则排序。</p>
-<p>不过这次存储的是字符串类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt;  list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        list.add(<span class="string">"cba"</span>);</span><br><span class="line">        list.add(<span class="string">"aba"</span>);</span><br><span class="line">        list.add(<span class="string">"sba"</span>);</span><br><span class="line">        list.add(<span class="string">"nba"</span>);</span><br><span class="line">        <span class="comment">//排序方法</span></span><br><span class="line">        Collections.sort(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[aba, cba, nba, sba]</span><br></pre></td></tr></table></figure>
-
-<p>我们使用的是默认的规则完成字符串的排序，那么默认规则是怎么定义出来的呢？</p>
-<p>说到排序了，简单的说就是两个对象之间比较大小，那么在JAVA中提供了两种比较实现的方式，一种是比较死板的采用<code>java.lang.Comparable</code>接口去实现，一种是灵活的当我需要做排序的时候在去选择的<code>java.util.Comparator</code>接口完成。</p>
-<p>那么我们采用的<code>public static &lt;T&gt; void sort(List&lt;T&gt; list)</code>这个方法完成的排序，实际上要求了被排序的类型需要实现Comparable接口完成比较的功能，在String类型上如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">String</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-
-<p>String类实现了这个接口，并完成了比较规则的定义，但是这样就把这种规则写死了，那比如我想要字符串按照第一个字符降序排列，那么这样就要修改String的源代码，这是不可能的了，那么这个时候我们可以使用</p>
-<p><code>public static &lt;T&gt; void sort(List&lt;T&gt; list，Comparator&lt;? super T&gt; )</code>方法灵活的完成，这个里面就涉及到了Comparator这个接口，位于位于java.util包下，排序是comparator能实现的功能之一,该接口代表一个比较器，比较器具有可比性！顾名思义就是做排序的，通俗地讲需要比较两个对象谁排在前谁排在后，那么比较的方法就是：</p>
-<ul>
-<li><p><code>public int compare(String o1, String o2)</code>：比较其两个参数的顺序。</p>
-<blockquote>
-<p>两个对象比较的结果有三种：大于，等于，小于。</p>
-<p>如果要按照升序排序，<br>则o1 小于o2，返回（负数），相等返回0，01大于02返回（正数）<br>如果要按照降序排序<br>则o1 小于o2，返回（正数），相等返回0，01大于02返回（负数）</p>
-</blockquote>
-</li>
-</ul>
-<p>操作如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsDemo3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        list.add(<span class="string">"cba"</span>);</span><br><span class="line">        list.add(<span class="string">"aba"</span>);</span><br><span class="line">        list.add(<span class="string">"sba"</span>);</span><br><span class="line">        list.add(<span class="string">"nba"</span>);</span><br><span class="line">        <span class="comment">//排序方法  按照第一个单词的降序</span></span><br><span class="line">        Collections.sort(list, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o2.charAt(<span class="number">0</span>) - o1.charAt(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[sba, nba, cba, aba]</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-3-简述Comparable和Comparator两个接口的区别。"><a href="#5-3-简述Comparable和Comparator两个接口的区别。" class="headerlink" title="5.3 简述Comparable和Comparator两个接口的区别。"></a>5.3 简述Comparable和Comparator两个接口的区别。</h2><p><strong>Comparable</strong>：强行对实现它的每个类的对象进行整体排序。这种排序被称为类的自然排序，类的compareTo方法被称为它的自然比较方法。只能在类中实现compareTo()一次，不能经常修改类的代码实现自己想要的排序。实现此接口的对象列表（和数组）可以通过Collections.sort（和Arrays.sort）进行自动排序，对象可以用作有序映射中的键或有序集合中的元素，无需指定比较器。</p>
-<p><strong>Comparator</strong>强行对某个对象进行整体排序。可以将Comparator 传递给sort方法（如Collections.sort或 Arrays.sort），从而允许在排序顺序上实现精确控制。还可以使用Comparator来控制某些数据结构（如有序set或有序映射）的顺序，或者为那些没有自然顺序的对象collection提供排序。</p>
-<h2 id="5-4-练习"><a href="#5-4-练习" class="headerlink" title="5.4  练习"></a>5.4  练习</h2><p>创建一个学生类，存储到ArrayList集合中完成指定排序操作。</p>
-<p>Student 初始类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">               <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">               <span class="string">", age="</span> + age +</span><br><span class="line">               <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建四个学生对象 存储到集合中</span></span><br><span class="line">        ArrayList&lt;Student&gt; list = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="keyword">new</span> Student(<span class="string">"rose"</span>,<span class="number">18</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Student(<span class="string">"jack"</span>,<span class="number">16</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Student(<span class="string">"abc"</span>,<span class="number">16</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Student(<span class="string">"ace"</span>,<span class="number">17</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> Student(<span class="string">"mark"</span>,<span class="number">16</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">          让学生 按照年龄排序 升序</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"><span class="comment">//        Collections.sort(list);//要求 该list中元素类型  必须实现比较器Comparable接口</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Student student : list) &#123;</span><br><span class="line">            System.out.println(student);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>发现，当我们调用Collections.sort()方法的时候 程序报错了。</p>
-<p>原因：如果想要集合中的元素完成排序，那么必须要实现比较器Comparable接口。</p>
-<p>于是我们就完成了Student类的一个实现，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Student</span>&gt;</span>&#123;</span><br><span class="line">    ....</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Student o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.age-o.age;<span class="comment">//升序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再次测试，代码就OK 了效果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student&#123;name=<span class="string">'jack'</span>, age=<span class="number">16</span>&#125;</span><br><span class="line">Student&#123;name=<span class="string">'abc'</span>, age=<span class="number">16</span>&#125;</span><br><span class="line">Student&#123;name=<span class="string">'mark'</span>, age=<span class="number">16</span>&#125;</span><br><span class="line">Student&#123;name=<span class="string">'ace'</span>, age=<span class="number">17</span>&#125;</span><br><span class="line">Student&#123;name=<span class="string">'rose'</span>, age=<span class="number">18</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-5-扩展"><a href="#5-5-扩展" class="headerlink" title="5.5 扩展"></a>5.5 扩展</h2><p>如果在使用的时候，想要独立的定义规则去使用 可以采用Collections.sort(List list,Comparetor<T> c)方式，自己定义规则：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Student&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o2.getAge()-o1.getAge();<span class="comment">//以学生的年龄降序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student&#123;name&#x3D;&#39;rose&#39;, age&#x3D;18&#125;</span><br><span class="line">Student&#123;name&#x3D;&#39;ace&#39;, age&#x3D;17&#125;</span><br><span class="line">Student&#123;name&#x3D;&#39;jack&#39;, age&#x3D;16&#125;</span><br><span class="line">Student&#123;name&#x3D;&#39;abc&#39;, age&#x3D;16&#125;</span><br><span class="line">Student&#123;name&#x3D;&#39;mark&#39;, age&#x3D;16&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果想要规则更多一些，可以参考下面代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Student&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 年龄降序</span></span><br><span class="line">                <span class="keyword">int</span> result = o2.getAge()-o1.getAge();<span class="comment">//年龄降序</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(result==<span class="number">0</span>)&#123;<span class="comment">//第一个规则判断完了 下一个规则 姓名的首字母 升序</span></span><br><span class="line">                    result = o1.getName().charAt(<span class="number">0</span>)-o2.getName().charAt(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<pre><code>Student{name=&apos;rose&apos;, age=18}
-Student{name=&apos;ace&apos;, age=17}
-Student{name=&apos;abc&apos;, age=16}
-Student{name=&apos;jack&apos;, age=16}
-Student{name=&apos;mark&apos;, age=16}</code></pre><h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>本文章有关数据结构，在实践中和面试中都很重要。比如面试喜欢问红黑树，事件中list和set集合用的则比较多，要弄清楚这些原理。当然数据结构中的图等几种遍历和排序的算法，最短路径以及最小生成树在面试中也相当重要，有需要的自己私下了解哦。</p>
+<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>接口的内容也可以去看JavaApi的文档，在我的友链的第一个，搜索即可以看。看这种官方文档我还是推荐看官方的，不要看翻译的版本。而且官方的文档有一个好处，网页打开，可以使用谷歌翻译插件。   </p>
+<p>翻译前：  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGGYSc8AxW.48loV77oD.KCaMiNbl4D4LGy9XbWqWXwpMQKLnCW0Ped87HoIruMHsFofpY.aOt2xv0A649sM9oE!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">      </p>
+<p>翻译后：   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEAOtRctYV8MEkR51f92JzVsuDDTXSnOkYVpdEqiXpxTzIDoGLtsX9tKCMyXwZn8N*ODcE.heL8yhmJcni7WoqA0!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">     </p>
+<p>溜了溜了=。=   </p>
 
       
 	<!--  自加的代码 -->
@@ -604,7 +606,7 @@ Student{name=&apos;mark&apos;, age=16}</code></pre><h1 id="博主寄语"><a href
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2019/07/19/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%BA%8C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -618,18 +620,18 @@ Student{name=&apos;mark&apos;, age=16}</code></pre><h1 id="博主寄语"><a href
   
 <nav id="article-nav">
   
-    <a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java进阶四
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java进阶二</div>
+    <a href="/2019/07/19/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%B8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java进阶十一</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -656,7 +658,7 @@ Student{name=&apos;mark&apos;, age=16}</code></pre><h1 id="博主寄语"><a href
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【List、Set、数据结构、Collections】"><span class="toc-number">1.</span> <span class="toc-text">【List、Set、数据结构、Collections】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-number">1.1.</span> <span class="toc-text">主要内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-数据结构"><span class="toc-number">2.</span> <span class="toc-text">第一章 数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-数据结构有什么用？"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 数据结构有什么用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-常见的数据结构"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 常见的数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#栈"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#链表"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#红黑树"><span class="toc-number">2.2.0.4.</span> <span class="toc-text">红黑树</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-List集合"><span class="toc-number">3.</span> <span class="toc-text">第二章 List集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-List接口介绍"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 List接口介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-List接口中常用方法"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 List接口中常用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-List的子类"><span class="toc-number">4.</span> <span class="toc-text">第三章 List的子类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-ArrayList集合"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 ArrayList集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-LinkedList集合"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 LinkedList集合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四章-Set接口"><span class="toc-number">5.</span> <span class="toc-text">第四章 Set接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-HashSet集合介绍"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 HashSet集合介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-HashSet集合存储数据的结构（哈希表）"><span class="toc-number">5.2.</span> <span class="toc-text">4.2  HashSet集合存储数据的结构（哈希表）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-HashSet存储自定义类型元素"><span class="toc-number">5.3.</span> <span class="toc-text">4.3  HashSet存储自定义类型元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-LinkedHashSet"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 LinkedHashSet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可变参数"><span class="toc-number">5.5.</span> <span class="toc-text">可变参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第五章-Collections"><span class="toc-number">6.</span> <span class="toc-text">第五章  Collections</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-常用功能"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 常用功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Comparator比较器"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 Comparator比较器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-简述Comparable和Comparator两个接口的区别。"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 简述Comparable和Comparator两个接口的区别。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-练习"><span class="toc-number">6.4.</span> <span class="toc-text">5.4  练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-扩展"><span class="toc-number">6.5.</span> <span class="toc-text">5.5 扩展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">7.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【函数式接口】"><span class="toc-number">1.</span> <span class="toc-text">【函数式接口】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-number">1.1.</span> <span class="toc-text">主要内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-函数式接口"><span class="toc-number">2.</span> <span class="toc-text">第一章 函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-概念"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-格式"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-FunctionalInterface注解"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 @FunctionalInterface注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-自定义函数式接口"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 自定义函数式接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-函数式编程"><span class="toc-number">3.</span> <span class="toc-text">第二章 函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Lambda的延迟执行"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 Lambda的延迟执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能浪费的日志案例"><span class="toc-number">3.2.</span> <span class="toc-text">性能浪费的日志案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#体验Lambda的更优写法"><span class="toc-number">3.3.</span> <span class="toc-text">体验Lambda的更优写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证明Lambda的延迟"><span class="toc-number">3.4.</span> <span class="toc-text">证明Lambda的延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-使用Lambda作为参数和返回值"><span class="toc-number">3.5.</span> <span class="toc-text">2.2 使用Lambda作为参数和返回值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-常用函数式接口"><span class="toc-number">4.</span> <span class="toc-text">第三章 常用函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Supplier接口"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 Supplier接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Consumer接口"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 Consumer接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象方法：accept"><span class="toc-number">4.2.1.</span> <span class="toc-text">抽象方法：accept</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法：andThen"><span class="toc-number">4.2.2.</span> <span class="toc-text">默认方法：andThen</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Predicate接口"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 Predicate接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象方法：test"><span class="toc-number">4.3.1.</span> <span class="toc-text">抽象方法：test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法：and"><span class="toc-number">4.3.2.</span> <span class="toc-text">默认方法：and</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法：or"><span class="toc-number">4.3.3.</span> <span class="toc-text">默认方法：or</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法：negate"><span class="toc-number">4.3.4.</span> <span class="toc-text">默认方法：negate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-Function接口"><span class="toc-number">4.4.</span> <span class="toc-text">3.7 Function接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象方法：apply"><span class="toc-number">4.4.1.</span> <span class="toc-text">抽象方法：apply</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认方法：andThen-1"><span class="toc-number">4.4.2.</span> <span class="toc-text">默认方法：andThen</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">5.</span> <span class="toc-text">博主寄语</span></a></li></ol>
                     </div>
                 </span>
             </div>
