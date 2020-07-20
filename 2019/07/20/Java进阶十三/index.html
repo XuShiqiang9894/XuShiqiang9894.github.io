@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>徐仕强的博客</title>
+  <title>Java进阶十三 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机学生一枚，没啥特点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐仕强的博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="文档目的：1. 能够理解流与集合相比的优点、流的延迟执行特点。2. 能够通过集合、映射或数组获取流，能够掌握常用的流操作。3. 能够使用输出语句的方法引用3，能够通过4种方式使用方法引用，能够使用类和数组的构造器引用8。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java进阶十三">
+<meta property="og:url" content="http://yoursite.com/2019/07/20/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%B8%89/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="计算机学生一枚，没啥特点">
+<meta property="og:description" content="文档目的：1. 能够理解流与集合相比的优点、流的延迟执行特点。2. 能够通过集合、映射或数组获取流，能够掌握常用的流操作。3. 能够使用输出语句的方法引用3，能够通过4种方式使用方法引用，能够使用类和数组的构造器引用8。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqePWl3IkTra3jGKy5KHVLOcPERDt0aD*54unM*5KURohEQEwii8sqeO1W5iGr4fKCvds*GxyBeEnTRmp5VkcIJo!/b&bo=VAQ1AgAAAAADB0U!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqUoMmZ43Fc92au3m8jsCvSNRjdKfS87wHerIEaYW7ql.nk9f*vw6ul47G9GOK4StIgTVFZzA*BAId8Sq5HW4z*4!/b&bo=EgQAAQAAAAADBzU!&rf=viewer_4">
+<meta property="article:published_time" content="2019-07-20T02:58:24.000Z">
+<meta property="article:modified_time" content="2020-07-20T04:11:39.855Z">
 <meta property="article:author" content="徐仕强">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqePWl3IkTra3jGKy5KHVLOcPERDt0aD*54unM*5KURohEQEwii8sqeO1W5iGr4fKCvds*GxyBeEnTRmp5VkcIJo!/b&bo=VAQ1AgAAAAADB0U!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -171,22 +177,26 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-Java进阶九" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-Java进阶十三" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E4%B9%9D/">Java进阶九</a>
+    <h1 class="article-title" itemprop="name">
+      Java进阶十三
     </h1>
   
 
         
          
-<a href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E4%B9%9D/" class="archive-article-date">
-  	<time datetime="2019-07-18T11:45:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/07/20/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%B8%89/" class="archive-article-date">
+  	<time datetime="2019-07-20T02:58:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
 </a>
 		<!-- 需要添加的位置 -->
          <!-- 开始添加字数统计-->
@@ -196,207 +206,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.5k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">26分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目的：1. 能够说出IO流的分类和功能,使用字节输出流写出数据到文件,能够使用字节输入流读取数据到程序,能够理解读取数据read(byte[])方法的原理。2. 能够使用字节流完成文件的复制，能够使用FileWirter写数据到文件，能够说出FileWriter中关闭和刷新方法的区别。3. 能够使用FileWriter写数据的5个方法、能够使用FileWriter写数据实现换行和追加写，能够使用FileReader读数据，能够使用FileReader读数据一次一个字符数组。4. 能够使用Properties的load方法加载文件中配置信息</p>
-        
-          <a class="article-more-a" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E4%B9%9D/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E4%B9%9D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶八" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/">Java进阶八</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/" class="archive-article-date">
-  	<time datetime="2019-07-18T03:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目的：1. 能够说出File对象的创建方式、File类获取名称的方法名称、File类获取绝对路径的方法名称、File类获取文件大小的方法名称、File类判断是否是文件的方法名称、File类判断是否是文件夹的方法名称。2. 能够辨别相对路径和绝对路径、能够遍历文件夹。3. 能够解释递归的含义、能够使用递归的方式计算5的阶乘，能够说出使用递归会内存溢出隐患的原因。</p>
-        
-          <a class="article-more-a" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶七" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/">Java进阶七</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/" class="archive-article-date">
-  	<time datetime="2019-07-17T06:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.3k字</span>
+        <span class="post-count">5.8k字</span>
       </span>
     </span>
     <span class="post-time">
@@ -415,113 +225,551 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文档目的：1. 能够理解线程通信概念、理解等待唤醒机制。2. 能够描述Java中线程池运行原理、理解函数式编程相对于面向对象的优点。3. 能够掌握Lambda表达式的标准格式，能够掌握Lambda表达式的省略格式与规则，能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法），能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法），能够明确Lambda的两项使用前提。</p>
-        
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/#more">more >></a>
-        
+        <p>文档目的：1. 能够理解流与集合相比的优点、流的延迟执行特点。2. 能够通过集合、映射或数组获取流，能够掌握常用的流操作。3. 能够使用输出语句的方法引用3，能够通过4种方式使用方法引用，能够使用类和数组的构造器引用8。</p>
+<a id="more"></a>
+<h1 id="【Stream流、方法引用】"><a href="#【Stream流、方法引用】" class="headerlink" title="【Stream流、方法引用】"></a>【Stream流、方法引用】</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
+<li>Stream流</li>
+<li>方法引用   </li>
+</ul>
+<h1 id="第一章-Stream流"><a href="#第一章-Stream流" class="headerlink" title="第一章 Stream流"></a>第一章 Stream流</h1><p>说到Stream便容易想到I/O Stream，而实际上，谁规定“流”就一定是“IO流”呢？在Java 8中，得益于Lambda所带来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端。</p>
+<h2 id="1-1-引言"><a href="#1-1-引言" class="headerlink" title="1.1 引言"></a>1.1 引言</h2><h3 id="传统集合的多步遍历代码"><a href="#传统集合的多步遍历代码" class="headerlink" title="传统集合的多步遍历代码"></a>传统集合的多步遍历代码</h3><p>几乎所有的集合（如 Collection 接口或 Map 接口等）都支持直接或间接的遍历操作。而当我们需要对集合中的元素进行操作的时候，除了必需的添加、删除、获取外，最典型的就是集合遍历。例如：  </p>
+<pre><code>import java.util.ArrayList; import java.util.List;
+
+public class Demo01ForEach {
+    public static void main(String[] args) { 
+        List&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&quot;张无忌&quot;);
+        list.add(&quot;周芷若&quot;); 
+        list.add(&quot;赵敏&quot;); 
+        list.add(&quot;张强&quot;); 
+        list.add(&quot;张三丰&quot;);
+        for (String name : list) {
+            System.out.println(name);
+        }
+    }
+}   </code></pre><p>这是一段非常简单的集合遍历操作：对集合中的每一个字符串都进行打印输出操作。  </p>
+<h3 id="循环遍历的弊端"><a href="#循环遍历的弊端" class="headerlink" title="循环遍历的弊端"></a>循环遍历的弊端</h3><p>Java 8的Lambda让我们可以更加专注于做什么（What），而不是怎么做（How），这点此前已经结合内部类进行了对比说明。现在，我们仔细体会一下上例代码，可以发现：</p>
+<ul>
+<li>for循环的语法就是“怎么做” </li>
+<li>for循环的循环体才是“做什么”</li>
+</ul>
+<p>为什么使用循环？因为要进行遍历。但循环是遍历的唯一方式吗？遍历是指每一个元素逐一进行处理，而并不是从第一个到最后一个顺次处理的循环。前者是目的，后者是方式。   </p>
+<p>试想一下，如果希望对集合中的元素进行筛选过滤：  </p>
+<ol>
+<li>将集合A根据条件一过滤为子集B；  </li>
+<li>然后再根据条件二过滤为子集C。  </li>
+</ol>
+<p>那怎么办？在Java 8之前的做法可能为：  </p>
+<pre><code>import java.util.ArrayList; import java.util.List;
+
+public class Demo02NormalFilter {
+    public static void main(String[] args) { 
+        List&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&quot;张无忌&quot;);
+        list.add(&quot;周芷若&quot;); 
+        list.add(&quot;赵敏&quot;); 
+        list.add(&quot;张强&quot;); 
+        list.add(&quot;张三丰&quot;);
+        List&lt;String&gt; zhangList = new ArrayList&lt;&gt;();
+        for (String name : list) {
+            if (name.startsWith(&quot;张&quot;)) {
+                zhangList.add(name);
+            }
+        }
+        List&lt;String&gt; shortList = new ArrayList&lt;&gt;(); 
+        for (String name : zhangList) {
+            if (name.length() == 3) {
+                shortList.add(name);
+            }
+        }
+        for (String name : shortList) {
+            System.out.println(name);
+        }
+    }
+}   </code></pre><p>这段代码中含有三个循环，每一个作用不同：</p>
+<ol>
+<li>首先筛选所有姓张的人；</li>
+<li>然后筛选名字有三个字的人；</li>
+<li>最后进行对结果进行打印输出。</li>
+</ol>
+<p>每当我们需要对集合中的元素进行操作的时候，总是需要进行循环、循环、再循环。这是理所当然的么？不是。循环是做事情的方式，而不是目的。另一方面，使用线性循环就意味着只能遍历一次。如果希望再次遍历，只能再使用另一个循环从头开始。  </p>
+<p>那，Lambda的衍生物Stream能给我们带来怎样更加优雅的写法呢？   </p>
+<h3 id="Stream的更优写法"><a href="#Stream的更优写法" class="headerlink" title="Stream的更优写法"></a>Stream的更优写法</h3><p>下面来看一下借助Java 8的Stream API，什么才叫优雅：  </p>
+<pre><code>import java.util.ArrayList; import java.util.List;
+
+public class Demo03StreamFilter {
+    public static void main(String[] args) { 
+        List&lt;String&gt; list = new ArrayList&lt;&gt;(); 
+        list.add(&quot;张无忌&quot;);
+        list.add(&quot;周芷若&quot;); 
+        list.add(&quot;赵敏&quot;); 
+        list.add(&quot;张强&quot;); 
+        list.add(&quot;张三丰&quot;);
+        list.stream()
+            .filter(s ‐&gt; s.startsWith(&quot;张&quot;))
+            .filter(s ‐&gt; s.length() == 3) .forEach(System.out::println);
+    }
+}</code></pre><p>直接阅读代码的字面意思即可完美展示无关逻辑方式的语义：获取流、过滤姓张、过滤长度为3、逐一打印。代码中并没有体现使用线性循环或是其他任何算法进行遍历，我们真正要做的事情内容被更好地体现在代码中。  </p>
+<h2 id="1-2-流式思想概述"><a href="#1-2-流式思想概述" class="headerlink" title="1.2 流式思想概述"></a>1.2 流式思想概述</h2><p>注意：请暂时忘记对传统IO流的固有印象！  </p>
+<p>整体来看，流式思想类似于工厂车间的“生产流水线”。  </p>
+<p>当需要对多个元素进行操作（特别是多步操作）的时候，考虑到性能及便利性，我们应该首先拼好一个“模型”步骤方案，然后再按照方案去执行它。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqePWl3IkTra3jGKy5KHVLOcPERDt0aD*54unM*5KURohEQEwii8sqeO1W5iGr4fKCvds*GxyBeEnTRmp5VkcIJo!/b&bo=VAQ1AgAAAAADB0U!&rf=viewer_4" alt="">  </p>
+<p>这张图中展示了过滤、映射、跳过、计数等多步操作，这是一种集合元素的处理方案，而方案就是一种“函数模<br>型”。图中的每一个方框都是一个“流”，调用指定的方法，可以从一个流模型转换为另一个流模型。而最右侧的数字<br>3是最终结果。   </p>
+<p>这里的 filter 、 map 、 skip 都是在对函数模型进行操作，集合元素并没有真正被处理。只有当终结方法 count执行的时候，整个模型才会按照指定策略执行操作。而这得益于Lambda的延迟执行特性。  </p>
+<blockquote>
+<p>备注：“Stream流”其实是一个集合元素的函数模型，它并不是集合，也不是数据结构，其本身并不存储任何元素（或其地址值）。</p>
+</blockquote>
+<p>Stream（流）是一个来自数据源的元素队列  </p>
+<ul>
+<li><p>元素是特定类型的对象，形成一个队列。 Java中的Stream并不会存储元素，而是按需计算。数据源 流的来源。 可以是集合，数组 等。</p>
+</li>
+<li><p>和以前的Collection操作不同， Stream操作还有两个基础的特征：</p>
+</li>
+<li><p>Pipelining: 中间操作都会返回流对象本身。 这样多个操作可以串联成一个管道， 如同流式风格（fluent style）。 这样做可以对操作进行优化， 比如延迟执行(laziness)和短路( short-circuiting)。</p>
+</li>
+<li><p>内部迭代： 以前对集合遍历都是通过Iterator或者增强for的方式, 显式的在集合外部进行迭代， 这叫做外部迭代。 Stream提供了内部迭代的方式，流可以直接调用遍历方法。  </p>
+</li>
+</ul>
+<p>当使用一个流的时候，通常包括三个基本步骤：获取一个数据源（source）→ 数据转换→执行操作获取想要的结果，每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以有多次转换），这就允许对其操作可以像链条一样排列，变成一个管道。  </p>
+<h2 id="1-3-获取流"><a href="#1-3-获取流" class="headerlink" title="1.3 获取流"></a>1.3 获取流</h2><p><code>java.util.stream.Stream&lt;T&gt;</code> 是Java 8新加入的最常用的流接口。（这并不是一个函数式接口。）</p>
+<p>获取一个流非常简单，有以下几种常用的方式：</p>
+<ul>
+<li>所有的 Collection 集合都可以通过 stream 默认方法获取流；</li>
+<li>Stream 接口的静态方法 of 可以获取数组对应的流。</li>
+</ul>
+<h3 id="根据Collection获取流"><a href="#根据Collection获取流" class="headerlink" title="根据Collection获取流"></a>根据Collection获取流</h3><p>首先,<code>java.util.Collection</code> 接口中加入了default方法 stream 用来获取流，所以其所有实现类均可获取流。  </p>
+<pre><code>import java.util.*;
+import java.util.stream.Stream;
+
+public class Demo04GetStream {
+    public static void main(String[] args) { 
+        List&lt;String&gt; list = new ArrayList&lt;&gt;(); 
+
+        Stream&lt;String&gt; stream1 = list.stream();
+
+        Set&lt;String&gt; set = new HashSet&lt;&gt;(); 
+
+        Stream&lt;String&gt; stream2 = set.stream();
+
+        Vector&lt;String&gt; vector = new Vector&lt;&gt;(); 
+
+        Stream&lt;String&gt; stream3 = vector.stream();
+    } 
+}  </code></pre><h3 id="根据Map获取流"><a href="#根据Map获取流" class="headerlink" title="根据Map获取流"></a>根据Map获取流</h3><p><code>java.util.Map</code>接口不是 Collection 的子接口，且其K-V数据结构不符合流元素的单一特征，所以获取对应的流需要分key、value或entry等情况：  </p>
+<pre><code>import java.util.HashMap; import java.util.Map;
+import java.util.stream.Stream;
+
+public class Demo05GetStream {
+    public static void main(String[] args) { 
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;(); 
+        Stream&lt;String&gt; keyStream = map.keySet().stream(); 
+        Stream&lt;String&gt; valueStream = map.values().stream();
+        Stream&lt;Map.Entry&lt;String, String&gt;&gt; entryStream = map.entrySet().stream();
+    }
+}  </code></pre><h3 id="根据数组获取流"><a href="#根据数组获取流" class="headerlink" title="根据数组获取流"></a>根据数组获取流</h3><p>如果使用的不是集合或映射而是数组，由于数组对象不可能添加默认方法，所以 Stream 接口中提供了静态方法<br>of ，使用很简单：  </p>
+<pre><code>import java.util.stream.Stream;
+
+public class Demo06GetStream {
+    public static void main(String[] args) {
+        String[] array = { &quot;张无忌&quot;, &quot;张翠山&quot;, &quot;张三丰&quot;, &quot;张一元&quot; };
+        Stream&lt;String&gt; stream = Stream.of(array);
+    }
+}  </code></pre><blockquote>
+<p>备注： of 方法的参数其实是一个可变参数，所以支持数组。  </p>
+</blockquote>
+<h2 id="1-4-常用方法"><a href="#1-4-常用方法" class="headerlink" title="1.4 常用方法"></a>1.4 常用方法</h2><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqUoMmZ43Fc92au3m8jsCvSNRjdKfS87wHerIEaYW7ql.nk9f*vw6ul47G9GOK4StIgTVFZzA*BAId8Sq5HW4z*4!/b&bo=EgQAAQAAAAADBzU!&rf=viewer_4" alt=""></p>
+<p>流模型的操作很丰富，这里介绍一些常用的API。这些方法可以被分成两种：</p>
+<ul>
+<li>延迟方法：返回值类型仍然是 Stream 接口自身类型的方法，因此支持链式调用。（除了终结方法外，其余方法均为延迟方法。）</li>
+<li>终结方法：返回值类型不再是 Stream 接口自身类型的方法，因此不再支持类似 StringBuilder 那样的链式调用。本小节中，终结方法包括 count 和 forEach 方法。</li>
+</ul>
+<blockquote>
+<p>备注：本小节之外的更多方法，请自行参考API文档。  </p>
+</blockquote>
+<h3 id="逐一处理：forEach"><a href="#逐一处理：forEach" class="headerlink" title="逐一处理：forEach"></a>逐一处理：forEach</h3><p>虽然方法名字叫 forEach ，但是与for循环中的“for-each”昵称不同。  </p>
+<pre><code>void forEach(Consumer&lt;? super T&gt; action);</code></pre><p>该方法接收一个 Consumer 接口函数，会将每一个流元素交给该函数进行处理。   </p>
+<h4 id="复习Consumer接口"><a href="#复习Consumer接口" class="headerlink" title="复习Consumer接口"></a>复习Consumer接口</h4><pre><code>java.util.function.Consumer&lt;T&gt;接口是一个消费型接口。
+Consumer接口中包含抽象方法void accept(T t)，意为消费一个指定泛型的数据。  </code></pre><h4 id="基本使用："><a href="#基本使用：" class="headerlink" title="基本使用："></a>基本使用：</h4><pre><code>import java.util.stream.Stream;
+
+public class Demo12StreamForEach {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; stream = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);
+        stream.forEach(name‐&gt; System.out.println(name));
+    }
+}  </code></pre><h3 id="过滤：filter"><a href="#过滤：filter" class="headerlink" title="过滤：filter"></a>过滤：filter</h3><p>可以通过 filter 方法将一个流转换成另一个子集流。方法签名：</p>
+<pre><code>Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate);</code></pre><p>该接口接收一个 Predicate 函数式接口参数（可以是一个Lambda或方法引用）作为筛选条件。</p>
+<h4 id="复习Predicate接口"><a href="#复习Predicate接口" class="headerlink" title="复习Predicate接口"></a>复习Predicate接口</h4><p>此前我们已经学习过 java.util.stream.Predicate 函数式接口，其中唯一的抽象方法为：</p>
+<pre><code>boolean test(T t);</code></pre><p>该方法将会产生一个boolean值结果，代表指定的条件是否满足。如果结果为true，那么Stream流的 filter 方法将会留用元素；如果结果为false，那么 filter 方法将会舍弃元素。</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><pre><code>Stream流中的 filter 方法基本使用的代码如：  
+
+import java.util.stream.Stream;
+
+public class Demo07StreamFilter {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); 
+        Stream&lt;String&gt; result = original.filter(s ‐&gt; s.startsWith(&quot;张&quot;));
+    }
+}  </code></pre><p>在这里通过Lambda表达式来指定了筛选的条件：必须姓张。  </p>
+<h3 id="映射：map"><a href="#映射：map" class="headerlink" title="映射：map"></a>映射：map</h3><p>如果需要将流中的元素映射到另一个流中，可以使用 map 方法。方法签名：</p>
+<p><R> Stream<R> map(Function&lt;? super T, ? extends R&gt; mapper);</p>
+<p>该接口需要一个 Function 函数式接口参数，可以将当前流中的T类型数据转换为另一种R类型的流。</p>
+<h4 id="复习Function接口"><a href="#复习Function接口" class="headerlink" title="复习Function接口"></a>复习Function接口</h4><p>此前我们已经学习过 <code>java.util.stream.Function</code> 函数式接口，其中唯一的抽象方法为：</p>
+<pre><code>R apply(T t);</code></pre><p>这可以将一种T类型转换成为R类型，而这种转换的动作，就称为“映射”。</p>
+<h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><p>Stream流中的 map 方法基本使用的代码如：</p>
+<pre><code>import java.util.stream.Stream; 
+public class Demo08StreamMap {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;10&quot;, &quot;12&quot;, &quot;18&quot;); 
+        Stream&lt;Integer&gt; result = original.map(str‐&gt;Integer.parseInt(str));
+    }
+}</code></pre><p>这段代码中， map 方法的参数通过方法引用，将字符串类型转换成为了int类型（并自动装箱为 Integer 类对象）。   </p>
+<h3 id="统计个数：count"><a href="#统计个数：count" class="headerlink" title="统计个数：count"></a>统计个数：count</h3><p>正如旧集合 Collection 当中的 size 方法一样，流提供 count 方法来数一数其中的元素个数：</p>
+<pre><code>long count();</code></pre><p>该方法返回一个long值代表元素个数（不再像旧集合那样是int值）。基本使用：  </p>
+<pre><code>import java.util.stream.Stream;
+
+public class Demo09StreamCount {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); 
+        Stream&lt;String&gt; result = original.filter(s ‐&gt; s.startsWith(&quot;张&quot;)); 
+        System.out.println(result.count()); // 2
+    }
+}  </code></pre><h3 id="取用前几个：limit"><a href="#取用前几个：limit" class="headerlink" title="取用前几个：limit"></a>取用前几个：limit</h3><p>limit 方法可以对流进行截取，只取用前n个。方法签名：</p>
+<pre><code>Stream&lt;T&gt; limit(long maxSize);</code></pre><p>参数是一个long型，如果集合当前长度大于参数则进行截取；否则不进行操作。基本使用：</p>
+<pre><code>import java.util.stream.Stream;
+
+public class Demo10StreamLimit {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); 
+        Stream&lt;String&gt; result = original.limit(2); 
+        System.out.println(result.count()); // 2
+    }
+}  </code></pre><h3 id="跳过前几个：skip"><a href="#跳过前几个：skip" class="headerlink" title="跳过前几个：skip"></a>跳过前几个：skip</h3><p>如果希望跳过前几个元素，可以使用 skip 方法获取一个截取之后的新流：    </p>
+<pre><code>Stream&lt;T&gt; skip(long n);</code></pre><p>如果流的当前长度大于n，则跳过前n个；否则将会得到一个长度为0的空流。基本使用：   </p>
+<pre><code>import java.util.stream.Stream;
+
+public class Demo11StreamSkip {
+    public static void main(String[] args) {
+        Stream&lt;String&gt; original = Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); 
+        Stream&lt;String&gt; result = original.skip(2); 
+        System.out.println(result.count()); // 1
+    }
+}  </code></pre><h3 id="组合：concat"><a href="#组合：concat" class="headerlink" title="组合：concat"></a>组合：concat</h3><p>如果有两个流，希望合并成为一个流，那么可以使用 Stream 接口的静态方法 concat ：</p>
+<pre><code>static &lt;T&gt; Stream&lt;T&gt; concat(Stream&lt;? extends T&gt; a, Stream&lt;? extends T&gt; b)</code></pre><blockquote>
+<p>备注：这是一个静态方法，与 java.lang.String 当中的 concat 方法是不同的。</p>
+</blockquote>
+<p>该方法的基本使用代码如：</p>
+<pre><code>import java.util.stream.Stream;
+
+public class Demo12StreamConcat {
+    public static void main(String[] args) { 
+        Stream&lt;String&gt; streamA = Stream.of(&quot;张无忌&quot;); 
+        Stream&lt;String&gt; streamB = Stream.of(&quot;张翠山&quot;);
+        Stream&lt;String&gt; result = Stream.concat(streamA, streamB);
+    }
+}  </code></pre><h2 id="例子就略了，懒得打"><a href="#例子就略了，懒得打" class="headerlink" title="例子就略了，懒得打"></a>例子就略了，懒得打</h2><h1 id="第二章-方法引用"><a href="#第二章-方法引用" class="headerlink" title="第二章 方法引用"></a>第二章 方法引用</h1><p>在使用Lambda表达式的时候，我们实际上传递进去的代码就是一种解决方案：拿什么参数做什么操作。那么考虑一种情况：如果我们在Lambda中所指定的操作方案，已经有地方存在相同方案，那是否还有必要再写重复逻辑？  </p>
+<h2 id="2-1-冗余的Lambda场景"><a href="#2-1-冗余的Lambda场景" class="headerlink" title="2.1 冗余的Lambda场景"></a>2.1 冗余的Lambda场景</h2><p>来看一个简单的函数式接口以应用Lambda表达式：</p>
+<pre><code>@FunctionalInterface
+public interface Printable {
+    void print(String str);
+}</code></pre><p>在 Printable 接口当中唯一的抽象方法 print 接收一个字符串参数，目的就是为了打印显示它。那么通过Lambda来使用它的代码很简单：</p>
+<pre><code>public class Demo01PrintSimple {
+    private static void printString(Printable data) {
+        data.print(&quot;Hello, World!&quot;);
+    }
+
+    public static void main(String[] args) {
+        printString(s ‐&gt; System.out.println(s));
+    }
+}</code></pre><p>其中 printString 方法只管调用 Printable 接口的 print 方法，而并不管 print 方法的具体实现逻辑会将字符串打印到什么地方去。而 main 方法通过Lambda表达式指定了函数式接口 Printable 的具体操作方案为：拿到String（类型可推导，所以可省略）数据后，在控制台中输出它。   </p>
+<h2 id="2-2-问题分析"><a href="#2-2-问题分析" class="headerlink" title="2.2 问题分析"></a>2.2 问题分析</h2><p>这段代码的问题在于，对字符串进行控制台打印输出的操作方案，明明已经有了现成的实现，那就是 System.out对象中的 println(String) 方法。既然Lambda希望做的事情就是调用 println(String) 方法，那何必自己手动调用呢？  </p>
+<h2 id="2-3-用方法引用改进代码"><a href="#2-3-用方法引用改进代码" class="headerlink" title="2.3 用方法引用改进代码"></a>2.3 用方法引用改进代码</h2><p>能否省去Lambda的语法格式（尽管它已经相当简洁）呢？只要“引用”过去就好了：</p>
+<pre><code>public class Demo02PrintRef {
+    private static void printString(Printable data) {
+        data.print(&quot;Hello, World!&quot;);
+    }
+
+    public static void main(String[] args) {
+        printString(System.out::println);
+    }
+}</code></pre><p>请注意其中的双冒号 :: 写法，这被称为“方法引用”，而双冒号是一种新的语法。  </p>
+<h2 id="2-4-方法引用符"><a href="#2-4-方法引用符" class="headerlink" title="2.4 方法引用符"></a>2.4 方法引用符</h2><p>双冒号 <code>::</code> 为引用运算符，而它所在的表达式被称为方法引用。如果Lambda要表达的函数方案已经存在于某个方法的实现中，那么则可以通过双冒号来引用该方法作为Lambda的替代者。</p>
+<h3 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h3><p>例如上例中， System.out 对象中有一个重载的 println(String) 方法恰好就是我们所需要的。那么对于<br>printString 方法的函数式接口参数，对比下面两种写法，完全等效：</p>
+<ul>
+<li>Lambda表达式写法： s -&gt; System.out.println(s);</li>
+<li>方法引用写法： System.out::println</li>
+</ul>
+<p>第一种语义是指：拿到参数之后经Lambda之手，继而传递给 System.out.println 方法去处理。</p>
+<p>第二种等效写法的语义是指：直接让 System.out 中的 println 方法来取代Lambda。两种写法的执行效果完全一样，而第二种方法引用的写法复用了已有方案，更加简洁。</p>
+<p>注:Lambda 中 传递的参数 一定是方法引用中 的那个方法可以接收的类型,否则会抛出异常</p>
+<h3 id="推导与省略"><a href="#推导与省略" class="headerlink" title="推导与省略"></a>推导与省略</h3><p>如果使用Lambda，那么根据“可推导就是可省略”的原则，无需指定参数类型，也无需指定的重载形式——它们都将被自动推导。而如果使用方法引用，也是同样可以根据上下文进行推导。</p>
+<p>函数式接口是Lambda的基础，而方法引用是Lambda的孪生兄弟。</p>
+<p>下面这段代码将会调用 println 方法的不同重载形式，将函数式接口改为int类型的参数：</p>
+<pre><code>@FunctionalInterface
+public interface PrintableInteger {
+    void print(int str);
+}</code></pre><p>由于上下文变了之后可以自动推导出唯一对应的匹配重载，所以方法引用没有任何变化：</p>
+<pre><code>public class Demo03PrintOverload {
+    private static void printInteger(PrintableInteger data) {
+        data.print(1024);
+    }
+
+    public static void main(String[] args) {
+        printInteger(System.out::println);
+    }
+}</code></pre><p>这次方法引用将会自动匹配到 println(int) 的重载形式。  </p>
+<h2 id="2-5-通过对象名引用成员方法"><a href="#2-5-通过对象名引用成员方法" class="headerlink" title="2.5 通过对象名引用成员方法"></a>2.5 通过对象名引用成员方法</h2><p>这是最常见的一种用法，与上例相同。如果一个类中已经存在了一个成员方法：</p>
+<pre><code>public class MethodRefObject {
+    public void printUpperCase(String str) {
+        System.out.println(str.toUpperCase());
+    }
+}</code></pre><p>函数式接口仍然定义为：</p>
+<pre><code>@FunctionalInterface
+public interface Printable {
+    void print(String str);
+}</code></pre><p>那么当需要使用这个 printUpperCase 成员方法来替代 Printable 接口的Lambda的时候，已经具有了<br>MethodRefObject 类的对象实例，则可以通过对象名引用成员方法，代码为：</p>
+<pre><code>public class Demo04MethodRef {
+    private static void printString(Printable lambda) {
+        lambda.print(&quot;Hello&quot;);
+    }
+
+    public static void main(String[] args) { 
+        MethodRefObject obj = new MethodRefObject(); 
+        printString(obj::printUpperCase);
+    }
+}  </code></pre><h2 id="2-6-通过类名称引用静态方法"><a href="#2-6-通过类名称引用静态方法" class="headerlink" title="2.6 通过类名称引用静态方法"></a>2.6 通过类名称引用静态方法</h2><p>由于在 <code>java.lang.Math</code> 类中已经存在了静态方法 abs ，所以当我们需要通过Lambda来调用该方法时，有两种写法。首先是函数式接口：  </p>
+<pre><code>@FunctionalInterface
+public interface Calcable {
+    int calc(int num);
+}</code></pre><p>第一种写法是使用Lambda表达式：</p>
+<pre><code>public class Demo05Lambda {
+    private static void method(int num, Calcable lambda) {
+        System.out.println(lambda.calc(num));
+    }
+
+    public static void main(String[] args) {
+        method(‐10, n ‐&gt; Math.abs(n));
+    }
+}</code></pre><p>但是使用方法引用的更好写法是：</p>
+<pre><code>public class Demo06MethodRef {
+    private static void method(int num, Calcable lambda) {
+        System.out.println(lambda.calc(num));
+    }
+
+    public static void main(String[] args) {
+        method(‐10, Math::abs);
+    }
+}</code></pre><p>在这个例子中，下面两种写法是等效的：</p>
+<ul>
+<li>Lambda表达式： n -&gt; Math.abs(n)</li>
+<li>方法引用： Math::abs  </li>
+</ul>
+<h2 id="2-7-通过super引用成员方法"><a href="#2-7-通过super引用成员方法" class="headerlink" title="2.7 通过super引用成员方法"></a>2.7 通过super引用成员方法</h2><p>如果存在继承关系，当Lambda中需要出现super调用时，也可以使用方法引用进行替代。首先是函数式接口：</p>
+<pre><code>@FunctionalInterface
+public interface Greetable {
+    void greet();
+}</code></pre><p>然后是父类 Human 的内容：</p>
+<pre><code>public class Human {
+    public void sayHello() {
+        System.out.println(&quot;Hello!&quot;);
+    }
+}</code></pre><p>最后是子类 Man 的内容，其中使用了Lambda的写法：</p>
+<pre><code>public class Man extends Human {
+    @Override
+    public void sayHello() {
+        System.out.println(&quot;大家好,我是Man!&quot;);
+    }
+    //定义方法method,参数传递Greetable接口
+    public void method(Greetable g){ 
+        g.greet();
+    }
+
+    public void show(){
+    //调用method方法,使用Lambda表达式
+        method(()‐&gt;{
+            //创建Human对象,调用sayHello方法
+            new Human().sayHello();
+        });
+        //简化Lambda
+        method(()‐&gt;new Human().sayHello()); 
+        //使用super关键字代替父类对象
+        method(()‐&gt;super.sayHello());
+    }
+}</code></pre><p>但是如果使用方法引用来调用父类中的 sayHello 方法会更好，例如另一个子类 Woman ：</p>
+<pre><code>public class Man extends Human {
+    @Override
+    public void sayHello() {
+        System.out.println(&quot;大家好,我是Man!&quot;);
+    }
+    //定义方法method,参数传递Greetable接口
+    public void method(Greetable g){ 
+        g.greet();
+    }
+    public void show(){
+        method(super::sayHello);
+    }
+}</code></pre><p>在这个例子中，下面两种写法是等效的：  </p>
+<ul>
+<li>Lambda表达式： () -&gt; super.sayHello()  </li>
+<li>方法引用： super::sayHello  </li>
+</ul>
+<h2 id="2-8-通过this引用成员方法"><a href="#2-8-通过this引用成员方法" class="headerlink" title="2.8 通过this引用成员方法"></a>2.8 通过this引用成员方法</h2><p>this代表当前对象，如果需要引用的方法就是当前类中的成员方法，那么可以使用“this::成员方法”的格式来使用方法引用。首先是简单的函数式接口：</p>
+<pre><code>@FunctionalInterface
+public interface Richable {
+    void buy();
+}</code></pre><p>下面是一个丈夫 Husband 类：</p>
+<pre><code>public class Husband {
+    private void marry(Richable lambda) {
+        lambda.buy();
+    }
+
+    public void beHappy() {
+        marry(() ‐&gt; System.out.println(&quot;买套房子&quot;));
+    }
+}</code></pre><p>开心方法 beHappy 调用了结婚方法 marry ，后者的参数为函数式接口 Richable ，所以需要一个Lambda表达式。但是如果这个Lambda表达式的内容已经在本类当中存在了，则可以对 Husband 丈夫类进行修改：</p>
+<pre><code>public class Husband {
+    private void buyHouse() {
+        System.out.println(&quot;买套房子&quot;);
+    }
+    private void marry(Richable lambda) {
+        lambda.buy();
+    }
+    public void beHappy() {
+        marry(() ‐&gt; this.buyHouse());
+    }
+}</code></pre><p>如果希望取消掉Lambda表达式，用方法引用进行替换，则更好的写法为：  </p>
+<pre><code>public class Husband {
+    private void buyHouse() {
+        System.out.println(&quot;买套房子&quot;);
+    }
+
+    private void marry(Richable lambda) {
+        lambda.buy();
+    }
+
+    public void beHappy() {
+        marry(this::buyHouse);
+    }
+}</code></pre><p>在这个例子中，下面两种写法是等效的：</p>
+<ul>
+<li>Lambda表达式： () -&gt; this.buyHouse()  </li>
+<li>方法引用： this::buyHouse    </li>
+</ul>
+<h2 id="2-9-类的构造器引用"><a href="#2-9-类的构造器引用" class="headerlink" title="2.9 类的构造器引用"></a>2.9 类的构造器引用</h2><p>由于构造器的名称与类名完全一样，并不固定。所以构造器引用使用 类名称::new 的格式表示。首先是一个简单的 Person 类：</p>
+<pre><code>public class Person {
+    private String name;
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}</code></pre><p>然后是用来创建 Person 对象的函数式接口：</p>
+<pre><code>public interface PersonBuilder {
+    Person buildPerson(String name);
+}</code></pre><p>要使用这个函数式接口，可以通过Lambda表达式：  </p>
+<pre><code>public class Demo09Lambda {
+    public static void printName(String name, PersonBuilder builder) {
+        System.out.println(builder.buildPerson(name).getName());
+    }
+
+    public static void main(String[] args) {
+        printName(&quot;赵丽颖&quot;, name ‐&gt; new Person(name));
+    }
+}</code></pre><p>但是通过构造器引用，有更好的写法：</p>
+<pre><code>public class Demo10ConstructorRef {
+    public static void printName(String name, PersonBuilder builder) {
+        System.out.println(builder.buildPerson(name).getName());
+    }
+
+    public static void main(String[] args) {
+        printName(&quot;赵丽颖&quot;, Person::new);
+    }
+}</code></pre><p>在这个例子中，下面两种写法是等效的：</p>
+<ul>
+<li>Lambda表达式： name -&gt; new Person(name)  </li>
+<li>方法引用： Person::new  </li>
+</ul>
+<h2 id="2-10-数组的构造器引用"><a href="#2-10-数组的构造器引用" class="headerlink" title="2.10 数组的构造器引用"></a>2.10 数组的构造器引用</h2><p>数组也是 Object 的子类对象，所以同样具有构造器，只是语法稍有不同。如果对应到Lambda的使用场景中时，需要一个函数式接口：</p>
+<pre><code>@FunctionalInterface
+public interface ArrayBuilder {
+    int[] buildArray(int length);
+}</code></pre><p>在应用该接口的时候，可以通过Lambda表达式：</p>
+<pre><code>public class Demo11ArrayInitRef {
+    private static int[] initArray(int length, ArrayBuilder builder) {
+        return builder.buildArray(length);
+    }
+
+    public static void main(String[] args) {
+        int[] array = initArray(10, length ‐&gt; new int[length]);
+    }
+}</code></pre><p>但是更好的写法是使用数组的构造器引用：</p>
+<pre><code>public class Demo12ArrayInitRef {
+    private static int[] initArray(int length, ArrayBuilder builder) {
+        return builder.buildArray(length);
+    }
+
+    public static void main(String[] args) {
+        int[] array = initArray(10, int[]::new);
+    }
+}</code></pre><p>在这个例子中，下面两种写法是等效的：   </p>
+<ul>
+<li>Lambda表达式： length -&gt; new int[length]  </li>
+<li>方法引用： int[]::new  </li>
+</ul>
+<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>略略略，溜了溜了=。=</p>
+
       
 	<!--  自加的代码 -->
 	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+       
+         <div class="essayending">
+           <div>
+            <div style="text-align:center;color: #ccc;font-size:22px;">
+            <br/>
+            <br/>
+ -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+            <br/>
+            <br/>
+             <br/>
+             <br/>
             </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E5%85%AD/">Java进阶六</a>
-    </h1>
-  
-
-        
+           </div>
+         </div>
          
-<a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E5%85%AD/" class="archive-article-date">
-  	<time datetime="2019-07-17T04:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.2k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">19分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+  
       
-        <p>文档目的：1. 能够描述Java中多线程运行原理、能够使用继承类的方式创建多线程、能够使用实现接口的方式创建多线程、能够说出实现接口方式的好处。2. 能够解释安全问题的出现的原因、能够使用同步代码块解决线程安全问题、能够使用同步方法解决线程安全问题。3. 能够说出线程6个状态的名称。  </p>
-        
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E5%85%AD/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zfbs.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wxs.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -541,216 +789,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E5%85%AD/">展开全文 >></a>
-        </p>
-      
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%BA%94/">Java进阶五</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%BA%94/" class="archive-article-date">
-  	<time datetime="2019-07-17T00:36:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.5k字</span>
-      </span>
+      </div>
     </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">20分</span>
-      </span>
-    </span>
+  </div>
 </div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目的：1. 能够辨别程序中异常和错误的区别、说出异常的分类、说出虚拟机处理异常的方式、列举出常见的三个运行期异常、能够使用try…catch关键字处理异常、能够使用throws关键字处理异常、能够自定义异常类、能够处理自定义异常类。2. 说出进程的概念、说出线程的概念、能够理解并发与并行的区别，能够开启新线程。</p>
-        
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%BA%94/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2019/07/20/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%B8%89/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%BA%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/">Java进阶四</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/" class="archive-article-date">
-  	<time datetime="2019-07-16T07:48:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.4k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
-      </span>
-    </span>
 </div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目标：1. 明白Map集合特点，会使用Map集合添加方法保存数据、”键找值”的方式遍历Map集合、”键值对”的方式遍历Map集合。2. debug找bug小操作。 3. 能够使用HashMap存储自定义键值对的数据。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E5%9B%9B/">展开全文 >></a>
-        </p>
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/07/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/19/Java%E8%BF%9B%E9%98%B6%E5%8D%81%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java进阶十二</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -765,317 +881,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/">Java进阶三</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/" class="archive-article-date">
-  	<time datetime="2019-07-16T05:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.7k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">26分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目的：1. 了解List集合特点、清楚常见的数据结构、明白数组结构特点。2. 清楚栈结构、队列结构、单向链表结构、Set集合、哈希表的特点。3. 能够使用HashSet集合存储自定义元素、了解可变参数的格式，会使用集合工具类和Comparator比较器进行排序。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【Stream流、方法引用】"><span class="toc-number">1.</span> <span class="toc-text">【Stream流、方法引用】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-number">1.1.</span> <span class="toc-text">主要内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-Stream流"><span class="toc-number">2.</span> <span class="toc-text">第一章 Stream流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-引言"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 引言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统集合的多步遍历代码"><span class="toc-number">2.1.1.</span> <span class="toc-text">传统集合的多步遍历代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环遍历的弊端"><span class="toc-number">2.1.2.</span> <span class="toc-text">循环遍历的弊端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的更优写法"><span class="toc-number">2.1.3.</span> <span class="toc-text">Stream的更优写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-流式思想概述"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 流式思想概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-获取流"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 获取流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#根据Collection获取流"><span class="toc-number">2.3.1.</span> <span class="toc-text">根据Collection获取流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据Map获取流"><span class="toc-number">2.3.2.</span> <span class="toc-text">根据Map获取流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据数组获取流"><span class="toc-number">2.3.3.</span> <span class="toc-text">根据数组获取流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-常用方法"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逐一处理：forEach"><span class="toc-number">2.4.1.</span> <span class="toc-text">逐一处理：forEach</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复习Consumer接口"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">复习Consumer接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本使用："><span class="toc-number">2.4.1.2.</span> <span class="toc-text">基本使用：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤：filter"><span class="toc-number">2.4.2.</span> <span class="toc-text">过滤：filter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复习Predicate接口"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">复习Predicate接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本使用"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">基本使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#映射：map"><span class="toc-number">2.4.3.</span> <span class="toc-text">映射：map</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复习Function接口"><span class="toc-number">2.4.3.1.</span> <span class="toc-text">复习Function接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本使用-1"><span class="toc-number">2.4.3.2.</span> <span class="toc-text">基本使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#统计个数：count"><span class="toc-number">2.4.4.</span> <span class="toc-text">统计个数：count</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取用前几个：limit"><span class="toc-number">2.4.5.</span> <span class="toc-text">取用前几个：limit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳过前几个：skip"><span class="toc-number">2.4.6.</span> <span class="toc-text">跳过前几个：skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合：concat"><span class="toc-number">2.4.7.</span> <span class="toc-text">组合：concat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子就略了，懒得打"><span class="toc-number">2.5.</span> <span class="toc-text">例子就略了，懒得打</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-方法引用"><span class="toc-number">3.</span> <span class="toc-text">第二章 方法引用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-冗余的Lambda场景"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 冗余的Lambda场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-问题分析"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 问题分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-用方法引用改进代码"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 用方法引用改进代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-方法引用符"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 方法引用符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语义分析"><span class="toc-number">3.4.1.</span> <span class="toc-text">语义分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推导与省略"><span class="toc-number">3.4.2.</span> <span class="toc-text">推导与省略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-通过对象名引用成员方法"><span class="toc-number">3.5.</span> <span class="toc-text">2.5 通过对象名引用成员方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-通过类名称引用静态方法"><span class="toc-number">3.6.</span> <span class="toc-text">2.6 通过类名称引用静态方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-通过super引用成员方法"><span class="toc-number">3.7.</span> <span class="toc-text">2.7 通过super引用成员方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-通过this引用成员方法"><span class="toc-number">3.8.</span> <span class="toc-text">2.8 通过this引用成员方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-类的构造器引用"><span class="toc-number">3.9.</span> <span class="toc-text">2.9 类的构造器引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-数组的构造器引用"><span class="toc-number">3.10.</span> <span class="toc-text">2.10 数组的构造器引用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">4.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Java进阶二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/">Java进阶二</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2019-07-16T02:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.9k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">20分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目的：1. 清楚集合与数组的区别、Collection集合的常用功能。2. 能使用迭代器对集合进行取元素。明白集合的使用细节，能够使用集合存储自定义类型，能够使用foreach循环遍历集合。3. 能够使用泛型定义集合对象，能够理解泛型上下限，能够阐述泛型通配符的作用。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java进阶一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/">Java进阶一</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2019-07-15T10:42:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.2k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">21分</span>
-      </span>
-    </span>
-</div>
-          
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>文档目标：1. 能够说出Object类的特点、重写Object类的toString和equals方法。2. 能够使用日期类输出当前日期、将日期格式化为字符串的方法、将字符串转换成日期的方法。3. 能够使用System类的数组复制方法、使用System类获取当前毫秒时刻值。4. 能够说出使用StringBuilder类可以解决的问题、使用StringBuilder进行字符串拼接操作。5. 能够说出8种基本类型对应的包装类名称、自动装箱、自动拆箱的概念。6. 能够将字符串转换为对应的基本类型、将基本类型转换为对应的字符串。</p>
-        
-          <a class="article-more-a" href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/#more">more >></a>
-        
-      
-	<!--  自加的代码 -->
-	
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1115,8 +946,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
