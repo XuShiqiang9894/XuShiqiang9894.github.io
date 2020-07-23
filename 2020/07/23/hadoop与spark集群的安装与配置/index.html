@@ -6,24 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java进阶七 | 徐仕强的博客</title>
+  <title>hadoop与spark集群的安装与配置 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文档目的：1. 能够理解线程通信概念、理解等待唤醒机制。2. 能够描述Java中线程池运行原理、理解函数式编程相对于面向对象的优点。3. 能够掌握Lambda表达式的标准格式，能够掌握Lambda表达式的省略格式与规则，能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法），能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法），能够明确Lambda的两项使用前提。">
+  <meta name="description" content="上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java进阶七">
-<meta property="og:url" content="http://yoursite.com/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/index.html">
+<meta property="og:title" content="hadoop与spark集群的安装与配置">
+<meta property="og:url" content="http://yoursite.com/2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="文档目的：1. 能够理解线程通信概念、理解等待唤醒机制。2. 能够描述Java中线程池运行原理、理解函数式编程相对于面向对象的优点。3. 能够掌握Lambda表达式的标准格式，能够掌握Lambda表达式的省略格式与规则，能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法），能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法），能够明确Lambda的两项使用前提。">
+<meta property="og:description" content="上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELTYTrXMSQNcGhb4yR7m6hrx6IL6ySn7rEbAH7SNGiwJnP8t5TKyFOgi4qtlR29DpiUHaPaWNsUHlikmFYKN9Fk!/b&bo=3gLMAQAAAAABFyE!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDepnP3jsbN.UoIbyiGZr.vGHuxQeJMBEEBu03bfQ8mvNtOsAgouKMI66vLg5Re7qkhNguHXsDrxJZkJ5TWLHe8!/b&bo=oQLYAQAAAAABF0o!&rf=viewer_4">
-<meta property="article:published_time" content="2019-07-17T06:19:21.000Z">
-<meta property="article:modified_time" content="2020-07-18T03:30:02.108Z">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECXEajBgslZhNLnl8TmH8mkhjgEr*8SP2ONcyPdqj.YeIcpuFkNN792M8rNdTIW4v*3IjoivKl*0eRBXPjgovlk!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrED6Y05IHdij53oDtT3M70jEdK*vXt8BYCmYa3QhWu4j*Dbk2RcIyJtjhYxOXN7Ej9KWD4L67S*l8jfWMR.4Cc7c!/b&bo=LARpAgAAAAADJ0E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ1Edx7OzGBC7wrI7qfeICMr6gqm*ldd0ySZzTLoBMpob2DJulmr*dyYgWPZBZPaFRzJn4drMxpRnktr3gbFmJo!/b&bo=4QNbAgAAAAADJ7k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBREby3lVd3cDhHlO*6YJJVr83GrebXq6XHc3z8bBHxRfSnL*OGW3VHdc7Mk*zUkgpEgoPWfYgZ5Qk38E3kBIzA!/b&bo=4gN4AgAAAAADJ5k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKvHWE6*nu8LYS4bUxcDeN2apOJVjT*t.A5XX6tlE2tJ597jdqRdqxBaJGqE7cLt4e7sFoP0UuOPlO1b*2aLIvg!/b&bo=DwYPAwAAAAADJwc!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEbN2TZqJWrIzM2cXrPhfGpGbeEY6knOqdeM.PcV7DJMtmMB8Kln8Tm4rvrRXPRvzg8a1dUyzq1wXvOJ1WpYJ3A!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK.G7TrqbpbysgqUneSOlyheewWgwgnuMOFTEfBeRLmbbstknHA4kEPyhYgoa3iLLobUHdFbbXFUsSvfMbe0yUo!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIh4RLzcmr0hpEGz*gdJq9mC63uXz9XfxDm5dE90dDpW*Wo0YD*C7mgYIPxeY541FET5nBL8.0Ziu13BlQgWiXM!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-07-23T04:32:24.000Z">
+<meta property="article:modified_time" content="2020-07-23T04:33:26.396Z">
 <meta property="article:author" content="徐仕强">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -178,14 +185,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Java进阶七" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-hadoop与spark集群的安装与配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java进阶七
+      hadoop与spark集群的安装与配置
     </h1>
   
 
@@ -196,8 +203,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/" class="archive-article-date">
-  	<time datetime="2019-07-17T06:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
+<a href="/2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-07-23T04:32:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
 </a>
 		<!-- 需要添加的位置 -->
          <!-- 开始添加字数统计-->
@@ -207,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.3k字</span>
+        <span class="post-count">6.2k字</span>
       </span>
     </span>
     <span class="post-time">
@@ -215,7 +222,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">23分</span>
+        <span class="post-count">25分</span>
       </span>
     </span>
 </div>
@@ -226,257 +233,318 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文档目的：1. 能够理解线程通信概念、理解等待唤醒机制。2. 能够描述Java中线程池运行原理、理解函数式编程相对于面向对象的优点。3. 能够掌握Lambda表达式的标准格式，能够掌握Lambda表达式的省略格式与规则，能够通过Lambda的标准格式使用自定义的接口（有且仅有一个抽象方法），能够通过Lambda的省略格式使用自定义的接口（有且仅有一个抽象方法），能够明确Lambda的两项使用前提。</p>
+        <p>上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。</p>
 <a id="more"></a>
-<h1 id="【线程池、Lambda表达式】"><a href="#【线程池、Lambda表达式】" class="headerlink" title="【线程池、Lambda表达式】"></a>【线程池、Lambda表达式】</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
-<li>等待与唤醒案例</li>
-<li>线程池</li>
-<li>Lambda表达式</li>
-</ul>
-<h1 id="第一章-等待唤醒机制"><a href="#第一章-等待唤醒机制" class="headerlink" title="第一章 等待唤醒机制"></a>第一章 等待唤醒机制</h1><h2 id="1-1-线程间通信"><a href="#1-1-线程间通信" class="headerlink" title="1.1 线程间通信"></a>1.1 线程间通信</h2><p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
-<p>比如：线程A用来生成包子的，线程B用来吃包子的，包子可以理解为同一资源，线程A与线程B处理的动作，一个是生产，一个是消费，那么线程A与线程B之间就存在线程通信问题。</p>
-<p><strong>为什么要处理线程间通信：</strong></p>
-<p>多个线程并发执行时, 在默认情况下CPU是随机切换线程的，当我们需要多个线程来共同完成一件任务，并且我们希望他们有规律的执行, 那么多线程之间需要一些协调通信，以此来帮我们达到多线程共同操作一份数据。</p>
-<p><strong>如何保证线程间通信有效利用资源：</strong></p>
-<p>多个线程在处理同一个资源，并且任务不同时，需要线程通信来帮助解决线程之间对同一个变量的使用或操作。 就是多个线程在操作同一份数据时， 避免对同一共享变量的争夺。也就是我们需要通过一定的手段使各个线程能有效的利用资源。而这种手段即—— <strong>等待唤醒机制。</strong></p>
-<h2 id="1-2-等待唤醒机制"><a href="#1-2-等待唤醒机制" class="headerlink" title="1.2 等待唤醒机制"></a>1.2 等待唤醒机制</h2><p><strong>什么是等待唤醒机制</strong></p>
-<p>这是多个线程间的一种<strong>协作</strong>机制。谈到线程我们经常想到的是线程间的<strong>竞争（race）</strong>，比如去争夺锁，但这并不是故事的全部，线程间也会有协作机制。就好比在公司里你和你的同事们，你们可能存在在晋升时的竞争，但更多时候你们更多是一起合作以完成某些任务。</p>
-<p>就是在一个线程进行了规定操作后，就进入等待状态（<strong>wait()</strong>）， 等待其他线程执行完他们的指定代码过后 再将其唤醒（<strong>notify()</strong>）;在有多个线程进行等待时， 如果需要，可以使用 notifyAll()来唤醒所有的等待线程。</p>
-<p>wait/notify 就是线程间的一种协作机制。</p>
-<p><strong>等待唤醒中的方法</strong></p>
-<p>等待唤醒机制就是用于解决线程间通信的问题的，使用到的3个方法的含义如下：</p>
+<h1 id="Hadoop-集群的安装与配置"><a href="#Hadoop-集群的安装与配置" class="headerlink" title="Hadoop 集群的安装与配置"></a>Hadoop 集群的安装与配置</h1><p>虽然 Hadoop 可以运行在 Linux、Windows 等系统之上，但 Hadoop 官方支持的作业平台只有 Linux。因此，<br>在 Windows 上运行 Hadoop 时，需要安装 Cygwin 等软件来提供一些 Linux 操作系统的功能。在 Linux 发行版中，常见的操作系统有 CentOS、Ubuntu、RedHat、OpenSUSE 等，考虑到企业级应用、稳定且免费等因素，本节选用 CentOS 作为 Hadoop 集群安装与使用的环境。Hadoop 分布式集群搭建的规划见下图：  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4" alt="">  </p>
+<p>Hadoop 分布式集群搭建的总体思路是先安装一台虚拟机，然后在其上完成除 SSH 以外的所有配置后再克隆<br>两台虚拟机，接着对三台虚拟机进行网络设置后，并配置整个集群的无密码登录，最后启动并验证集群。安装与<br>配置主要包括以下 7 个大的步骤:      </p>
 <ol>
-<li>wait：线程不再活动，不再参与调度，进入 wait set 中，因此不会浪费 CPU 资源，也不会去竞争锁了，这时的线程状态即是 WAITING。它还要等着别的线程执行一个<strong>特别的动作</strong>，也即是“<strong>通知（notify）</strong>”在这个对象上等待的线程从wait set 中释放出来，重新进入到调度队列（ready queue）中</li>
-<li>notify：则选取所通知对象的 wait set 中的一个线程释放；例如，餐馆有空位置后，等候就餐最久的顾客最先入座。</li>
-<li>notifyAll：则释放所通知对象的 wait set 上的全部线程。</li>
+<li>操作系统 CentOS 的安装；  </li>
+<li>创建 Hadoop 用户与系统设置；  </li>
+<li>安装 Java；</li>
+<li>安装 Hadoop；</li>
+<li>克隆虚拟机与网络设置；</li>
+<li>SSH 无密码登录设置；</li>
+<li>启停和验证集群。  </li>
 </ol>
+<p>下面将介绍每个步骤的具体实现，本节使用的虚拟机是 VMware Workstation Pro 15.5.0，操作系统是<br>CentOS-7-x86_64-DVD-1511，Java 版本为 jdk-8u231-linux-x64，Hadoop 版本为 hadoop-3.1.3。  </p>
+<h2 id="1-操作系统-CentOS-的安装"><a href="#1-操作系统-CentOS-的安装" class="headerlink" title="1.操作系统 CentOS 的安装"></a>1.操作系统 CentOS 的安装</h2><p>首先下载安装 VMware Workstation pro，然后从 CentOS 官网下载操作系统 CentOS7.2 的安装文件<br>CentOS-7-x86_64-DVD-1511.iso，下载地址是 <a href="https://www.centos.org/download" target="_blank" rel="noopener">https://www.centos.org/download</a>,但是由于Centos8以下的官方都移除了，这里博主提供阿里云镜像地址下载速度很快<a href="https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64" target="_blank" rel="noopener">https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64</a>。通过虚拟化软件 VMware Workstation Pro 安装一台 Centos7.2 的虚拟机。虚拟机设置如下图所示：  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECXEajBgslZhNLnl8TmH8mkhjgEr*8SP2ONcyPdqj.YeIcpuFkNN792M8rNdTIW4v*3IjoivKl*0eRBXPjgovlk!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">  </p>
 <blockquote>
-<p>注意：</p>
-<p>哪怕只通知了一个等待的线程，被通知线程也不能立即恢复执行，因为它当初中断的地方是在同步块内，而此刻它已经不持有锁，所以她需要再次尝试去获取锁（很可能面临其它线程的竞争），成功后才能在当初调用 wait 方法之后的地方恢复执行。</p>
-<p>总结如下：</p>
-<ul>
-<li>如果能获取锁，线程就从 WAITING 状态变成 RUNNABLE 状态；</li>
-<li>否则，从 wait set 出来，又进入 entry set，线程就从 WAITING 状态又变成 BLOCKED 状态</li>
-</ul>
+<p>为了给每台虚拟机设置独立的 IP 地址，虚拟机设置中要注意选择网络连接为“桥接模式”。  </p>
 </blockquote>
-<p><strong>调用wait和notify方法需要注意的细节</strong></p>
-<ol>
-<li>wait方法与notify方法必须要由同一个锁对象调用。因为：对应的锁对象可以通过notify唤醒使用同一个锁对象调用的wait方法后的线程。</li>
-<li>wait方法与notify方法是属于Object类的方法的。因为：锁对象可以是任意对象，而任意对象的所属类都是继承了Object类的。</li>
-<li>wait方法与notify方法必须要在同步代码块或者是同步函数中使用。因为：必须要通过锁对象调用这2个方法。</li>
-</ol>
-<h2 id="1-3-生产者与消费者问题"><a href="#1-3-生产者与消费者问题" class="headerlink" title="1.3 生产者与消费者问题"></a>1.3 生产者与消费者问题</h2><p>等待唤醒机制其实就是经典的“生产者与消费者”的问题。  </p>
-<p>就拿生产包子消费包子来说等待唤醒机制如何有效利用资源：   </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQf2b6*yPKJu*FmMGl*982t503*H2nkNbgR.8*PhTxrfg.Cwl5N1rqR2iaNGSuIWZ2jHaftFLmEhwANYEzfxPQA!/b&bo=UAUPAgAAAAABB3g!&rf=viewer_4" alt="">  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">包子铺线程生产包子，吃货线程消费包子。当包子没有时（包子状态为<span class="keyword">false</span>），吃货线程等待，包子铺线程生产包子（即包子状态为<span class="keyword">true</span>），并通知吃货线程（解除吃货的等待状态）,因为已经有包子了，那么包子铺线程进入等待状态。接下来，吃货线程能否进一步执行则取决于锁的获取情况。如果吃货获取到锁，那么就执行吃包子动作，包子吃完（包子状态为<span class="keyword">false</span>），并通知包子铺线程（解除包子铺的等待状态）,吃货线程进入等待。包子铺线程能否进一步执行则取决于锁的获取情况。</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码演示：</strong></p>
-<p>包子资源类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaoZi</span> </span>&#123;</span><br><span class="line">     String  pier ;</span><br><span class="line">     String  xianer ;</span><br><span class="line">     <span class="keyword">boolean</span>  flag = <span class="keyword">false</span> ;<span class="comment">//包子资源 是否存在  包子资源状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>吃货线程类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChiHuo</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ChiHuo</span><span class="params">(String name,BaoZi bz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="keyword">false</span>)&#123;<span class="comment">//没包子</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        bz.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">"吃货正在吃"</span>+bz.pier+bz.xianer+<span class="string">"包子"</span>);</span><br><span class="line">                bz.flag = <span class="keyword">false</span>;</span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>包子铺线程类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaoZiPu</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BaoZi bz;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BaoZiPu</span><span class="params">(String name,BaoZi bz)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.bz = bz;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//造包子</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="comment">//同步</span></span><br><span class="line">            <span class="keyword">synchronized</span> (bz)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bz.flag == <span class="keyword">true</span>)&#123;<span class="comment">//包子资源  存在</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">                        bz.wait();</span><br><span class="line"></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 没有包子  造包子</span></span><br><span class="line">                System.out.println(<span class="string">"包子铺开始做包子"</span>);</span><br><span class="line">                <span class="keyword">if</span>(count%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="comment">// 冰皮  五仁</span></span><br><span class="line">                    bz.pier = <span class="string">"冰皮"</span>;</span><br><span class="line">                    bz.xianer = <span class="string">"五仁"</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">// 薄皮  牛肉大葱</span></span><br><span class="line">                    bz.pier = <span class="string">"薄皮"</span>;</span><br><span class="line">                    bz.xianer = <span class="string">"牛肉大葱"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line"></span><br><span class="line">                bz.flag=<span class="keyword">true</span>;</span><br><span class="line">                System.out.println(<span class="string">"包子造好了："</span>+bz.pier+bz.xianer);</span><br><span class="line">                System.out.println(<span class="string">"吃货来吃吧"</span>);</span><br><span class="line">                <span class="comment">//唤醒等待线程 （吃货）</span></span><br><span class="line">                bz.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//等待唤醒案例</span></span><br><span class="line">        BaoZi bz = <span class="keyword">new</span> BaoZi();</span><br><span class="line"></span><br><span class="line">        ChiHuo ch = <span class="keyword">new</span> ChiHuo(<span class="string">"吃货"</span>,bz);</span><br><span class="line">        BaoZiPu bzp = <span class="keyword">new</span> BaoZiPu(<span class="string">"包子铺"</span>,bz);</span><br><span class="line"></span><br><span class="line">        ch.start();</span><br><span class="line">        bzp.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行效果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：薄皮牛肉大葱</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃薄皮牛肉大葱包子</span><br><span class="line">包子铺开始做包子</span><br><span class="line">包子造好了：冰皮五仁</span><br><span class="line">吃货来吃吧</span><br><span class="line">吃货正在吃冰皮五仁包子</span><br></pre></td></tr></table></figure>
-
-<h1 id="第二章-线程池"><a href="#第二章-线程池" class="headerlink" title="第二章 线程池"></a>第二章 线程池</h1><h2 id="2-1-线程池思想概述"><a href="#2-1-线程池思想概述" class="headerlink" title="2.1 线程池思想概述"></a>2.1 线程池思想概述</h2><p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：</p>
-<p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
-<p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？</p>
-<p>在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
-<h2 id="2-2-线程池概念"><a href="#2-2-线程池概念" class="headerlink" title="2.2 线程池概念"></a>2.2 线程池概念</h2><ul>
-<li><strong>线程池：</strong>其实就是一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
-</ul>
-<p>由于线程池中有很多操作都是与优化资源相关的，我们在这里就不多赘述。我们通过一张图来了解线程池的工作原理：</p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELTYTrXMSQNcGhb4yR7m6hrx6IL6ySn7rEbAH7SNGiwJnP8t5TKyFOgi4qtlR29DpiUHaPaWNsUHlikmFYKN9Fk!/b&bo=3gLMAQAAAAABFyE!&rf=viewer_4" alt=""></p>
-<p>合理利用线程池能够带来三个好处：</p>
-<ol>
-<li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
-<li>提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
-<li>提高线程的可管理性。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</li>
-</ol>
-<h2 id="2-3-线程池的使用"><a href="#2-3-线程池的使用" class="headerlink" title="2.3 线程池的使用"></a>2.3 线程池的使用</h2><p>Java里面线程池的顶级接口是<code>java.util.concurrent.Executor</code>，但是严格意义上讲<code>Executor</code>并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是<code>java.util.concurrent.ExecutorService</code>。</p>
-<p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在<code>java.util.concurrent.Executors</code>线程工厂类里面提供了一些静态工厂，生成一些常用的线程池。官方建议使用Executors工程类来创建线程池对象。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDepnP3jsbN.UoIbyiGZr.vGHuxQeJMBEEBu03bfQ8mvNtOsAgouKMI66vLg5Re7qkhNguHXsDrxJZkJ5TWLHe8!/b&bo=oQLYAQAAAAABF0o!&rf=viewer_4" alt=""><br>Executors类中有个创建线程池的方法如下：</p>
+<h2 id="2-创建-Hadoop-用户与系统设置"><a href="#2-创建-Hadoop-用户与系统设置" class="headerlink" title="2.创建 Hadoop 用户与系统设置"></a>2.创建 Hadoop 用户与系统设置</h2><h3 id="2-1-创建-Hadoop-用户"><a href="#2-1-创建-Hadoop-用户" class="headerlink" title="2.1 创建 Hadoop 用户"></a>2.1 创建 Hadoop 用户</h3><p>为了方便操作和管理，首先要创建一个名为“hadoop”的用户来运行程序。如果用户对 Linux下的操作命令不<br>太熟悉，可以查阅相关资料和视频，以便为后继的操作打下一定的基础。创建用户的命令是 useradd，创建用户<br>组的命令是 groupadd，设置密码的命令是 passwd，具体操作命令如下:   </p>
+<pre><code>$ su -
+# groupadd hadoop
+# useradd -g haodoop hadoop
+# passwd xu742685294    </code></pre><p>用户创建完成后，使用新用户 spark 登录。  </p>
+<pre><code># su  hadoop  </code></pre><h3 id="2-2-系统设置"><a href="#2-2-系统设置" class="headerlink" title="2.2 系统设置"></a>2.2 系统设置</h3><p>系统设置包括设置 IP 地址、修改 hosts 文件和设置 hostname 文件。    </p>
 <ul>
-<li><code>public static ExecutorService newFixedThreadPool(int nThreads)</code>：返回线程池对象。(创建的是有界线程池,也就是池中的线程个数可以指定最大数量)</li>
+<li><p>设置 IP 地址<br>从系统的图形界面下或是在/etc/sysconfig/network-scripts/ifcfg-e*文件中设置 IP 地址如下:  </p>
+<pre><code>IP 地址： 192.168.0.88
+子网掩码： 255.255.255.0
+网关： 192.168.0.1
+DNS1/server：192.168.0.1</code></pre><p>完成设置后，在 root 用户下使用命令 service network restart 重启网络，以使设置生效。再使用命令 ping 192.168.0.1 和 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检测网关和外网是否连通。这里我记得要改虚拟机里的设置，不然ping不通，在这里耽误很长时间，连接网线和连接wifi设置不一样。</p>
+</li>
+<li><p>修改 hosts 文件<br>在 root 用户下使用命令 vim /etc/hosts 修改 hosts 文件，修改后的内容如下：  </p>
+<pre><code>127.0.0.1 localhost
+192.168.0.88 cent88
+192.168.0.89 cent89
+192.168.0.90 cent90  </code></pre></li>
+<li><p>设置 hostname 文件<br>在 root 用户下使用命令 vim /etc/hostname 修改 hostname 文件，修改后的内容如下：  </p>
+<pre><code>cent88  </code></pre></li>
 </ul>
-<p>获取到了一个线程池ExecutorService 对象，那么怎么使用呢，在这里定义了一个使用线程池对象的方法如下：</p>
+<p>重启一次虚拟机后，用 hostname 命令查看设置是否生效。     </p>
+<h2 id="3-安装java"><a href="#3-安装java" class="headerlink" title="3.安装java"></a>3.安装java</h2><p>由于 Hadoop 本身是使用 Java 语言编写的，因此 Hadoop 的开发和运行都需要 Java 环境。CentOS7.2 自带<br>openjdk，可以通过命令 <code>rpm -qa|grep jdk</code> 查看 openjdk 的版本，如 java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64 等。考虑到功能上的稳定性，建议采用 Oracle 公司的 Java 版本。因此，用户需要提前删除 CentOS7.2 自带的多个版本的 openjdk。使用命令 <code>yum -y remove java-1.8.0-openjdk-*</code>卸载相关 openjdk 安装文件。<br>下载 Oracle 公司的 Java，选择 <code>JavaSE Development Kit 8u231</code> 的 linux 安装文件 <code>jdk-8u231-linux-x64.rpm</code>下载。在这里我没有在虚拟机中下载，总感觉linux网速慢，我自己用win10下载后，直接用VMware移到虚拟机中。通过命令<code>rpm -ivh Downloads/jdk-8u231-linux-x64.rpm</code>安装 Java1.8。安装完成后，需要设置 Java 环境变量，即修改/etc/profile文件，也就是在文件最后面追加几行内容如下:   </p>
+<pre><code>export JAVA_HOME=/usr/java/jdk1.8.0_231
+export JRE_HOME=/usr/java/jdk1.8.0_231/jre
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib  </code></pre><p>然后使用命令<code>source /etc/profile</code> 让环境变量生效，最后，再使用命令 <code>java –version</code> 查看版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrED6Y05IHdij53oDtT3M70jEdK*vXt8BYCmYa3QhWu4j*Dbk2RcIyJtjhYxOXN7Ej9KWD4L67S*l8jfWMR.4Cc7c!/b&bo=LARpAgAAAAADJ0E!&rf=viewer_4" alt="">  </p>
+<h2 id="4-安装-Hadoop"><a href="#4-安装-Hadoop" class="headerlink" title="4.安装 Hadoop"></a>4.安装 Hadoop</h2><h3 id="4-1-下载解压-Hadoop-安装包"><a href="#4-1-下载解压-Hadoop-安装包" class="headerlink" title="4.1 下载解压 Hadoop 安装包"></a>4.1 下载解压 Hadoop 安装包</h3><p>本节采用的 Hadoop 版本为 3.1.3，通过 Hadoop 官网提供的下载链接 <a href="http://hadoop.apache.org/releases.html#Download，在下载列表中找到" target="_blank" rel="noopener">http://hadoop.apache.org/releases.html#Download，在下载列表中找到</a> 3.1.3 对应的 binary，下载 hadoop-3.1.3.tar.gz 文件即可。使 用 命 令 <code>tar –zxvf hadoop-3.1.3.tar.gz</code> 将 tar.gz 文 件 解 压 后 ， 放 置 到 方 便 用 户 使 用 的 位 置 ， 如<code>/home/haodoop/hadoop-2.7.6</code>， 这 个 位 置 即 HADOOP_HOME 。 注 意 /home/hadoop 为 用 户 目 录 ， 而<code>/home/hadoop/hadoop-2.7.6</code> 为 hadoop-2.7.6.tar.gz 解压后生成的目录。</p>
+<h3 id="4-2-配置-hadoop-集群"><a href="#4-2-配置-hadoop-集群" class="headerlink" title="4.2 配置 hadoop 集群"></a>4.2 配置 hadoop 集群</h3><p>配置 hadoop 集群，需要修改 HADOOP_HOME 目录下（即“/home/spark/hadoop-3.1.3”）的“etc/hadoop”子<br>目录中的 8 个配置文件，分别是 core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml、hadoop-env.sh、yarn-env.sh、mapred-env.sh 和 slaves。对于单机安装 Hadoop，仅需要修改 hadoop-env.sh 一个文件即可在一台计算机上运行 Hadoop 应用程序。伪分布式安装是指在一台机器上模拟一个小的集群，实现分布式数据处理的全过程，但是集群中只有一个节点，分布式数据传输并没有经过真实的网络，适合于小规模应用程序的调试。对于伪分布式配置，仅需要修改 core-site.xml 和 hdfs-site.xml 两个文件。  </p>
 <ul>
-<li><p><code>public Future&lt;?&gt; submit(Runnable task)</code>:获取线程池中的某一个线程对象，并执行</p>
-<blockquote>
-<p>Future接口：用来记录线程任务执行完毕后产生的结果。线程池创建与使用。</p>
-</blockquote>
+<li><p>修改 core-site.xml  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi core-site.xml
+&lt;configuration&gt;
+&lt;!-- 指定 HDFS 的主机名和端口号 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;fs.defaultFS&lt;/name&gt;
+ &lt;value&gt;hdfs://cent88:9000&lt;/value&gt;
+ &lt;/property&gt;
+&lt;!-- 指定 hadoop 运行时产生临时文件的存储目录 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+ &lt;value&gt;/home/hadoop/tmp&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;    </code></pre></li>
+<li><p>hdfs-site.xml  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi hdfs-site.xml
+&lt;configuration&gt;
+&lt;!-- 设置 dfs 副本数 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;dfs.replication&lt;/name&gt;
+ &lt;value&gt;3&lt;/value&gt;
+ &lt;/property&gt;
+&lt;!-- 设置分布式名字节点名字目录位置 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+ &lt;value&gt;/home/hadoop/hdfs/name&lt;/value&gt;
+ &lt;/property&gt;
+&lt;!-- 设置分布式数据节点数据目录位置 --&gt;
+&lt;property&gt;
+ &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+ &lt;value&gt;/home/hadoop/hdfs/data&lt;/value&gt;
+ &lt;/property&gt;
+&lt;!-- 设置 secondary namenode 的端口 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+ &lt;value&gt;cent88:50090&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;   </code></pre><p>考虑到当前用户对用户目录下的文件有绝对的控制权，所以在用户目录/home/hadoop/下新建 hdfs 目录，用于<br>存储产生的分布式文件。  </p>
+</li>
+<li><p>mapred-site.xml  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi mapred-site.xml
+&lt;configuration&gt;
+&lt;!-- 指定 mr 运行在 yarn 上 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+ &lt;value&gt;yarn&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;   </code></pre></li>
+<li><p>yarn-site.xml  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi yarn-site.xml
+&lt;configuration&gt;
+&lt;!-- reducer 获取数据的方式 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+ &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+ &lt;/property&gt;
+&lt;!-- 指定 YARN 的 ResourceManager 的地址 --&gt;
+ &lt;property&gt;
+ &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+ &lt;value&gt;cent88&lt;/value&gt;
+ &lt;/property&gt;
+&lt;/configuration&gt;    </code></pre></li>
+<li><p>hadoop-env.xml   </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi hadoop-env.xml
+export JAVA_HOME=/usr/java/jdk1.8.0_231</code></pre></li>
+<li><p>yarn-env.xml</p>
+<pre><code>[hadoop@cent88 hadoop]$ vi yarn-env.xml
+export JAVA_HOME=/usr/java/jdk1.8.0_231  </code></pre></li>
+<li><p>mapred-env.xml  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi mapred-env.xml
+export JAVA_HOME=/usr/java/jdk1.8.0_231  </code></pre></li>
+<li><p>works（这里hadoop3以上才是works/work忘记了，hadoop3以下的是slaves）  </p>
+<pre><code>[hadoop@cent88 hadoop]$ vi works
+cent88
+cent89
+cent90  </code></pre></li>
+</ul>
+<p>还需要设置 hadoop 环境变量，即修改/etc/profile 文件，在文件最后再追加几行内容如下:  </p>
+<pre><code>export HADOOP_HOME=/home/spark/hadoop-3.1.3
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin  </code></pre><p>使用命令 source /etc/profile 让环境变量生效。然后再使用命令 <code>hadoop version</code> 命令查看 Hadoop 的版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ1Edx7OzGBC7wrI7qfeICMr6gqm*ldd0ySZzTLoBMpob2DJulmr*dyYgWPZBZPaFRzJn4drMxpRnktr3gbFmJo!/b&bo=4QNbAgAAAAADJ7k!&rf=viewer_4" alt="">  </p>
+<h2 id="5-克隆虚拟机与网络设置"><a href="#5-克隆虚拟机与网络设置" class="headerlink" title="5.克隆虚拟机与网络设置"></a>5.克隆虚拟机与网络设置</h2><h3 id="5-1-克隆虚拟机"><a href="#5-1-克隆虚拟机" class="headerlink" title="5.1 克隆虚拟机"></a>5.1 克隆虚拟机</h3><p>当 Java 和 Hadoop 完成上述设置后，可以执行克隆虚拟机操作，把上述设置好的 cent88 这台机器，克隆两<br>次，分别命名为 cent89 和 cent90。方法是从 VMware Workstation 菜单中的选择虚拟机管理克隆，再选择创建完整克隆，完成虚拟机的克隆。</p>
+<h3 id="5-2-网络设置"><a href="#5-2-网络设置" class="headerlink" title="5.2 网络设置"></a>5.2 网络设置</h3><p>考虑到克隆的虚拟机都有相同的主机名和网络 IP 地址，因此，需要逐一运行克隆产生的虚拟机 cent89 和<br>cent90，进行网络设置，以 cent89 为例。  </p>
+<ul>
+<li>重新设置 hostname 文件  </li>
+</ul>
+<p>在 root 用户下使用命令 vim /etc/hostname 修改 hostname 文件，修改后的内容如下：  </p>
+<pre><code>cent89  </code></pre><ul>
+<li>重新设置 IP 地址  </li>
+</ul>
+<p>在 root 用户下使用命令 rm -rf /etc/udev/rules.d/70-persistent-net.rules 删除本机规则文件，并重新启动虚拟机。<br>待重启后，在/etc/sysconfig/network-scripts/ifcfg-e*文件中或者是从系统的图形界面下设置 IP 地址如下:     </p>
+<pre><code>IP 地址： 192.168.0.89   </code></pre><p>另外，在/etc/sysconfig/network-scripts/ifcfg-e*文件的 UUID 项前添加#号，即注释掉此项。<br>同样，在 root 用户下使用命令 service network restart 重启网络，以使设置生效。可以使用命令 <code>ifconfig</code> 查看本机 IP 是否已更改，再使用命令 ping 192.168.0.1 和 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检测网关和外网是否连通。    </p>
+<h2 id="6-SSH-无密码登录设置"><a href="#6-SSH-无密码登录设置" class="headerlink" title="6. SSH 无密码登录设置"></a>6. SSH 无密码登录设置</h2><p>在 Hadoop 集群启动时，Hadoop 名称节点（NameNode）需要同时启动所有数据节点（DataNode）的 Hadoop<br>守护进程，这个过程使用 SSH 无密码登录来实现。首先需要让各个节点生成自己的 SSH 密钥 id_rsa 和公钥<br>id_rsa.pub，名称节点需要将它的公钥 id_rsa.pub 发送给集群中的所有数据节点。因此可将公钥 id_rsa.pub 内容添加到需要匿名登录的数据节点的“~/.ssh/authorized_keys”文件中，然后，名称节点就可以无密码登录这个数据节点了。<br>实现 SSH 无密码登录设置，包括生成密钥、合并公钥、分发合并的公钥和密钥文件权限设置四个部分。   </p>
+<ul>
+<li><p>生成密钥<br>启动三台虚拟机，分别进入用户目录下，执行如下命令：   </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop
+[hadoop@cent88 ~]$ ssh-keygen -t rsa   </code></pre><p>然后一直按回车键（3 次），就会在.ssh 目录下生成密钥 id_rsa 和公钥 id_rsa.pub。   </p>
+</li>
+<li><p>合并公钥<br>三台虚拟机再执行如下命令：   </p>
+<pre><code>[hadoop@cent88 ~]$ cd .ssh
+[hadoop@cent88 .ssh]$ cat id_rsa.pub &gt;authorized_keys  </code></pre><p>接下来，在主节点 cent88 上合并各个节点生成的公钥，即把另外两台机器的公钥追加到 authorized_keys 文<br>件后，执行命令如下：   </p>
+<pre><code>[hadoop@cent88 .ssh]$ scp hadoop@cent89:/home/hadoop/.ssh/authorized_keys 89pub
+[hadoop@cent88 .ssh]$ scp hadoop@cent90:/home/hadoop/.ssh/authorized_keys 90pub
+[hadoop@cent88 .ssh]$ cat 89pub 90pub &gt;&gt;authorized_keys   </code></pre></li>
+<li><p>分发合并的公钥<br>把合并后的文件 authorized_keys 分发到另外两台机器上，执行命令如下：  </p>
+<pre><code>[hadoop@cent88 .ssh]$ scp authorized_keys hadoop@cent89:/home/hadoop/.ssh/
+[hadoop@cent88 .ssh]$ scp authorized_keys hadoop@cent90:/home/hadoop/.ssh/   </code></pre></li>
+<li><p>密钥文件权限设置<br>最后，在每台虚拟机上修改相关文件的权限，执行操作如下:  </p>
+<pre><code>[hadoop@cent88 .ssh]$ cd ..
+[hadoop@cent88 ~]$ chmod 700 .ssh/
+[hadoop@cent88 ~]$ chmod 600 .ssh/authorized_keys   </code></pre><p>完成后，可以通过 ssh hostname (hostname 为数据节点主机名)命令来检测一下是否需要输入密码。  </p>
+<pre><code>[hadoop@cent88 ~]$ ssh cent89
+Last login: Thu July 22 13:50:08 2020
+[hadoop@cent89 ~]$  </code></pre><p>可以看出，通过 ssh 命令可以直接切换到另一台虚拟机上。   </p>
 </li>
 </ul>
-<p>使用线程池中线程对象的步骤：</p>
-<ol>
-<li>创建线程池对象。</li>
-<li>创建Runnable接口子类对象。(task)</li>
-<li>提交Runnable接口子类对象。(take task)</li>
-<li>关闭线程池(一般不做)。</li>
+<h2 id="7-启停和验证集群"><a href="#7-启停和验证集群" class="headerlink" title="7.启停和验证集群"></a>7.启停和验证集群</h2><ol>
+<li><p>启动集群<br>在集群配置完成后，需要初始化文件系统，以便进一步执行计算任务。首先关闭各个节点上的防火墙，命令<br>如下：   </p>
+<pre><code>[hadoop@cent88 ~]$ su –
+[root@cent88 ~]# systemctl stop firewalld
+[root@cent88 ~]# su – hadoop   </code></pre><p>可能关闭防火墙的命令不对，百度搜一哈。接下来，在 NameNode 节点（cent88）上，执行初始化的命令如下：  </p>
+<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3/
+[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop namenode -format  </code></pre><p>然后，用如下命令启动 dfs 和 yarn 进程：  </p>
+<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-dfs.sh
+[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-yarn.sh  </code></pre><p>运行之后，输入 jps 命令查看所有的 Java 进程，如果正常启动时，可得到如下的结果：   </p>
+<pre><code>[hadoop@cent88 hadoop-3.1.3]$ jps
+27924 Jps
+10792 NameNode
+11833 NodeManager
+11036 DataNode
+11388 SecondaryNameNode
+11710 ResourceManager    </code></pre><p>注：缺少了东西就是有异常,有问题，找百度。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBREby3lVd3cDhHlO*6YJJVr83GrebXq6XHc3z8bBHxRfSnL*OGW3VHdc7Mk*zUkgpEgoPWfYgZ5Qk38E3kBIzA!/b&bo=4gN4AgAAAAADJ5k!&rf=viewer_4" alt=""><br>此时，通过访问 Web 界面（<a href="http://localhost:9870）如果是hadoop3以下则是50070端口，我是3.1.3就用9870端口来查看">http://localhost:9870）如果是hadoop3以下则是50070端口，我是3.1.3就用9870端口来查看</a> Hadoop 的总览信息，如图所示:<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKvHWE6*nu8LYS4bUxcDeN2apOJVjT*t.A5XX6tlE2tJ597jdqRdqxBaJGqE7cLt4e7sFoP0UuOPlO1b*2aLIvg!/b&bo=DwYPAwAAAAADJwc!&rf=viewer_4" alt="">   </p>
+</li>
+<li><p>验证集群<br>通过一些操作，可以验证集群的可用性。例如，在 HDFS 中创建用户目录：   </p>
+<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3  
+[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop dfs –mkdir –p /user/hadoop/input    </code></pre><p>接下来，把本地 etc/hadoop 目录中的数据（*.xml 文件）上传到 HDFS 的/user/spark/input 目录中：  </p>
+<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop dfs -put etc/hadoop/*.xml /user/hadoop/input      </code></pre><p>然后，使用如下命令行来执行以“kerber”开头的字数统计测试：   </p>
+<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.6.jar grep /user/spark/input /user/spark/output &apos;kerber[a-z.]+&apos;  </code></pre><p>执行完成后，会在 HDFS 中生成 output 目录来保存计算出来的结果，输入以下命令来查看最终结果：  </p>
+<pre><code>[hadoop@cent88 hadoop-2.7.6]$ ./bin/hadoop dfs –cat /user/hadoop/output/p*
+6 kerberos  </code></pre><p>结果表明所有的 XML 文件中，只有 6 个以 kerber 开头的单词。需要注意的是，如果想再重复执行一次字数<br>统计测试，一定更改一个输出目录 output 的名字（如 output2），这样就不会因为重建输出目录时，提示目录已存在的问题。<br>注意：实际例子可能不一样详见自己安装的文件夹里的example文件夹。  </p>
+</li>
+<li><p>关闭集群<br>关闭集群，使用如下命令，请注意关闭的顺序。  </p>
+<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-yarn.sh
+[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-dfs.sh   </code></pre><p>整个集群检证过程没有出现错误提示，说明集群安装是正确的。如果在集群初始化或者是使用过程中出现一<br>些错误提示，可以根据提示通过互联网络去寻找相应的解决方法。对于错误提示更详细的信息，可以查看节点上<br>HADOOP_HOME 的 logs 目录下的日志文件。   </p>
+</li>
 </ol>
-<p>Runnable实现类代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我要一个教练"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"教练来了： "</span> + Thread.currentThread().getName());</span><br><span class="line">        System.out.println(<span class="string">"教我游泳,交完后，教练回到了游泳池"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>线程池测试类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPoolDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建线程池对象</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);<span class="comment">//包含2个线程对象</span></span><br><span class="line">        <span class="comment">// 创建Runnable实例对象</span></span><br><span class="line">        MyRunnable r = <span class="keyword">new</span> MyRunnable();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//自己创建线程对象的方式</span></span><br><span class="line">        <span class="comment">// Thread t = new Thread(r);</span></span><br><span class="line">        <span class="comment">// t.start(); ---&gt; 调用MyRunnable中的run()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从线程池中获取线程对象,然后调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 再获取个线程对象，调用MyRunnable中的run()</span></span><br><span class="line">        service.submit(r);</span><br><span class="line">        service.submit(r);</span><br><span class="line">        <span class="comment">// 注意：submit方法调用结束后，程序并不终止，是因为线程池控制了线程的关闭。</span></span><br><span class="line">        <span class="comment">// 将使用完的线程又归还到了线程池中</span></span><br><span class="line">        <span class="comment">// 关闭线程池</span></span><br><span class="line">        <span class="comment">//service.shutdown();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="第三章-Lambda表达式"><a href="#第三章-Lambda表达式" class="headerlink" title="第三章 Lambda表达式"></a>第三章 Lambda表达式</h1><h2 id="3-1-函数式编程思想概述"><a href="#3-1-函数式编程思想概述" class="headerlink" title="3.1 函数式编程思想概述"></a>3.1 函数式编程思想概述</h2><p>在数学中，<strong>函数</strong>就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——<strong>强调做什么，而不是以什么形式做</strong>。</p>
-<p>面向对象的思想:</p>
-<p>​    做一件事情,找一个能解决这个事情的对象,调用对象的方法,完成事情.</p>
-<p>函数式编程思想:</p>
-<p>​    只要能获取到结果,谁去做的,怎么做的都不重要,重视的是结果,不重视过程</p>
-<h2 id="3-2-冗余的Runnable代码"><a href="#3-2-冗余的Runnable代码" class="headerlink" title="3.2 冗余的Runnable代码"></a>3.2 冗余的Runnable代码</h2><h3 id="传统写法"><a href="#传统写法" class="headerlink" title="传统写法"></a>传统写法</h3><p>当需要启动一个线程去完成任务时，通常会通过<code>java.lang.Runnable</code>接口来定义任务内容，并使用<code>java.lang.Thread</code>类来启动该线程。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Runnable</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 匿名内部类</span></span><br><span class="line">		Runnable task = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; <span class="comment">// 覆盖重写抽象方法</span></span><br><span class="line">				System.out.println(<span class="string">"多线程任务执行！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">new</span> Thread(task).start(); <span class="comment">// 启动线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>本着“一切皆对象”的思想，这种做法是无可厚非的：首先创建一个<code>Runnable</code>接口的匿名内部类对象来指定任务内容，再将其交给一个线程来启动。</p>
-<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><p>对于<code>Runnable</code>的匿名内部类用法，可以分析出几点内容：</p>
+<h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><p>Spark出自美国加州大学伯克利分校 APM 实验室，是一个应用于大规模数据处理的快速、通用引擎。目前是Apache 顶级开源项目。Spark 提供了内存计算，减少了迭代计算的 IO 开销，成功解决了 Hadoop MapReduce的缺陷，成为当前大数据领域最热门的大数据计算平台。   </p>
+<h2 id="1-Spark-简介"><a href="#1-Spark-简介" class="headerlink" title="1.Spark 简介"></a>1.Spark 简介</h2><p>Spark 最初由美国加州伯克利大学（UCBerkeley）的 AMP 实验室于 2009 年开发，是基于内存计算的大数据<br>并行计算框架，可用于构建大型的、低延迟的数据分析应用程序。2013 年 Spark 加入 Apache 孵化器项目后发展迅猛，如今已成为 Apache 软件基金会最重要的三大分布式计算系统开源项目（Hadoop、Spark、Storm）之一。<br>Spark 是大数据处理平台的后起之秀，于 2014 年打破了 Hadoop 保持的基准排序纪录，仅使用 206 个节点在<br>23 分钟内完成了 100TB 数据的排序，而同样数据量的排序，Hadoop 使用 2000 个节点，还花费了 72 分钟。也就是说，Spark 用近十分之一的计算资源，获得了比 Hadoop 快 3 倍的速度。    </p>
+<p>Spark 具有如下几个主要特点：   </p>
 <ul>
-<li><code>Thread</code>类需要<code>Runnable</code>接口作为参数，其中的抽象<code>run</code>方法是用来指定线程任务内容的核心；</li>
-<li>为了指定<code>run</code>的方法体，<strong>不得不</strong>需要<code>Runnable</code>接口的实现类；</li>
-<li>为了省去定义一个<code>RunnableImpl</code>实现类的麻烦，<strong>不得不</strong>使用匿名内部类；</li>
-<li>必须覆盖重写抽象<code>run</code>方法，所以方法名称、方法参数、方法返回值<strong>不得不</strong>再写一遍，且不能写错；</li>
-<li>而实际上，<strong>似乎只有方法体才是关键所在</strong>。</li>
+<li>运行速度快：使用 DAG 执行引擎以支持循环数据流与内存计算；</li>
+<li>容易使用：支持使用 Scala、Java、Python 和 R 语言进行编程，可以通过 Spark Shell 进行交互式编程；</li>
+<li>通用性强：Spark 提供了完整而强大的技术栈，包括 SQL 查询、流式计算、机器学习和图算法组件；</li>
+<li>运行模式多样：可运行于独立的集群模式中，可运行于 Hadoop 中，也可运行于 Amazon EC2 等云环境中，并且可以访问 HDFS、Cassandra、HBase、Hive 等多种数据源。   </li>
 </ul>
-<h2 id="3-3-编程思想转换"><a href="#3-3-编程思想转换" class="headerlink" title="3.3 编程思想转换"></a>3.3 编程思想转换</h2><h3 id="做什么，而不是怎么做"><a href="#做什么，而不是怎么做" class="headerlink" title="做什么，而不是怎么做"></a>做什么，而不是怎么做</h3><p>我们真的希望创建一个匿名内部类对象吗？不。我们只是为了做这件事情而<strong>不得不</strong>创建一个对象。我们真正希望做的事情是：将<code>run</code>方法体内的代码传递给<code>Thread</code>类知晓。</p>
-<p><strong>传递一段代码</strong>——这才是我们真正的目的。而创建对象只是受限于面向对象语法而不得不采取的一种手段方式。那，有没有更加简单的办法？如果我们将关注点从“怎么做”回归到“做什么”的本质上，就会发现只要能够更好地达到目的，过程与形式其实并不重要。</p>
-<h3 id="生活举例"><a href="#生活举例" class="headerlink" title="生活举例"></a>生活举例</h3><p>当我们需要从北京到上海时，可以选择高铁、汽车、骑行或是徒步。我们的真正目的是到达上海，而如何才能到达上海的形式并不重要，所以我们一直在探索有没有比高铁更好的方式——搭乘飞机。</p>
-<p>而现在这种飞机（甚至是飞船）已经诞生：2014年3月Oracle所发布的Java 8（JDK 1.8）中，加入了<strong>Lambda表达式</strong>的重量级新特性，为我们打开了新世界的大门。</p>
-<h2 id="3-4-体验Lambda的更优写法"><a href="#3-4-体验Lambda的更优写法" class="headerlink" title="3.4 体验Lambda的更优写法"></a>3.4 体验Lambda的更优写法</h2><p>借助Java 8的全新语法，上述<code>Runnable</code>接口的匿名内部类写法可以通过更简单的Lambda表达式达到等效：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02LambdaRunnable</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> Thread(() -&gt; System.out.println(<span class="string">"多线程任务执行！"</span>)).start(); <span class="comment">// 启动线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这段代码和刚才的执行效果是完全一样的，可以在1.8或更高的编译级别下通过。从代码的语义中可以看出：我们启动了一个线程，而线程任务的内容以一种更加简洁的形式被指定。</p>
-<p>不再有“不得不创建接口对象”的束缚，不再有“抽象方法覆盖重写”的负担，就是这么简单！</p>
-<h2 id="3-5-回顾匿名内部类"><a href="#3-5-回顾匿名内部类" class="headerlink" title="3.5 回顾匿名内部类"></a>3.5 回顾匿名内部类</h2><p>Lambda是怎样击败面向对象的？在上例中，核心代码其实只是如下所示的内容：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() -&gt; System.out.println(<span class="string">"多线程任务执行！"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>为了理解Lambda的语义，我们需要从传统的代码起步。</p>
-<h3 id="使用实现类"><a href="#使用实现类" class="headerlink" title="使用实现类"></a>使用实现类</h3><p>要启动一个线程，需要创建一个<code>Thread</code>类的对象并调用<code>start</code>方法。而为了指定线程执行的内容，需要调用<code>Thread</code>类的构造方法：</p>
+<h2 id="2-Spark-的部署和应用架构"><a href="#2-Spark-的部署和应用架构" class="headerlink" title="2.Spark 的部署和应用架构"></a>2.Spark 的部署和应用架构</h2><h3 id="2-1-Spark-的部署"><a href="#2-1-Spark-的部署" class="headerlink" title="2.1 Spark 的部署"></a>2.1 Spark 的部署</h3><p>Spark 支持三种不同类型的部署方式，包括 Standalone、Spark on Mesos 和 Spark on YARN。在Standalone 模式中，Spark 本身自带了完整的资源调度管理服务，可以独立部署到一个集群中，并且以槽（slot）作为资源分配的单位。在 Spark on Mesos 模式中，Mesos 本身是一种资源调度管理框架，可为运行在综上面的 Spark 提供服务。相对而言，Spark 运行在 Mesos 上，要比运行在 YARN 上更加灵活和自然。该模式是官方推荐的模式，也有许多公司在实际应用中使用这种模式。在 Spark on Mesos 模式中，资源管理和调度依赖 YARN，分布式存储则依赖HDFS，国内阿里巴巴等公司采用此种模式。  </p>
+<h3 id="2-2-Spark-的应用架构"><a href="#2-2-Spark-的应用架构" class="headerlink" title="2.2 Spark 的应用架构"></a>2.2 Spark 的应用架构</h3><p>由于 Hadoop 生态系统中的一些组件所实现的功能，目前还是无法由 Spark 取代的，比如，Storm 可以实现<br>毫秒级响应的计算，但是 Spark 则无法做到毫秒级响应。加之基于现有的 Hadoop 组件开发的应用，完全转移到<br>Spark 上需要一定的成本。因此，在许多企业实际应用中，Hadoop 与 Spark 统一部署架构是一种比较合理的选择。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4" alt="">  </p>
+<p>如上图所示，把不同的计算框架统一运行在 YARN 中，可以带来好处如下：  </p>
 <ul>
-<li><code>public Thread(Runnable target)</code></li>
+<li>计算资源按需伸缩；</li>
+<li>不用负载应用混搭，集群利用率高；</li>
+<li>共享底层存储，避免数据跨集群迁移。  </li>
 </ul>
-<p>为了获取<code>Runnable</code>接口的实现对象，可以为该接口定义一个实现类<code>RunnableImpl</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"多线程任务执行！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后创建该实现类的对象作为<code>Thread</code>类的构造参数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03ThreadInitParam</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Runnable task = <span class="keyword">new</span> RunnableImpl();</span><br><span class="line">		<span class="keyword">new</span> Thread(task).start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用匿名内部类"><a href="#使用匿名内部类" class="headerlink" title="使用匿名内部类"></a>使用匿名内部类</h3><p>这个<code>RunnableImpl</code>类只是为了实现<code>Runnable</code>接口而存在的，而且仅被使用了唯一一次，所以使用匿名内部类的语法即可省去该类的单独定义，即匿名内部类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04ThreadNameless</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				System.out.println(<span class="string">"多线程任务执行！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="匿名内部类的好处与弊端"><a href="#匿名内部类的好处与弊端" class="headerlink" title="匿名内部类的好处与弊端"></a>匿名内部类的好处与弊端</h3><p>一方面，匿名内部类可以帮我们<strong>省去实现类的定义</strong>；另一方面，匿名内部类的语法——<strong>确实太复杂了！</strong></p>
-<h3 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h3><p>仔细分析该代码中的语义，<code>Runnable</code>接口只有一个<code>run</code>方法的定义：</p>
-<ul>
-<li><code>public abstract void run();</code></li>
-</ul>
-<p>即制定了一种做事情的方案（其实就是一个函数）：</p>
-<ul>
-<li><strong>无参数</strong>：不需要任何条件即可执行该方案。</li>
-<li><strong>无返回值</strong>：该方案不产生任何结果。</li>
-<li><strong>代码块</strong>（方法体）：该方案的具体执行步骤。</li>
-</ul>
-<p>同样的语义体现在<code>Lambda</code>语法中，要更加简单：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() -&gt; System.out.println(<span class="string">"多线程任务执行！"</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>前面的一对小括号即<code>run</code>方法的参数（无），代表不需要任何条件；</li>
-<li>中间的一个箭头代表将前面的参数传递给后面的代码；</li>
-<li>后面的输出语句即业务逻辑代码。</li>
-</ul>
-<h2 id="3-6-Lambda标准格式"><a href="#3-6-Lambda标准格式" class="headerlink" title="3.6 Lambda标准格式"></a>3.6 Lambda标准格式</h2><p>Lambda省去面向对象的条条框框，格式由<strong>3个部分</strong>组成：</p>
-<ul>
-<li>一些参数</li>
-<li>一个箭头</li>
-<li>一段代码</li>
-</ul>
-<p>Lambda表达式的<strong>标准格式</strong>为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(参数类型 参数名称) -&gt; &#123; 代码语句 &#125;</span><br></pre></td></tr></table></figure>
-
-<p>格式说明：</p>
-<ul>
-<li>小括号内的语法与传统方法参数列表一致：无参数则留空；多个参数则用逗号分隔。</li>
-<li><code>-&gt;</code>是新引入的语法格式，代表指向动作。</li>
-<li>大括号内的语法与传统方法体要求基本一致。</li>
-</ul>
-<h2 id="3-7-练习：使用Lambda标准格式（无参无返回）"><a href="#3-7-练习：使用Lambda标准格式（无参无返回）" class="headerlink" title="3.7 练习：使用Lambda标准格式（无参无返回）"></a>3.7 练习：使用Lambda标准格式（无参无返回）</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个厨子<code>Cook</code>接口，内含唯一的抽象方法<code>makeFood</code>，且无参数、无返回值。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Cook</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeFood</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在下面的代码中，请使用Lambda的<strong>标准格式</strong>调用<code>invokeCook</code>方法，打印输出“吃饭啦！”字样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo05InvokeCook</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 请在此使用Lambda【标准格式】调用invokeCook方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">invokeCook</span><span class="params">(Cook cook)</span> </span>&#123;</span><br><span class="line">        cook.makeFood();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    invokeCook(() -&gt; &#123;</span><br><span class="line">      	System.out.println(<span class="string">"吃饭啦！"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>备注：小括号代表<code>Cook</code>接口<code>makeFood</code>抽象方法的参数为空，大括号代表<code>makeFood</code>的方法体。</p>
-</blockquote>
-<h2 id="3-8-Lambda的参数和返回值"><a href="#3-8-Lambda的参数和返回值" class="headerlink" title="3.8 Lambda的参数和返回值"></a>3.8 Lambda的参数和返回值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需求:</span><br><span class="line">    使用数组存储多个Person对象</span><br><span class="line">    对数组中的Person对象使用Arrays的sort方法通过年龄进行升序排序</span><br></pre></td></tr></table></figure>
-
-<p>下面举例演示<code>java.util.Comparator&lt;T&gt;</code>接口的使用场景代码，其中的抽象方法定义为：</p>
-<ul>
-<li><code>public abstract int compare(T o1, T o2);</code></li>
-</ul>
-<p>当需要对一个对象数组进行排序时，<code>Arrays.sort</code>方法需要一个<code>Comparator</code>接口实例来指定排序的规则。假设有一个<code>Person</code>类，含有<code>String name</code>和<code>int age</code>两个成员变量：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 省略构造器、toString方法与Getter Setter </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="传统写法-1"><a href="#传统写法-1" class="headerlink" title="传统写法"></a>传统写法</h3><p>如果使用传统的代码对<code>Person[]</code>数组进行排序，写法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo06Comparator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 本来年龄乱序的对象数组</span></span><br><span class="line">        Person[] array = &#123;</span><br><span class="line">        	<span class="keyword">new</span> Person(<span class="string">"古力娜扎"</span>, <span class="number">19</span>),</span><br><span class="line">        	<span class="keyword">new</span> Person(<span class="string">"迪丽热巴"</span>, <span class="number">18</span>),</span><br><span class="line">       		<span class="keyword">new</span> Person(<span class="string">"马尔扎哈"</span>, <span class="number">20</span>) &#125;;</span><br><span class="line"></span><br><span class="line">      	<span class="comment">// 匿名内部类</span></span><br><span class="line">        Comparator&lt;Person&gt; comp = <span class="keyword">new</span> Comparator&lt;Person&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person o1, Person o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> o1.getAge() - o2.getAge();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        Arrays.sort(array, comp); <span class="comment">// 第二个参数为排序规则，即Comparator接口实例</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Person person : array) &#123;</span><br><span class="line">            System.out.println(person);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种做法在面向对象的思想中，似乎也是“理所当然”的。其中<code>Comparator</code>接口的实例（使用了匿名内部类）代表了“按照年龄从小到大”的排序规则。</p>
-<h3 id="代码分析-1"><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3><p>下面我们来搞清楚上述代码真正要做什么事情。</p>
-<ul>
-<li>为了排序，<code>Arrays.sort</code>方法需要排序规则，即<code>Comparator</code>接口的实例，抽象方法<code>compare</code>是关键；</li>
-<li>为了指定<code>compare</code>的方法体，<strong>不得不</strong>需要<code>Comparator</code>接口的实现类；</li>
-<li>为了省去定义一个<code>ComparatorImpl</code>实现类的麻烦，<strong>不得不</strong>使用匿名内部类；</li>
-<li>必须覆盖重写抽象<code>compare</code>方法，所以方法名称、方法参数、方法返回值<strong>不得不</strong>再写一遍，且不能写错；</li>
-<li>实际上，<strong>只有参数和方法体才是关键</strong>。</li>
-</ul>
-<h3 id="Lambda写法"><a href="#Lambda写法" class="headerlink" title="Lambda写法"></a>Lambda写法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo07ComparatorLambda</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Person[] array = &#123;</span><br><span class="line">          	<span class="keyword">new</span> Person(<span class="string">"古力娜扎"</span>, <span class="number">19</span>),</span><br><span class="line">          	<span class="keyword">new</span> Person(<span class="string">"迪丽热巴"</span>, <span class="number">18</span>),</span><br><span class="line">          	<span class="keyword">new</span> Person(<span class="string">"马尔扎哈"</span>, <span class="number">20</span>) &#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(array, (Person a, Person b) -&gt; &#123;</span><br><span class="line">          	<span class="keyword">return</span> a.getAge() - b.getAge();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Person person : array) &#123;</span><br><span class="line">            System.out.println(person);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-9-练习：使用Lambda标准格式（有参有返回）"><a href="#3-9-练习：使用Lambda标准格式（有参有返回）" class="headerlink" title="3.9 练习：使用Lambda标准格式（有参有返回）"></a>3.9 练习：使用Lambda标准格式（有参有返回）</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>给定一个计算器<code>Calculator</code>接口，内含抽象方法<code>calc</code>可以将两个int数字相加得到和值：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在下面的代码中，请使用Lambda的<strong>标准格式</strong>调用<code>invokeCalc</code>方法，完成120和130的相加计算：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo08InvokeCalc</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 请在此使用Lambda【标准格式】调用invokeCalc方法来计算120+130的结果ß</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">invokeCalc</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, Calculator calculator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = calculator.calc(a, b);</span><br><span class="line">        System.out.println(<span class="string">"结果是："</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    invokeCalc(<span class="number">120</span>, <span class="number">130</span>, (<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; &#123;</span><br><span class="line">      	<span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>备注：小括号代表<code>Calculator</code>接口<code>calc</code>抽象方法的参数，大括号代表<code>calc</code>的方法体。</p>
-</blockquote>
-<h2 id="3-10-Lambda省略格式"><a href="#3-10-Lambda省略格式" class="headerlink" title="3.10 Lambda省略格式"></a>3.10 Lambda省略格式</h2><h3 id="可推导即可省略"><a href="#可推导即可省略" class="headerlink" title="可推导即可省略"></a>可推导即可省略</h3><p>Lambda强调的是“做什么”而不是“怎么做”，所以凡是可以根据上下文推导得知的信息，都可以省略。例如上例还可以使用Lambda的省略写法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  	invokeCalc(<span class="number">120</span>, <span class="number">130</span>, (a, b) -&gt; a + b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="省略规则"><a href="#省略规则" class="headerlink" title="省略规则"></a>省略规则</h3><p>在Lambda标准格式的基础上，使用省略写法的规则为：</p>
+<h2 id="3-Spark-集群的安装与配置"><a href="#3-Spark-集群的安装与配置" class="headerlink" title="3.Spark 集群的安装与配置"></a>3.Spark 集群的安装与配置</h2><p>安装 Spark 之前需要安装 Java 和 Hadoop 环境。本部分是在上一节部分的基础上，继续安装 Spark 集群。整体思路也是首先在一台虚拟器上修改，完成后再远程复制到另外两台虚拟机上。主要包括 spark 的安装与配置、scala 的安装与配置、远程复制和集群的启停等过程。  </p>
+<h3 id="3-1-Spark-的安装"><a href="#3-1-Spark-的安装" class="headerlink" title="3.1 Spark 的安装"></a>3.1 Spark 的安装</h3><p>Spark 的下载地址：<a href="http://spark.apache.org" target="_blank" rel="noopener">http://spark.apache.org</a>。进入下载页面后，点击主页右侧的“Download Spark”按钮进入下载页面，下载页面中提供了几个下载选项，主要是 Spark release 及 Package type 的选择,如图所示：  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEbN2TZqJWrIzM2cXrPhfGpGbeEY6knOqdeM.PcV7DJMtmMB8Kln8Tm4rvrRXPRvzg8a1dUyzq1wXvOJ1WpYJ3A!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4" alt="">  </p>
+<p>我当时下载的是spark-2.4.5现在好像木得了，不过有2.4.6，差不太多。选好1和2，点击第三个下载。下载完成后移到hadoop目录，解压：  </p>
+<pre><code>[hadoop@cent88 ~]$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz /home/hadoop/   </code></pre><h3 id="3-2-Spark-的配置"><a href="#3-2-Spark-的配置" class="headerlink" title="3.2 Spark 的配置"></a>3.2 Spark 的配置</h3><p>Spark 解压后，主要涉及 3 个文件的配置。    </p>
 <ol>
-<li>小括号内参数的类型可以省略；</li>
-<li>如果小括号内<strong>有且仅有一个参</strong>，则小括号可以省略；</li>
-<li>如果大括号内<strong>有且仅有一个语句</strong>，则无论是否有返回值，都可以省略大括号、return关键字及语句分号。</li>
+<li><p>配置 Spark 的 spark-env.sh。先执行下列操作：   </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/
+[hadoop@cent88 ~]$ mv spark-2.4.5-bin-hadoop2.7.tgz spark-2.4.5
+[hadoop@cent88 ~]$ cd spark-2.4.5/conf/
+[hadoop@cent88 conf]$ mv spark-env.sh.template spark-env.sh
+[hadoop@cent88 conf]$ vim spark-env.sh   </code></pre><p>版本按照你下载的版本更改，不要直接复制。然后，进一步更改 spark-env.sh 的内容如下：  </p>
+<pre><code>#指定默认 master 的 ip 或主机名
+export SPARK_MASTER_HOST=cent88
+#指定 maaster 提交任务的默认端口为 7077
+export SPARK_MASTER_PORT=7077
+#指定 masster 节点的 webui 端口
+export SPARK_MASTER_WEBUI_PORT=8080
+#每个 worker 从节点能够支配的内存数
+export SPARK_WORKER_MEMORY=1g
+#允许 Spark 应用程序在计算机上使用的核心总数（默认值：所有可用核心）
+export SPARK_WORKER_CORES=2
+#指向包含 Hadoop 集群的配置文件的目录，运行在 Yarn 上配置此项
+export HADOOP_CONF_DIR=/home/hadoop/hadoop-3.1.3/etc/hadoop
+#指定 JAVA_HOME 位置
+export JAVA_HOME=/usr/java/jdk1.8.0_231
+#指定 HADOOP_HOME 位置
+export HADOOP_HOME=/home/hadoop/hadoop-3.1.3
+#指定 hadoop 本地库位置
+export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_HOME}/lib/native
+export HADOOP_OPTS=&quot;-Djava.library.path=${HADOOP_HOME}/lib&quot;
+#指定 SCALA_HOME 位置
+export SCALA_HOME=/home/spark/scala-2.12.2
+#指定 SPARK_HOME 位置
+export SPARK_HOME=/home/spark/spark-2.4.5
+#指定 CLASS_PATH 路径
+export CLASS_PATH=.:${JAVA_HOME}/lib:$CLASS_PATH
+#指定 PATH 路径
+export PATH=.:${JAVA_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${SPARK_HOME}/bin:${SCALA_HOME}/bin:$PATH   </code></pre></li>
+<li><p>配置 Spark 的 slaves 文件。更改的内容可以如下：  </p>
+<pre><code>[hadoop@cent88 conf]$ vim slaves
+cent88
+cent89
+cent90   </code></pre></li>
+<li><p>查看并修改配置文件/etc/profile。执行下列操作：  </p>
+<pre><code>[root@cent88 ~]# vi /etc/profile  </code></pre><p>添加如下内容:  </p>
+<pre><code>export SPARK_HOME=/home/hadoop/spark-2.4.5
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin  </code></pre><p>执行下列操作，使环境生效。  </p>
+<pre><code>[root@cent88 ~]# source /etc/profile  </code></pre></li>
 </ol>
-<blockquote>
-<p>备注：掌握这些省略规则后，请对应地回顾本章开头的多线程案例。</p>
-</blockquote>
-<h2 id="3-11-练习：使用Lambda省略格式"><a href="#3-11-练习：使用Lambda省略格式" class="headerlink" title="3.11 练习：使用Lambda省略格式"></a>3.11 练习：使用Lambda省略格式</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>仍然使用前文含有唯一<code>makeFood</code>抽象方法的厨子<code>Cook</code>接口，在下面的代码中，请使用Lambda的<strong>省略格式</strong>调用<code>invokeCook</code>方法，打印输出“吃饭啦！”字样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo09InvokeCook</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 请在此使用Lambda【省略格式】调用invokeCook方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">invokeCook</span><span class="params">(Cook cook)</span> </span>&#123;</span><br><span class="line">        cook.makeFood();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  	invokeCook(() -&gt; System.out.println(<span class="string">"吃饭啦！"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-12-Lambda的使用前提"><a href="#3-12-Lambda的使用前提" class="headerlink" title="3.12 Lambda的使用前提"></a>3.12 Lambda的使用前提</h2><p>Lambda的语法非常简洁，完全没有面向对象复杂的束缚。但是使用时有几个问题需要特别注意：</p>
-<ol>
-<li>使用Lambda必须具有接口，且要求<strong>接口中有且仅有一个抽象方法</strong>。<br>无论是JDK内置的<code>Runnable</code>、<code>Comparator</code>接口还是自定义的接口，只有当接口中的抽象方法存在且唯一时，才可以使用Lambda。</li>
-<li>使用Lambda必须具有<strong>上下文推断</strong>。<br>也就是方法的参数或局部变量类型必须为Lambda对应的接口类型，才能使用Lambda作为该接口的实例。</li>
+<h3 id="3-3-Scala-的安装与配置"><a href="#3-3-Scala-的安装与配置" class="headerlink" title="3.3 Scala 的安装与配置"></a>3.3 Scala 的安装与配置</h3><ol>
+<li>Scala 的安装  </li>
 </ol>
-<blockquote>
-<p>备注：有且仅有一个抽象方法的接口，称为“<strong>函数式接口</strong>”。   </p>
-</blockquote>
-<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>lambda表达式在jdk8之后才可以使用，但是我还是建议先用正常的流程写一下，了解一下代码原理，之后如果要简化代码的话，IDEA会自己提醒你的，你只要点击小波浪然后可以自动帮你换成lambda表达式。</p>
+<p>Scala 是 Spark 默认支持的语言，可以从 Scala 官方网址下载 2.11 版以上的安装包，选择 Scala 2.12.2，其下载链接为：<a href="https://www.scala-lang.org/download/2.12.2.html" target="_blank" rel="noopener">https://www.scala-lang.org/download/2.12.2.html</a>。选择 scala-2.12.2.tgz 文件下载。下载完成后，解压安装包 scala-2.12.2.tgz 至路径/home/hadoop/下。执行下列操作：  </p>
+<pre><code>[hadoop@cent88 ~]$ tar -zxvf scala-2.12.2.tgz /home/hadoop/  </code></pre><ol start="2">
+<li>Scala 的配置  </li>
+</ol>
+<p>修改配置文件/etc/profile。执行下列操作：  </p>
+<pre><code>[root@cent88 ~]# vi /etc/profile  </code></pre><p>添加如下内容:  </p>
+<pre><code>export SCALA_HOME=/home/hadoop/scala-2.12.2
+export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /etc/profile</code>，使环境生效。    </p>
+<h3 id="3-4-远程复制"><a href="#3-4-远程复制" class="headerlink" title="3.4 远程复制"></a>3.4 远程复制</h3><ol>
+<li><p>复制整个目录，把 cent88 虚拟机上的 spark-2.3.1 和 scala-2.12.2 目录远程复制到 cent89 和 cent90 两台虚拟机的相应位置上。  </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/
+[hadoop@cent88 ~]$ scp -r spark-2.3.1 scala-2.12.2 spark@cent89:/home/hadoop/
+[hadoop@cent88 ~]$ scp -r spark-2.3.1 scala-2.12.2 spark@cent90:/home/hadoop/   </code></pre></li>
+<li><p>复制配置文件，把 cent88 虚拟机上的/etc/profile 文件远程复制到 cent89 和 cent90 两台虚拟机的相应位置上。  </p>
+<pre><code>[hadoop@cent88 ~]$ su –
+[root@cent88 ~]# scp /etc/profile root@cent89:/etc/profile
+[root@cent88 ~]# scp /etc/profile root@cent90:/etc/profile  </code></pre></li>
+</ol>
+<h3 id="3-5-Spark-的启动和关闭"><a href="#3-5-Spark-的启动和关闭" class="headerlink" title="3.5  Spark 的启动和关闭"></a>3.5  Spark 的启动和关闭</h3><p>完成上述操作，就可以启动、运行 Spark 了。Spark 如果是基于 YARN，则在使用 Spark 前需要启动 Hadoop<br>YARN，启动命令如下：  </p>
+<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3/
+[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-dfs.sh
+[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-yarn.sh   </code></pre><ol>
+<li><p>在主节点 Master 上执行启动命令：  </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5
+[hadoop@cent88 spark-2.4.5]$ ./sbin/start-all.sh  </code></pre></li>
+<li><p>检测进程是否启动，使用 jps 命令  </p>
+<pre><code>[hadoop@cent88 spark-2.4.5]$ jps
+14353 Master
+14514 Worker
+27924 Jps
+10792 NameNode
+11833 NodeManager
+11036 DataNode
+11388 SecondaryNameNode
+11710 ResourceManager    </code></pre><p>这里同样一个不能少，少了就有问题。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK.G7TrqbpbysgqUneSOlyheewWgwgnuMOFTEfBeRLmbbstknHA4kEPyhYgoa3iLLobUHdFbbXFUsSvfMbe0yUo!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4" alt="">  </p>
+</li>
+<li><p>浏览 Master 的 Web UI(默认 <a href="http://cent88:8080)，查看到所有的">http://cent88:8080)，查看到所有的</a> work 节点及其 CPU 个数和内存等信息，如图所示。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIh4RLzcmr0hpEGz*gdJq9mC63uXz9XfxDm5dE90dDpW*Wo0YD*C7mgYIPxeY541FET5nBL8.0Ziu13BlQgWiXM!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4" alt="">  </p>
+</li>
+<li><p>验证 Spark 集群  </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5  
+[hadoop@cent88 spark-2.3.1]$./bin/spark-submit --class org.apache.spark.examples.SparkPi --master yarn-–deploy-mode cluster examples/jars/spark-examples_2.11-2.4.5.jar  </code></pre><p>具体例子具体看examples文件夹里的名字哦。例子没报错就成功了。  </p>
+</li>
+<li><p>关闭 Spark  </p>
+<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5
+[hadoop@cent88 spark-2.3.1]$ ./sbin/stop-all.sh   </code></pre></li>
+</ol>
+<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>有问题先找一下官方的文档，由于我用的是hadoop3，没有slaves文件夹，开始我就没有设置这个文件，之后看了官方文档的hadoop3的改动，要改works文件。其次要百度找答案。这次安装遇到了很多的问题，大部分都忘了，遇到问题解决就完事了，溜了溜了=。=</p>
 
       
 	<!--  自加的代码 -->
@@ -538,7 +606,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安装</a>
         		</li>
       		
 		</ul>
@@ -594,7 +662,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -608,18 +676,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java进阶八
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E5%85%AD/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java进阶六</div>
+    <a href="/2020/07/20/VSCode%E9%85%8D%E7%BD%AEC%E7%9A%84%E7%8E%AF%E5%A2%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VSCode配置C的环境</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -646,7 +705,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【线程池、Lambda表达式】"><span class="toc-number">1.</span> <span class="toc-text">【线程池、Lambda表达式】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-number">1.1.</span> <span class="toc-text">主要内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-等待唤醒机制"><span class="toc-number">2.</span> <span class="toc-text">第一章 等待唤醒机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-线程间通信"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 线程间通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-等待唤醒机制"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 等待唤醒机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-生产者与消费者问题"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 生产者与消费者问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-线程池"><span class="toc-number">3.</span> <span class="toc-text">第二章 线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-线程池思想概述"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 线程池思想概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-线程池概念"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 线程池概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-线程池的使用"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 线程池的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-Lambda表达式"><span class="toc-number">4.</span> <span class="toc-text">第三章 Lambda表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-函数式编程思想概述"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 函数式编程思想概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-冗余的Runnable代码"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 冗余的Runnable代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统写法"><span class="toc-number">4.2.1.</span> <span class="toc-text">传统写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码分析"><span class="toc-number">4.2.2.</span> <span class="toc-text">代码分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-编程思想转换"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 编程思想转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#做什么，而不是怎么做"><span class="toc-number">4.3.1.</span> <span class="toc-text">做什么，而不是怎么做</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生活举例"><span class="toc-number">4.3.2.</span> <span class="toc-text">生活举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-体验Lambda的更优写法"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 体验Lambda的更优写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-回顾匿名内部类"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 回顾匿名内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用实现类"><span class="toc-number">4.5.1.</span> <span class="toc-text">使用实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用匿名内部类"><span class="toc-number">4.5.2.</span> <span class="toc-text">使用匿名内部类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#匿名内部类的好处与弊端"><span class="toc-number">4.5.3.</span> <span class="toc-text">匿名内部类的好处与弊端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语义分析"><span class="toc-number">4.5.4.</span> <span class="toc-text">语义分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-Lambda标准格式"><span class="toc-number">4.6.</span> <span class="toc-text">3.6 Lambda标准格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-练习：使用Lambda标准格式（无参无返回）"><span class="toc-number">4.7.</span> <span class="toc-text">3.7 练习：使用Lambda标准格式（无参无返回）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目"><span class="toc-number">4.7.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解答"><span class="toc-number">4.7.2.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-Lambda的参数和返回值"><span class="toc-number">4.8.</span> <span class="toc-text">3.8 Lambda的参数和返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统写法-1"><span class="toc-number">4.8.1.</span> <span class="toc-text">传统写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码分析-1"><span class="toc-number">4.8.2.</span> <span class="toc-text">代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda写法"><span class="toc-number">4.8.3.</span> <span class="toc-text">Lambda写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-练习：使用Lambda标准格式（有参有返回）"><span class="toc-number">4.9.</span> <span class="toc-text">3.9 练习：使用Lambda标准格式（有参有返回）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目-1"><span class="toc-number">4.9.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解答-1"><span class="toc-number">4.9.2.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-10-Lambda省略格式"><span class="toc-number">4.10.</span> <span class="toc-text">3.10 Lambda省略格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可推导即可省略"><span class="toc-number">4.10.1.</span> <span class="toc-text">可推导即可省略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#省略规则"><span class="toc-number">4.10.2.</span> <span class="toc-text">省略规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-11-练习：使用Lambda省略格式"><span class="toc-number">4.11.</span> <span class="toc-text">3.11 练习：使用Lambda省略格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目-2"><span class="toc-number">4.11.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解答-2"><span class="toc-number">4.11.2.</span> <span class="toc-text">解答</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-12-Lambda的使用前提"><span class="toc-number">4.12.</span> <span class="toc-text">3.12 Lambda的使用前提</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">5.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop-集群的安装与配置"><span class="toc-number">1.</span> <span class="toc-text">Hadoop 集群的安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-操作系统-CentOS-的安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.操作系统 CentOS 的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-创建-Hadoop-用户与系统设置"><span class="toc-number">1.2.</span> <span class="toc-text">2.创建 Hadoop 用户与系统设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-创建-Hadoop-用户"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 创建 Hadoop 用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-系统设置"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 系统设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装java"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安装-Hadoop"><span class="toc-number">1.4.</span> <span class="toc-text">4.安装 Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-下载解压-Hadoop-安装包"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 下载解压 Hadoop 安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-配置-hadoop-集群"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 配置 hadoop 集群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-克隆虚拟机与网络设置"><span class="toc-number">1.5.</span> <span class="toc-text">5.克隆虚拟机与网络设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-克隆虚拟机"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 克隆虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-网络设置"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 网络设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-SSH-无密码登录设置"><span class="toc-number">1.6.</span> <span class="toc-text">6. SSH 无密码登录设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-启停和验证集群"><span class="toc-number">1.7.</span> <span class="toc-text">7.启停和验证集群</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark"><span class="toc-number">2.</span> <span class="toc-text">Spark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Spark-简介"><span class="toc-number">2.1.</span> <span class="toc-text">1.Spark 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Spark-的部署和应用架构"><span class="toc-number">2.2.</span> <span class="toc-text">2.Spark 的部署和应用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Spark-的部署"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 Spark 的部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Spark-的应用架构"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 Spark 的应用架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Spark-集群的安装与配置"><span class="toc-number">2.3.</span> <span class="toc-text">3.Spark 集群的安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Spark-的安装"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 Spark 的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Spark-的配置"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 Spark 的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Scala-的安装与配置"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 Scala 的安装与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-远程复制"><span class="toc-number">2.3.4.</span> <span class="toc-text">3.4 远程复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Spark-的启动和关闭"><span class="toc-number">2.3.5.</span> <span class="toc-text">3.5  Spark 的启动和关闭</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">3.</span> <span class="toc-text">博主寄语</span></a></li></ol>
                     </div>
                 </span>
             </div>
