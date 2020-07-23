@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK.G7TrqbpbysgqUneSOlyheewWgwgnuMOFTEfBeRLmbbstknHA4kEPyhYgoa3iLLobUHdFbbXFUsSvfMbe0yUo!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIh4RLzcmr0hpEGz*gdJq9mC63uXz9XfxDm5dE90dDpW*Wo0YD*C7mgYIPxeY541FET5nBL8.0Ziu13BlQgWiXM!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
 <meta property="article:published_time" content="2020-07-23T04:32:24.000Z">
-<meta property="article:modified_time" content="2020-07-23T04:33:26.396Z">
+<meta property="article:modified_time" content="2020-07-23T05:19:42.522Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary">
@@ -235,9 +235,9 @@
       
         <p>上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。</p>
 <a id="more"></a>
-<h1 id="Hadoop-集群的安装与配置"><a href="#Hadoop-集群的安装与配置" class="headerlink" title="Hadoop 集群的安装与配置"></a>Hadoop 集群的安装与配置</h1><p>虽然 Hadoop 可以运行在 Linux、Windows 等系统之上，但 Hadoop 官方支持的作业平台只有 Linux。因此，<br>在 Windows 上运行 Hadoop 时，需要安装 Cygwin 等软件来提供一些 Linux 操作系统的功能。在 Linux 发行版中，常见的操作系统有 CentOS、Ubuntu、RedHat、OpenSUSE 等，考虑到企业级应用、稳定且免费等因素，本节选用 CentOS 作为 Hadoop 集群安装与使用的环境。Hadoop 分布式集群搭建的规划见下图：  </p>
+<h1 id="Hadoop-集群的安装与配置"><a href="#Hadoop-集群的安装与配置" class="headerlink" title="Hadoop 集群的安装与配置"></a>Hadoop 集群的安装与配置</h1><p>虽然 Hadoop 可以运行在 Linux、Windows 等系统之上，但 Hadoop 官方支持的作业平台只有 Linux。因此，在 Windows 上运行 Hadoop 时，需要安装 Cygwin 等软件来提供一些 Linux 操作系统的功能。在 Linux 发行版中，常见的操作系统有 CentOS、Ubuntu、RedHat、OpenSUSE 等，考虑到企业级应用、稳定且免费等因素，本节选用 CentOS 作为 Hadoop 集群安装与使用的环境。Hadoop 分布式集群搭建的规划见下图：  </p>
 <p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4" alt="">  </p>
-<p>Hadoop 分布式集群搭建的总体思路是先安装一台虚拟机，然后在其上完成除 SSH 以外的所有配置后再克隆<br>两台虚拟机，接着对三台虚拟机进行网络设置后，并配置整个集群的无密码登录，最后启动并验证集群。安装与<br>配置主要包括以下 7 个大的步骤:      </p>
+<p>Hadoop 分布式集群搭建的总体思路是先安装一台虚拟机，然后在其上完成除 SSH 以外的所有配置后再克隆两台虚拟机，接着对三台虚拟机进行网络设置后，并配置整个集群的无密码登录，最后启动并验证集群。安装与配置主要包括以下 7 个大的步骤:      </p>
 <ol>
 <li>操作系统 CentOS 的安装；  </li>
 <li>创建 Hadoop 用户与系统设置；  </li>
@@ -247,13 +247,13 @@
 <li>SSH 无密码登录设置；</li>
 <li>启停和验证集群。  </li>
 </ol>
-<p>下面将介绍每个步骤的具体实现，本节使用的虚拟机是 VMware Workstation Pro 15.5.0，操作系统是<br>CentOS-7-x86_64-DVD-1511，Java 版本为 jdk-8u231-linux-x64，Hadoop 版本为 hadoop-3.1.3。  </p>
-<h2 id="1-操作系统-CentOS-的安装"><a href="#1-操作系统-CentOS-的安装" class="headerlink" title="1.操作系统 CentOS 的安装"></a>1.操作系统 CentOS 的安装</h2><p>首先下载安装 VMware Workstation pro，然后从 CentOS 官网下载操作系统 CentOS7.2 的安装文件<br>CentOS-7-x86_64-DVD-1511.iso，下载地址是 <a href="https://www.centos.org/download" target="_blank" rel="noopener">https://www.centos.org/download</a>,但是由于Centos8以下的官方都移除了，这里博主提供阿里云镜像地址下载速度很快<a href="https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64" target="_blank" rel="noopener">https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64</a>。通过虚拟化软件 VMware Workstation Pro 安装一台 Centos7.2 的虚拟机。虚拟机设置如下图所示：  </p>
+<p>下面将介绍每个步骤的具体实现，本节使用的虚拟机是 VMware Workstation Pro 15.5.0，操作系统是CentOS-7-x86_64-DVD-1511，Java 版本为 jdk-8u231-linux-x64，Hadoop 版本为 hadoop-3.1.3。  </p>
+<h2 id="1-操作系统-CentOS-的安装"><a href="#1-操作系统-CentOS-的安装" class="headerlink" title="1.操作系统 CentOS 的安装"></a>1.操作系统 CentOS 的安装</h2><p>首先下载安装 VMware Workstation pro，然后从 CentOS 官网下载操作系统 CentOS7.2 的安装文件CentOS-7-x86_64-DVD-1511.iso，下载地址是 <a href="https://www.centos.org/download" target="_blank" rel="noopener">https://www.centos.org/download</a>,但是由于Centos8以下的官方都移除了，这里博主提供阿里云镜像地址下载速度很快<a href="https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64" target="_blank" rel="noopener">https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64</a>。通过虚拟化软件 VMware Workstation Pro 安装一台 Centos7.2 的虚拟机。虚拟机设置如下图所示：  </p>
 <p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECXEajBgslZhNLnl8TmH8mkhjgEr*8SP2ONcyPdqj.YeIcpuFkNN792M8rNdTIW4v*3IjoivKl*0eRBXPjgovlk!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">  </p>
 <blockquote>
 <p>为了给每台虚拟机设置独立的 IP 地址，虚拟机设置中要注意选择网络连接为“桥接模式”。  </p>
 </blockquote>
-<h2 id="2-创建-Hadoop-用户与系统设置"><a href="#2-创建-Hadoop-用户与系统设置" class="headerlink" title="2.创建 Hadoop 用户与系统设置"></a>2.创建 Hadoop 用户与系统设置</h2><h3 id="2-1-创建-Hadoop-用户"><a href="#2-1-创建-Hadoop-用户" class="headerlink" title="2.1 创建 Hadoop 用户"></a>2.1 创建 Hadoop 用户</h3><p>为了方便操作和管理，首先要创建一个名为“hadoop”的用户来运行程序。如果用户对 Linux下的操作命令不<br>太熟悉，可以查阅相关资料和视频，以便为后继的操作打下一定的基础。创建用户的命令是 useradd，创建用户<br>组的命令是 groupadd，设置密码的命令是 passwd，具体操作命令如下:   </p>
+<h2 id="2-创建-Hadoop-用户与系统设置"><a href="#2-创建-Hadoop-用户与系统设置" class="headerlink" title="2.创建 Hadoop 用户与系统设置"></a>2.创建 Hadoop 用户与系统设置</h2><h3 id="2-1-创建-Hadoop-用户"><a href="#2-1-创建-Hadoop-用户" class="headerlink" title="2.1 创建 Hadoop 用户"></a>2.1 创建 Hadoop 用户</h3><p>为了方便操作和管理，首先要创建一个名为“hadoop”的用户来运行程序。如果用户对 Linux下的操作命令不太熟悉，可以查阅相关资料和视频，以便为后继的操作打下一定的基础。创建用户的命令是 useradd，创建用户组的命令是 groupadd，设置密码的命令是 passwd，具体操作命令如下:   </p>
 <pre><code>$ su -
 # groupadd hadoop
 # useradd -g haodoop hadoop
@@ -275,13 +275,13 @@ DNS1/server：192.168.0.1</code></pre><p>完成设置后，在 root 用户下使
 <pre><code>cent88  </code></pre></li>
 </ul>
 <p>重启一次虚拟机后，用 hostname 命令查看设置是否生效。     </p>
-<h2 id="3-安装java"><a href="#3-安装java" class="headerlink" title="3.安装java"></a>3.安装java</h2><p>由于 Hadoop 本身是使用 Java 语言编写的，因此 Hadoop 的开发和运行都需要 Java 环境。CentOS7.2 自带<br>openjdk，可以通过命令 <code>rpm -qa|grep jdk</code> 查看 openjdk 的版本，如 java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64 等。考虑到功能上的稳定性，建议采用 Oracle 公司的 Java 版本。因此，用户需要提前删除 CentOS7.2 自带的多个版本的 openjdk。使用命令 <code>yum -y remove java-1.8.0-openjdk-*</code>卸载相关 openjdk 安装文件。<br>下载 Oracle 公司的 Java，选择 <code>JavaSE Development Kit 8u231</code> 的 linux 安装文件 <code>jdk-8u231-linux-x64.rpm</code>下载。在这里我没有在虚拟机中下载，总感觉linux网速慢，我自己用win10下载后，直接用VMware移到虚拟机中。通过命令<code>rpm -ivh Downloads/jdk-8u231-linux-x64.rpm</code>安装 Java1.8。安装完成后，需要设置 Java 环境变量，即修改/etc/profile文件，也就是在文件最后面追加几行内容如下:   </p>
+<h2 id="3-安装java"><a href="#3-安装java" class="headerlink" title="3.安装java"></a>3.安装java</h2><p>由于 Hadoop 本身是使用 Java 语言编写的，因此 Hadoop 的开发和运行都需要 Java 环境。CentOS7.2 自带openjdk，可以通过命令 <code>rpm -qa|grep jdk</code> 查看 openjdk 的版本，如 java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64 等。考虑到功能上的稳定性，建议采用 Oracle 公司的 Java 版本。因此，用户需要提前删除 CentOS7.2 自带的多个版本的 openjdk。使用命令 <code>yum -y remove java-1.8.0-openjdk-*</code>卸载相关 openjdk 安装文件。<br>下载 Oracle 公司的 Java，选择 <code>JavaSE Development Kit 8u231</code> 的 linux 安装文件 <code>jdk-8u231-linux-x64.rpm</code>下载。在这里我没有在虚拟机中下载，总感觉linux网速慢，我自己用win10下载后，直接用VMware移到虚拟机中。通过命令<code>rpm -ivh Downloads/jdk-8u231-linux-x64.rpm</code>安装 Java1.8。安装完成后，需要设置 Java 环境变量，即修改/etc/profile文件，也就是在文件最后面追加几行内容如下:   </p>
 <pre><code>export JAVA_HOME=/usr/java/jdk1.8.0_231
 export JRE_HOME=/usr/java/jdk1.8.0_231/jre
 export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib  </code></pre><p>然后使用命令<code>source /etc/profile</code> 让环境变量生效，最后，再使用命令 <code>java –version</code> 查看版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrED6Y05IHdij53oDtT3M70jEdK*vXt8BYCmYa3QhWu4j*Dbk2RcIyJtjhYxOXN7Ej9KWD4L67S*l8jfWMR.4Cc7c!/b&bo=LARpAgAAAAADJ0E!&rf=viewer_4" alt="">  </p>
 <h2 id="4-安装-Hadoop"><a href="#4-安装-Hadoop" class="headerlink" title="4.安装 Hadoop"></a>4.安装 Hadoop</h2><h3 id="4-1-下载解压-Hadoop-安装包"><a href="#4-1-下载解压-Hadoop-安装包" class="headerlink" title="4.1 下载解压 Hadoop 安装包"></a>4.1 下载解压 Hadoop 安装包</h3><p>本节采用的 Hadoop 版本为 3.1.3，通过 Hadoop 官网提供的下载链接 <a href="http://hadoop.apache.org/releases.html#Download，在下载列表中找到" target="_blank" rel="noopener">http://hadoop.apache.org/releases.html#Download，在下载列表中找到</a> 3.1.3 对应的 binary，下载 hadoop-3.1.3.tar.gz 文件即可。使 用 命 令 <code>tar –zxvf hadoop-3.1.3.tar.gz</code> 将 tar.gz 文 件 解 压 后 ， 放 置 到 方 便 用 户 使 用 的 位 置 ， 如<code>/home/haodoop/hadoop-2.7.6</code>， 这 个 位 置 即 HADOOP_HOME 。 注 意 /home/hadoop 为 用 户 目 录 ， 而<code>/home/hadoop/hadoop-2.7.6</code> 为 hadoop-2.7.6.tar.gz 解压后生成的目录。</p>
-<h3 id="4-2-配置-hadoop-集群"><a href="#4-2-配置-hadoop-集群" class="headerlink" title="4.2 配置 hadoop 集群"></a>4.2 配置 hadoop 集群</h3><p>配置 hadoop 集群，需要修改 HADOOP_HOME 目录下（即“/home/spark/hadoop-3.1.3”）的“etc/hadoop”子<br>目录中的 8 个配置文件，分别是 core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml、hadoop-env.sh、yarn-env.sh、mapred-env.sh 和 slaves。对于单机安装 Hadoop，仅需要修改 hadoop-env.sh 一个文件即可在一台计算机上运行 Hadoop 应用程序。伪分布式安装是指在一台机器上模拟一个小的集群，实现分布式数据处理的全过程，但是集群中只有一个节点，分布式数据传输并没有经过真实的网络，适合于小规模应用程序的调试。对于伪分布式配置，仅需要修改 core-site.xml 和 hdfs-site.xml 两个文件。  </p>
+<h3 id="4-2-配置-hadoop-集群"><a href="#4-2-配置-hadoop-集群" class="headerlink" title="4.2 配置 hadoop 集群"></a>4.2 配置 hadoop 集群</h3><p>配置 hadoop 集群，需要修改 HADOOP_HOME 目录下（即“/home/spark/hadoop-3.1.3”）的“etc/hadoop”子目录中的 8 个配置文件，分别是 core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml、hadoop-env.sh、yarn-env.sh、mapred-env.sh 和 slaves。对于单机安装 Hadoop，仅需要修改 hadoop-env.sh 一个文件即可在一台计算机上运行 Hadoop 应用程序。伪分布式安装是指在一台机器上模拟一个小的集群，实现分布式数据处理的全过程，但是集群中只有一个节点，分布式数据传输并没有经过真实的网络，适合于小规模应用程序的调试。对于伪分布式配置，仅需要修改 core-site.xml 和 hdfs-site.xml 两个文件。  </p>
 <ul>
 <li><p>修改 core-site.xml  </p>
 <pre><code>[hadoop@cent88 hadoop]$ vi core-site.xml
@@ -320,7 +320,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib 
  &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
  &lt;value&gt;cent88:50090&lt;/value&gt;
  &lt;/property&gt;
-&lt;/configuration&gt;   </code></pre><p>考虑到当前用户对用户目录下的文件有绝对的控制权，所以在用户目录/home/hadoop/下新建 hdfs 目录，用于<br>存储产生的分布式文件。  </p>
+&lt;/configuration&gt;   </code></pre><p>考虑到当前用户对用户目录下的文件有绝对的控制权，所以在用户目录/home/hadoop/下新建 hdfs 目录，用于存储产生的分布式文件。  </p>
 </li>
 <li><p>mapred-site.xml  </p>
 <pre><code>[hadoop@cent88 hadoop]$ vi mapred-site.xml
@@ -363,8 +363,8 @@ cent90  </code></pre></li>
 <p>还需要设置 hadoop 环境变量，即修改/etc/profile 文件，在文件最后再追加几行内容如下:  </p>
 <pre><code>export HADOOP_HOME=/home/spark/hadoop-3.1.3
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin  </code></pre><p>使用命令 source /etc/profile 让环境变量生效。然后再使用命令 <code>hadoop version</code> 命令查看 Hadoop 的版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ1Edx7OzGBC7wrI7qfeICMr6gqm*ldd0ySZzTLoBMpob2DJulmr*dyYgWPZBZPaFRzJn4drMxpRnktr3gbFmJo!/b&bo=4QNbAgAAAAADJ7k!&rf=viewer_4" alt="">  </p>
-<h2 id="5-克隆虚拟机与网络设置"><a href="#5-克隆虚拟机与网络设置" class="headerlink" title="5.克隆虚拟机与网络设置"></a>5.克隆虚拟机与网络设置</h2><h3 id="5-1-克隆虚拟机"><a href="#5-1-克隆虚拟机" class="headerlink" title="5.1 克隆虚拟机"></a>5.1 克隆虚拟机</h3><p>当 Java 和 Hadoop 完成上述设置后，可以执行克隆虚拟机操作，把上述设置好的 cent88 这台机器，克隆两<br>次，分别命名为 cent89 和 cent90。方法是从 VMware Workstation 菜单中的选择虚拟机管理克隆，再选择创建完整克隆，完成虚拟机的克隆。</p>
-<h3 id="5-2-网络设置"><a href="#5-2-网络设置" class="headerlink" title="5.2 网络设置"></a>5.2 网络设置</h3><p>考虑到克隆的虚拟机都有相同的主机名和网络 IP 地址，因此，需要逐一运行克隆产生的虚拟机 cent89 和<br>cent90，进行网络设置，以 cent89 为例。  </p>
+<h2 id="5-克隆虚拟机与网络设置"><a href="#5-克隆虚拟机与网络设置" class="headerlink" title="5.克隆虚拟机与网络设置"></a>5.克隆虚拟机与网络设置</h2><h3 id="5-1-克隆虚拟机"><a href="#5-1-克隆虚拟机" class="headerlink" title="5.1 克隆虚拟机"></a>5.1 克隆虚拟机</h3><p>当 Java 和 Hadoop 完成上述设置后，可以执行克隆虚拟机操作，把上述设置好的 cent88 这台机器，克隆两次，分别命名为 cent89 和 cent90。方法是从 VMware Workstation 菜单中的选择虚拟机管理克隆，再选择创建完整克隆，完成虚拟机的克隆。</p>
+<h3 id="5-2-网络设置"><a href="#5-2-网络设置" class="headerlink" title="5.2 网络设置"></a>5.2 网络设置</h3><p>考虑到克隆的虚拟机都有相同的主机名和网络 IP 地址，因此，需要逐一运行克隆产生的虚拟机 cent89 和cent90，进行网络设置，以 cent89 为例。  </p>
 <ul>
 <li>重新设置 hostname 文件  </li>
 </ul>
@@ -374,7 +374,7 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin  </code></pre><p>使用命�
 </ul>
 <p>在 root 用户下使用命令 rm -rf /etc/udev/rules.d/70-persistent-net.rules 删除本机规则文件，并重新启动虚拟机。<br>待重启后，在/etc/sysconfig/network-scripts/ifcfg-e*文件中或者是从系统的图形界面下设置 IP 地址如下:     </p>
 <pre><code>IP 地址： 192.168.0.89   </code></pre><p>另外，在/etc/sysconfig/network-scripts/ifcfg-e*文件的 UUID 项前添加#号，即注释掉此项。<br>同样，在 root 用户下使用命令 service network restart 重启网络，以使设置生效。可以使用命令 <code>ifconfig</code> 查看本机 IP 是否已更改，再使用命令 ping 192.168.0.1 和 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检测网关和外网是否连通。    </p>
-<h2 id="6-SSH-无密码登录设置"><a href="#6-SSH-无密码登录设置" class="headerlink" title="6. SSH 无密码登录设置"></a>6. SSH 无密码登录设置</h2><p>在 Hadoop 集群启动时，Hadoop 名称节点（NameNode）需要同时启动所有数据节点（DataNode）的 Hadoop<br>守护进程，这个过程使用 SSH 无密码登录来实现。首先需要让各个节点生成自己的 SSH 密钥 id_rsa 和公钥<br>id_rsa.pub，名称节点需要将它的公钥 id_rsa.pub 发送给集群中的所有数据节点。因此可将公钥 id_rsa.pub 内容添加到需要匿名登录的数据节点的“~/.ssh/authorized_keys”文件中，然后，名称节点就可以无密码登录这个数据节点了。<br>实现 SSH 无密码登录设置，包括生成密钥、合并公钥、分发合并的公钥和密钥文件权限设置四个部分。   </p>
+<h2 id="6-SSH-无密码登录设置"><a href="#6-SSH-无密码登录设置" class="headerlink" title="6. SSH 无密码登录设置"></a>6. SSH 无密码登录设置</h2><p>在 Hadoop 集群启动时，Hadoop 名称节点（NameNode）需要同时启动所有数据节点（DataNode）的 Hadoop守护进程，这个过程使用 SSH 无密码登录来实现。首先需要让各个节点生成自己的 SSH 密钥 id_rsa 和公钥id_rsa.pub，名称节点需要将它的公钥 id_rsa.pub 发送给集群中的所有数据节点。因此可将公钥 id_rsa.pub 内容添加到需要匿名登录的数据节点的“~/.ssh/authorized_keys”文件中，然后，名称节点就可以无密码登录这个数据节点了。<br>实现 SSH 无密码登录设置，包括生成密钥、合并公钥、分发合并的公钥和密钥文件权限设置四个部分。   </p>
 <ul>
 <li><p>生成密钥<br>启动三台虚拟机，分别进入用户目录下，执行如下命令：   </p>
 <pre><code>[hadoop@cent88 ~]$ cd /home/hadoop
@@ -382,7 +382,7 @@ export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin  </code></pre><p>使用命�
 </li>
 <li><p>合并公钥<br>三台虚拟机再执行如下命令：   </p>
 <pre><code>[hadoop@cent88 ~]$ cd .ssh
-[hadoop@cent88 .ssh]$ cat id_rsa.pub &gt;authorized_keys  </code></pre><p>接下来，在主节点 cent88 上合并各个节点生成的公钥，即把另外两台机器的公钥追加到 authorized_keys 文<br>件后，执行命令如下：   </p>
+[hadoop@cent88 .ssh]$ cat id_rsa.pub &gt;authorized_keys  </code></pre><p>接下来，在主节点 cent88 上合并各个节点生成的公钥，即把另外两台机器的公钥追加到 authorized_keys 文件后，执行命令如下：   </p>
 <pre><code>[hadoop@cent88 .ssh]$ scp hadoop@cent89:/home/hadoop/.ssh/authorized_keys 89pub
 [hadoop@cent88 .ssh]$ scp hadoop@cent90:/home/hadoop/.ssh/authorized_keys 90pub
 [hadoop@cent88 .ssh]$ cat 89pub 90pub &gt;&gt;authorized_keys   </code></pre></li>
@@ -399,7 +399,7 @@ Last login: Thu July 22 13:50:08 2020
 </li>
 </ul>
 <h2 id="7-启停和验证集群"><a href="#7-启停和验证集群" class="headerlink" title="7.启停和验证集群"></a>7.启停和验证集群</h2><ol>
-<li><p>启动集群<br>在集群配置完成后，需要初始化文件系统，以便进一步执行计算任务。首先关闭各个节点上的防火墙，命令<br>如下：   </p>
+<li><p>启动集群<br>在集群配置完成后，需要初始化文件系统，以便进一步执行计算任务。首先关闭各个节点上的防火墙，命令如下：   </p>
 <pre><code>[hadoop@cent88 ~]$ su –
 [root@cent88 ~]# systemctl stop firewalld
 [root@cent88 ~]# su – hadoop   </code></pre><p>可能关闭防火墙的命令不对，百度搜一哈。接下来，在 NameNode 节点（cent88）上，执行初始化的命令如下：  </p>
@@ -421,15 +421,15 @@ Last login: Thu July 22 13:50:08 2020
 <pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop dfs -put etc/hadoop/*.xml /user/hadoop/input      </code></pre><p>然后，使用如下命令行来执行以“kerber”开头的字数统计测试：   </p>
 <pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.6.jar grep /user/spark/input /user/spark/output &apos;kerber[a-z.]+&apos;  </code></pre><p>执行完成后，会在 HDFS 中生成 output 目录来保存计算出来的结果，输入以下命令来查看最终结果：  </p>
 <pre><code>[hadoop@cent88 hadoop-2.7.6]$ ./bin/hadoop dfs –cat /user/hadoop/output/p*
-6 kerberos  </code></pre><p>结果表明所有的 XML 文件中，只有 6 个以 kerber 开头的单词。需要注意的是，如果想再重复执行一次字数<br>统计测试，一定更改一个输出目录 output 的名字（如 output2），这样就不会因为重建输出目录时，提示目录已存在的问题。<br>注意：实际例子可能不一样详见自己安装的文件夹里的example文件夹。  </p>
+6 kerberos  </code></pre><p>结果表明所有的 XML 文件中，只有 6 个以 kerber 开头的单词。需要注意的是，如果想再重复执行一次字数统计测试，一定更改一个输出目录 output 的名字（如 output2），这样就不会因为重建输出目录时，提示目录已存在的问题。<br>注意：实际例子可能不一样详见自己安装的文件夹里的example文件夹。  </p>
 </li>
 <li><p>关闭集群<br>关闭集群，使用如下命令，请注意关闭的顺序。  </p>
 <pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-yarn.sh
-[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-dfs.sh   </code></pre><p>整个集群检证过程没有出现错误提示，说明集群安装是正确的。如果在集群初始化或者是使用过程中出现一<br>些错误提示，可以根据提示通过互联网络去寻找相应的解决方法。对于错误提示更详细的信息，可以查看节点上<br>HADOOP_HOME 的 logs 目录下的日志文件。   </p>
+[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-dfs.sh   </code></pre><p>整个集群检证过程没有出现错误提示，说明集群安装是正确的。如果在集群初始化或者是使用过程中出现一些错误提示，可以根据提示通过互联网络去寻找相应的解决方法。对于错误提示更详细的信息，可以查看节点上HADOOP_HOME 的 logs 目录下的日志文件。   </p>
 </li>
 </ol>
 <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><p>Spark出自美国加州大学伯克利分校 APM 实验室，是一个应用于大规模数据处理的快速、通用引擎。目前是Apache 顶级开源项目。Spark 提供了内存计算，减少了迭代计算的 IO 开销，成功解决了 Hadoop MapReduce的缺陷，成为当前大数据领域最热门的大数据计算平台。   </p>
-<h2 id="1-Spark-简介"><a href="#1-Spark-简介" class="headerlink" title="1.Spark 简介"></a>1.Spark 简介</h2><p>Spark 最初由美国加州伯克利大学（UCBerkeley）的 AMP 实验室于 2009 年开发，是基于内存计算的大数据<br>并行计算框架，可用于构建大型的、低延迟的数据分析应用程序。2013 年 Spark 加入 Apache 孵化器项目后发展迅猛，如今已成为 Apache 软件基金会最重要的三大分布式计算系统开源项目（Hadoop、Spark、Storm）之一。<br>Spark 是大数据处理平台的后起之秀，于 2014 年打破了 Hadoop 保持的基准排序纪录，仅使用 206 个节点在<br>23 分钟内完成了 100TB 数据的排序，而同样数据量的排序，Hadoop 使用 2000 个节点，还花费了 72 分钟。也就是说，Spark 用近十分之一的计算资源，获得了比 Hadoop 快 3 倍的速度。    </p>
+<h2 id="1-Spark-简介"><a href="#1-Spark-简介" class="headerlink" title="1.Spark 简介"></a>1.Spark 简介</h2><p>Spark 最初由美国加州伯克利大学（UCBerkeley）的 AMP 实验室于 2009 年开发，是基于内存计算的大数据并行计算框架，可用于构建大型的、低延迟的数据分析应用程序。2013 年 Spark 加入 Apache 孵化器项目后发展迅猛，如今已成为 Apache 软件基金会最重要的三大分布式计算系统开源项目（Hadoop、Spark、Storm）之一。<br>Spark 是大数据处理平台的后起之秀，于 2014 年打破了 Hadoop 保持的基准排序纪录，仅使用 206 个节点在23 分钟内完成了 100TB 数据的排序，而同样数据量的排序，Hadoop 使用 2000 个节点，还花费了 72 分钟。也就是说，Spark 用近十分之一的计算资源，获得了比 Hadoop 快 3 倍的速度。    </p>
 <p>Spark 具有如下几个主要特点：   </p>
 <ul>
 <li>运行速度快：使用 DAG 执行引擎以支持循环数据流与内存计算；</li>
@@ -438,7 +438,7 @@ Last login: Thu July 22 13:50:08 2020
 <li>运行模式多样：可运行于独立的集群模式中，可运行于 Hadoop 中，也可运行于 Amazon EC2 等云环境中，并且可以访问 HDFS、Cassandra、HBase、Hive 等多种数据源。   </li>
 </ul>
 <h2 id="2-Spark-的部署和应用架构"><a href="#2-Spark-的部署和应用架构" class="headerlink" title="2.Spark 的部署和应用架构"></a>2.Spark 的部署和应用架构</h2><h3 id="2-1-Spark-的部署"><a href="#2-1-Spark-的部署" class="headerlink" title="2.1 Spark 的部署"></a>2.1 Spark 的部署</h3><p>Spark 支持三种不同类型的部署方式，包括 Standalone、Spark on Mesos 和 Spark on YARN。在Standalone 模式中，Spark 本身自带了完整的资源调度管理服务，可以独立部署到一个集群中，并且以槽（slot）作为资源分配的单位。在 Spark on Mesos 模式中，Mesos 本身是一种资源调度管理框架，可为运行在综上面的 Spark 提供服务。相对而言，Spark 运行在 Mesos 上，要比运行在 YARN 上更加灵活和自然。该模式是官方推荐的模式，也有许多公司在实际应用中使用这种模式。在 Spark on Mesos 模式中，资源管理和调度依赖 YARN，分布式存储则依赖HDFS，国内阿里巴巴等公司采用此种模式。  </p>
-<h3 id="2-2-Spark-的应用架构"><a href="#2-2-Spark-的应用架构" class="headerlink" title="2.2 Spark 的应用架构"></a>2.2 Spark 的应用架构</h3><p>由于 Hadoop 生态系统中的一些组件所实现的功能，目前还是无法由 Spark 取代的，比如，Storm 可以实现<br>毫秒级响应的计算，但是 Spark 则无法做到毫秒级响应。加之基于现有的 Hadoop 组件开发的应用，完全转移到<br>Spark 上需要一定的成本。因此，在许多企业实际应用中，Hadoop 与 Spark 统一部署架构是一种比较合理的选择。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4" alt="">  </p>
+<h3 id="2-2-Spark-的应用架构"><a href="#2-2-Spark-的应用架构" class="headerlink" title="2.2 Spark 的应用架构"></a>2.2 Spark 的应用架构</h3><p>由于 Hadoop 生态系统中的一些组件所实现的功能，目前还是无法由 Spark 取代的，比如，Storm 可以实现毫秒级响应的计算，但是 Spark 则无法做到毫秒级响应。加之基于现有的 Hadoop 组件开发的应用，完全转移到Spark 上需要一定的成本。因此，在许多企业实际应用中，Hadoop 与 Spark 统一部署架构是一种比较合理的选择。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4" alt="">  </p>
 <p>如上图所示，把不同的计算框架统一运行在 YARN 中，可以带来好处如下：  </p>
 <ul>
 <li>计算资源按需伸缩；</li>
@@ -516,7 +516,7 @@ export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /et
 [root@cent88 ~]# scp /etc/profile root@cent89:/etc/profile
 [root@cent88 ~]# scp /etc/profile root@cent90:/etc/profile  </code></pre></li>
 </ol>
-<h3 id="3-5-Spark-的启动和关闭"><a href="#3-5-Spark-的启动和关闭" class="headerlink" title="3.5  Spark 的启动和关闭"></a>3.5  Spark 的启动和关闭</h3><p>完成上述操作，就可以启动、运行 Spark 了。Spark 如果是基于 YARN，则在使用 Spark 前需要启动 Hadoop<br>YARN，启动命令如下：  </p>
+<h3 id="3-5-Spark-的启动和关闭"><a href="#3-5-Spark-的启动和关闭" class="headerlink" title="3.5  Spark 的启动和关闭"></a>3.5  Spark 的启动和关闭</h3><p>完成上述操作，就可以启动、运行 Spark 了。Spark 如果是基于 YARN，则在使用 Spark 前需要启动 Hadoop YARN，启动命令如下：  </p>
 <pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3/
 [hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-dfs.sh
 [hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-yarn.sh   </code></pre><ol>
