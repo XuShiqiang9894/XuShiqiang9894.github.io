@@ -6,17 +6,46 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: java | 徐仕强的博客</title>
+  <title>linux命令以及软件安装项目部署 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机学生一枚，没啥特点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐仕强的博客">
-<meta property="og:url" content="http://yoursite.com/tags/java/page/2/index.html">
+  <meta name="description" content="为啥要学习linux？在很多场景，服务器一般都不用windows，一是因为windows付费，一个大项目n个机器，则要买n个系统。二是linux漏洞少，全球的人都在维护。三则是linux内核是开源的，所以是免费的。本次博客主要介绍linux的常用命令以及常用的软件的安装，如jdk、tomcat等，在后期部署项目也更加得心应手。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux命令以及软件安装项目部署">
+<meta property="og:url" content="http://yoursite.com/2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="计算机学生一枚，没啥特点">
+<meta property="og:description" content="为啥要学习linux？在很多场景，服务器一般都不用windows，一是因为windows付费，一个大项目n个机器，则要买n个系统。二是linux漏洞少，全球的人都在维护。三则是linux内核是开源的，所以是免费的。本次博客主要介绍linux的常用命令以及常用的软件的安装，如jdk、tomcat等，在后期部署项目也更加得心应手。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYLTrNDAq1kTNE69A11c.b9dBiEtNQeokvATiHPPoj35EEcd5*SfEpzflVDp*7AGK4CyHX4qF1AK6o5S.ZWw6p0!/b&bo=SgJsAQAAAAADBwc!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGWLq.hWx4c2CYuQwV7FLWPqBXO2Dpl93XO.11bfsxPXvjExWiPV8G*FWVyyyk60hvQuvF6Wtq7HS3tchkBfbDk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="og:image" content="http://imgsrc.baidu.com/forum/w%3D580/sign=00fefe23dd09b3deebbfe460fcbe6cd3/940f918fa0ec08fa078d4aec55ee3d6d54fbdafc.jpg">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKuiKS6nv9xTxbSVeTLwupcfop6TJytWqnYwxv7EjiTciWSo9WN.cpmVQh1zIt6yCzfipVG4V1AJrqERvxzI1o8!/b&bo=NAQ.AwAAAAADNx8!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEAFsfx6LvndId43rbhf*Xd4bZkgr3pDilqR7MzRohA072ZwAvtRMTUmuIzLLwAwE5*f..Hp9HiyXVV4QDjs4AtE!/b&bo=1gO7AAAAAAADF1w!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqb*2gF1TObJv24MWsqZjNfyUi4Msus2.H.TsXBvpPBBZLu7wYOakTJlvhfqymaJ7F1x1SQVMY0PjBsgAH5Xo2OY!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHji.q2sa*omv0Qy0soIC1Vxc7*eAnkaGmA5jwQW4BKFTvxHHdZ9Kxunwk2SKq..vRQmiiJ1Y3*w6GfwzWWuFuM!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDHntAM4P7*R9vnrRnCzESVno6B1VauJn9YILmx9V.bAv8nJvAT7kHoGmHdHR1kzQFQiWLwg1kR2gcCwfUH*RLk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqc9ttJC8HR7qfGzc7HLsd7.tDHi6x9xN9pdQ2ruOcCTTuSShtfEgksWJTftbGeo.zHX8WyELQ5LrmaIUVO*hcl4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMTiZMsVSRMBwD5LCIYyGQaEBPOHNaJtKKRciyUqAbCu2XYLlctusyNcSFUn.tMS*MspN89PHKdfiyx0SNordO8!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEP.9lKzzHTr4DedSi7yNGvk8DCIqiiOUmMJsHzY2utORTrkVZ2OZ.svhpR11KPBUmuyEsOyPM18Fp3Si.IMOZpY!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELq*ZXub.gbMXjdT610LNNsrZ7fR6ozSwx4tZBy7uIXEYLYt4meVtOer8Qs1meVtPx59ktD.z*ZM70fwLzotgUo!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK50LTeLq5qR5UEqswmoFfK9oCzVCEJopgB19iBT87t41G8*znmxCCMOzBIOl0U5aJbZi48UQkv.zv.Hvv3VgX8!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGP300YcFq.STnLwjHvp.dRoYXRdx9LH4GvyuuOz0DqkEZSG3gZb4VgHojDamKBdA7m0vY.UG7*4lqOThXRfKWo!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSopABYhApVlcgu6jzog1fXnZ5fSTL2MD1CsqpDjl*9IPxE0*38NxdAZBVIygo7aNI89mmUXvmZnPkiYkZGSddE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdAePZYaQJBJVTmWSawUTgYpuOpYVGIr9Fm5l0Oz5RjXym17663gK5bCC7qdB0L80Sxjat36qiEFBi1Dl9uAvBo!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYN2aZakofI02SQCeNAwDodmv2LgLLDSLXevIMpZzej0kK5S5VC5ZoOlRlGry5JcSwPcI5OpWmN6dlhxHw1onGU!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYq2S0aSCw.sp2t6V97MN7LamxM11E8dfiq0kXbzyB3km*UMiZuyJqBQkQBB17z2ueXa3PAnofrdeIHU70Kgyhw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHH6cyoCltKh2WNyKh2y1M7yFJ60r4*gV0grRwZQkLB3Jxz8rOIBjrzqzVnC3ZrujUK8NwBFOeO7H3LnpWJZpqA!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcXkf2g9P0nkUMUILud29UFCEza1JyDGB8ORIKVo*SENwd1FH9gcGLB03u5ys9vgXUrV77hlkYERaS4zI4KLsKE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ*nCgcgTf898ITmWrSnt.T2VFcM2YHN0za0D*hkelB8vHrS8KkojH9xm.NCpPFmwSdSak*Cgx3lFRm7kc*BlBk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZooU3fdkQKbLgM9PSHKr8D*YtmCXUw1x9ag3h6u*WkyQSePC*ifBDGcBhBnMQZi6OFj.nV2jbWG8gWOJ7vt.4s!/b&bo=mAYrAgAAAAADB5U!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYSMX0nAgrza2ih9xnYra3OipYR7vCLAqdZkAgpgtQaGy409UubaKJ9M.ESLjbHL4RelMecskkkls0NIrYw.cl4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZrczg0EdXGAuKP9x4RAoMy4x5BWbPlW0uV*dQh1A3Du37hzpUrLhVAVCgeUXthZ6tSnIOk2ObcKi3txnbbfP.c!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIWqyRGDefTYjq8TNv3cYQFxiip0wn2Npj7HR06iDHb0WeOEKH0PV68.GOhjmpUuII*fyrEiF18goDVC0a0YnlU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-07-29T05:08:36.000Z">
+<meta property="article:modified_time" content="2020-07-29T05:12:36.815Z">
 <meta property="article:author" content="徐仕强">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYLTrNDAq1kTNE69A11c.b9dBiEtNQeokvATiHPPoj35EEcd5*SfEpzflVDp*7AGK4CyHX4qF1AK6o5S.ZWw6p0!/b&bo=SgJsAQAAAAADBwc!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -171,141 +200,464 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-linux命令以及软件安装项目部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux命令以及软件安装项目部署
+    </h1>
+  
+
+        
+         
+        <!-- 不蒜子统计 -->
+        <span  class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+  	<time datetime="2020-07-29T05:08:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+		<!-- 需要添加的位置 -->
+         <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.2k字</span>
+      </span>
+    </span>
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">16分</span>
+      </span>
+    </span>
+</div>
+          
+          <!-- 添加完成 -->
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为啥要学习linux？在很多场景，服务器一般都不用windows，一是因为windows付费，一个大项目n个机器，则要买n个系统。二是linux漏洞少，全球的人都在维护。三则是linux内核是开源的，所以是免费的。本次博客主要介绍linux的常用命令以及常用的软件的安装，如jdk、tomcat等，在后期部署项目也更加得心应手。</p>
+<a id="more"></a>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>为了方便输入指令，这里我就直接用xshell来连接系统操作了，同时也是因为之后几乎都是拿一个账号密码，操作远端的linux服务器，提前熟悉也比较好。  </p>
+<h2 id="1-Linux的目录结构"><a href="#1-Linux的目录结构" class="headerlink" title="1.Linux的目录结构"></a>1.Linux的目录结构</h2><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYLTrNDAq1kTNE69A11c.b9dBiEtNQeokvATiHPPoj35EEcd5*SfEpzflVDp*7AGK4CyHX4qF1AK6o5S.ZWw6p0!/b&bo=SgJsAQAAAAADBwc!&rf=viewer_4" alt="">    </p>
+<p>root管理员的home目录root,我现在为了方便，就直接用root用户操作了，免得之后权限受限，之后工作学习中不可能用到root的用户，因为权限太大。其他用户的home目录home目录中。    </p>
+<h2 id="2-Linux的常用命令"><a href="#2-Linux的常用命令" class="headerlink" title="2.Linux的常用命令"></a>2.Linux的常用命令</h2><h3 id="2-1-切换目录命令：cd"><a href="#2-1-切换目录命令：cd" class="headerlink" title="2.1 切换目录命令：cd"></a>2.1 切换目录命令：cd</h3><pre><code>cd ..        切换到上一层目录  
+cd /        切换到系统根目录  
+cd ~        切换到用户主目录  
+cd -        切换到上一个所在目录  </code></pre><blockquote>
+<p>可以使用tab键来补全文件路径，可以多按几次来换   </p>
+</blockquote>
+<h3 id="2-2-列出文件列表：ls-ll"><a href="#2-2-列出文件列表：ls-ll" class="headerlink" title="2.2 列出文件列表：ls ll"></a>2.2 列出文件列表：ls ll</h3><p>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。    格式：ls[参数] [路径或文件名]</p>
+<pre><code>ls
+ls -a  显示所有文件或目录（包含隐藏的文件）
+ls -l  缩写成ll  ll是查看文件的详细信息如图  </code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGWLq.hWx4c2CYuQwV7FLWPqBXO2Dpl93XO.11bfsxPXvjExWiPV8G*FWVyyyk60hvQuvF6Wtq7HS3tchkBfbDk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">     </p>
+<p>他的前面由10位组成之后再说它的含义吧</p>
+<blockquote>
+<p>在linux中以 . 开头的文件都是隐藏的文件    </p>
+</blockquote>
+<h3 id="2-3-创建目录和移除目录：mkdir-rmdir"><a href="#2-3-创建目录和移除目录：mkdir-rmdir" class="headerlink" title="2.3 创建目录和移除目录：mkdir rmdir"></a>2.3 创建目录和移除目录：mkdir rmdir</h3><p>mkdir(make directory)命令可用来创建子目录：</p>
+<pre><code>mkdir app    在当前目录下创建app目录
+mkdir –p app2/test  级联创建aap2以及test目    </code></pre><p>rmdir(remove directory)命令可用来删除“空”的子目录：</p>
+<pre><code>rmdir app   删除app目录，这个到一般不用多少。   </code></pre><h3 id="2-4-浏览文件：cat、more、less-tail"><a href="#2-4-浏览文件：cat、more、less-tail" class="headerlink" title="2.4 浏览文件：cat、more、less tail"></a>2.4 浏览文件：cat、more、less tail</h3><p>cat用于显示文件的内容。格式：cat[参数]&lt;文件名&gt;  </p>
+<pre><code>cat yum.conf  </code></pre><p>more一般用于要显示的内容会超过一个画面长度的情况。按空格键显示下一个画面。回车显示下一行内容。按 q 键退出查看。  </p>
+<pre><code>more yum.conf  </code></pre><p>less用法和more类似，不同的是less可以通过PgUp、PgDn键来控制。  </p>
+<pre><code>less yum.conf  </code></pre><p>tail命令是在实际使用过程中使用非常多的一个命令，它的功能是：用于显示文件后几行的内容。用法:  </p>
+<pre><code>tail -10 /etc/passwd    查看后10行数据
+tail -f catalina.log    动态查看日志(*****)   </code></pre><p>动态就是如果日志改变，显示的也随之改变，主要用来看报错信息。按ctrl+c 结束查看。  </p>
+<h3 id="2-5-文件操作：rm-cp、mv-tar-find-grep"><a href="#2-5-文件操作：rm-cp、mv-tar-find-grep" class="headerlink" title="2.5 文件操作：rm cp、mv tar find grep"></a>2.5 文件操作：rm cp、mv tar find grep</h3><p>rm  删除文件 用法：rm [选项]… 文件…   </p>
+<pre><code>rm a.txt   删除a.txt文件  </code></pre><blockquote>
+<p>删除需要用户确认，y/n     </p>
+</blockquote>
+<p>rm 删除不询问   </p>
+<pre><code>rm -f a.txt   不询问，直接删除rm 删除目录   
+rm -r a     递归删除，这个意思就是能删除文件夹的意思
+rm -rf  a    不询问递归删除（慎用）
+rm -rf *      删除所有文件
+rm -rf /*     自杀     </code></pre><p><img src="http://imgsrc.baidu.com/forum/w%3D580/sign=00fefe23dd09b3deebbfe460fcbe6cd3/940f918fa0ec08fa078d4aec55ee3d6d54fbdafc.jpg" alt=""> </p>
+<p>cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录。  </p>
+<pre><code>cp a.txt b.txt    将a.txt复制为b.txt文件
+cp a.txt ../    将a.txt文件复制到上一层目录中</code></pre><p>mv 移动或者重命名  </p>
+<pre><code>mv a.txt ../    将a.txt文件移动到上一层目录中
+mv a.txt b.txt    将a.txt文件重命名为b.txt  </code></pre><p>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件。常用参数：  </p>
+<pre><code>-c：创建一个新tar文件
+-v：显示运行过程的信息
+-f：指定文件名
+-z：调用gzip压缩命令进行压缩
+-t：查看压缩文件的内容
+-x：解开tar文件</code></pre><p>打包：  </p>
+<pre><code>tar –cvf xxx.tar ./*  </code></pre><p>打包并且压缩：  </p>
+<pre><code>tar –zcvf xxx.tar.gz ./* </code></pre><p>解压   </p>
+<pre><code>tar –xvf xxx.tar  不带 .gz则不用加z参数
+tar -zxvf xxx.tar.gz -C /usr/aaa  解压到指定文件夹加一个 -C      </code></pre><p>find指令用于查找符合条件的文件,示例：  </p>
+<pre><code>find / -name “ins*” 查找文件名称是以ins开头的文件
+find / -name “ins*” –ls 
+find / –user itcast –ls 查找用户itcast的文件
+find / –user itcast –type d –ls 查找用户itcast的目录
+find /-perm -777 –type d-ls 查找权限是777的文件   </code></pre><p>grep查找文件里符合条件的字符串。用法: grep [选项]… PATTERN [FILE]…示例：  </p>
+<pre><code>grep lang anaconda-ks.cfg  在文件中查找lang
+grep lang anaconda-ks.cfg –-color 高亮显示搜的词
+grep lang anaconda-ks.cfg –-color -A1 -B1  </code></pre><blockquote>
+<p>-A1:A是after的意思，表示显示搜索结果下一行；同理-B1就不用说了。  </p>
+</blockquote>
+<h3 id="2-6-其他常用命令：pwd-touch-clear"><a href="#2-6-其他常用命令：pwd-touch-clear" class="headerlink" title="2.6 其他常用命令：pwd touch clear"></a>2.6 其他常用命令：pwd touch clear</h3><p>pwd:显示当前所在目录  </p>
+<p>touch:创建一个空文件    </p>
+<pre><code>touch a.txt  </code></pre><p>clear/ crtl + L :清屏  </p>
+<h2 id="3-Vi和Vim编辑器"><a href="#3-Vi和Vim编辑器" class="headerlink" title="3.Vi和Vim编辑器"></a>3.Vi和Vim编辑器</h2><p>在Linux下一般使用vi编辑器来编辑文件。vi既可以查看文件也可以编辑文件,vim是vi的加强版。三种模式：命令行、插入、底行模式。   </p>
+<p>切换到命令行模式：按Esc键；  </p>
+<p>切换到插入模式：按 i 、o、a键;(只要知道i就行了)</p>
+<p>切换到底行模式：按 :（冒号）;（一般是shift+;）  </p>
+<p>基本流程：  </p>
+<pre><code>打开文件：vim file  
+退出：esc :q  
+修改文件：输入i进入插入模式  
+保存并退出：esc :wq  
+不保存退出：esc :q!   </code></pre><p>三种进入插入模式：   </p>
+<pre><code>i:在当前的光标所在处插入
+o:在当前光标所在的行的下一行插入
+a:在光标所在的下一个字符插入</code></pre><p>快捷键：   </p>
+<pre><code>dd – 快速删除一行
+yy - 复制当前行
+nyy - 从当前行向后复制几行
+p - 粘贴
+R – 替换  </code></pre><blockquote>
+<p>vim一般用来改配置文件，这里有个小技巧。比如要修改tomcat端口号，则进入命令行模式后<code>:/8080</code>就可以高亮显示出来，再i编辑即可。vim一个不存在的文件则会自动新建一个。    </p>
+</blockquote>
+<h2 id="4-重定向输出-gt-和-gt-gt"><a href="#4-重定向输出-gt-和-gt-gt" class="headerlink" title="4.重定向输出&gt;和&gt;&gt;"></a>4.重定向输出&gt;和&gt;&gt;</h2><p><code>&gt;</code>重定向输出，覆盖原有内容；<code>&gt;&gt;</code>重定向输出，又追加功能；示例：  </p>
+<pre><code>cat /etc/passwd &gt; a.txt  将输出定向到a.txt中,覆盖原有内容。   
+cat /etc/passwd &gt;&gt; a.txt  输出并且追加，原有内容仍有。</code></pre><p>ifconfig &gt; ifconfig.txt 这个说明了只要在控制台上有输出，<code>&gt;</code>、<code>&gt;&gt;</code>就可以将内容写到文件中。  </p>
+<h2 id="5-系统管理命令"><a href="#5-系统管理命令" class="headerlink" title="5.系统管理命令"></a>5.系统管理命令</h2><pre><code>ps 正在运行的某个进程的状态
+ps –ef  查看所有进程(有点像windows的任务管理器看进程)
+ps –ef | grep ssh 查找某一进程（竖杠&quot;|&quot;之后用上面的grep搜索，方便找到想找的进程）  
+
+kill 2868  杀掉2868编号的进程
+kill -9 2868  强制杀死进程（加&quot;-9&quot;,就是强制删除）  </code></pre><h2 id="6-管道"><a href="#6-管道" class="headerlink" title="6.管道 |"></a>6.管道 |</h2><p>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。示例：  </p>
+<pre><code>ls --help | more  分页查询帮助信息
+ps –ef | grep java  查询名称中包含java的进程
+
+ifconfig | more
+cat index.html | more
+ps –ef | grep aio</code></pre><blockquote>
+<p>简单理解就是前者的输出作为后者的输入进行操作。   </p>
+</blockquote>
+<h2 id="7-Linux的权限命令"><a href="#7-Linux的权限命令" class="headerlink" title="7.Linux的权限命令"></a>7.Linux的权限命令</h2><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKuiKS6nv9xTxbSVeTLwupcfop6TJytWqnYwxv7EjiTciWSo9WN.cpmVQh1zIt6yCzfipVG4V1AJrqERvxzI1o8!/b&bo=NAQ.AwAAAAADNx8!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEAFsfx6LvndId43rbhf*Xd4bZkgr3pDilqR7MzRohA072ZwAvtRMTUmuIzLLwAwE5*f..Hp9HiyXVV4QDjs4AtE!/b&bo=1gO7AAAAAAADF1w!&rf=viewer_4" alt="">  </p>
+<blockquote>
+<p>普通文件（-）目录（d）符号链接（l）：其中<code>l</code>类似于windows快捷方式，指向真正的地址。   </p>
+</blockquote>
+<h3 id="文件权限管理："><a href="#文件权限管理：" class="headerlink" title="文件权限管理："></a>文件权限管理：</h3><pre><code>chmod 变更文件或目录的权限。
+chmod 755 a.txt 
+chmod u=rwx,g=rx,o=rx a.txt    </code></pre><p>用数字比较方便也比较普遍，最大权限神秘数字<code>777</code>。  </p>
+<h2 id="8-Linux上常用网络操作"><a href="#8-Linux上常用网络操作" class="headerlink" title="8.Linux上常用网络操作"></a>8.Linux上常用网络操作</h2><p>这一部分在之前的hadoop的配置中用到过，现单独分一个模块讲解。  </p>
+<h3 id="8-1主机名配置"><a href="#8-1主机名配置" class="headerlink" title="8.1主机名配置"></a>8.1主机名配置</h3><pre><code>hostname 查看主机名
+hostname xxx 修改主机名 重启后无效  </code></pre><blockquote>
+<p>如果想要永久生效，可以修改/etc/sysconfig/network文件  </p>
+</blockquote>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqb*2gF1TObJv24MWsqZjNfyUi4Msus2.H.TsXBvpPBBZLu7wYOakTJlvhfqymaJ7F1x1SQVMY0PjBsgAH5Xo2OY!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </p>
+<h3 id="8-2IP地址配置"><a href="#8-2IP地址配置" class="headerlink" title="8.2IP地址配置"></a>8.2IP地址配置</h3><p>用动态获取ip，IP地址就一直变，不好操作了，所以很多时候改用静态。  </p>
+<pre><code>ifconfig 查看(修改)ip地址(重启后无效)
+ifconfig eth0 192.168.12.22 修改ip地址  </code></pre><blockquote>
+<p>如果想要永久生效，修改 /etc/sysconfig/network-scripts/ifcfg-eth0文件  </p>
+</blockquote>
+<pre><code>DEVICE=eth0 #网卡名称
+修改一：ONBOOT=yes #  系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备。
+修改二：BOOTPROTO=static #获取ip的方式(static/dhcp/bootp/none)
+HWADDR=00:0C:29:B5:B2:69 #MAC地址
+
+由于变成静态，就要自己加下面四项：
+IPADDR=12.168.177.129 #IP地址
+NETMASK=255.255.255.0 #子网掩码
+NETWORK=192.168.177.0 #网络地址
+BROADCAST=192.168.0.255 #广播地址  </code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHji.q2sa*omv0Qy0soIC1Vxc7*eAnkaGmA5jwQW4BKFTvxHHdZ9Kxunwk2SKq..vRQmiiJ1Y3*w6GfwzWWuFuM!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt=""><br>可以用source 文件名，使配置改动立即生效。 </p>
+<h3 id="8-3域名映射"><a href="#8-3域名映射" class="headerlink" title="8.3域名映射"></a>8.3域名映射</h3><p>/etc/hosts文件用于在通过主机名进行访问时做ip地址解析之用,相当于windows系统的C:\Windows\System32\drivers\etc\hosts文件的功能<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDHntAM4P7*R9vnrRnCzESVno6B1VauJn9YILmx9V.bAv8nJvAT7kHoGmHdHR1kzQFQiWLwg1kR2gcCwfUH*RLk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">   </p>
+<p>域名和ip一一对应。</p>
+<h3 id="8-4网络服务管理"><a href="#8-4网络服务管理" class="headerlink" title="8.4网络服务管理"></a>8.4网络服务管理</h3><pre><code>service network status 查看指定服务的状态
+service network stop 停止指定服务
+service network start 启动指定服务
+service network restart 重启指定服务  </code></pre><blockquote>
+<p>服务名可换，network可以换成其他服务名</p>
+</blockquote>
+<pre><code>service --status–all 查看系统中所有后台服务
+netstat –nltp 查看系统中网络进程的端口监听情况</code></pre><p>防火墙设置<br>防火墙根据配置文件/etc/sysconfig/iptables来控制本机的”出”、”入”网络访问行为。  </p>
+<pre><code>service iptables status 查看防火墙状态
+service iptables stop 关闭防火墙
+service iptables start 启动防火墙
+chkconfig  iptables off 禁止防火墙自启   </code></pre><h1 id="Linux上软件安装"><a href="#Linux上软件安装" class="headerlink" title="Linux上软件安装"></a>Linux上软件安装</h1><ul>
+<li>Linux上的软件安装有以下几种常见方式介绍  <ol>
+<li>二进制发布包<br>软件已经针对具体平台编译打包发布，只要解压，修改配置即可（缺点不兼容）  </li>
+<li>RPM包<br>软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装（缺点没有相关依赖软件可能安装失败）  </li>
+<li>Yum在线安装<br>软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，并且会自动解决软件安装过程中的库依赖问题（缺点要网，哈哈）  </li>
+<li>源码编译安装<br>软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。（redis安装好像是这样）    </li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>上传与下载工具介绍   <ol>
+<li>FileZilla    </li>
+<li>lrzsz    </li>
+<li>sftp  </li>
+<li>xshell上相关的xftp()<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqc9ttJC8HR7qfGzc7HLsd7.tDHi6x9xN9pdQ2ruOcCTTuSShtfEgksWJTftbGeo.zHX8WyELQ5LrmaIUVO*hcl4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </li>
+</ol>
+</li>
+</ul>
+<p>具体我就不一一下载演示了，很简单。</p>
+<blockquote>
+<p>1.为什么最好不用VMware复制windows的安装包到linux呢？因为在未来的学习或者工作中，你不可能在一个设备里同时操作客户端和服务端。一般来说我们操作自己的设备，远程连接服务器端，这时就要用相关的软件，完成软件或者数据的上传至服务器，或下载至终端。<br>2.FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP协议包括两个组成部分，其一为FTP服务器，其二为FTP客户端。其中FTP服务器用来存储文件，用户可以使用FTP客户端通过FTP协议访问位于FTP服务器上的资源。在开发网站的时候，通常利用FTP协议把网页或程序传到Web服务器上。此外，由于FTP传输效率非常高，在网络上传输大的文件时，一般也采用该协议。     </p>
+</blockquote>
+<h2 id="JDK的安装"><a href="#JDK的安装" class="headerlink" title="JDK的安装"></a>JDK的安装</h2><p>锁有的软件在安装之前，要先看看自己安装的linux系统是多少位的（普遍64位吧），<code>getconf LONG_BIT</code><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMTiZMsVSRMBwD5LCIYyGQaEBPOHNaJtKKRciyUqAbCu2XYLlctusyNcSFUn.tMS*MspN89PHKdfiyx0SNordO8!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt=""><br>之前说过我就不多说了，也就是卸载openJDK，解压，配置环境变量。<br>还是简单说一下吧    </p>
+<pre><code># 查看jdk版本
+java –version
+# 查看安装的jdk信息
+rpm -qa | grep java
+# 卸载jdk
+rpm -e --nodeps   （这个后面接上一步查询的openjdk）   </code></pre><p>然后解压<code>tar -zxvf 你的压缩包 -C 目标文件夹</code><br>最后配置环境变量  </p>
+<pre><code>1. vim /etc/profile
+2. 在末尾行添加
+  #set java environment
+  JAVA_HOME=/你安装的目录/你的jdk版本
+   CLASSPATH=.:$JAVA_HOME/lib.tools.jar
+  PATH=$JAVA_HOME/bin:$PATH
+  export JAVA_HOME CLASSPATH PATH
+  保存退出  
+3. source /etc/profile  使更改的配置立即生效    </code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEP.9lKzzHTr4DedSi7yNGvk8DCIqiiOUmMJsHzY2utORTrkVZ2OZ.svhpR11KPBUmuyEsOyPM18Fp3Si.IMOZpY!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">    </p>
+<h2 id="mysql的安装"><a href="#mysql的安装" class="headerlink" title="mysql的安装"></a>mysql的安装</h2><p>我这里是linux7，下载Redhat的公司选择7即可，<a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">下载地址</a> 。这里软件有点大，直接用<a href="http://mirrors.ustc.edu.cn" target="_blank" rel="noopener">中科大镜像源</a>，进去之后选择mysql-ftp,选择你想安装的版本，下载你的linux对应的版本。</p>
+<p>这里我现在usr/local下新建一个mysql文件夹<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELq*ZXub.gbMXjdT610LNNsrZ7fR6ozSwx4tZBy7uIXEYLYt4meVtOer8Qs1meVtPx59ktD.z*ZM70fwLzotgUo!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt=""><br>然后把下载好的mysql安装包上传到该目录。(这个下错了版本！！64位是x86_64)<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK50LTeLq5qR5UEqswmoFfK9oCzVCEJopgB19iBT87t41G8*znmxCCMOzBIOl0U5aJbZi48UQkv.zv.Hvv3VgX8!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">    </p>
+<blockquote>
+<p>如果显示错误，没有许可就是权限问题，修改local文件夹权限。其他用户没有写入的权限，直接改成777。<code>chmod 777 local</code>  </p>
+</blockquote>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGP300YcFq.STnLwjHvp.dRoYXRdx9LH4GvyuuOz0DqkEZSG3gZb4VgHojDamKBdA7m0vY.UG7*4lqOThXRfKWo!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4" alt=""> </p>
+<p>解压<code>tar -xvf 名字</code><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSopABYhApVlcgu6jzog1fXnZ5fSTL2MD1CsqpDjl*9IPxE0*38NxdAZBVIygo7aNI89mmUXvmZnPkiYkZGSddE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""></p>
+<p>这里有几个rpm包，我们只需要把服务端和客户端安装就行了,用<code>rpm -ivh 名字</code>安装。<br>common-lib-client-server的顺序。<br>安装完之后启动服务<code>systemctl start mysqld.service</code>之前用service mysql start一直出错，后来才知道启动服务mysqld。<br>然后就是设置跳过需要密码登陆，创一个密码，我用的mysql8，设密码必须要包含大小写、特殊字符、数字。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdAePZYaQJBJVTmWSawUTgYpuOpYVGIr9Fm5l0Oz5RjXym17663gK5bCC7qdB0L80Sxjat36qiEFBi1Dl9uAvBo!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br>成功登陆，在这里记一下我linux的mysql密码：Xu@123456,免得之后忘了。<br><strong>设置远程访问权限：</strong><br>MySQL8的操作有些不同，先<code>use mysql</code>，再<code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;;</code>,再刷新一下权限<code>flush privileges;</code><br>这一步可能有各种各样的错误，根据自身情况调一下，有时可能要关闭防火墙，有时可能要改加密规则。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYN2aZakofI02SQCeNAwDodmv2LgLLDSLXevIMpZzej0kK5S5VC5ZoOlRlGry5JcSwPcI5OpWmN6dlhxHw1onGU!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br>最后结果用windows下的navicat可以访问数据库即成功。  </p>
+<h2 id="tomcat的安装"><a href="#tomcat的安装" class="headerlink" title="tomcat的安装"></a>tomcat的安装</h2><p>tomcat简单，解压即可用。    </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYq2S0aSCw.sp2t6V97MN7LamxM11E8dfiq0kXbzyB3km*UMiZuyJqBQkQBB17z2ueXa3PAnofrdeIHU70Kgyhw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </p>
+<p>在tomcat/bin目录下执行 <code>./startup.sh</code> 关闭<code>./shutdown.sh</code>    </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHH6cyoCltKh2WNyKh2y1M7yFJ60r4*gV0grRwZQkLB3Jxz8rOIBjrzqzVnC3ZrujUK8NwBFOeO7H3LnpWJZpqA!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4" alt="">    </p>
+<p>本地可以访问tomcat即可，这里由于我的win10与linux在一台电脑，ip地址在同一网段，所以win10浏览器测试访问即可。    </p>
+<blockquote>
+<p>若需要看日志，只需要<code>cat tomcat/logs/catalina.out</code>即可。   </p>
+</blockquote>
+<h2 id="redis的安装"><a href="#redis的安装" class="headerlink" title="redis的安装"></a>redis的安装</h2><p>redis的安装有点特殊，官方只提供了源码，要自己编译，由于redis是用C写的，所以linux就要先配置C的环境。  </p>
+<h3 id="第一步-配置C环境"><a href="#第一步-配置C环境" class="headerlink" title="第一步 配置C环境"></a>第一步 配置C环境</h3><p><code>yum install gcc-c++</code>这里我的yum被端口3656占用，<code>kill -9 3656</code>强制关闭后执行，安装成功。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcXkf2g9P0nkUMUILud29UFCEza1JyDGB8ORIKVo*SENwd1FH9gcGLB03u5ys9vgXUrV77hlkYERaS4zI4KLsKE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">    </p>
+<p>安装过程中需要输入<code>y</code>,最后安装出现complete！即安装完成。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ*nCgcgTf898ITmWrSnt.T2VFcM2YHN0za0D*hkelB8vHrS8KkojH9xm.NCpPFmwSdSak*Cgx3lFRm7kc*BlBk!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">   </p>
+<h3 id="第二部下载安装redis"><a href="#第二部下载安装redis" class="headerlink" title="第二部下载安装redis"></a>第二部下载安装redis</h3><ul>
+<li><p>下载<br><code>wget http://download.redis.io/releases/redis-3.0.4.tar.gz</code>直接用命令去网址下载即可。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZooU3fdkQKbLgM9PSHKr8D*YtmCXUw1x9ag3h6u*WkyQSePC*ifBDGcBhBnMQZi6OFj.nV2jbWG8gWOJ7vt.4s!/b&bo=mAYrAgAAAAADB5U!&rf=viewer_4" alt="">    </p>
+</li>
+<li><p>解压<br><code>tar -zxvf redis-3.0.4.tar.gz</code>,我解压到/usr/local目录。  </p>
+</li>
+<li><p>编译安装<br>进入的你解压了的目录，<code>make</code>命令编译，这一步就生成了很多c文件，C环境没配置成功的话这步就失败了。   </p>
+</li>
+</ul>
+<p>编译了之后，就可以执行安装命令<code>make PREFIX=/usr/local/redis install</code>了可以不需要prefix指定安装目录，最好指定吧。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYSMX0nAgrza2ih9xnYra3OipYR7vCLAqdZkAgpgtQaGy409UubaKJ9M.ESLjbHL4RelMecskkkls0NIrYw.cl4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br>进入安装目录下的bin，有以下几个文件：    </p>
+<ul>
+<li>redis-server：Redis服务器端启动程序</li>
+<li>redis-cli：Redis客户端操作工具。也可以用telnet根据其纯文本协议来操作</li>
+<li>redis-benchmark：Redis性能测试工具</li>
+<li>redis-check-aof：数据修复工具</li>
+<li>redis-check-dump：检查导出工具   </li>
+</ul>
+<h3 id="配置redis"><a href="#配置redis" class="headerlink" title="配置redis"></a>配置redis</h3><p><code>[root@cent88 redis-3.0.4]# cp ./redis.conf /usr/local/redis/bin</code>在解压的文件夹，将配置文件复制到安装文件夹下的bin目录，其余配置之后再说。  </p>
+<h3 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h3><p><code>./redis-server redis.conf</code>启动服务端    </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZrczg0EdXGAuKP9x4RAoMy4x5BWbPlW0uV*dQh1A3Du37hzpUrLhVAVCgeUXthZ6tSnIOk2ObcKi3txnbbfP.c!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">     </p>
+<p><code>./redis-cli</code>打开一个新得会话窗口，启动客户端  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIWqyRGDefTYjq8TNv3cYQFxiip0wn2Npj7HR06iDHb0WeOEKH0PV68.GOhjmpUuII*fyrEiF18goDVC0a0YnlU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">   </p>
+<h3 id="项目导入linux需要注意的事项"><a href="#项目导入linux需要注意的事项" class="headerlink" title="项目导入linux需要注意的事项"></a>项目导入linux需要注意的事项</h3><ul>
+<li>修改pom.xml的jdk的配置。</li>
+<li>将数据库连接的相关配置更改，字符集、密码等。</li>
+<li>首先把项目中的绝对地址路径都换成相对路径，再打war包。</li>
+<li>将war包上传到tomcat中的webapps目录。</li>
+<li>重启tomcat。</li>
+<li>用navicat导出本地mysql数据，并导入linux中的mysql。  </li>
+</ul>
+<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>很重要！溜了溜了=。=</p>
+
+      
+	<!--  自加的代码 -->
+	
+       
+         <div class="essayending">
+           <div>
+            <div style="text-align:center;color: #ccc;font-size:22px;">
+            <br/>
+            <br/>
+ -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+            <br/>
+            <br/>
+             <br/>
+             <br/>
+            </div>
+           </div>
+         </div>
+         
+  
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zfbs.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wxs.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/" class="archive-article-date">
-  	<time datetime="2019-07-16T05:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%B8%89/">Java进阶三</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2019-07-16T02:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hadoop与spark集群的安装与配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/16/Java%E8%BF%9B%E9%98%B6%E4%BA%8C/">Java进阶二</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux"><span class="toc-number">1.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Linux的目录结构"><span class="toc-number">1.1.</span> <span class="toc-text">1.Linux的目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linux的常用命令"><span class="toc-number">1.2.</span> <span class="toc-text">2.Linux的常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-切换目录命令：cd"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 切换目录命令：cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-列出文件列表：ls-ll"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 列出文件列表：ls ll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-创建目录和移除目录：mkdir-rmdir"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 创建目录和移除目录：mkdir rmdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-浏览文件：cat、more、less-tail"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 浏览文件：cat、more、less tail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-文件操作：rm-cp、mv-tar-find-grep"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 文件操作：rm cp、mv tar find grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-其他常用命令：pwd-touch-clear"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 其他常用命令：pwd touch clear</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Vi和Vim编辑器"><span class="toc-number">1.3.</span> <span class="toc-text">3.Vi和Vim编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-重定向输出-gt-和-gt-gt"><span class="toc-number">1.4.</span> <span class="toc-text">4.重定向输出&gt;和&gt;&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-系统管理命令"><span class="toc-number">1.5.</span> <span class="toc-text">5.系统管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-管道"><span class="toc-number">1.6.</span> <span class="toc-text">6.管道 |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Linux的权限命令"><span class="toc-number">1.7.</span> <span class="toc-text">7.Linux的权限命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件权限管理："><span class="toc-number">1.7.1.</span> <span class="toc-text">文件权限管理：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Linux上常用网络操作"><span class="toc-number">1.8.</span> <span class="toc-text">8.Linux上常用网络操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1主机名配置"><span class="toc-number">1.8.1.</span> <span class="toc-text">8.1主机名配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2IP地址配置"><span class="toc-number">1.8.2.</span> <span class="toc-text">8.2IP地址配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3域名映射"><span class="toc-number">1.8.3.</span> <span class="toc-text">8.3域名映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4网络服务管理"><span class="toc-number">1.8.4.</span> <span class="toc-text">8.4网络服务管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux上软件安装"><span class="toc-number">2.</span> <span class="toc-text">Linux上软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK的安装"><span class="toc-number">2.1.</span> <span class="toc-text">JDK的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql的安装"><span class="toc-number">2.2.</span> <span class="toc-text">mysql的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tomcat的安装"><span class="toc-number">2.3.</span> <span class="toc-text">tomcat的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis的安装"><span class="toc-number">2.4.</span> <span class="toc-text">redis的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步-配置C环境"><span class="toc-number">2.4.1.</span> <span class="toc-text">第一步 配置C环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二部下载安装redis"><span class="toc-number">2.4.2.</span> <span class="toc-text">第二部下载安装redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置redis"><span class="toc-number">2.4.3.</span> <span class="toc-text">配置redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动redis"><span class="toc-number">2.4.4.</span> <span class="toc-text">启动redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目导入linux需要注意的事项"><span class="toc-number">2.4.5.</span> <span class="toc-text">项目导入linux需要注意的事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">3.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2019-07-15T10:42:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/15/Java%E8%BF%9B%E9%98%B6%E4%B8%80/">Java进阶一</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/java/">上一页</a><a class="page-number" href="/tags/java/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
   
 
 
@@ -343,9 +695,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
