@@ -6,26 +6,52 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java进阶八 | 徐仕强的博客</title>
+  <title>人工智能原理与应用一：python与感知机 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文档目的：1. 能够说出File对象的创建方式、File类获取名称的方法名称、File类获取绝对路径的方法名称、File类获取文件大小的方法名称、File类判断是否是文件的方法名称、File类判断是否是文件夹的方法名称。2. 能够辨别相对路径和绝对路径、能够遍历文件夹。3. 能够解释递归的含义、能够使用递归的方式计算5的阶乘，能够说出使用递归会内存溢出隐患的原因。">
+  <meta name="description" content="在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java进阶八">
-<meta property="og:url" content="http://yoursite.com/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/index.html">
+<meta property="og:title" content="人工智能原理与应用一：python与感知机">
+<meta property="og:url" content="http://yoursite.com/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="文档目的：1. 能够说出File对象的创建方式、File类获取名称的方法名称、File类获取绝对路径的方法名称、File类获取文件大小的方法名称、File类判断是否是文件的方法名称、File类判断是否是文件夹的方法名称。2. 能够辨别相对路径和绝对路径、能够遍历文件夹。3. 能够解释递归的含义、能够使用递归的方式计算5的阶乘，能够说出使用递归会内存溢出隐患的原因。">
+<meta property="og:description" content="在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEmqmW6zXF3Fyk1olwR8R6lIREHLuTiUiF5YAuN67E.7xwyf9gNqxfURa1HneXGBPCuNh1Y40L2n5vxblfXhNak!/b&bo=.gMCAgAAAAABF8k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEQwFDMlK*RwGcpS8Q0P2Ng3LZXhJCn3HJEDyk707pOimWqanHGx74GJjAc0qZrGciOQyJcTE8DCMmeSIKd*MBM!/b&bo=UAUPAgAAAAABF2g!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZJ315G5Nh9lZBYTElk0sQh0QtHGbdkwjW5G8Hyn0EnD7ynAinwMU6JpSbCtsKRuPZt7OAbXh8HQfbkbbc7FxSA!/b&bo=ZAMvAgAAAAABB2o!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHbryVUlZzOU9q94vB3aYrouTgLT2XXPltChKqr4hfvcf47ADlq0SXGbtxmNYDk25x7SaLpjkeO6iyENAD0imNU!/b&bo=LAW9AQAAAAABF6U!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMYmTKKxXpulveXtZxqogv0chqb3c28zSfPiLEFPVKg9MdLJA1ZrU3VWQ*m11EWYEZxtmO0K0O0LrueAfHR3ORM!/b&bo=UAUPAgAAAAABF2g!&rf=viewer_4">
-<meta property="article:published_time" content="2019-07-18T03:56:32.000Z">
-<meta property="article:modified_time" content="2020-07-18T04:01:15.536Z">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbHNeOEt.sNKzKWTHJVEuJebh32uunmLSqBdPfXWYgciESnPiaSxx36tCmiX*HbanEj5Wew2gpfMRNmnHBeVkB8!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfkuMIM7RZ*EPnmF8wz5kXApZhRbop6UheweLdqFX3zM4Y.1IzZdfF7B52xasen7frWs*s11lwqwv.xN.oJQayo!/b&bo=RAWXAQAAAAADB*U!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrENch2E1upBtMJI4GxgEblhaK9AlJYM26lQ*ZVzw2.fkJmYh9o8y2qwON35dxdp6D7EGZmUig3juRg4HGKeyntLI!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaw1xAhq4RibrrnnM6f7oB49yMz8j9FHRV3QTlJx2tzixLrz.0nEDtRcNO891LBB1QRW6vrjQEdEKfkjG8nGejs!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWZ.meOa0PlK049b5yK3MyoUO2yl.gyZlk03.ngj3AkrEQTW*Vi0n3VGBkpti8Eut*7GYBevHWTnNbBtwtZtWEc!/b&bo=pAL9AAAAAAADB3k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqViH1KFp36SVR98Hp6Hf.bw3NuR0PFfpV84OqDDmYqKiLPGfdFXkdmXIwanryOxLW7K6uzVWffilO3TBW*hep4o!/b&bo=IgJKAQAAAAADB0k!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKcVZniZAigXWcB3gbHsZg2nJHYlZnlCqG5fIHNfxQ1Qq76JVw1fDrlFhrxfPZ*veEdPwgPVcq.oeVLQWXw*LyM!/b&bo=KQTSAAAAAAADF80!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEA2.XQFCWfZt9v9J9QOEASvdMNT5yF2Tvc*TLjgZojw3HScuNdLNnLLgUr5GOIEAondXp8b6LjpX.b5gWYafkwg!/b&bo=BQXyAAAAAAADF8A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVXXgxn0P1DX7wMqihCYL33W4nbUi6quYhTiyQVLUmkZTUd6ihvww2LN3vSqr3ZHzrhXW2RslqVC*rPJXZcxJB4!/b&bo=bAJKAgAAAAADBwQ!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqT*suRg.7mNjLfDT4ID.RSHrknD4wKwlwjFMEeTk5VZfXjCiMyz55vL5g715PqFE1*41Cpa*ykBbKFyFVVQJ9gg!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQcv1ICpYBbghjVhXw6pK4ZtnUEsyvLlzkiVQB.wJ2BdBEoZCRJko8Ur5IPsFPzjPdMtd942ZySbFcB*W2vKZho!/b&bo=mwSnAQAAAAADBxs!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcv.qYOXlilVvqTOTHhyr88kIsNlaPCzeI8b6eerp4*V5wMfbiyVS3qG1dwHMoEFVunTazaXgYvd85Jqe98z6ZA!/b&bo=ZARoAQAAAAADBys!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZeVkRnxEomi0mcz7T9KxxXIuK.8OBzxB*VgfAO1gVynFMPhtAOBj0A77wh89PSIv*eYM4rRYAUKBhPJ4d*Q2Eg!/b&bo=TgQGAQAAAAADB28!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOv6lRbIrcxMfaSfaaNDzf*lXw*lyhC5qJF4*Kmujs1oOIBeg6z6XuCnXOyfrnscfWJGx6JRie0bVs3cLQ358JE!/b&bo=iAKyAQAAAAADFws!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRxOjG.hjz7CmB6fS.Cjs.6w42oQ1qFfNruCotJ6JblW*qaPyTF5Y4R*hGi2zvjxBeTPZJRGMGUYVvHRWmYoHSw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWbDd2AcVES7Y2l9mALRiNN1BbgmQRGt4lbdfkcnsAzpWrHnYxegq33IGKV49iiQwl7bYoji3eeMrtaamFvHDmc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeGlAbfPYEejSG0e2C5QGh.FbaNkIfSVmkTzCfzI0gyBut13oBnH9*9sWRFXp2.oG8udNoYtJvKoGFhTwAPgBME!/b&bo=RQOsAAAAAAADB8g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcQvMZpLmEz8A1FEJ5ebafZtIxPLZlfcjEAI04AeQkaSJo*sD5*y45.KPNfv9oaGVam9u13BzHclTcEN.iQTHAc!/b&bo=rQKDAQAAAAADBw8!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYbwfmVN6SweN36.rQ4H4fbj6SXNM9EeHn9Gla0fpBSyt74NX8wBPdqu9jCoMx0y4ROC4iaw0UOs8GzNxClV.UE!/b&bo=LAPIAAAAAAADB8U!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQBdPYvCpFq.2GNfS0Y6sEweC1Ls3OH6Chlj6vg1tdzcdWD4yEWtURre0LrjDMTzrWzBSLUaiAOf8kf2nx.TRuQ!/b&bo=uAKlAgAAAAADBz8!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBWpUBZe0CZxM2Ud4gCsUX7rvmdgi98eMw0zqEHZtQfG7xI5wc7FjfWmyBptpVj4MSdTTm.cGqWtgtCwzkHml6A!/b&bo=owJ*AgAAAAADF.4!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEADG6wO8jo19A.DqBr048Tff2*a01n96E1IJ0gWM0i.rsUysRX2VD7BKjrqw*lzoxwWiFmQUItuCX18V.EA1DPc!/b&bo=iAIhAgAAAAADF5s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqS7nEGoGkv2oRag63iq24BhEk8rA2Gd9Vn2e21us5PIV8scBjdus8LNapISt5Z2htLTIvsWbbm3ufxajU1KZvq4!/b&bo=WwPKAAAAAAADB7A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECTNopRSluTcauxp6IrlpPluQ6*BxhwJfPwzMJPN.5lQEI72QfTu1QA2kCWDuBsLCjK3jycNymTcHWFU4B4em2M!/b&bo=KQPeAAAAAAADF8Y!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSeIlyjXqkDZR6l3Cdh5v.7H9LbgVvZNtGUyBEfRe7yqGNZMhu48HbcLVQeQBhD2p4.*JtMV8fGcDZS5Ff.CCow!/b&bo=0gFgAQAAAAADB5A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIQNci0ZPyjuXFOLnvPfMz5pxeiV3k1CVvxHCSSV14xUqRl2vESpTylLS*VXfGQF.Kc8lMzrN964sqXN5UKRtZs!/b&bo=.wLvAQAAAAADFyU!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH5qmiAwIITxJ7iTThVq2eaqKH9BwkpkdHdOegGjFz3ztjJrVk5f0wAnYQHitNgDgGdPzF6T3qAQkU3JKwSnzKE!/b&bo=OQN.AQAAAAADF3c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-08-01T02:32:16.000Z">
+<meta property="article:modified_time" content="2020-08-01T02:38:44.399Z">
 <meta property="article:author" content="徐仕强">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEmqmW6zXF3Fyk1olwR8R6lIREHLuTiUiF5YAuN67E.7xwyf9gNqxfURa1HneXGBPCuNh1Y40L2n5vxblfXhNak!/b&bo=.gMCAgAAAAABF8k!&rf=viewer_4">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -180,14 +206,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Java进阶八" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-人工智能原理与应用一：python与感知机" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java进阶八
+      人工智能原理与应用一：python与感知机
     </h1>
   
 
@@ -198,8 +224,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/" class="archive-article-date">
-  	<time datetime="2019-07-18T03:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+<a href="/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2020-08-01T02:32:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
 </a>
 		<!-- 需要添加的位置 -->
          <!-- 开始添加字数统计-->
@@ -209,7 +235,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.3k字</span>
       </span>
     </span>
     <span class="post-time">
@@ -217,7 +243,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">12分</span>
       </span>
     </span>
 </div>
@@ -228,161 +254,183 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>文档目的：1. 能够说出File对象的创建方式、File类获取名称的方法名称、File类获取绝对路径的方法名称、File类获取文件大小的方法名称、File类判断是否是文件的方法名称、File类判断是否是文件夹的方法名称。2. 能够辨别相对路径和绝对路径、能够遍历文件夹。3. 能够解释递归的含义、能够使用递归的方式计算5的阶乘，能够说出使用递归会内存溢出隐患的原因。</p>
-<a id="more"></a>
-<h1 id="【File类、递归】"><a href="#【File类、递归】" class="headerlink" title="【File类、递归】"></a>【File类、递归】</h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ul>
-<li>File类</li>
-<li>递归</li>
+        <p>在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。  </p>
+<a id="more"></a> 
+<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><p>1.python的介绍（介绍主要用到的python语法）<br>2.感知机  </p>
+<h1 id="第一章-python的介绍"><a href="#第一章-python的介绍" class="headerlink" title="第一章 python的介绍"></a>第一章 python的介绍</h1><h2 id="1-python是什么"><a href="#1-python是什么" class="headerlink" title="1.python是什么"></a>1.python是什么</h2><ul>
+<li>Python是一个简单、易读、易记的编程语言，而且是开源的，可以免费地自由使用。   </li>
+<li>使用Python不仅可以写出可读性高的代码，还可以写出性能高（处理速度快）的代码。在需要处理大规模数据或者要求快速响应的情况下，使用Python可以稳妥地完成。   </li>
+<li>在科学领域，特别是在机器学习、数据科学领域，Python也被大量使用。   </li>
+<li>深度学习的框架中也有很多使用Python的场景，比如Caffe、TensorFlow、Chainer、Theano等著名的深度学习框架都提供了Python接口。   </li>
+<li>Python是最适合数据科学领域的编程语言。   </li>
 </ul>
-<h1 id="第一章-File类"><a href="#第一章-File类" class="headerlink" title="第一章 File类"></a>第一章 File类</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p><code>java.io.File</code> 类是文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。</p>
-<h2 id="1-2-构造方法"><a href="#1-2-构造方法" class="headerlink" title="1.2 构造方法"></a>1.2 构造方法</h2><ul>
-<li><code>public File(String pathname)</code> ：通过将给定的<strong>路径名字符串</strong>转换为抽象路径名来创建新的 File实例。  </li>
-<li><code>public File(String parent, String child)</code> ：从<strong>父路径名字符串和子路径名字符串</strong>创建新的 File实例。</li>
-<li><code>public File(File parent, String child)</code> ：从<strong>父抽象路径名和子路径名字符串</strong>创建新的 File实例。  </li>
+<h2 id="2-python的版本"><a href="#2-python的版本" class="headerlink" title="2.python的版本"></a>2.python的版本</h2><ul>
+<li>Python有Python 2.x和Python 3.x两个版本   </li>
+<li>两个版本之间没有兼容性</li>
 </ul>
-<ul>
-<li>构造举例，代码如下：</li>
+<h2 id="3-python解释器"><a href="#3-python解释器" class="headerlink" title="3.python解释器"></a>3.python解释器</h2><ul>
+<li>Python解释器也被称为“对话模式”，用户能够以和Python对话的方式进行编程。<br>在pycharm中，下面的的python Console 就是对话模式，Terminal是命令行模式，如下图：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件路径名</span></span><br><span class="line">String pathname = <span class="string">"D:\\aaa.txt"</span>;</span><br><span class="line">File file1 = <span class="keyword">new</span> File(pathname); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件路径名</span></span><br><span class="line">String pathname2 = <span class="string">"D:\\aaa\\bbb.txt"</span>;</span><br><span class="line">File file2 = <span class="keyword">new</span> File(pathname2); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过父路径和子路径字符串</span></span><br><span class="line"> String parent = <span class="string">"d:\\aaa"</span>;</span><br><span class="line"> String child = <span class="string">"bbb.txt"</span>;</span><br><span class="line"> File file3 = <span class="keyword">new</span> File(parent, child);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过父级File对象和子路径字符串</span></span><br><span class="line">File parentDir = <span class="keyword">new</span> File(<span class="string">"d:\\aaa"</span>);</span><br><span class="line">String child = <span class="string">"bbb.txt"</span>;</span><br><span class="line">File file4 = <span class="keyword">new</span> File(parentDir, child);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>小贴士：</p>
-<ol>
-<li>一个File对象代表硬盘中实际存在的一个文件或者目录。</li>
-<li>无论该路径下是否存在文件或者目录，都不影响File对象的创建。</li>
-</ol>
-</blockquote>
-<h2 id="1-3-常用方法"><a href="#1-3-常用方法" class="headerlink" title="1.3 常用方法"></a>1.3 常用方法</h2><h3 id="获取功能的方法"><a href="#获取功能的方法" class="headerlink" title="获取功能的方法"></a>获取功能的方法</h3><ul>
-<li><p><code>public String getAbsolutePath()</code> ：返回此File的绝对路径名字符串。</p>
-</li>
-<li><p><code>public String getPath()</code> ：将此File转换为路径名字符串。 </p>
-</li>
-<li><p><code>public String getName()</code>  ：返回由此File表示的文件或目录的名称。  </p>
-</li>
-<li><p><code>public long length()</code>  ：返回由此File表示的文件的长度。 </p>
-<p>方法演示，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileGet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"d:/aaa/bbb.java"</span>);     </span><br><span class="line">        System.out.println(<span class="string">"文件绝对路径:"</span>+f.getAbsolutePath());</span><br><span class="line">        System.out.println(<span class="string">"文件构造路径:"</span>+f.getPath());</span><br><span class="line">        System.out.println(<span class="string">"文件名称:"</span>+f.getName());</span><br><span class="line">        System.out.println(<span class="string">"文件长度:"</span>+f.length()+<span class="string">"字节"</span>);</span><br><span class="line"></span><br><span class="line">        File f2 = <span class="keyword">new</span> File(<span class="string">"d:/aaa"</span>);     </span><br><span class="line">        System.out.println(<span class="string">"目录绝对路径:"</span>+f2.getAbsolutePath());</span><br><span class="line">        System.out.println(<span class="string">"目录构造路径:"</span>+f2.getPath());</span><br><span class="line">        System.out.println(<span class="string">"目录名称:"</span>+f2.getName());</span><br><span class="line">        System.out.println(<span class="string">"目录长度:"</span>+f2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line">文件绝对路径:d:\aaa\bbb.java</span><br><span class="line">文件构造路径:d:\aaa\bbb.java</span><br><span class="line">文件名称:bbb.java</span><br><span class="line">文件长度:<span class="number">636</span>字节</span><br><span class="line"></span><br><span class="line">目录绝对路径:d:\aaa</span><br><span class="line">目录构造路径:d:\aaa</span><br><span class="line">目录名称:aaa</span><br><span class="line">目录长度:<span class="number">4096</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<h3 id="3-1-算术计算"><a href="#3-1-算术计算" class="headerlink" title="3.1 算术计算"></a>3.1 算术计算</h3><ul>
+<li>加、减、乘、除、平方等。<br>如上图<code>+ - * / **</code>,3的平方是<code>3**2</code>。  </li>
 </ul>
 <blockquote>
-<p>API中说明：length()，表示文件的长度。但是File对象表示目录，则返回值未指定。</p>
+<p>注：在Python 2.x中，整数除以整数的结果是整数，比如，7/5的结果是1。但在Python 3.x中，整数除以整数的结果是小数（浮点数）</p>
 </blockquote>
-<h3 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h3><ul>
-<li><strong>绝对路径</strong>：从盘符开始的路径，这是一个完整的路径。</li>
-<li><strong>相对路径</strong>：相对于项目目录的路径，这是一个便捷的路径，开发中经常使用。</li>
+<h3 id="3-2-数据类型"><a href="#3-2-数据类型" class="headerlink" title="3.2 数据类型"></a>3.2 数据类型</h3><ul>
+<li>数据类型表示数据的性质，有整数、小数、字符串等类型。Python中的type()函数可以用来查看数据类型。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbHNeOEt.sNKzKWTHJVEuJebh32uunmLSqBdPfXWYgciESnPiaSxx36tCmiX*HbanEj5Wew2gpfMRNmnHBeVkB8!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilePath</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// D盘下的bbb.java文件</span></span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"D:\\bbb.java"</span>);</span><br><span class="line">        System.out.println(f.getAbsolutePath());</span><br><span class="line">      	</span><br><span class="line">		<span class="comment">// 项目下的bbb.java文件</span></span><br><span class="line">        File f2 = <span class="keyword">new</span> File(<span class="string">"bbb.java"</span>);</span><br><span class="line">        System.out.println(f2.getAbsolutePath());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line">D:\bbb.java</span><br><span class="line">D:\idea_project_test4\bbb.java</span><br></pre></td></tr></table></figure>
-
-<h3 id="判断功能的方法"><a href="#判断功能的方法" class="headerlink" title="判断功能的方法"></a>判断功能的方法</h3><ul>
-<li><code>public boolean exists()</code> ：此File表示的文件或目录是否实际存在。</li>
-<li><code>public boolean isDirectory()</code> ：此File表示的是否为目录。</li>
-<li><code>public boolean isFile()</code> ：此File表示的是否为文件。</li>
+<h3 id="3-3-变量"><a href="#3-3-变量" class="headerlink" title="3.3 变量"></a>3.3 变量</h3><ul>
+<li><p>可以使用x或y等字母定义变量（variable）。<br>和java、c中的差不多。    </p>
+<pre><code>&gt;&gt;&gt; x = 10 
+&gt;&gt;&gt; y = 2 
+&gt;&gt;&gt; x + y 
+12  </code></pre></li>
 </ul>
-<p>方法演示，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileIs</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"d:\\aaa\\bbb.java"</span>);</span><br><span class="line">        File f2 = <span class="keyword">new</span> File(<span class="string">"d:\\aaa"</span>);</span><br><span class="line">      	<span class="comment">// 判断是否存在</span></span><br><span class="line">        System.out.println(<span class="string">"d:\\aaa\\bbb.java 是否存在:"</span>+f.exists());</span><br><span class="line">        System.out.println(<span class="string">"d:\\aaa 是否存在:"</span>+f2.exists());</span><br><span class="line">      	<span class="comment">// 判断是文件还是目录</span></span><br><span class="line">        System.out.println(<span class="string">"d:\\aaa 文件?:"</span>+f2.isFile());</span><br><span class="line">        System.out.println(<span class="string">"d:\\aaa 目录?:"</span>+f2.isDirectory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出结果：</span><br><span class="line">d:\aaa\bbb.java 是否存在:<span class="keyword">true</span></span><br><span class="line">d:\aaa 是否存在:<span class="keyword">true</span></span><br><span class="line">d:\aaa 文件?:<span class="keyword">false</span></span><br><span class="line">d:\aaa 目录?:<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="创建删除功能的方法"><a href="#创建删除功能的方法" class="headerlink" title="创建删除功能的方法"></a>创建删除功能的方法</h3><ul>
-<li><code>public boolean createNewFile()</code> ：当且仅当具有该名称的文件尚不存在时，创建一个新的空文件。 </li>
-<li><code>public boolean delete()</code> ：删除由此File表示的文件或目录。  </li>
-<li><code>public boolean mkdir()</code> ：创建由此File表示的目录。</li>
-<li><code>public boolean mkdirs()</code> ：创建由此File表示的目录，包括任何必需但不存在的父目录。</li>
+<h3 id="3-4-列表"><a href="#3-4-列表" class="headerlink" title="3.4 列表"></a>3.4 列表</h3><ul>
+<li>可以用列表（数组）汇总数据。  </li>
 </ul>
-<p>方法演示，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileCreateDelete</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 文件的创建</span></span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"aaa.txt"</span>);</span><br><span class="line">        System.out.println(<span class="string">"是否存在:"</span>+f.exists()); <span class="comment">// false</span></span><br><span class="line">        System.out.println(<span class="string">"是否创建:"</span>+f.createNewFile()); <span class="comment">// true</span></span><br><span class="line">        System.out.println(<span class="string">"是否存在:"</span>+f.exists()); <span class="comment">// true</span></span><br><span class="line">		</span><br><span class="line">     	<span class="comment">// 目录的创建</span></span><br><span class="line">      	File f2= <span class="keyword">new</span> File(<span class="string">"newDir"</span>);	</span><br><span class="line">        System.out.println(<span class="string">"是否存在:"</span>+f2.exists());<span class="comment">// false</span></span><br><span class="line">        System.out.println(<span class="string">"是否创建:"</span>+f2.mkdir());	<span class="comment">// true</span></span><br><span class="line">        System.out.println(<span class="string">"是否存在:"</span>+f2.exists());<span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建多级目录</span></span><br><span class="line">      	File f3= <span class="keyword">new</span> File(<span class="string">"newDira\\newDirb"</span>);</span><br><span class="line">        System.out.println(f3.mkdir());<span class="comment">// false</span></span><br><span class="line">        File f4= <span class="keyword">new</span> File(<span class="string">"newDira\\newDirb"</span>);</span><br><span class="line">        System.out.println(f4.mkdirs());<span class="comment">// true</span></span><br><span class="line">      </span><br><span class="line">      	<span class="comment">// 文件的删除</span></span><br><span class="line">       	System.out.println(f.delete());<span class="comment">// true</span></span><br><span class="line">      </span><br><span class="line">      	<span class="comment">// 目录的删除</span></span><br><span class="line">        System.out.println(f2.delete());<span class="comment">// true</span></span><br><span class="line">        System.out.println(f4.delete());<span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>API中说明：delete方法，如果此File表示目录，则目录必须为空才能删除。</p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfkuMIM7RZ*EPnmF8wz5kXApZhRbop6UheweLdqFX3zM4Y.1IzZdfF7B52xasen7frWs*s11lwqwv.xN.oJQayo!/b&bo=RAWXAQAAAAADB*U!&rf=viewer_4" alt=""></p>
+<h3 id="3-5-字典"><a href="#3-5-字典" class="headerlink" title="3.5 字典"></a>3.5 字典</h3><ul>
+<li>字典以键值对的形式存储数据。类似与Java中的map<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrENch2E1upBtMJI4GxgEblhaK9AlJYM26lQ*ZVzw2.fkJmYh9o8y2qwON35dxdp6D7EGZmUig3juRg4HGKeyntLI!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">  </li>
+</ul>
+<h3 id="3-6-布尔型"><a href="#3-6-布尔型" class="headerlink" title="3.6 布尔型"></a>3.6 布尔型</h3><ul>
+<li>bool型取True或False中的一个值。针对bool型的运算符包括and、or和not。<br>例子如上图。  </li>
+</ul>
+<h3 id="3-7-if语句"><a href="#3-7-if语句" class="headerlink" title="3.7 if语句"></a>3.7 if语句</h3><ul>
+<li>根据不同的条件选择不同的处理分支时可以使用if/else语句。<br>例子如上图。</li>
+</ul>
+<h3 id="3-8-for语句"><a href="#3-8-for语句" class="headerlink" title="3.8 for语句"></a>3.8 for语句</h3><ul>
+<li>进行循环处理时可以使用for语句。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaw1xAhq4RibrrnnM6f7oB49yMz8j9FHRV3QTlJx2tzixLrz.0nEDtRcNO891LBB1QRW6vrjQEdEKfkjG8nGejs!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </li>
+</ul>
+<h3 id="3-9-函数"><a href="#3-9-函数" class="headerlink" title="3.9 函数"></a>3.9 函数</h3><ul>
+<li>可以将一连串的处理定义成函数（function）。<br>例子如上图。     </li>
+</ul>
+<h3 id="3-10-类"><a href="#3-10-类" class="headerlink" title="3.10 类"></a>3.10 类</h3><ul>
+<li>Python中使用class关键字来定义类，类要遵循下述格式（模板）。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWZ.meOa0PlK049b5yK3MyoUO2yl.gyZlk03.ngj3AkrEQTW*Vi0n3VGBkpti8Eut*7GYBevHWTnNbBtwtZtWEc!/b&bo=pAL9AAAAAAADB3k!&rf=viewer_4" alt="">    </li>
+</ul>
+<h2 id="4-python的脚本文件"><a href="#4-python的脚本文件" class="headerlink" title="4.python的脚本文件"></a>4.python的脚本文件</h2><ul>
+<li>Python解释器能够以对话模式执行程序，非常便于进行简单的实验。但是，想进行一连串的处理时，因为每次都需要输入程序，所以不太方便。   </li>
+<li>这时，可以将Python程序保存为文件，然后（集中地）运行这个文件。  </li>
+<li>后缀为.py文件。   </li>
+</ul>
+<h2 id="5-Numpy"><a href="#5-Numpy" class="headerlink" title="5.Numpy"></a>5.Numpy</h2><ul>
+<li>在深度学习的实现中，经常出现数组和矩阵的计算。NumPy的数组（numpy.array）中提供了很多便捷的方法。  </li>
+</ul>
+<h3 id="5-1-生成NumPy数组"><a href="#5-1-生成NumPy数组" class="headerlink" title="5.1 生成NumPy数组"></a>5.1 生成NumPy数组</h3><ul>
+<li>要生成NumPy数组，需要使用np.array()方法。np.array()接收Python列表作为参数，生成NumPy数组（numpy.ndarray）<br>使用要先导包<code>import numpy as np</code></li>
+</ul>
+<h3 id="5-2-NumPy-的算术运算"><a href="#5-2-NumPy-的算术运算" class="headerlink" title="5.2 NumPy 的算术运算"></a>5.2 NumPy 的算术运算</h3><pre><code>&gt;&gt;&gt; x=np.array（[1.0，2.0，3.0]）
+&gt;&gt;&gt; y=np，array（[2.0，4.0，6.0]）  
+&gt;&gt;&gt; x+y  #对应元素的加法
+array（[3.，6.，9.]）
+&gt;&gt;&gt; x*y   #element-wise product
+array([2.,8.,18.])
+&gt;&gt;&gt; x/y 
+array（[0.5，0.5，0.5]）   </code></pre><blockquote>
+<p>NumPy数组不仅可以进行element-wise运算，也可以和单一的数值（标量）组合起来进行运算。此时，需要在NumPy数组的各个元素和标量之间进行运算。这个功能也被称为<strong>广播</strong>。也就是一个数组乘以一个数字，每个元素乘以数字。</p>
 </blockquote>
-<h2 id="1-4-目录的遍历"><a href="#1-4-目录的遍历" class="headerlink" title="1.4 目录的遍历"></a>1.4 目录的遍历</h2><ul>
-<li><code>public String[] list()</code> ：返回一个String数组，表示该File目录中的所有子文件或目录。</li>
+<h3 id="5-3-NumPy的N维数组"><a href="#5-3-NumPy的N维数组" class="headerlink" title="5.3 NumPy的N维数组"></a>5.3 NumPy的N维数组</h3><ul>
+<li>NumPy不仅可以生成一维数组（排成一列的数组），也可以生成多维数组。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqViH1KFp36SVR98Hp6Hf.bw3NuR0PFfpV84OqDDmYqKiLPGfdFXkdmXIwanryOxLW7K6uzVWffilO3TBW*hep4o!/b&bo=IgJKAQAAAAADB0k!&rf=viewer_4" alt=""></li>
 </ul>
-<ul>
-<li><code>public File[] listFiles()</code> ：返回一个File数组，表示该File目录中的所有的子文件或目录。  </li>
+<h3 id="5-4-广播"><a href="#5-4-广播" class="headerlink" title="5.4 广播"></a>5.4 广播</h3><ul>
+<li><p>广播的例子：标量10被当作2 × 2的矩阵<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKcVZniZAigXWcB3gbHsZg2nJHYlZnlCqG5fIHNfxQ1Qq76JVw1fDrlFhrxfPZ*veEdPwgPVcq.oeVLQWXw*LyM!/b&bo=KQTSAAAAAAADF80!&rf=viewer_4" alt="">      </p>
+<pre><code>&gt;&gt;&gt; A=np.array([[1,2],[3,4]])
+&gt;&gt;&gt; B=np.array([10,20])
+&gt;&gt;&gt; A*B 
+array([[10,40],
+       [30,80]])</code></pre></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileFor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File dir = <span class="keyword">new</span> File(<span class="string">"d:\\java_code"</span>);</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//获取当前目录下的文件以及文件夹的名称。</span></span><br><span class="line">		String[] names = dir.list();</span><br><span class="line">		<span class="keyword">for</span>(String name : names)&#123;</span><br><span class="line">			System.out.println(name);</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//获取当前目录下的文件以及文件夹对象，只要拿到了文件对象，那么就可以获取更多信息</span></span><br><span class="line">        File[] files = dir.listFiles();</span><br><span class="line">        <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">            System.out.println(file);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEA2.XQFCWfZt9v9J9QOEASvdMNT5yF2Tvc*TLjgZojw3HScuNdLNnLLgUr5GOIEAondXp8b6LjpX.b5gWYafkwg!/b&bo=BQXyAAAAAAADF8A!&rf=viewer_4" alt="">    </p>
+<h3 id="5-5-访问元素"><a href="#5-5-访问元素" class="headerlink" title="5.5 访问元素"></a>5.5 访问元素</h3><ul>
+<li>元素的索引从0开始<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVXXgxn0P1DX7wMqihCYL33W4nbUi6quYhTiyQVLUmkZTUd6ihvww2LN3vSqr3ZHzrhXW2RslqVC*rPJXZcxJB4!/b&bo=bAJKAgAAAAADBwQ!&rf=viewer_4" alt="">    </li>
+</ul>
+<h2 id="6-Matplotlib"><a href="#6-Matplotlib" class="headerlink" title="6.Matplotlib"></a>6.Matplotlib</h2><ul>
+<li>Matplotlib是用于绘制图形的库，使用Matplotlib可以轻松地绘制图形和实现数据的可视化。这里我只举一个例子。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqT*suRg.7mNjLfDT4ID.RSHrknD4wKwlwjFMEeTk5VZfXjCiMyz55vL5g715PqFE1*41Cpa*ykBbKFyFVVQJ9gg!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQcv1ICpYBbghjVhXw6pK4ZtnUEsyvLlzkiVQB.wJ2BdBEoZCRJko8Ur5IPsFPzjPdMtd942ZySbFcB*W2vKZho!/b&bo=mwSnAQAAAAADBxs!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcv.qYOXlilVvqTOTHhyr88kIsNlaPCzeI8b6eerp4*V5wMfbiyVS3qG1dwHMoEFVunTazaXgYvd85Jqe98z6ZA!/b&bo=ZARoAQAAAAADBys!&rf=viewer_4" alt=""></li>
+</ul>
+<h2 id="7-补充小技巧"><a href="#7-补充小技巧" class="headerlink" title="7.补充小技巧"></a>7.补充小技巧</h2><p>python加载包用的是国外的源，很慢，介绍一下永久更改源的方法。   </p>
+<p>1.win+R在窗口输入<code>%HOMEPATH%</code><br>2.在打开的文件夹中新建pip文件夹，在里面创建pip.ini文件。<br>3.在文件中输入以下内容改用清华源    </p>
+<pre><code>[global]
 
-<blockquote>
-<p>小贴士：</p>
-<p>调用listFiles方法的File对象，表示的必须是实际存在的目录，否则返回null，无法进行遍历。</p>
-</blockquote>
-<h1 id="第二章-递归"><a href="#第二章-递归" class="headerlink" title="第二章 递归"></a>第二章 递归</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><ul>
-<li><p><strong>递归</strong>：指在当前方法内调用自己的这种现象。</p>
+timeout = 6000
+
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+trusted-host = pypi.tuna.tsinghua.edu.cn   </code></pre><p>4.保存，然后体验飞一般的感觉。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>Python是一种简单易记的编程语言。</li>
+<li>Python是开源的，可以自由使用。</li>
+<li>本课程中将使用Python 3.x实现深度学习。</li>
+<li>本课程中将使用NumPy和Matplotlib这两种外部库。</li>
+<li>Python有“解释器”和“脚本文件”两种运行模式。</li>
+<li>Python能够将一系列处理集成为函数或类等模块。</li>
+<li>NumPy中有很多用于操作多维数组的便捷方法。   </li>
+</ul>
+<h1 id="第二章-感知机"><a href="#第二章-感知机" class="headerlink" title="第二章 感知机"></a>第二章 感知机</h1><h2 id="1-感知机是什么"><a href="#1-感知机是什么" class="headerlink" title="1.感知机是什么"></a>1.感知机是什么</h2><ul>
+<li>感知机（perceptron），由美国学者Frank Rosenblatt在1957年提出来的</li>
+<li>感知机是作为神经网络（深度学习）的起源的算法</li>
+<li>例如以下有两个输入的感知机：   </li>
+</ul>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZeVkRnxEomi0mcz7T9KxxXIuK.8OBzxB*VgfAO1gVynFMPhtAOBj0A77wh89PSIv*eYM4rRYAUKBhPJ4d*Q2Eg!/b&bo=TgQGAQAAAAADB28!&rf=viewer_4" alt=""><br>感知机接收多个输入信号，输出一个信号。这里所说的“信号”可以想象成电流或河流那样具备“流动性”的东西。像电流流过导线，向前方输送电子一样，感知机的信号也会形成流，向前方输送信息。但是，和实际的电流不同的是，感知机的信号只有“流/不流”（1/0）两种取值。0对应“不传递信号”，1对应“传递信号”。<br>如上图中x1、x2是<strong>输入信号</strong>，y是<strong>输出信号</strong>，w1、w2是<strong>权重</strong>（w 是 weight 的首字母）。<br>图中的包裹信号的O称为<strong>“神经元”</strong>或者<strong>“节点”</strong>。   </p>
+<p>输入信号被送往神经元时，会被分别乘以固定的权重（w1 x1 、w2 x2 ）。神经元会计算传送过来的信号的总和，只有当这个总和超过了某个界限值时，才会输出1。这也称为<strong>“神经元被激活”</strong>。这里将这个界限值称为阈值，用符号θ表示。</p>
+<p>感知机的多个输入信号都有各自固有的权重，这些权重发挥着控制各个信号的重要性的作用。也就是说，<strong>权重越大，该权重对应的信号的重要性就越高</strong>。   </p>
+<h2 id="2-简单逻辑电路"><a href="#2-简单逻辑电路" class="headerlink" title="2.简单逻辑电路"></a>2.简单逻辑电路</h2><h3 id="2-1-与门（AND-gate）"><a href="#2-1-与门（AND-gate）" class="headerlink" title="2.1 与门（AND gate）"></a>2.1 与门（AND gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4" alt=""></p>
+<p>使用感知机来表示这个与门。我们需要做的就是确定能满足真值表的w1 、w2 、θ的值。</p>
+<p>满足真值表条件的参数的选择方法有无数多个，比如0.5 0.5 0.8。  </p>
+<h3 id="2-2-与非门（NAND：Not-AND的意思"><a href="#2-2-与非门（NAND：Not-AND的意思" class="headerlink" title="2.2 与非门（NAND：Not AND的意思)"></a>2.2 与非门（NAND：Not AND的意思)</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4" alt="">     </p>
+<p>要表示与非门，可以用 (w 1 , w 2 , θ) = (−0.5, −0.5, −0.8) 这样的组合（其他的组合也是无限存在的）。   </p>
+<p>实际上，只要把实现与门的参数值的符号取反，就可以实现与非门。   </p>
+<h3 id="2-3-或门（OR-gate）"><a href="#2-3-或门（OR-gate）" class="headerlink" title="2.3 或门（OR gate）"></a>2.3 或门（OR gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOv6lRbIrcxMfaSfaaNDzf*lXw*lyhC5qJF4*Kmujs1oOIBeg6z6XuCnXOyfrnscfWJGx6JRie0bVs3cLQ358JE!/b&bo=iAKyAQAAAAADFws!&rf=viewer_4" alt="">    </p>
+<p>感知机可以表示与门、与非门、或门的逻辑电路。</p>
+<p>这里重要的一点是：与门、与非门、或门的感知机构造是一样的。</p>
+<p>实际上，3个门电路只有参数的值（权重和阈值）不同。也就是说，相同构造的感知机，只需通过适当地调整参数的值，就可以变为与门、与非门、或门。</p>
+<h2 id="3-感知机的实现"><a href="#3-感知机的实现" class="headerlink" title="3.感知机的实现"></a>3.感知机的实现</h2><ul>
+<li><p>简单的实现<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRxOjG.hjz7CmB6fS.Cjs.6w42oQ1qFfNruCotJ6JblW*qaPyTF5Y4R*hGi2zvjxBeTPZJRGMGUYVvHRWmYoHSw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
 </li>
-<li><p><strong>递归的分类:</strong></p>
-<ul>
-<li>递归分为两种，直接递归和间接递归。</li>
-<li>直接递归称为方法自身调用自己。</li>
-<li>间接递归可以A方法调用B方法，B方法调用C方法，C方法调用A方法。</li>
-</ul>
-</li>
-<li><p><strong>注意事项</strong>：</p>
-<ul>
-<li>递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。</li>
-<li>在递归中虽然有限定条件，但是递归次数不能太多。否则也会发生栈内存溢出。</li>
-<li>构造方法,禁止递归<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEmqmW6zXF3Fyk1olwR8R6lIREHLuTiUiF5YAuN67E.7xwyf9gNqxfURa1HneXGBPCuNh1Y40L2n5vxblfXhNak!/b&bo=.gMCAgAAAAABF8k!&rf=viewer_4" alt=""></li>
-</ul>
+<li><p>导入权重和偏置<br>θ换成−b，则b称为<strong>偏置</strong>，w1和w2称为<strong>权重</strong>。<br>感知机会计算输入 信号和权重的乘积，然后加上偏置，如果这个值大于0则输出1，否则输出0。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWbDd2AcVES7Y2l9mALRiNN1BbgmQRGt4lbdfkcnsAzpWrHnYxegq33IGKV49iiQwl7bYoji3eeMrtaamFvHDmc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01DiGui</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// a();</span></span><br><span class="line">		b(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 3.构造方法,禁止递归</span></span><br><span class="line"><span class="comment">	 * 编译报错:构造方法是创建对象使用的,不能让对象一直创建下去</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Demo01DiGui</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//Demo01DiGui();</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 2.在递归中虽然有限定条件，但是递归次数不能太多。否则也会发生栈内存溢出。</span></span><br><span class="line"><span class="comment">	 * 4993</span></span><br><span class="line"><span class="comment">	 * 	Exception in thread "main" java.lang.StackOverflowError</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">b</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">		System.out.println(i);</span><br><span class="line">		<span class="comment">//添加一个递归结束的条件,i==5000的时候结束</span></span><br><span class="line">		<span class="keyword">if</span>(i==<span class="number">5000</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//结束方法</span></span><br><span class="line">		&#125;</span><br><span class="line">		b(++i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 1.递归一定要有条件限定，保证递归能够停止下来，否则会发生栈内存溢出。 Exception in thread "main"</span></span><br><span class="line"><span class="comment">	 * java.lang.StackOverflowError</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"a方法"</span>);</span><br><span class="line">		a();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-递归累加求和"><a href="#2-2-递归累加求和" class="headerlink" title="2.2 递归累加求和"></a>2.2 递归累加求和</h2><h3 id="计算1-n的和"><a href="#计算1-n的和" class="headerlink" title="计算1 ~ n的和"></a>计算1 ~ n的和</h3><p><strong>分析</strong>：num的累和 = num + (num-1)的累和，所以可以把累和的操作定义成一个方法，递归调用。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEQwFDMlK*RwGcpS8Q0P2Ng3LZXhJCn3HJEDyk707pOimWqanHGx74GJjAc0qZrGciOQyJcTE8DCMmeSIKd*MBM!/b&bo=UAUPAgAAAAABF2g!&rf=viewer_4" alt=""></p>
-<p><strong>实现代码</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiGuiDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//计算1~num的和，使用递归完成</span></span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">5</span>;</span><br><span class="line">      	<span class="comment">// 调用求和的方法</span></span><br><span class="line">		<span class="keyword">int</span> sum = getSum(num);</span><br><span class="line">      	<span class="comment">// 输出结果</span></span><br><span class="line">		System.out.println(sum);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">  	<span class="comment">/*</span></span><br><span class="line"><span class="comment">  	  通过递归算法实现.</span></span><br><span class="line"><span class="comment">  	  参数列表:int </span></span><br><span class="line"><span class="comment">  	  返回值类型: int </span></span><br><span class="line"><span class="comment">  	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">/* </span></span><br><span class="line"><span class="comment">      	   num为1时,方法返回1,</span></span><br><span class="line"><span class="comment">      	   相当于是方法的出口,num总有是1的情况</span></span><br><span class="line"><span class="comment">      	*/</span></span><br><span class="line">		<span class="keyword">if</span>(num == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">      	<span class="comment">/*</span></span><br><span class="line"><span class="comment">          num不为1时,方法返回 num +(num-1)的累和</span></span><br><span class="line"><span class="comment">          递归调用getSum方法</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">		<span class="keyword">return</span> num + getSum(num-<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代码执行图解"><a href="#代码执行图解" class="headerlink" title="代码执行图解"></a>代码执行图解</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZJ315G5Nh9lZBYTElk0sQh0QtHGbdkwjW5G8Hyn0EnD7ynAinwMU6JpSbCtsKRuPZt7OAbXh8HQfbkbbc7FxSA!/b&bo=ZAMvAgAAAAABB2o!&rf=viewer_4" alt=""></p>
-<blockquote>
-<p>小贴士：递归一定要有条件限定，保证递归能够停止下来，次数不要太多，否则会发生栈内存溢出。</p>
-</blockquote>
-<h2 id="2-3-递归求阶乘"><a href="#2-3-递归求阶乘" class="headerlink" title="2.3 递归求阶乘"></a>2.3 递归求阶乘</h2><ul>
-<li><strong>阶乘</strong>：所有小于及等于该数的正整数的积。</li>
+<p>在NumPy数组的乘法运算中，当两个数组的元素个数相同时， 各个元素将分别相乘。因此 wx 的结果就是它们的各个元素分别相乘（ [0, 1] * [0.5, 0.5] =&gt; [0, 0.5] ）。之后， 再计算相乘后的各个元素的总和。<strong>np.sum(wx)</strong></p>
+<p>最后再把偏置加到这个加权总和上，就完成了下图的计算计算。  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeGlAbfPYEejSG0e2C5QGh.FbaNkIfSVmkTzCfzI0gyBut13oBnH9*9sWRFXp2.oG8udNoYtJvKoGFhTwAPgBME!/b&bo=RQOsAAAAAAADB8g!&rf=viewer_4" alt="">    </p>
+<p>而偏置是调整神经元被激活的容易程度（输出信号为 1 的程度）的参数。比如，若 b 为 −0.1， 则只要输入信号的加权总和超过0.1，神经元就会被激活。    </p>
+<h2 id="4-感知机的局限性"><a href="#4-感知机的局限性" class="headerlink" title="4.感知机的局限性"></a>4.感知机的局限性</h2><ul>
+<li>用感知机可以实现与门、与非门、或门三种逻辑电路。    </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n的阶乘：n! = n * (n-<span class="number">1</span>) *...* <span class="number">3</span> * <span class="number">2</span> * <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong>：这与累和类似,只不过换成了乘法运算，学员可以自己练习，需要注意阶乘值符合int类型的范围。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">推理得出：n! &#x3D; n * (n-1)!</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码实现</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiGuiDemo</span> </span>&#123;</span><br><span class="line">  	<span class="comment">//计算n的阶乘，使用递归完成</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">      	<span class="comment">// 调用求阶乘的方法</span></span><br><span class="line">        <span class="keyword">int</span> value = getValue(n);</span><br><span class="line">      	<span class="comment">// 输出结果</span></span><br><span class="line">        System.out.println(<span class="string">"阶乘为:"</span>+ value);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">  	  通过递归算法实现.</span></span><br><span class="line"><span class="comment">  	  参数列表:int </span></span><br><span class="line"><span class="comment">  	  返回值类型: int </span></span><br><span class="line"><span class="comment">  	*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 1的阶乘为1</span></span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="comment">/*</span></span><br><span class="line"><span class="comment">      	  n不为1时,方法返回 n! = n*(n-1)!</span></span><br><span class="line"><span class="comment">          递归调用getValue方法</span></span><br><span class="line"><span class="comment">      	*/</span></span><br><span class="line">        <span class="keyword">return</span> n * getValue(n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-递归打印多级目录"><a href="#2-4-递归打印多级目录" class="headerlink" title="2.4 递归打印多级目录"></a>2.4 递归打印多级目录</h2><p><strong>分析</strong>：多级目录的打印，就是当目录的嵌套。遍历之前，无从知道到底有多少级目录，所以我们还是要使用递归实现。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEHbryVUlZzOU9q94vB3aYrouTgLT2XXPltChKqr4hfvcf47ADlq0SXGbtxmNYDk25x7SaLpjkeO6iyENAD0imNU!/b&bo=LAW9AQAAAAABF6U!&rf=viewer_4" alt=""></p>
-<p><strong>代码实现</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiGuiDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 创建File对象</span></span><br><span class="line">        File dir  = <span class="keyword">new</span> File(<span class="string">"D:\\aaa"</span>);</span><br><span class="line">      	<span class="comment">// 调用打印目录方法</span></span><br><span class="line">        printDir(dir);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">printDir</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 获取子文件和目录</span></span><br><span class="line">        File[] files = dir.listFiles();</span><br><span class="line">      	<span class="comment">// 循环打印</span></span><br><span class="line">      	<span class="comment">/*</span></span><br><span class="line"><span class="comment">      	  判断:</span></span><br><span class="line"><span class="comment">      	  当是文件时,打印绝对路径.</span></span><br><span class="line"><span class="comment">      	  当是目录时,继续调用打印目录的方法,形成递归调用.</span></span><br><span class="line"><span class="comment">      	*/</span></span><br><span class="line">        <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">    		<span class="comment">// 判断</span></span><br><span class="line">            <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">              	<span class="comment">// 是文件,输出文件绝对路径</span></span><br><span class="line">                System.out.println(<span class="string">"文件名:"</span>+ file.getAbsolutePath());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              	<span class="comment">// 是目录,输出目录绝对路径</span></span><br><span class="line">                System.out.println(<span class="string">"目录:"</span>+file.getAbsolutePath());</span><br><span class="line">              	<span class="comment">// 继续遍历,调用printDir,形成递归</span></span><br><span class="line">                printDir(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="第三章-综合案例"><a href="#第三章-综合案例" class="headerlink" title="第三章 综合案例"></a>第三章 综合案例</h1><h2 id="3-1-文件搜索"><a href="#3-1-文件搜索" class="headerlink" title="3.1 文件搜索"></a>3.1 文件搜索</h2><p>搜索<code>D:\aaa</code> 目录中的<code>.java</code> 文件。</p>
-<p><strong>分析</strong>：</p>
-<ol>
-<li>目录搜索，无法判断多少级目录，所以使用递归，遍历所有目录。</li>
-<li>遍历目录时，获取的子文件，通过文件名称，判断是否符合条件。</li>
-</ol>
-<p><strong>代码实现</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiGuiDemo3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建File对象</span></span><br><span class="line">        File dir  = <span class="keyword">new</span> File(<span class="string">"D:\\aaa"</span>);</span><br><span class="line">      	<span class="comment">// 调用打印目录方法</span></span><br><span class="line">        printDir(dir);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printDir</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 获取子文件和目录</span></span><br><span class="line">        File[] files = dir.listFiles();</span><br><span class="line">      	</span><br><span class="line">      	<span class="comment">// 循环打印</span></span><br><span class="line">        <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">              	<span class="comment">// 是文件，判断文件名并输出文件绝对路径</span></span><br><span class="line">                <span class="keyword">if</span> (file.getName().endsWith(<span class="string">".java"</span>)) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"文件名:"</span> + file.getAbsolutePath());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 是目录，继续遍历,形成递归</span></span><br><span class="line">                printDir(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-2-文件过滤器优化"><a href="#3-2-文件过滤器优化" class="headerlink" title="3.2 文件过滤器优化"></a>3.2 文件过滤器优化</h2><p><code>java.io.FileFilter</code>是一个接口，是File的过滤器。 该接口的对象可以传递给File类的<code>listFiles(FileFilter)</code> 作为参数， 接口中只有一个方法。</p>
-<p><code>boolean accept(File pathname)</code> ：测试pathname是否应该包含在当前File目录中，符合则返回true。</p>
-<p><strong>分析</strong>：</p>
-<ol>
-<li>接口作为参数，需要传递子类对象，重写其中方法。我们选择匿名内部类方式，比较简单。</li>
-<li><code>accept</code>方法，参数为File，表示当前File下所有的子文件和子目录。保留住则返回true，过滤掉则返回false。保留规则：<ol>
-<li>要么是.java文件。</li>
-<li>要么是目录，用于继续遍历。</li>
-</ol>
-</li>
-<li>通过过滤器的作用，<code>listFiles(FileFilter)</code>返回的数组元素中，子文件对象都是符合条件的，可以直接打印。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMYmTKKxXpulveXtZxqogv0chqb3c28zSfPiLEFPVKg9MdLJA1ZrU3VWQ*m11EWYEZxtmO0K0O0LrueAfHR3ORM!/b&bo=UAUPAgAAAAABF2g!&rf=viewer_4" alt=""></li>
-</ol>
-<p><strong>代码实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiGuiDemo4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File dir = <span class="keyword">new</span> File(<span class="string">"D:\\aaa"</span>);</span><br><span class="line">        printDir2(dir);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printDir2</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// 匿名内部类方式,创建过滤器子类对象</span></span><br><span class="line">        File[] files = dir.listFiles(<span class="keyword">new</span> FileFilter() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File pathname)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> pathname.getName().endsWith(<span class="string">".java"</span>)||pathname.isDirectory();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      	<span class="comment">// 循环打印</span></span><br><span class="line">        <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">                System.out.println(<span class="string">"文件名:"</span> + file.getAbsolutePath());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                printDir2(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3-3-Lambda优化"><a href="#3-3-Lambda优化" class="headerlink" title="3.3 Lambda优化"></a>3.3 Lambda优化</h2><p><strong>分析：</strong><code>FileFilter</code>是只有一个方法的接口，因此可以用lambda表达式简写。</p>
-<p>lambda格式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()-&gt;&#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>代码实现：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printDir3</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">  	<span class="comment">// lambda的改写</span></span><br><span class="line">    File[] files = dir.listFiles(f -&gt;&#123; </span><br><span class="line">      	<span class="keyword">return</span> f.getName().endsWith(<span class="string">".java"</span>) || f.isDirectory(); </span><br><span class="line">    &#125;);</span><br><span class="line">  	</span><br><span class="line">	<span class="comment">// 循环打印</span></span><br><span class="line">    <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">        <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">            System.out.println(<span class="string">"文件名:"</span> + file.getAbsolutePath());</span><br><span class="line">      	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	printDir3(file);</span><br><span class="line">      	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>File类路径的重要性不说了，递归的重要性也不多说了，溜了溜了=。=</p>
+<h3 id="4-1-异或门（XOR-gate）"><a href="#4-1-异或门（XOR-gate）" class="headerlink" title="4.1 异或门（XOR gate）"></a>4.1 异或门（XOR gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcQvMZpLmEz8A1FEJ5ebafZtIxPLZlfcjEAI04AeQkaSJo*sD5*y45.KPNfv9oaGVam9u13BzHclTcEN.iQTHAc!/b&bo=rQKDAQAAAAADBw8!&rf=viewer_4" alt="">  </p>
+<p>实际上，用前面介绍的感知机是无法实现这个异或门的。   </p>
+<h3 id="4-2-或门形象化表示"><a href="#4-2-或门形象化表示" class="headerlink" title="4.2 或门形象化表示"></a>4.2 或门形象化表示</h3><p>或门的情况下，当权重参数 (b, w 1 , w 2 ) = (−0.5, 1.0, 1.0)时，可满足 或门 的真值表条件。<br>此时，感知机 可用下图的公式表示。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYbwfmVN6SweN36.rQ4H4fbj6SXNM9EeHn9Gla0fpBSyt74NX8wBPdqu9jCoMx0y4ROC4iaw0UOs8GzNxClV.UE!/b&bo=LAPIAAAAAAADB8U!&rf=viewer_4" alt="">    </p>
+<p>该公式表示的感知机会生成由直线−0.5 + x1 + x2 = 0分割开的两个空间。其中一个空间输出1，另一个空间输出0，如下图所示。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQBdPYvCpFq.2GNfS0Y6sEweC1Ls3OH6Chlj6vg1tdzcdWD4yEWtURre0LrjDMTzrWzBSLUaiAOf8kf2nx.TRuQ!/b&bo=uAKlAgAAAAADBz8!&rf=viewer_4" alt="">   </p>
+<p>感知机的可视化图：灰色区域是感知机输出0的区域，这个区域与或门的性质一致。</p>
+<p>或门在 (x1,x2) = (0, 0) 时输出 0，在 (x1,x2) 为 (0, 1)、(1, 0)、(1, 1) 时输 出1。感知机的可视化图中，○表示0，△表示1。现在需要用直线将上图中的○和△分开。实际上，刚才的那条直线就将这4个点正确地分开了（归类）。   </p>
+<p>换成异或门的话如下图所示   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBWpUBZe0CZxM2Ud4gCsUX7rvmdgi98eMw0zqEHZtQfG7xI5wc7FjfWmyBptpVj4MSdTTm.cGqWtgtCwzkHml6A!/b&bo=owJ*AgAAAAADF.4!&rf=viewer_4" alt="">   </p>
+<p>想要用一条直线将 上图 中的○和△分开，无论如何都做不到。事实上， 用一条直线是无法将○和△分开的。但是如果将 “直线” 这个限制去掉，就可以实现了。  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEADG6wO8jo19A.DqBr048Tff2*a01n96E1IJ0gWM0i.rsUysRX2VD7BKjrqw*lzoxwWiFmQUItuCX18V.EA1DPc!/b&bo=iAIhAgAAAAADF5s!&rf=viewer_4" alt="">  </p>
+<h3 id="4-3-线性和非线性"><a href="#4-3-线性和非线性" class="headerlink" title="4.3 线性和非线性"></a>4.3 线性和非线性</h3><p>感知机的局限性就在于它只能表示由<strong>一条直线</strong>分割的空间。<br>上图中 这样弯曲的曲线是无法用感知机表示的。<br>由曲线分割 而成的空间称为<strong>非线性空间</strong>；<br>由直线分割 而成的空间称为<strong>线性空间</strong>。<br>线性、非线性这两个术语在机器学习领域很常见，可以将其想象成上图所示的直线和曲线分割而成的空间。   </p>
+<h2 id="5-多层感知机"><a href="#5-多层感知机" class="headerlink" title="5.多层感知机"></a>5.多层感知机</h2><p>“单层感知机无法表示异或门”或者“单层感知机无法分离非线性空间”。但感知机 的绝妙之处在于它可以“叠加层”（通过叠加层来表示异或门）。  </p>
+<p>异或门的制作方法有很多，其中之一就是组合我们前面做好的与门、与 非门、或门进行配置。<br>与门、与非门、或门的符号:   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqS7nEGoGkv2oRag63iq24BhEk8rA2Gd9Vn2e21us5PIV8scBjdus8LNapISt5Z2htLTIvsWbbm3ufxajU1KZvq4!/b&bo=WwPKAAAAAAADB7A!&rf=viewer_4" alt="">  </p>
+<p>通过组合与门、与非门、或门实现异或门:    </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECTNopRSluTcauxp6IrlpPluQ6*BxhwJfPwzMJPN.5lQEI72QfTu1QA2kCWDuBsLCjK3jycNymTcHWFU4B4em2M!/b&bo=KQPeAAAAAAADF8Y!&rf=viewer_4" alt="">    </p>
+<p>由此得到异或门的实现：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSeIlyjXqkDZR6l3Cdh5v.7H9LbgVvZNtGUyBEfRe7yqGNZMhu48HbcLVQeQBhD2p4.*JtMV8fGcDZS5Ff.CCow!/b&bo=0gFgAQAAAAADB5A!&rf=viewer_4" alt=""></p>
+<p>这里，把s1 作为与非门的输出，把s2作为或门的输出，填入真值表中。结果如图所示，观察x1、x2 、y，可以发现确实符合异或门的输出。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIQNci0ZPyjuXFOLnvPfMz5pxeiV3k1CVvxHCSSV14xUqRl2vESpTylLS*VXfGQF.Kc8lMzrN964sqXN5UKRtZs!/b&bo=.wLvAQAAAAADFyU!&rf=viewer_4" alt="">  </p>
+<p>异或门是一种多层结构的神经网络。与门、或门是单层感知机，而异或门是2层感知机。叠加了多层的感知机也称为多层感知机（multi-layered perceptron）。  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH5qmiAwIITxJ7iTThVq2eaqKH9BwkpkdHdOegGjFz3ztjJrVk5f0wAnYQHitNgDgGdPzF6T3qAQkU3JKwSnzKE!/b&bo=OQN.AQAAAAADF3c!&rf=viewer_4" alt="">   </p>
+<p>上图中的感知机总共由3层构成，但是因为拥有权重的层实质上只有2层（第0层和第1层之间，第1层和第2层之间），所以称为“2层感知机”。不过，有的文献认为上图的感知机是由3层构成的，因而将其称为“3层感知机”。    </p>
+<h2 id="6-从与非门到计算机"><a href="#6-从与非门到计算机" class="headerlink" title="6.从与非门到计算机"></a>6.从与非门到计算机</h2><p>实际上只需要通过与非门的组合，就能再现计算机进行的处理。<br>使用感知机也可以表示计算机，已有研究证明，2层感知机（严格地说是激活函数使用了非线性的sigmoid函数的感知机）可以表示任意函数。</p>
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>感知机是具有输入和输出的算法。给定一个输入后，将输出一个既定的值。</li>
+<li>感知机将权重和偏置设定为参数。</li>
+<li>使用感知机可以表示与门和或门等逻辑电路。</li>
+<li>异或门无法通过单层感知机来表示。</li>
+<li>使用2层感知机可以表示异或门。</li>
+<li>单层感知机只能表示线性空间，而多层感知机可以表示非线性空间。</li>
+<li>多层感知机（在理论上）可以表示计算机。   </li>
+</ul>
+<h1 id="博主小结"><a href="#博主小结" class="headerlink" title="博主小结"></a>博主小结</h1><p>由于这一内容有点多，原本想一个博客写完，但是由于内容有点多，怕之后翻阅麻烦，就两章一写吧。</p>
 
       
 	<!--  自加的代码 -->
@@ -444,7 +492,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		
 		</ul>
@@ -500,7 +552,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2019/07/18/Java%E8%BF%9B%E9%98%B6%E5%85%AB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -514,18 +566,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/18/Java%E8%BF%9B%E9%98%B6%E4%B9%9D/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java进阶九
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/17/Java%E8%BF%9B%E9%98%B6%E4%B8%83/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java进阶七</div>
+    <a href="/2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux命令以及软件安装项目部署</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -552,7 +595,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#【File类、递归】"><span class="toc-number">1.</span> <span class="toc-text">【File类、递归】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-number">1.1.</span> <span class="toc-text">主要内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-File类"><span class="toc-number">2.</span> <span class="toc-text">第一章 File类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-概述"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-构造方法"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 构造方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-常用方法"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取功能的方法"><span class="toc-number">2.3.1.</span> <span class="toc-text">获取功能的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绝对路径和相对路径"><span class="toc-number">2.3.2.</span> <span class="toc-text">绝对路径和相对路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断功能的方法"><span class="toc-number">2.3.3.</span> <span class="toc-text">判断功能的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建删除功能的方法"><span class="toc-number">2.3.4.</span> <span class="toc-text">创建删除功能的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-目录的遍历"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 目录的遍历</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-递归"><span class="toc-number">3.</span> <span class="toc-text">第二章 递归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-概述"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-递归累加求和"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 递归累加求和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算1-n的和"><span class="toc-number">3.2.1.</span> <span class="toc-text">计算1 ~ n的和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码执行图解"><span class="toc-number">3.2.2.</span> <span class="toc-text">代码执行图解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-递归求阶乘"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 递归求阶乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-递归打印多级目录"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 递归打印多级目录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-综合案例"><span class="toc-number">4.</span> <span class="toc-text">第三章 综合案例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-文件搜索"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 文件搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-文件过滤器优化"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 文件过滤器优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Lambda优化"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 Lambda优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">5.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主要内容"><span class="toc-number">1.</span> <span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-python的介绍"><span class="toc-number">2.</span> <span class="toc-text">第一章 python的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-python是什么"><span class="toc-number">2.1.</span> <span class="toc-text">1.python是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-python的版本"><span class="toc-number">2.2.</span> <span class="toc-text">2.python的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-python解释器"><span class="toc-number">2.3.</span> <span class="toc-text">3.python解释器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-算术计算"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 算术计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-数据类型"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-变量"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-列表"><span class="toc-number">2.3.4.</span> <span class="toc-text">3.4 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-字典"><span class="toc-number">2.3.5.</span> <span class="toc-text">3.5 字典</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-布尔型"><span class="toc-number">2.3.6.</span> <span class="toc-text">3.6 布尔型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-if语句"><span class="toc-number">2.3.7.</span> <span class="toc-text">3.7 if语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-for语句"><span class="toc-number">2.3.8.</span> <span class="toc-text">3.8 for语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-函数"><span class="toc-number">2.3.9.</span> <span class="toc-text">3.9 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-类"><span class="toc-number">2.3.10.</span> <span class="toc-text">3.10 类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-python的脚本文件"><span class="toc-number">2.4.</span> <span class="toc-text">4.python的脚本文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Numpy"><span class="toc-number">2.5.</span> <span class="toc-text">5.Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-生成NumPy数组"><span class="toc-number">2.5.1.</span> <span class="toc-text">5.1 生成NumPy数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-NumPy-的算术运算"><span class="toc-number">2.5.2.</span> <span class="toc-text">5.2 NumPy 的算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-NumPy的N维数组"><span class="toc-number">2.5.3.</span> <span class="toc-text">5.3 NumPy的N维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-广播"><span class="toc-number">2.5.4.</span> <span class="toc-text">5.4 广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-访问元素"><span class="toc-number">2.5.5.</span> <span class="toc-text">5.5 访问元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Matplotlib"><span class="toc-number">2.6.</span> <span class="toc-text">6.Matplotlib</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-补充小技巧"><span class="toc-number">2.7.</span> <span class="toc-text">7.补充小技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">2.8.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-感知机"><span class="toc-number">3.</span> <span class="toc-text">第二章 感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-感知机是什么"><span class="toc-number">3.1.</span> <span class="toc-text">1.感知机是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-简单逻辑电路"><span class="toc-number">3.2.</span> <span class="toc-text">2.简单逻辑电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-与门（AND-gate）"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1 与门（AND gate）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-与非门（NAND：Not-AND的意思"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2 与非门（NAND：Not AND的意思)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-或门（OR-gate）"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.3 或门（OR gate）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-感知机的实现"><span class="toc-number">3.3.</span> <span class="toc-text">3.感知机的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-感知机的局限性"><span class="toc-number">3.4.</span> <span class="toc-text">4.感知机的局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-异或门（XOR-gate）"><span class="toc-number">3.4.1.</span> <span class="toc-text">4.1 异或门（XOR gate）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-或门形象化表示"><span class="toc-number">3.4.2.</span> <span class="toc-text">4.2 或门形象化表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-线性和非线性"><span class="toc-number">3.4.3.</span> <span class="toc-text">4.3 线性和非线性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-多层感知机"><span class="toc-number">3.5.</span> <span class="toc-text">5.多层感知机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-从与非门到计算机"><span class="toc-number">3.6.</span> <span class="toc-text">6.从与非门到计算机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结-1"><span class="toc-number">3.7.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主小结"><span class="toc-number">4.</span> <span class="toc-text">博主小结</span></a></li></ol>
                     </div>
                 </span>
             </div>
