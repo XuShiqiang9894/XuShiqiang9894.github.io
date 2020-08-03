@@ -6,31 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>hadoop与spark集群的安装与配置 | 徐仕强的博客</title>
+  <title>人工智能原理与应用二：神经网络 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。">
+  <meta name="description" content="我们学习了感知机。关于感知机，既有好消息，也有坏消息。好消息是，即便对于复杂的函数，感知机也隐含着能够表示它的可能性。上一章已经介绍过，即便是计算机进行的复杂处理，感知机（理论上）也可以将其表示出来。坏消息是，设定权重的工作，即确定合适的、能符合预期的输入与输出的权重，现在还是由人工进行的。上一章中，我们结合与门、或门的真值表人工决定了合适的权重。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hadoop与spark集群的安装与配置">
-<meta property="og:url" content="http://yoursite.com/2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="人工智能原理与应用二：神经网络">
+<meta property="og:url" content="http://yoursite.com/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。">
+<meta property="og:description" content="我们学习了感知机。关于感知机，既有好消息，也有坏消息。好消息是，即便对于复杂的函数，感知机也隐含着能够表示它的可能性。上一章已经介绍过，即便是计算机进行的复杂处理，感知机（理论上）也可以将其表示出来。坏消息是，设定权重的工作，即确定合适的、能符合预期的输入与输出的权重，现在还是由人工进行的。上一章中，我们结合与门、或门的真值表人工决定了合适的权重。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECXEajBgslZhNLnl8TmH8mkhjgEr*8SP2ONcyPdqj.YeIcpuFkNN792M8rNdTIW4v*3IjoivKl*0eRBXPjgovlk!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrED6Y05IHdij53oDtT3M70jEdK*vXt8BYCmYa3QhWu4j*Dbk2RcIyJtjhYxOXN7Ej9KWD4L67S*l8jfWMR.4Cc7c!/b&bo=LARpAgAAAAADJ0E!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ1Edx7OzGBC7wrI7qfeICMr6gqm*ldd0ySZzTLoBMpob2DJulmr*dyYgWPZBZPaFRzJn4drMxpRnktr3gbFmJo!/b&bo=4QNbAgAAAAADJ7k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBREby3lVd3cDhHlO*6YJJVr83GrebXq6XHc3z8bBHxRfSnL*OGW3VHdc7Mk*zUkgpEgoPWfYgZ5Qk38E3kBIzA!/b&bo=4gN4AgAAAAADJ5k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKvHWE6*nu8LYS4bUxcDeN2apOJVjT*t.A5XX6tlE2tJ597jdqRdqxBaJGqE7cLt4e7sFoP0UuOPlO1b*2aLIvg!/b&bo=DwYPAwAAAAADJwc!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEbN2TZqJWrIzM2cXrPhfGpGbeEY6knOqdeM.PcV7DJMtmMB8Kln8Tm4rvrRXPRvzg8a1dUyzq1wXvOJ1WpYJ3A!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK.G7TrqbpbysgqUneSOlyheewWgwgnuMOFTEfBeRLmbbstknHA4kEPyhYgoa3iLLobUHdFbbXFUsSvfMbe0yUo!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIh4RLzcmr0hpEGz*gdJq9mC63uXz9XfxDm5dE90dDpW*Wo0YD*C7mgYIPxeY541FET5nBL8.0Ziu13BlQgWiXM!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4">
-<meta property="article:published_time" content="2020-07-23T04:32:24.000Z">
-<meta property="article:modified_time" content="2020-08-01T03:24:07.089Z">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYJHPMhY2qMO2bJ2j4XMTTk9LlxfyeFSlCtElw4RfLib.xpEUlDoeZqmg3aFgbVRjTqniUSufKl.U3KuLQO32gk!/b&bo=3ANHAgAAAAADB7g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSsBvp3GRb5YAvqVzzvK6LxzoUBYKnaVLwikIuJItmMrmNLfcaEzHt8hXn75X9OHxiNUTFRBHx9z30wBWjrxP64!/b&bo=zQI3AQAAAAADB9s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEP9gZBPt0lIG.khZET3KpxVlySNU4SRr1705qyZCKBffipPDJHD2dVKceIjZxOdT5L53kjM1V.q1*rXJCPiXdXo!/b&bo=RQOsAAAAAAADF9g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRmDCCllkSovEwAHRwtFQ0UD23yfxGyuiDglSKAjYc5RTs78gq.W8ue2RJsxwIXD8ZTyX*MABLvOP3Us7eTfkRE!/b&bo=nAJ4AAAAAAADB8Q!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYSm6OW*YYEjtuPDJ3C*x6ztnlHrWzYLUV7hp4uvsBTlOZPL*OmcASE.35.UaH.z0b*lVR.wRcFs2jQRpDOtZrA!/b&bo=0wJjAQAAAAADB5E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRmDCCllkSovEwAHRwtFQ0UD23yfxGyuiDglSKAjYc5RTs78gq.W8ue2RJsxwIXD8ZTyX*MABLvOP3Us7eTfkRE!/b&bo=nAJ4AAAAAAADB8Q!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYaHwR7IEnth1JSs8t5BEbaM.si4cYuWsWzgkL8abQrr3u7j1NmH0aNecAoqKsy6vcGhpODBp8hH0XsK4T4lBSY!/b&bo=fwS0AAAAAAADB.0!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVDSx7eJx7nosnEsx8jQmaVuh8ggNXt6Rx2QRYBHYzOdhtBpMemqDI36.Wz5jtRXAnAPDQmQzuQ2yPHIBoGfkQc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaYzEGu8tHKdCWa69MKdVO6UMdkY20De1H6ye.t4sI6YcZIraqEINg6zWDEYkVl3ce8ekzWgaTl1Ee4yr9RtW6g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqU2IrgDG1l4Qn2nfK9CJ8TPgAf0llszComzgXeYCc9EoMQbAnBio9rezcZe7Py1VmqoPhC65nVEPAobAxDNSOdw!/b&bo=kwOCAAAAAAADBzA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWoEnWWzTmWb9MOBJG94gxfuN74HwiKbAGdRgUo1dh5loaQeBMPe8X7Dl77I3INceHfdAVM7NLvKbQl6TF4CTpE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdTFnYpC7L46zDYUt5q*72U3dgTzcG1zxSxjhLZdQJkZRP.TTtg2BMIrOeqKEQjW4munKhnB2vLfLleVXRlrZmY!/b&bo=EAQzAQAAAAADBwQ!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqY.8foilsG7IVptlwytdOPv5meQ9ddOsRaYW*WjBdhNWbYE4k7XPOHLGinyV1eOa6tOYmwINE.uzmEd7c2faoRY!/b&bo=.QK1AgAAAAADB24!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqV8yhrI4QjfLtwu3XDGWfCwFpDhB9DutxJFIovqu7zX.xWmlvVu0lYXbJRhxNIuKpaJFcwK21eyelEAj89V23h4!/b&bo=ygLuAAAAAAADBwQ!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVrwvebipFIiOJ45ZbIyOrBVV7hxiF0W5SaWJjXYtnuZrox3ZAe8kA*buphzLpVLIkZhmSn1fw5bazYHJJ.I7g0!/b&bo=9QJJAQAAAAADB50!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeKKzXO2v9h1QZehkTaVfTUUGtKwxm6yXTGx36exygHROXN85TYGQX4XhSmzr4VAYB9GdbnD9Zu0svELMuXAFz8!/b&bo=0QTsAQAAAAADBxo!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWlkufT5OY2M1B8OuUgmzDDg*.HSK9Bv9VDa*OMZO3USAqaJbomN6Yo6FG4nemJwhTUwzna7xIGbE24Zy2AUk0c!/b&bo=RwTMAQAAAAADB6w!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEES9y7IwXGDYbUO9fkdEmAUxh4qXcxjQTzOEIDOHLioqBKrxXAHLZnMtaLekEbcV6pMZgfkB5sGyDxf4jqGQuIE!/b&bo=XwXNAQAAAAADJ5Q!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZRzryPAr8hVajsg7rvZ1OAYxKua4MvqU51xbXMg0zDfvmjQ9NYsTA0JF2xD0acV6UsJZegN2*7CZpwR.PPtORE!/b&bo=kgLNAQAAAAADB34!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDP.uPzdrIOPKz0hBtdFvP5lFONsoRZg*JYT*484EjVi4FmIBT6LUq28FZWXLSg9JDZcDRCQKJ1qozztkU*OjSg!/b&bo=ywS8AQAAAAADJ3A!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGbJ1q0RwuaDEMaHTiNF3efpwdLKHUX4dsCe.dPxDdFqe.KinE3aucgCWtM2AA79TPnfUwoS7og4*e5hN0zIEjs!/b&bo=tAS*AQAAAAADJww!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaCkwy5N5IotDgqEhsaorNpS6gUVqb0qgYHBIlnIs7h5GPuVSWybOp19Kvl7ua03DpXUa.6Jr96PTPP71HSjlVE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbkZqhYjsBYiS5gsDmt6wlQzjYjeylLAwxduqG1zgN1wDZsDCgIvuyePjeC7E5mMD*p2ZyDXyzBaaUjY.*u27jg!/b&bo=mQOgAQAAAAADBxk!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXGp2UajF9AIP1RpXOAOKVcM61vftxem8u7vMUpHtKqbgn7lcuzi*gD5Ry6F*phRH0k4q0*ecdU9nt7x5YAbuiQ!/b&bo=SATIAAAAAAADB6Y!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcZUfYX9wPEZaXNXAz4vG8NBBPsz9h3fENhhT9r*fAxr3B2VgaxLtKypLCy8sd4fwRyA7qjCfDjBYzw7zLxFx4A!/b&bo=RgX7AQAAAAADB5s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqf1k9ZBZJSmtgsvoMWGsNfDe8dWzpkMJTpp5Q6jSd0Pvzaz7FRMZCMthkXOHyXo2aRqWkULghN.hIwSulH7.WFY!/b&bo=nwRzAgAAAAADB8g!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjIoyWdbUnisOs0Hmm4bthbBE6R84zKiwgdxJqRONRFogLW670NvDqlB26HqwPKwUexEQwa1u3d0Fgx8E.XqRM!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaf*eiABSnXPUXo7mm5ncc9gCt8MYNScn89znKnMWOHwhqS4udbHPsUT1ESNupYnxBrOuQAwEY2qAoBhSUMsx2M!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKBAZYJDbkSWwWH*U4lQa7ak55Tgt3eK4aNpUV0RZIlKtYgat*PvIyiXdTA1m8Q6.Pd0XScSvQMSelznQ3QSFyU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaR69*dLCM9Kbv5gGTpo5XPcprEC5BraoyaV1vkEmdH8ALjdIiClNt4YMxlpLM3mDLL7JMSYUtBvxTZIWxeCeiA!/b&bo=ewO3AAAAAAADB.0!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEM3ae6yZ*xKuvr3moDkdLxd00gnSikdKLVoiWU2lnFWBE.eIV652pDFvEBAUeCQGkohD8ozwd93F*Fy3fLdYA7Y!/b&bo=fQOuAAAAAAADF.I!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRN.a44r7cWcWYbLS04L8uKClzwzarwy6*L8J7r9jv.IkSqOflZDMaYGSNV2B*CEP5jiS7UNUK0ofRZjkLBAxfI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-08-03T06:19:24.000Z">
+<meta property="article:modified_time" content="2020-08-03T06:25:32.498Z">
 <meta property="article:author" content="徐仕强">
-<meta property="article:tag" content="软件安装">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYJHPMhY2qMO2bJ2j4XMTTk9LlxfyeFSlCtElw4RfLib.xpEUlDoeZqmg3aFgbVRjTqniUSufKl.U3KuLQO32gk!/b&bo=3ANHAgAAAAADB7g!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -185,14 +208,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-hadoop与spark集群的安装与配置" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-人工智能原理与应用二：神经网络" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hadoop与spark集群的安装与配置
+      人工智能原理与应用二：神经网络
     </h1>
   
 
@@ -203,8 +226,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-07-23T04:32:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
+<a href="/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2020-08-03T06:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
 </a>
 		<!-- 需要添加的位置 -->
          <!-- 开始添加字数统计-->
@@ -214,7 +237,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">6.2k字</span>
+        <span class="post-count">6.4k字</span>
       </span>
     </span>
     <span class="post-time">
@@ -222,7 +245,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">25分</span>
+        <span class="post-count">24分</span>
       </span>
     </span>
 </div>
@@ -233,318 +256,266 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上半年的学习中，安装与配置的最复杂的应该就是hadoop集群和分布式文件系统HDFS了。之后一直在纠结写不写博客记录一下，写的话太麻烦好多当时遇到的问题都忘了，不写的话怕时间长自己彻底的忘了。最后还是决定写一篇记录一下安装和配置的经历。</p>
-<a id="more"></a>
-<h1 id="Hadoop-集群的安装与配置"><a href="#Hadoop-集群的安装与配置" class="headerlink" title="Hadoop 集群的安装与配置"></a>Hadoop 集群的安装与配置</h1><p>虽然 Hadoop 可以运行在 Linux、Windows 等系统之上，但 Hadoop 官方支持的作业平台只有 Linux。因此，在 Windows 上运行 Hadoop 时，需要安装 Cygwin 等软件来提供一些 Linux 操作系统的功能。在 Linux 发行版中，常见的操作系统有 CentOS、Ubuntu、RedHat、OpenSUSE 等，考虑到企业级应用、稳定且免费等因素，本节选用 CentOS 作为 Hadoop 集群安装与使用的环境。Hadoop 分布式集群搭建的规划见下图：  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjUHQYNu*BqUuEKjJG5UZQTyFMqQSLQa9tY08SxLk*c9ACNX7UMSy9yPShTx12EMyTWzwQWphcY*UAr1QcspuE!/b&bo=wAPSAAAAAAADBzM!&rf=viewer_4" alt="">  </p>
-<p>Hadoop 分布式集群搭建的总体思路是先安装一台虚拟机，然后在其上完成除 SSH 以外的所有配置后再克隆两台虚拟机，接着对三台虚拟机进行网络设置后，并配置整个集群的无密码登录，最后启动并验证集群。安装与配置主要包括以下 7 个大的步骤:      </p>
-<ol>
-<li>操作系统 CentOS 的安装；  </li>
-<li>创建 Hadoop 用户与系统设置；  </li>
-<li>安装 Java；</li>
-<li>安装 Hadoop；</li>
-<li>克隆虚拟机与网络设置；</li>
-<li>SSH 无密码登录设置；</li>
-<li>启停和验证集群。  </li>
-</ol>
-<p>下面将介绍每个步骤的具体实现，本节使用的虚拟机是 VMware Workstation Pro 15.5.0，操作系统是CentOS-7-x86_64-DVD-1511，Java 版本为 jdk-8u231-linux-x64，Hadoop 版本为 hadoop-3.1.3。  </p>
-<h2 id="1-操作系统-CentOS-的安装"><a href="#1-操作系统-CentOS-的安装" class="headerlink" title="1.操作系统 CentOS 的安装"></a>1.操作系统 CentOS 的安装</h2><p>首先下载安装 VMware Workstation pro，然后从 CentOS 官网下载操作系统 CentOS7.2 的安装文件CentOS-7-x86_64-DVD-1511.iso，下载地址是 <a href="https://www.centos.org/download" target="_blank" rel="noopener">https://www.centos.org/download</a>,但是由于Centos8以下的官方都移除了，这里博主提供阿里云镜像地址下载速度很快<a href="https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64" target="_blank" rel="noopener">https://mirrors.aliyun.com/centos-vault/7.2.1511/isos/x86_64</a>。通过虚拟化软件 VMware Workstation Pro 安装一台 Centos7.2 的虚拟机。虚拟机设置如下图所示：  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECXEajBgslZhNLnl8TmH8mkhjgEr*8SP2ONcyPdqj.YeIcpuFkNN792M8rNdTIW4v*3IjoivKl*0eRBXPjgovlk!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">  </p>
+        <p>我们学习了感知机。关于感知机，既有好消息，也有坏消息。好消息是，即便对于复杂的函数，感知机也隐含着能够表示它的可能性。上一章已经介绍过，即便是计算机进行的复杂处理，感知机（理论上）也可以将其表示出来。坏消息是，设定权重的工作，即确定合适的、能符合预期的输入与输出的权重，现在还是由人工进行的。上一章中，我们结合与门、或门的真值表人工决定了合适的权重。</p>
+<a id="more"></a> 
+<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><ul>
+<li>神经网络 </li>
+<li>神经网络的学习</li>
+</ul>
+<h1 id="第三章-神经网络"><a href="#第三章-神经网络" class="headerlink" title="第三章 神经网络"></a>第三章 神经网络</h1><p>神经网络的出现就是为了解决刚才的坏消息。具体地讲，神经网络的一个重要性质是它可以自动地从数据中学习到合适的权重参数。本章中，我们会先介绍神经网络的概要，然后重点关注神经网络进行识别时的处理。在下一章中，我们将了解如何<strong>从数据中学习权重参数</strong>。      </p>
+<h2 id="1-从感知机到神经网络"><a href="#1-从感知机到神经网络" class="headerlink" title="1 从感知机到神经网络"></a>1 从感知机到神经网络</h2><h3 id="1-1-神经网络的示例"><a href="#1-1-神经网络的示例" class="headerlink" title="1.1 神经网络的示例"></a>1.1 神经网络的示例</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYJHPMhY2qMO2bJ2j4XMTTk9LlxfyeFSlCtElw4RfLib.xpEUlDoeZqmg3aFgbVRjTqniUSufKl.U3KuLQO32gk!/b&bo=3ANHAgAAAAADB7g!&rf=viewer_4" alt="">  </p>
+<p>用图表示神经网络的话，一般把最左边的一列称为<strong>输入层</strong>，最右边的一列称为<strong>输出层</strong>，中间的一列称为<strong>中间层</strong>。中间层有时也称为<strong>隐藏层</strong>。隐藏层的神经元（和输入层、输出层不同）肉眼看不见。  </p>
+<p>上图的神经网络的形状类似上一章的感知机。实际上，就神经元的连接方式而言，与上一章的感知机并没有任何差异。   </p>
+<h3 id="1-2-感知机简化"><a href="#1-2-感知机简化" class="headerlink" title="1.2 感知机简化"></a>1.2 感知机简化</h3><p>下图大致表示一个感知机，添加了权重为b的输入信号1。这个感知机将x1、x2、1三个信号作为神经元的输入，将其和各自的权重相乘后，传送至下一个神经元。在下一个神经元中，计算这些加权信号的总和。如果这个总和超过0，则输出1，否则输出0。<strong>偏置的信号一直是1</strong>。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSsBvp3GRb5YAvqVzzvK6LxzoUBYKnaVLwikIuJItmMrmNLfcaEzHt8hXn75X9OHxiNUTFRBHx9z30wBWjrxP64!/b&bo=zQI3AQAAAAADB9s!&rf=viewer_4" alt="">     </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEP9gZBPt0lIG.khZET3KpxVlySNU4SRr1705qyZCKBffipPDJHD2dVKceIjZxOdT5L53kjM1V.q1*rXJCPiXdXo!/b&bo=RQOsAAAAAAADF9g!&rf=viewer_4" alt="">    </p>
+<p>为了将上面的公式表示的更加简洁，一般用一个函数来表示这种分情况的动作（超过0则输出1，否则输出0）。引入新函数h(x)。公式则变为：   </p>
+<pre><code>y=h(b + w1x1 + w2x2)   </code></pre><p>那么判断的公式就可以简化成为：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRmDCCllkSovEwAHRwtFQ0UD23yfxGyuiDglSKAjYc5RTs78gq.W8ue2RJsxwIXD8ZTyX*MABLvOP3Us7eTfkRE!/b&bo=nAJ4AAAAAAADB8Q!&rf=viewer_4" alt="">    </p>
+<h3 id="1-3-激活函数初见"><a href="#1-3-激活函数初见" class="headerlink" title="1.3 激活函数初见"></a>1.3 激活函数初见</h3><p>刚才引入的h（x）函数会将输入信号的总和转换为输出信号，这种函数一般称为激活函数（activation function）。如“激活”一词所示，激活函数的作用在于决定如何来激活输入信号的总和。     </p>
+<p>由公式可知，先要计算输入加权信号的总和，再用激活函数转换这一总和。那么，用形象的图可以这样表示：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYSm6OW*YYEjtuPDJ3C*x6ztnlHrWzYLUV7hp4uvsBTlOZPL*OmcASE.35.UaH.z0b*lVR.wRcFs2jQRpDOtZrA!/b&bo=0wJjAQAAAAADB5E!&rf=viewer_4" alt="">   </p>
+<p>接下来，仔细介绍激活函数。毕竟激活函数是连接感知机和神经网络的桥梁鸭。    </p>
+<h2 id="2-激活函数"><a href="#2-激活函数" class="headerlink" title="2.激活函数"></a>2.激活函数</h2><p>一般而言，<strong>“朴素感知机”</strong>是指单层网络，指的是激活函数使用了阶跃函数A 的模型。<strong>“多层感知机”</strong>是指神经网络，即使用 sigmoid函数等平滑的激活函数的多层网络。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRmDCCllkSovEwAHRwtFQ0UD23yfxGyuiDglSKAjYc5RTs78gq.W8ue2RJsxwIXD8ZTyX*MABLvOP3Us7eTfkRE!/b&bo=nAJ4AAAAAAADB8Q!&rf=viewer_4" alt=""><br>上图表示的激活函数以阈值为界，一旦输入超过阈值，就切换输出。这样的函数称为“阶跃函数”。就像一个楼梯，到指定的值突变。因此，可以说感知机中使用了阶跃函数作为激活函数。也就是说，在激活函数的众多候选函数中，感知机使用了阶跃函数。那么，如果感知机使用其他函数作为激活函数的话会怎么样呢？实际上，如果将激活函数从阶跃函数换成其他函数，就可以进入神经网络的世界了。    </p>
+<p>神经网络中经常使用的一个激活函数就是下图公式表示的<strong>sigmoid函数</strong>（sigmoid function）。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYaHwR7IEnth1JSs8t5BEbaM.si4cYuWsWzgkL8abQrr3u7j1NmH0aNecAoqKsy6vcGhpODBp8hH0XsK4T4lBSY!/b&bo=fwS0AAAAAAADB.0!&rf=viewer_4" alt="">      </p>
+<p>上式的exp(−x)表示e^(−x)的意思。e是纳皮尔常数2.7182…,sigmoid函数看上去有些复杂，但它也仅仅是个函数而已。而函数就是给定某个输入后，会返回某个输出的转换器。   </p>
+<p>神经网络中用sigmoid函数作为激活函数，进行信号的转换，转换后的信号被传送给下一个神经元。实际上，感知机和神经网络的<strong>主要区别</strong>就在于这个激活函数。其他方面，比如神经元的多层连接的构造、信号的传递方法等，基本上和感知机是一样的。</p>
+<h3 id="2-1-阶跃函数的实现"><a href="#2-1-阶跃函数的实现" class="headerlink" title="2.1 阶跃函数的实现"></a>2.1 阶跃函数的实现</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVDSx7eJx7nosnEsx8jQmaVuh8ggNXt6Rx2QRYBHYzOdhtBpMemqDI36.Wz5jtRXAnAPDQmQzuQ2yPHIBoGfkQc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
 <blockquote>
-<p>为了给每台虚拟机设置独立的 IP 地址，虚拟机设置中要注意选择网络连接为“桥接模式”。  </p>
+<p>这里简单说一下numpy在代码中的意思：判断x&gt;0,大于0，则返回True，再用np.int将True转为1，最后规定了dtype为np.int型，就可以实现阶跃函数了。np.arange(-5.0, 5.0, 0.1)在−5.0到5.0的范围内，以0.1为单位，生成NumPy数组（[-5.0, -4.9, ···, 4.9]）。step_function()以该NumPy数组为参数，对数组的各个元素执行阶跃函数运算，并以数组形式返回运算结果。   </p>
 </blockquote>
-<h2 id="2-创建-Hadoop-用户与系统设置"><a href="#2-创建-Hadoop-用户与系统设置" class="headerlink" title="2.创建 Hadoop 用户与系统设置"></a>2.创建 Hadoop 用户与系统设置</h2><h3 id="2-1-创建-Hadoop-用户"><a href="#2-1-创建-Hadoop-用户" class="headerlink" title="2.1 创建 Hadoop 用户"></a>2.1 创建 Hadoop 用户</h3><p>为了方便操作和管理，首先要创建一个名为“hadoop”的用户来运行程序。如果用户对 Linux下的操作命令不太熟悉，可以查阅相关资料和视频，以便为后继的操作打下一定的基础。创建用户的命令是 useradd，创建用户组的命令是 groupadd，设置密码的命令是 passwd，具体操作命令如下:   </p>
-<pre><code>$ su -
-# groupadd hadoop
-# useradd -g haodoop hadoop
-# passwd xu742685294    </code></pre><p>用户创建完成后，使用新用户 spark 登录。  </p>
-<pre><code># su  hadoop  </code></pre><h3 id="2-2-系统设置"><a href="#2-2-系统设置" class="headerlink" title="2.2 系统设置"></a>2.2 系统设置</h3><p>系统设置包括设置 IP 地址、修改 hosts 文件和设置 hostname 文件。    </p>
+<p>由图看到阶跃函数的值呈阶梯式变化，所以称为<strong>阶跃函数</strong>。   </p>
+<h3 id="2-2-sigmoid函数的实现"><a href="#2-2-sigmoid函数的实现" class="headerlink" title="2.2 sigmoid函数的实现"></a>2.2 sigmoid函数的实现</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaYzEGu8tHKdCWa69MKdVO6UMdkY20De1H6ye.t4sI6YcZIraqEINg6zWDEYkVl3ce8ekzWgaTl1Ee4yr9RtW6g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">     </p>
+<p>之所以sigmoid函数的实现能支持NumPy数组，秘密就在于NumPy的广播功能。根据NumPy 的广播功能，如果在标量(就是和一个数字)和NumPy数组之间进行运算，则标量会和NumPy数组的各个元素进行运算。    </p>
+<h3 id="2-3-比较"><a href="#2-3-比较" class="headerlink" title="2.3 比较"></a>2.3 比较</h3><p>1.不同点  </p>
 <ul>
-<li><p>设置 IP 地址<br>从系统的图形界面下或是在/etc/sysconfig/network-scripts/ifcfg-e*文件中设置 IP 地址如下:  </p>
-<pre><code>IP 地址： 192.168.0.88
-子网掩码： 255.255.255.0
-网关： 192.168.0.1
-DNS1/server：192.168.0.1</code></pre><p>完成设置后，在 root 用户下使用命令 service network restart 重启网络，以使设置生效。再使用命令 ping 192.168.0.1 和 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检测网关和外网是否连通。这里我记得要改虚拟机里的设置，不然ping不通，在这里耽误很长时间，连接网线和连接wifi设置不一样。</p>
-</li>
-<li><p>修改 hosts 文件<br>在 root 用户下使用命令 vim /etc/hosts 修改 hosts 文件，修改后的内容如下：  </p>
-<pre><code>127.0.0.1 localhost
-192.168.0.88 cent88
-192.168.0.89 cent89
-192.168.0.90 cent90  </code></pre></li>
-<li><p>设置 hostname 文件<br>在 root 用户下使用命令 vim /etc/hostname 修改 hostname 文件，修改后的内容如下：  </p>
-<pre><code>cent88  </code></pre></li>
+<li>首先直观的是<strong>“平滑性”的不同</strong>。sigmoid函数是一条平滑的曲线，输出随着输入发生连续性的变化。而阶跃函数以0为界，输出发生急剧性的变化。sigmoid函数的平滑性对神经网络的学习具有重要意义。  </li>
+<li>相对于阶跃函数只能返回0或1，sigmoid函数可以返回0.731 …、0.880 …等实数。也就是说，感知机中神经元之间流动的是<strong>0或1的二元信号</strong>，而神经网络中流动的是<strong>连续的实数值信号</strong>。      </li>
 </ul>
-<p>重启一次虚拟机后，用 hostname 命令查看设置是否生效。     </p>
-<h2 id="3-安装java"><a href="#3-安装java" class="headerlink" title="3.安装java"></a>3.安装java</h2><p>由于 Hadoop 本身是使用 Java 语言编写的，因此 Hadoop 的开发和运行都需要 Java 环境。CentOS7.2 自带openjdk，可以通过命令 <code>rpm -qa|grep jdk</code> 查看 openjdk 的版本，如 java-1.8.0-openjdk-1.8.0.65-3.b17.el7.x86_64 等。考虑到功能上的稳定性，建议采用 Oracle 公司的 Java 版本。因此，用户需要提前删除 CentOS7.2 自带的多个版本的 openjdk。使用命令 <code>yum -y remove java-1.8.0-openjdk-*</code>卸载相关 openjdk 安装文件。<br>下载 Oracle 公司的 Java，选择 <code>JavaSE Development Kit 8u231</code> 的 linux 安装文件 <code>jdk-8u231-linux-x64.rpm</code>下载。在这里我没有在虚拟机中下载，总感觉linux网速慢，我自己用win10下载后，直接用VMware移到虚拟机中。通过命令<code>rpm -ivh Downloads/jdk-8u231-linux-x64.rpm</code>安装 Java1.8。安装完成后，需要设置 Java 环境变量，即修改/etc/profile文件，也就是在文件最后面追加几行内容如下:   </p>
-<pre><code>export JAVA_HOME=/usr/java/jdk1.8.0_231
-export JRE_HOME=/usr/java/jdk1.8.0_231/jre
-export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib  </code></pre><p>然后使用命令<code>source /etc/profile</code> 让环境变量生效，最后，再使用命令 <code>java –version</code> 查看版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrED6Y05IHdij53oDtT3M70jEdK*vXt8BYCmYa3QhWu4j*Dbk2RcIyJtjhYxOXN7Ej9KWD4L67S*l8jfWMR.4Cc7c!/b&bo=LARpAgAAAAADJ0E!&rf=viewer_4" alt="">  </p>
-<h2 id="4-安装-Hadoop"><a href="#4-安装-Hadoop" class="headerlink" title="4.安装 Hadoop"></a>4.安装 Hadoop</h2><h3 id="4-1-下载解压-Hadoop-安装包"><a href="#4-1-下载解压-Hadoop-安装包" class="headerlink" title="4.1 下载解压 Hadoop 安装包"></a>4.1 下载解压 Hadoop 安装包</h3><p>本节采用的 Hadoop 版本为 3.1.3，通过 Hadoop 官网提供的下载链接 <a href="http://hadoop.apache.org/releases.html#Download，在下载列表中找到" target="_blank" rel="noopener">http://hadoop.apache.org/releases.html#Download，在下载列表中找到</a> 3.1.3 对应的 binary，下载 hadoop-3.1.3.tar.gz 文件即可。使 用 命 令 <code>tar –zxvf hadoop-3.1.3.tar.gz</code> 将 tar.gz 文 件 解 压 后 ， 放 置 到 方 便 用 户 使 用 的 位 置 ， 如<code>/home/haodoop/hadoop-2.7.6</code>， 这 个 位 置 即 HADOOP_HOME 。 注 意 /home/hadoop 为 用 户 目 录 ， 而<code>/home/hadoop/hadoop-2.7.6</code> 为 hadoop-2.7.6.tar.gz 解压后生成的目录。</p>
-<h3 id="4-2-配置-hadoop-集群"><a href="#4-2-配置-hadoop-集群" class="headerlink" title="4.2 配置 hadoop 集群"></a>4.2 配置 hadoop 集群</h3><p>配置 hadoop 集群，需要修改 HADOOP_HOME 目录下（即“/home/spark/hadoop-3.1.3”）的“etc/hadoop”子目录中的 8 个配置文件，分别是 core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml、hadoop-env.sh、yarn-env.sh、mapred-env.sh 和 slaves。对于单机安装 Hadoop，仅需要修改 hadoop-env.sh 一个文件即可在一台计算机上运行 Hadoop 应用程序。伪分布式安装是指在一台机器上模拟一个小的集群，实现分布式数据处理的全过程，但是集群中只有一个节点，分布式数据传输并没有经过真实的网络，适合于小规模应用程序的调试。对于伪分布式配置，仅需要修改 core-site.xml 和 hdfs-site.xml 两个文件。  </p>
+<p>2.相同点   </p>
 <ul>
-<li><p>修改 core-site.xml  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi core-site.xml
-&lt;configuration&gt;
-&lt;!-- 指定 HDFS 的主机名和端口号 --&gt;
- &lt;property&gt;
- &lt;name&gt;fs.defaultFS&lt;/name&gt;
- &lt;value&gt;hdfs://cent88:9000&lt;/value&gt;
- &lt;/property&gt;
-&lt;!-- 指定 hadoop 运行时产生临时文件的存储目录 --&gt;
- &lt;property&gt;
- &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
- &lt;value&gt;/home/hadoop/tmp&lt;/value&gt;
- &lt;/property&gt;
-&lt;/configuration&gt;    </code></pre></li>
-<li><p>hdfs-site.xml  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi hdfs-site.xml
-&lt;configuration&gt;
-&lt;!-- 设置 dfs 副本数 --&gt;
- &lt;property&gt;
- &lt;name&gt;dfs.replication&lt;/name&gt;
- &lt;value&gt;3&lt;/value&gt;
- &lt;/property&gt;
-&lt;!-- 设置分布式名字节点名字目录位置 --&gt;
- &lt;property&gt;
- &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
- &lt;value&gt;/home/hadoop/hdfs/name&lt;/value&gt;
- &lt;/property&gt;
-&lt;!-- 设置分布式数据节点数据目录位置 --&gt;
-&lt;property&gt;
- &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
- &lt;value&gt;/home/hadoop/hdfs/data&lt;/value&gt;
- &lt;/property&gt;
-&lt;!-- 设置 secondary namenode 的端口 --&gt;
- &lt;property&gt;
- &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
- &lt;value&gt;cent88:50090&lt;/value&gt;
- &lt;/property&gt;
-&lt;/configuration&gt;   </code></pre><p>考虑到当前用户对用户目录下的文件有绝对的控制权，所以在用户目录/home/hadoop/下新建 hdfs 目录，用于存储产生的分布式文件。  </p>
-</li>
-<li><p>mapred-site.xml  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi mapred-site.xml
-&lt;configuration&gt;
-&lt;!-- 指定 mr 运行在 yarn 上 --&gt;
- &lt;property&gt;
- &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
- &lt;value&gt;yarn&lt;/value&gt;
- &lt;/property&gt;
-&lt;/configuration&gt;   </code></pre></li>
-<li><p>yarn-site.xml  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi yarn-site.xml
-&lt;configuration&gt;
-&lt;!-- reducer 获取数据的方式 --&gt;
- &lt;property&gt;
- &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
- &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
- &lt;/property&gt;
-&lt;!-- 指定 YARN 的 ResourceManager 的地址 --&gt;
- &lt;property&gt;
- &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
- &lt;value&gt;cent88&lt;/value&gt;
- &lt;/property&gt;
-&lt;/configuration&gt;    </code></pre></li>
-<li><p>hadoop-env.xml   </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi hadoop-env.xml
-export JAVA_HOME=/usr/java/jdk1.8.0_231</code></pre></li>
-<li><p>yarn-env.xml</p>
-<pre><code>[hadoop@cent88 hadoop]$ vi yarn-env.xml
-export JAVA_HOME=/usr/java/jdk1.8.0_231  </code></pre></li>
-<li><p>mapred-env.xml  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi mapred-env.xml
-export JAVA_HOME=/usr/java/jdk1.8.0_231  </code></pre></li>
-<li><p>works（这里hadoop3以上才是works/work忘记了，hadoop3以下的是slaves）  </p>
-<pre><code>[hadoop@cent88 hadoop]$ vi works
-cent88
-cent89
-cent90  </code></pre></li>
+<li>如果从宏观视角看，可以发现它们具有相似的形状。     </li>
+<li>当输入信号为重要信息时，阶跃函数和sigmoid函数都会输出较大的值；当输入信号为不重要的信息时，两者都输出较小的值。    </li>
+<li>不管输入信号有多小，或者有多大，输出信号的值都在0到1之间。   </li>
 </ul>
-<p>还需要设置 hadoop 环境变量，即修改/etc/profile 文件，在文件最后再追加几行内容如下:  </p>
-<pre><code>export HADOOP_HOME=/home/spark/hadoop-3.1.3
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin  </code></pre><p>使用命令 source /etc/profile 让环境变量生效。然后再使用命令 <code>hadoop version</code> 命令查看 Hadoop 的版本信息如下：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEJ1Edx7OzGBC7wrI7qfeICMr6gqm*ldd0ySZzTLoBMpob2DJulmr*dyYgWPZBZPaFRzJn4drMxpRnktr3gbFmJo!/b&bo=4QNbAgAAAAADJ7k!&rf=viewer_4" alt="">  </p>
-<h2 id="5-克隆虚拟机与网络设置"><a href="#5-克隆虚拟机与网络设置" class="headerlink" title="5.克隆虚拟机与网络设置"></a>5.克隆虚拟机与网络设置</h2><h3 id="5-1-克隆虚拟机"><a href="#5-1-克隆虚拟机" class="headerlink" title="5.1 克隆虚拟机"></a>5.1 克隆虚拟机</h3><p>当 Java 和 Hadoop 完成上述设置后，可以执行克隆虚拟机操作，把上述设置好的 cent88 这台机器，克隆两次，分别命名为 cent89 和 cent90。方法是从 VMware Workstation 菜单中的选择虚拟机管理克隆，再选择创建完整克隆，完成虚拟机的克隆。</p>
-<h3 id="5-2-网络设置"><a href="#5-2-网络设置" class="headerlink" title="5.2 网络设置"></a>5.2 网络设置</h3><p>考虑到克隆的虚拟机都有相同的主机名和网络 IP 地址，因此，需要逐一运行克隆产生的虚拟机 cent89 和cent90，进行网络设置，以 cent89 为例。  </p>
+<h3 id="2-4-非线性函数"><a href="#2-4-非线性函数" class="headerlink" title="2.4 非线性函数"></a>2.4 非线性函数</h3><p>阶跃函数和sigmoid函数还有其他共同点，就是两者均为<strong>非线性函数</strong>。sigmoid函数是一条曲线，阶跃函数是一条像阶梯一样的折线，两者都属于非线性的函数。   </p>
+<blockquote>
+<p>线性函数就是一条直线如y=ax，如果神经网络采用线性函数，那么层数就毫无意义。做后会变成y=abcdx，最后还是相当于y=mx。因此，为了发挥叠加层所带来的优势，激活函数必须使用非线性函数。   </p>
+</blockquote>
+<h3 id="2-5-ReLU函数"><a href="#2-5-ReLU函数" class="headerlink" title="2.5 ReLU函数"></a>2.5 ReLU函数</h3><p>在神经网络发展的历史上，sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。   </p>
+<p>ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。可以用下图的式子表示：  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqU2IrgDG1l4Qn2nfK9CJ8TPgAf0llszComzgXeYCc9EoMQbAnBio9rezcZe7Py1VmqoPhC65nVEPAobAxDNSOdw!/b&bo=kwOCAAAAAAADBzA!&rf=viewer_4" alt="">   </p>
+<p>从图中就可以看出这个函数比较简单，实现起来也是一样。  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWoEnWWzTmWb9MOBJG94gxfuN74HwiKbAGdRgUo1dh5loaQeBMPe8X7Dl77I3INceHfdAVM7NLvKbQl6TF4CTpE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br>只需要取（0，x）中的最大值即可。   </p>
+<h2 id="3-多维数组的运算"><a href="#3-多维数组的运算" class="headerlink" title="3.多维数组的运算"></a>3.多维数组的运算</h2><p>如果掌握了NumPy多维数组的运算，就可以高效地实现神经网络。因此，掌握这个还是很重要滴。  </p>
+<h3 id="3-1-多维数组"><a href="#3-1-多维数组" class="headerlink" title="3.1 多维数组"></a>3.1 多维数组</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdTFnYpC7L46zDYUt5q*72U3dgTzcG1zxSxjhLZdQJkZRP.TTtg2BMIrOeqKEQjW4munKhnB2vLfLleVXRlrZmY!/b&bo=EAQzAQAAAAADBwQ!&rf=viewer_4" alt="">    </p>
+<blockquote>
+<p>np.dim()函数用来获取数组的维数，数组的形状用过实例变量shape获得。要注意的是A.shape返回的是一个元组，也是为了和二维数组、三维数组返回一样的结果。因此如果数组是1行x列，则表示为（x，），为什么不能用（1，4）表示呢？这里参考一个博客。  </p>
+</blockquote>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqY.8foilsG7IVptlwytdOPv5meQ9ddOsRaYW*WjBdhNWbYE4k7XPOHLGinyV1eOa6tOYmwINE.uzmEd7c2faoRY!/b&bo=.QK1AgAAAAADB24!&rf=viewer_4" alt=""><br>(1,4)算二维的，简单理解就是几维，元组就有几个数字。如一维（4，），二维（1，4），三维（4，3，2）。  </p>
+<h3 id="3-2-矩阵乘法"><a href="#3-2-矩阵乘法" class="headerlink" title="3.2 矩阵乘法"></a>3.2 矩阵乘法</h3><p>二维数组也成为<strong>矩阵</strong>，矩阵乘法在高等数学中大家都应该很清楚了。这里怎么乘我就不说了，我主要用python来演示一下怎么用Numpy的方法。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqV8yhrI4QjfLtwu3XDGWfCwFpDhB9DutxJFIovqu7zX.xWmlvVu0lYXbJRhxNIuKpaJFcwK21eyelEAj89V23h4!/b&bo=ygLuAAAAAAADBwQ!&rf=viewer_4" alt=""><br>矩阵的乘积可以通过 NumPy 的np.dot()函数计算（乘积也称为点积）。np.dot()接收两个NumPy数组作为参<br>数，并返回数组的乘积。矩阵相乘的基础知识就不说了。     </p>
+<h3 id="3-3-神经网络的内积"><a href="#3-3-神经网络的内积" class="headerlink" title="3.3 神经网络的内积"></a>3.3 神经网络的内积</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVrwvebipFIiOJ45ZbIyOrBVV7hxiF0W5SaWJjXYtnuZrox3ZAe8kA*buphzLpVLIkZhmSn1fw5bazYHJJ.I7g0!/b&bo=9QJJAQAAAAADB50!&rf=viewer_4" alt="">   </p>
+<p>上图的神经网络省略了偏置和激活函数，只有权重。    </p>
+<blockquote>
+<p>使用np.dot（多维数组的点积），可以一次性计算出<strong>Y</strong>的结果。如果不使用np.dot，就必须单独计算Y 的每一个元素（或者说必须使用for语句），非常麻烦。因此，通过矩阵的乘积一次性完成计算的技巧，在实现的层面上可以说是非常重要的。</p>
+</blockquote>
+<h2 id="4-三层神经网络的实现"><a href="#4-三层神经网络的实现" class="headerlink" title="4.三层神经网络的实现"></a>4.三层神经网络的实现</h2><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeKKzXO2v9h1QZehkTaVfTUUGtKwxm6yXTGx36exygHROXN85TYGQX4XhSmzr4VAYB9GdbnD9Zu0svELMuXAFz8!/b&bo=0QTsAQAAAAADBxo!&rf=viewer_4" alt="">    </p>
+<p>以上图的的3层神经网络为对象，实现从输入到输出的（前向）处理。巧妙地使用NumPy数组，可以用很少的代码完成神经网络的前向处理。    </p>
+<h3 id="4-1-符号的确认"><a href="#4-1-符号的确认" class="headerlink" title="4.1 符号的确认"></a>4.1 符号的确认</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWlkufT5OY2M1B8OuUgmzDDg*.HSK9Bv9VDa*OMZO3USAqaJbomN6Yo6FG4nemJwhTUwzna7xIGbE24Zy2AUk0c!/b&bo=RwTMAQAAAAADB6w!&rf=viewer_4" alt="">   </p>
+<h3 id="4-2-各层间信号传递的实现"><a href="#4-2-各层间信号传递的实现" class="headerlink" title="4.2 各层间信号传递的实现"></a>4.2 各层间信号传递的实现</h3><p>下图代表从输入层到第1层的信号传递（暂不考虑激活函数）：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEES9y7IwXGDYbUO9fkdEmAUxh4qXcxjQTzOEIDOHLioqBKrxXAHLZnMtaLekEbcV6pMZgfkB5sGyDxf4jqGQuIE!/b&bo=XwXNAQAAAAADJ5Q!&rf=viewer_4" alt="">   </p>
+<p>从输入层到第1层的信号传递（考虑激活函数）,其中z1=sigmoid(a1)：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZRzryPAr8hVajsg7rvZ1OAYxKua4MvqU51xbXMg0zDfvmjQ9NYsTA0JF2xD0acV6UsJZegN2*7CZpwR.PPtORE!/b&bo=kgLNAQAAAAADB34!&rf=viewer_4" alt="">      </p>
+<p>第1层到第2层的信号传递:<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEDP.uPzdrIOPKz0hBtdFvP5lFONsoRZg*JYT*484EjVi4FmIBT6LUq28FZWXLSg9JDZcDRCQKJ1qozztkU*OjSg!/b&bo=ywS8AQAAAAADJ3A!&rf=viewer_4" alt="">   </p>
+<p>从第2层到输出层的信号传递:<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGbJ1q0RwuaDEMaHTiNF3efpwdLKHUX4dsCe.dPxDdFqe.KinE3aucgCWtM2AA79TPnfUwoS7og4*e5hN0zIEjs!/b&bo=tAS*AQAAAAADJww!&rf=viewer_4" alt="">   </p>
+<p>输出层所用的激活函数，要根据求解问题的性质决定。   </p>
 <ul>
-<li>重新设置 hostname 文件  </li>
+<li>一般地，回归问题可以使用恒等函数，二元分类问题可以使用 sigmoid函数。    </li>
+<li>多元分类问题可以使用 softmax函数。    </li>
 </ul>
-<p>在 root 用户下使用命令 vim /etc/hostname 修改 hostname 文件，修改后的内容如下：  </p>
-<pre><code>cent89  </code></pre><ul>
-<li>重新设置 IP 地址  </li>
+<blockquote>
+<p>符号可能有点多有点乱，理解原理即可。       </p>
+</blockquote>
+<p>最后附上整个代码：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaCkwy5N5IotDgqEhsaorNpS6gUVqb0qgYHBIlnIs7h5GPuVSWybOp19Kvl7ua03DpXUa.6Jr96PTPP71HSjlVE!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">    </p>
+<pre><code>import numpy as np
+
+
+def init_network():
+    network = {&apos;W1&apos;: np.array([[0.1, 0.3, 0.5], [0.2, 0.4, 0.6]]), &apos;b1&apos;: np.array([0.1, 0.2, 0.3]),
+               &apos;W2&apos;: np.array([[0.1, 0.4], [0.2, 0.5], [0.3, 0.6]]), &apos;b2&apos;: np.array([0.1, 0.2]),
+               &apos;W3&apos;: np.array([[0.1, 0.3], [0.2, 0.4]]), &apos;b3&apos;: np.array([0.1, 0.2])}
+    return network
+
+
+def identity_function(x):
+    return x
+
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+
+def forward(network, x):
+    W1, W2, W3 = network[&apos;W1&apos;], network[&apos;W2&apos;], network[&apos;W3&apos;]
+    b1, b2, b3 = network[&apos;b1&apos;], network[&apos;b2&apos;], network[&apos;b3&apos;]
+    a1 = np.dot(x, W1) + b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(z1, W2) + b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(z2, W3) + b3
+    y = identity_function(a3)
+    return y
+
+
+network = init_network()
+x = np.array([1.0, 0.5])
+y = forward(network, x)
+print(y)  # [ 0.31682708 0.69627909]    </code></pre><h2 id="5-输出层的设计"><a href="#5-输出层的设计" class="headerlink" title="5.输出层的设计"></a>5.输出层的设计</h2><p>神经网络可以用在分类问题和回归问题上，不过需要根据情况改变输出层的激活函数。一般而言，<strong>回归问题用恒等函数，分类问题用softmax函数</strong>。  </p>
+<blockquote>
+<p>分类问题是数据属于哪一个类别的问题。比如，区分图像中的人是男性还是女性的问题就是分类问题。而回归问题是根据某个输入预测一个（连续的）数值的问题。比如，根据一个人的图像预测这个人的体重的问题就是回归问题（类似“57.4kg”这样的预测）。    </p>
+</blockquote>
+<h3 id="5-1-恒等函数和softmax函数"><a href="#5-1-恒等函数和softmax函数" class="headerlink" title="5.1 恒等函数和softmax函数"></a>5.1 恒等函数和softmax函数</h3><p>恒等函数会将输入按原样输出，对于输入的信息，不加以任何改动地直接输出。因此，在输出层使用恒等函数时，输入信号会原封不动地被输出。另外，将恒等函数的处理过程用之前的神经网络图来表示的话。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbkZqhYjsBYiS5gsDmt6wlQzjYjeylLAwxduqG1zgN1wDZsDCgIvuyePjeC7E5mMD*p2ZyDXyzBaaUjY.*u27jg!/b&bo=mQOgAQAAAAADBxk!&rf=viewer_4" alt="">   </p>
+<p>分类问题中使用的softmax函数可以用下图的式子表示：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXGp2UajF9AIP1RpXOAOKVcM61vftxem8u7vMUpHtKqbgn7lcuzi*gD5Ry6F*phRH0k4q0*ecdU9nt7x5YAbuiQ!/b&bo=SATIAAAAAAADB6Y!&rf=viewer_4" alt="">  </p>
+<p>假设输出层共有n个神经元，计算第k个神经元的输出yk。如上图所示，softmax函数的分子是输入信号ak的指数函数，分母是所有输入信号的指数函数的和。   </p>
+<p>I<a href="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIOQS1A.CEDcb6CJqSGbkfenX6QJqVNmsv3cpCaxjxbt7Uq.1O0xXnugUWuDW.iFN4hF5EBaHSphnX6o*W5eA34!/b&bo=7gSoAQAAAAADF3E!&rf=viewer_4" target="_blank" rel="noopener"></a><br>用上图表示softmax函数的话，softmax函数的输出通过箭头与所有的输入信号相连。这是因为，从式子可以看出，输出层的各个神经元都受到所有输入信号的影响。   </p>
+<pre><code>def softmax(a):
+    exp_a = np.exp(a)
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+    return y   </code></pre><h3 id="5-2-实现-softmax函数时的注意事项"><a href="#5-2-实现-softmax函数时的注意事项" class="headerlink" title="5.2 实现 softmax函数时的注意事项"></a>5.2 实现 softmax函数时的注意事项</h3><p>softmax函数的实现虽然正确描述了上面的式子，但在计算机的运算上有一定的缺陷。这个缺陷就是<strong>溢出问题</strong>。softmax函数的实现中要进行指数函数的运算，但是此时指数函数的值很容易变得非常大。softmax函数的实现可以如下式子进行改进。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcZUfYX9wPEZaXNXAz4vG8NBBPsz9h3fENhhT9r*fAxr3B2VgaxLtKypLCy8sd4fwRyA7qjCfDjBYzw7zLxFx4A!/b&bo=RgX7AQAAAAADB5s!&rf=viewer_4" alt=""><br>首先，上图式子在分子和分母上都乘上C这个任意的常数（因为同时对分母和分子乘以相同的常数，所以计算结果不变）。然后，把这个C移动到指数函数（exp）中，记为log C。最后，把log C替换为另一个符号C’。<br>式子说明，在进行softmax的指数函数的运算时，加上（或者减去）某个常数并不会改变运算的结果。这里的C’可以使用任何值，但是为了防止溢出，一般会使用输入信号中的最大值。       </p>
+<p>具体的例子：   </p>
+<pre><code>&gt;&gt;&gt; a = np.array([1010, 1000, 990])
+&gt;&gt;&gt; np.exp(a) / np.sum(np.exp(a)) # softmax函数的运算
+array([ nan, nan, nan]) # 没有被正确计算
+&gt;&gt;&gt;
+&gt;&gt;&gt; c = np.max(a) # 1010
+&gt;&gt;&gt; a - c
+array([ 0, -10, -20])
+&gt;&gt;&gt;
+&gt;&gt;&gt; np.exp(a - c) / np.sum(np.exp(a - c))
+array([ 9.99954600e-01, 4.53978686e-05, 2.06106005e-09])   </code></pre><p>通过减去输入信号中的最大值（上例中的c），我们发现原本为nan（not a number，不确定）的地方，现在被正确计算了。综上，我们可以像下面这样实现softmax函数。    </p>
+<pre><code>def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c) # 溢出对策
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+    return y    </code></pre><h3 id="5-3-softmax函数的特征"><a href="#5-3-softmax函数的特征" class="headerlink" title="5.3 softmax函数的特征"></a>5.3 softmax函数的特征</h3><ul>
+<li>softmax函数的输出是0.0到1.0之间的实数。</li>
+<li>softmax函数的输出值的总和是1。(<strong>重要性质</strong>：也因此可以把softmax函数的输出解释为“概率”。)</li>
+<li>便使用了softmax函数，各个元素之间的大小关系也不会改变。（exp(x)单调递增）</li>
+<li>神经网络只把输出值最大的神经元所对应的类别作为识别结果。</li>
+<li>使用softmax函数，输出值最大的神经元的位置也不会变。因此，神经网络在进行分类时，输出层的softmax函数可以省略。    </li>
 </ul>
-<p>在 root 用户下使用命令 rm -rf /etc/udev/rules.d/70-persistent-net.rules 删除本机规则文件，并重新启动虚拟机。<br>待重启后，在/etc/sysconfig/network-scripts/ifcfg-e*文件中或者是从系统的图形界面下设置 IP 地址如下:     </p>
-<pre><code>IP 地址： 192.168.0.89   </code></pre><p>另外，在/etc/sysconfig/network-scripts/ifcfg-e*文件的 UUID 项前添加#号，即注释掉此项。<br>同样，在 root 用户下使用命令 service network restart 重启网络，以使设置生效。可以使用命令 <code>ifconfig</code> 查看本机 IP 是否已更改，再使用命令 ping 192.168.0.1 和 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检测网关和外网是否连通。    </p>
-<h2 id="6-SSH-无密码登录设置"><a href="#6-SSH-无密码登录设置" class="headerlink" title="6. SSH 无密码登录设置"></a>6. SSH 无密码登录设置</h2><p>在 Hadoop 集群启动时，Hadoop 名称节点（NameNode）需要同时启动所有数据节点（DataNode）的 Hadoop守护进程，这个过程使用 SSH 无密码登录来实现。首先需要让各个节点生成自己的 SSH 密钥 id_rsa 和公钥id_rsa.pub，名称节点需要将它的公钥 id_rsa.pub 发送给集群中的所有数据节点。因此可将公钥 id_rsa.pub 内容添加到需要匿名登录的数据节点的“~/.ssh/authorized_keys”文件中，然后，名称节点就可以无密码登录这个数据节点了。<br>实现 SSH 无密码登录设置，包括生成密钥、合并公钥、分发合并的公钥和密钥文件权限设置四个部分。   </p>
+<h3 id="5-4-输出层的神经元数量"><a href="#5-4-输出层的神经元数量" class="headerlink" title="5.4 输出层的神经元数量"></a>5.4 输出层的神经元数量</h3><p>输出层的神经元数量需要根据待解决的问题来决定。对于分类问题，输出层的神经元数量一般设定为类别的数量。  </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqf1k9ZBZJSmtgsvoMWGsNfDe8dWzpkMJTpp5Q6jSd0Pvzaz7FRMZCMthkXOHyXo2aRqWkULghN.hIwSulH7.WFY!/b&bo=nwRzAgAAAAADB8g!&rf=viewer_4" alt=""><br>如上图，对于某个输入图像，预测是图中的数字0到9中的哪一个的问题（10类别分类问题），可以将输出层的神经元设定为10个。<br>图中输出层的神经元的值用不同的灰度表示，这个例子中神经元y2颜色最深，输出的值最大。这表明这个神经网络预测的是y2对应的类别，也就是“2”。     </p>
+<h2 id="6-手写数字识别"><a href="#6-手写数字识别" class="headerlink" title="6.手写数字识别"></a>6.手写数字识别</h2><p>和求解机器学习问题的步骤（分成学习和推理两个阶段进行）一样，使用神经网络解决问题时，也需要首先使用训练数据（学习数据）进行权重参数的学习；进行推理时，使用刚才学习到的参数，对输入数据进行分类。<br>推理处理也称为神经网络的前向传播（forward propagation）。     </p>
+<h3 id="6-1-MNIST数据集"><a href="#6-1-MNIST数据集" class="headerlink" title="6.1 MNIST数据集"></a>6.1 MNIST数据集</h3><ul>
+<li>MNIST是机器学习领域最有名的数据集之一。   </li>
+<li>MNIST数据集是由0到9的数字图像构成的（如上图的”2”）。训练图像有6万张，测试图像有1万张。</li>
+<li>MNIST的图像数据是28像素 × 28像素的灰度图像（1通道），各个像素的取值在0到255之间。  </li>
+</ul>
+<blockquote>
+<p>MNIST数据集的一般使用方法是，先用训练图像进行学习，再用学习到的模型度量能在多大程度上对测试图像进行正确的分类。    </p>
+</blockquote>
+<h4 id="6-1-1-读入MNIST数据"><a href="#6-1-1-读入MNIST数据" class="headerlink" title="6.1.1 读入MNIST数据"></a>6.1.1 读入MNIST数据</h4><pre><code>import sys, os
+sys.path.append(os.pardir) # 为了导入父目录中的文件而进行的设定
+from dataset.mnist import load_mnist
+# 第一次调用会花费几分钟 ……
+(x_train, t_train), (x_test, t_test) = load_mnist(flatten=True, normalize=False)
+# 输出各个数据的形状
+print(x_train.shape) # (60000, 784)
+print(t_train.shape) # (60000,)
+print(x_test.shape) # (10000, 784)
+print(t_test.shape) # (10000,)    </code></pre><p>创建Python脚本mnist.py，该脚本支持从下载MNIST数据集到将这些数据转换成NumPy数组等处理。下载自动保存到该项目文件夹下。       </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbjIoyWdbUnisOs0Hmm4bthbBE6R84zKiwgdxJqRONRFogLW670NvDqlB26HqwPKwUexEQwa1u3d0Fgx8E.XqRM!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">      </p>
+<p>函数load_mnist(normalize=True, flatten=True, one_hot_label=False)</p>
 <ul>
-<li><p>生成密钥<br>启动三台虚拟机，分别进入用户目录下，执行如下命令：   </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop
-[hadoop@cent88 ~]$ ssh-keygen -t rsa   </code></pre><p>然后一直按回车键（3 次），就会在.ssh 目录下生成密钥 id_rsa 和公钥 id_rsa.pub。   </p>
+<li><p>normalize<br>True：将输入图像像素值正规化为0.0～1.0<br>False：输入图像的像素会保持原来的0～255  </p>
 </li>
-<li><p>合并公钥<br>三台虚拟机再执行如下命令：   </p>
-<pre><code>[hadoop@cent88 ~]$ cd .ssh
-[hadoop@cent88 .ssh]$ cat id_rsa.pub &gt;authorized_keys  </code></pre><p>接下来，在主节点 cent88 上合并各个节点生成的公钥，即把另外两台机器的公钥追加到 authorized_keys 文件后，执行命令如下：   </p>
-<pre><code>[hadoop@cent88 .ssh]$ scp hadoop@cent89:/home/hadoop/.ssh/authorized_keys 89pub
-[hadoop@cent88 .ssh]$ scp hadoop@cent90:/home/hadoop/.ssh/authorized_keys 90pub
-[hadoop@cent88 .ssh]$ cat 89pub 90pub &gt;&gt;authorized_keys   </code></pre></li>
-<li><p>分发合并的公钥<br>把合并后的文件 authorized_keys 分发到另外两台机器上，执行命令如下：  </p>
-<pre><code>[hadoop@cent88 .ssh]$ scp authorized_keys hadoop@cent89:/home/hadoop/.ssh/
-[hadoop@cent88 .ssh]$ scp authorized_keys hadoop@cent90:/home/hadoop/.ssh/   </code></pre></li>
-<li><p>密钥文件权限设置<br>最后，在每台虚拟机上修改相关文件的权限，执行操作如下:  </p>
-<pre><code>[hadoop@cent88 .ssh]$ cd ..
-[hadoop@cent88 ~]$ chmod 700 .ssh/
-[hadoop@cent88 ~]$ chmod 600 .ssh/authorized_keys   </code></pre><p>完成后，可以通过 ssh hostname (hostname 为数据节点主机名)命令来检测一下是否需要输入密码。  </p>
-<pre><code>[hadoop@cent88 ~]$ ssh cent89
-Last login: Thu July 22 13:50:08 2020
-[hadoop@cent89 ~]$  </code></pre><p>可以看出，通过 ssh 命令可以直接切换到另一台虚拟机上。   </p>
+<li><p>flatten<br>True：输入图像会保存为由784个元素构成的一维数组<br>False：输入图像为1 × 28 × 28的三维数组  </p>
+</li>
+<li><p>one_hot_label<br>True： one-hot表示是仅正确解标签为1，其余皆为0的数组，就像[0,0,1,0,0,0,0,0,0,0]这样<br>False: 只是像7、2这样简单保存正确解标签     </p>
 </li>
 </ul>
-<h2 id="7-启停和验证集群"><a href="#7-启停和验证集群" class="headerlink" title="7.启停和验证集群"></a>7.启停和验证集群</h2><ol>
-<li><p>启动集群<br>在集群配置完成后，需要初始化文件系统，以便进一步执行计算任务。首先关闭各个节点上的防火墙，命令如下：   </p>
-<pre><code>[hadoop@cent88 ~]$ su –
-[root@cent88 ~]# systemctl stop firewalld
-[root@cent88 ~]# su – hadoop   </code></pre><p>可能关闭防火墙的命令不对，百度搜一哈。接下来，在 NameNode 节点（cent88）上，执行初始化的命令如下：  </p>
-<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3/
-[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop namenode -format  </code></pre><p>然后，用如下命令启动 dfs 和 yarn 进程：  </p>
-<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-dfs.sh
-[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-yarn.sh  </code></pre><p>运行之后，输入 jps 命令查看所有的 Java 进程，如果正常启动时，可得到如下的结果：   </p>
-<pre><code>[hadoop@cent88 hadoop-3.1.3]$ jps
-27924 Jps
-10792 NameNode
-11833 NodeManager
-11036 DataNode
-11388 SecondaryNameNode
-11710 ResourceManager    </code></pre><p>注：缺少了东西就是有异常,有问题，找百度。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBREby3lVd3cDhHlO*6YJJVr83GrebXq6XHc3z8bBHxRfSnL*OGW3VHdc7Mk*zUkgpEgoPWfYgZ5Qk38E3kBIzA!/b&bo=4gN4AgAAAAADJ5k!&rf=viewer_4" alt=""><br>此时，通过访问 Web 界面（<a href="http://localhost:9870）如果是hadoop3以下则是50070端口，我是3.1.3就用9870端口来查看">http://localhost:9870）如果是hadoop3以下则是50070端口，我是3.1.3就用9870端口来查看</a> Hadoop 的总览信息，如图所示:<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKvHWE6*nu8LYS4bUxcDeN2apOJVjT*t.A5XX6tlE2tJ597jdqRdqxBaJGqE7cLt4e7sFoP0UuOPlO1b*2aLIvg!/b&bo=DwYPAwAAAAADJwc!&rf=viewer_4" alt="">   </p>
-</li>
-<li><p>验证集群<br>通过一些操作，可以验证集群的可用性。例如，在 HDFS 中创建用户目录：   </p>
-<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3  
-[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop dfs –mkdir –p /user/hadoop/input    </code></pre><p>接下来，把本地 etc/hadoop 目录中的数据（*.xml 文件）上传到 HDFS 的/user/spark/input 目录中：  </p>
-<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop dfs -put etc/hadoop/*.xml /user/hadoop/input      </code></pre><p>然后，使用如下命令行来执行以“kerber”开头的字数统计测试：   </p>
-<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.6.jar grep /user/spark/input /user/spark/output &apos;kerber[a-z.]+&apos;  </code></pre><p>执行完成后，会在 HDFS 中生成 output 目录来保存计算出来的结果，输入以下命令来查看最终结果：  </p>
-<pre><code>[hadoop@cent88 hadoop-2.7.6]$ ./bin/hadoop dfs –cat /user/hadoop/output/p*
-6 kerberos  </code></pre><p>结果表明所有的 XML 文件中，只有 6 个以 kerber 开头的单词。需要注意的是，如果想再重复执行一次字数统计测试，一定更改一个输出目录 output 的名字（如 output2），这样就不会因为重建输出目录时，提示目录已存在的问题。<br>注意：实际例子可能不一样详见自己安装的文件夹里的example文件夹。  </p>
-</li>
-<li><p>关闭集群<br>关闭集群，使用如下命令，请注意关闭的顺序。  </p>
-<pre><code>[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-yarn.sh
-[hadoop@cent88 hadoop-3.1.3]$ ./sbin/stop-dfs.sh   </code></pre><p>整个集群检证过程没有出现错误提示，说明集群安装是正确的。如果在集群初始化或者是使用过程中出现一些错误提示，可以根据提示通过互联网络去寻找相应的解决方法。对于错误提示更详细的信息，可以查看节点上HADOOP_HOME 的 logs 目录下的日志文件。   </p>
-</li>
-</ol>
-<h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><p>Spark出自美国加州大学伯克利分校 APM 实验室，是一个应用于大规模数据处理的快速、通用引擎。目前是Apache 顶级开源项目。Spark 提供了内存计算，减少了迭代计算的 IO 开销，成功解决了 Hadoop MapReduce的缺陷，成为当前大数据领域最热门的大数据计算平台。   </p>
-<h2 id="1-Spark-简介"><a href="#1-Spark-简介" class="headerlink" title="1.Spark 简介"></a>1.Spark 简介</h2><p>Spark 最初由美国加州伯克利大学（UCBerkeley）的 AMP 实验室于 2009 年开发，是基于内存计算的大数据并行计算框架，可用于构建大型的、低延迟的数据分析应用程序。2013 年 Spark 加入 Apache 孵化器项目后发展迅猛，如今已成为 Apache 软件基金会最重要的三大分布式计算系统开源项目（Hadoop、Spark、Storm）之一。<br>Spark 是大数据处理平台的后起之秀，于 2014 年打破了 Hadoop 保持的基准排序纪录，仅使用 206 个节点在23 分钟内完成了 100TB 数据的排序，而同样数据量的排序，Hadoop 使用 2000 个节点，还花费了 72 分钟。也就是说，Spark 用近十分之一的计算资源，获得了比 Hadoop 快 3 倍的速度。    </p>
-<p>Spark 具有如下几个主要特点：   </p>
+<h4 id="6-1-2-显示图片"><a href="#6-1-2-显示图片" class="headerlink" title="6.1.2 显示图片"></a>6.1.2 显示图片</h4><pre><code>import sys, os
+sys.path.append(os.pardir)
+import numpy as np
+from dataset.mnist import load_mnist
+from PIL import Image
+def img_show(img):
+     pil_img = Image.fromarray(np.uint8(img))
+     pil_img.show()
+(x_train, t_train), (x_test, t_test) = load_mnist(flatten=True,
+normalize=False)
+img = x_train[0]
+label = t_train[0]
+print(label) # 5
+print(img.shape) # (784,)
+img = img.reshape(28, 28) # 把图像的形状变成原来的尺寸
+print(img.shape) # (28, 28)
+img_show(img)</code></pre><p>在这里导入PIL失败，我选择导入Pillow包，运行成功。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaf*eiABSnXPUXo7mm5ncc9gCt8MYNScn89znKnMWOHwhqS4udbHPsUT1ESNupYnxBrOuQAwEY2qAoBhSUMsx2M!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">    </p>
+<h3 id="6-2-神经网络的推理处理"><a href="#6-2-神经网络的推理处理" class="headerlink" title="6.2 神经网络的推理处理"></a>6.2 神经网络的推理处理</h3><p>该神经网络的输入层有784个神经元，输出层有10个神经元。输入层的784这个数字来源于图像大小的28 × 28 = 784，输出层的10这个数字来源于10类别分类（数字0到9，共10类别）。此外，这个神经网络有2个隐藏层，第1个隐藏层有50个神经元，第2个隐藏层有100个神经元。这个50和100可以设置为任何值。下面先定义get_data()、init_network()、predict()这3个函数</p>
+<pre><code>def get_data():
+     (x_train, t_train), (x_test, t_test) = \
+         load_mnist(normalize=True, flatten=True, one_hot_label=False)
+     return x_test, t_test
+def init_network():
+     with open(&quot;sample_weight.pkl&quot;, &apos;rb&apos;) as f:
+     network = pickle.load(f)
+     return network
+def predict(network, x):
+      W1, W2, W3 = network[&apos;W1&apos;], network[&apos;W2&apos;], network[&apos;W3&apos;]
+     b1, b2, b3 = network[&apos;b1&apos;], network[&apos;b2&apos;], network[&apos;b3&apos;]
+     a1 = np.dot(x, W1) + b1
+     z1 = sigmoid(a1)
+     a2 = np.dot(z1, W2) + b2
+     z2 = sigmoid(a2)
+     a3 = np.dot(z2, W3) + b3
+     y = softmax(a3)
+     return y   </code></pre><p>init_network()会读入保存在pickle文件sample_weight.pkl中的<strong>学习到的权重参数</strong>。这个文件中以字典变量的形式保存了权重和偏置参数。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKBAZYJDbkSWwWH*U4lQa7ak55Tgt3eK4aNpUV0RZIlKtYgat*PvIyiXdTA1m8Q6.Pd0XScSvQMSelznQ3QSFyU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">   </p>
+<p>首先获得MNIST数据集，生成网络。接着，用for语句逐一取出保存在x中的图像数据，用predict()函数进行分类。predict()函数以NumPy数组的形式输出各个标签对应的概率。比如输出[0.1, 0.3, 0.2, …, 0.04]的数组，该数组表示“0”的概率为0.1，“1”的概率为0.3，等等。然后，我们取出这个概率列表中的最大值的索引（第几个元素的概率最高），作为预测结果。可以用np.argmax(x)函数取出数组中的最大值的索引，np.argmax(x)将获取被赋给参数x的数组中的最大值元素的索引。最后，比较神经网络所预测的答案和正确解标签，将回答正确的概率作为识别精度。   </p>
+<blockquote>
+<p>1.执行上面的代码后，会显示“Accuracy:0.9352”。这表示有93.52 %的数据被正确分类了。在这个例子中，把load_mnist函数的参数normalize设置成了True。将normalize设置成True后，函数内部会进行转换，将图像的各个像素值除以255，使得数据的值在0.0～1.0的范围内。像这样把数据限定到某个范围内的处理称为<strong>正规化（normalization）</strong>。此外，对神经网络的输入数据进行某种既定的转换称为<strong>预处理（pre-processing）</strong>。这里，作为对输入图像的一种预处理，我们进行了正规化。    </p>
+</blockquote>
+<blockquote>
+<p>2.预处理在神经网络（深度学习）中非常实用，其有效性已在提高识别性能和学习的效率等众多实验中得到证明。在刚才的例子中，作为一种预处理，我们将各个像素值除以 255，进行了简单的正规化。实际上，很多预处理都会考虑到数据的整体分布。比如，利用数据整体的均值或标准差，移动数据，使数据整体以 0为中心分布，或者进行正规化，把数据的延展控制在一定范围内。除此之外，还有将数据整体的分布形状均匀化的方法，即数据<strong>白化（whitening）</strong>等。</p>
+</blockquote>
+<h2 id="6-3-批处理"><a href="#6-3-批处理" class="headerlink" title="6.3 批处理"></a>6.3 批处理</h2><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaR69*dLCM9Kbv5gGTpo5XPcprEC5BraoyaV1vkEmdH8ALjdIiClNt4YMxlpLM3mDLL7JMSYUtBvxTZIWxeCeiA!/b&bo=ewO3AAAAAAADB.0!&rf=viewer_4" alt=""><br>从整体的处理流程来看，输入一个由784个元素（原本是一个28 × 28的二维数组）构成的一维数组后，输出一个有10个元素的一维数组。这是只输入一张图像数据时的处理流程。     </p>
+<p>如果想用predict()函数一次性打包处理100张图像，可以把x的形状改为100 × 784，将100张图像打包作为输入数据。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEM3ae6yZ*xKuvr3moDkdLxd00gnSikdKLVoiWU2lnFWBE.eIV652pDFvEBAUeCQGkohD8ozwd93F*Fy3fLdYA7Y!/b&bo=fQOuAAAAAAADF.I!&rf=viewer_4" alt=""><br>输入数据的形状为 100 × 784，输出数据的形状为100 × 10。这表示输入的100张图像的结果被一次性输出了。比如，x[0]和y[0]中保存了第0张图像及其推理结果，x[1]和y[1]中保存了第1张图像及其推理结果，等等。   </p>
+<blockquote>
+<p>批处理对计算机的运算大有利处，可以大幅缩短每张图像的处理时间。那么为什么批处理可以缩短处理时间呢？这是因为大多数处理数值计算的库都进行了能够高效处理大型数组运算的最优化。并且，在神经网络的运算中，当数据传送成为瓶颈时，批处理可以减轻数据总线的负荷（严格地讲，相对于数据读入，可以将更多的时间用在计算上）。也就是说，批处理一次性计算大型数组要比分开逐步计算各个小型数组速度更快。   </p>
+</blockquote>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRN.a44r7cWcWYbLS04L8uKClzwzarwy6*L8J7r9jv.IkSqOflZDMaYGSNV2B*CEP5jiS7UNUK0ofRZjkLBAxfI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
 <ul>
-<li>运行速度快：使用 DAG 执行引擎以支持循环数据流与内存计算；</li>
-<li>容易使用：支持使用 Scala、Java、Python 和 R 语言进行编程，可以通过 Spark Shell 进行交互式编程；</li>
-<li>通用性强：Spark 提供了完整而强大的技术栈，包括 SQL 查询、流式计算、机器学习和图算法组件；</li>
-<li>运行模式多样：可运行于独立的集群模式中，可运行于 Hadoop 中，也可运行于 Amazon EC2 等云环境中，并且可以访问 HDFS、Cassandra、HBase、Hive 等多种数据源。   </li>
+<li>上图中的range()函数若指定为range(start, end)，则会生成一个由start到end-1之间的整数构成的列表。若像range(start, end, step)这样指定3个整数，则生成的列表中的下一个元素会增加step指定的值。    </li>
+<li>在range()函数生成的列表的基础上，通过x[i:i+batch_size]从输入数据中抽出批数据。x[i:i+batch_n]会取出从第i个到第i+batch_n个之间的数据。本例中是像x[0:100]、x[100:200]……这样，从头开始以100为单位将数据提取为批数据。    </li>
+<li>通过argmax()获取值最大的元素的索引。不过这里需要注意的是，给定了参数axis=1。这指定了在100 × 10的数组中，沿着第1维方向（以第1维为轴）找到值最大的元素的索引（第0维对应第1个维度）。    </li>
 </ul>
-<h2 id="2-Spark-的部署和应用架构"><a href="#2-Spark-的部署和应用架构" class="headerlink" title="2.Spark 的部署和应用架构"></a>2.Spark 的部署和应用架构</h2><h3 id="2-1-Spark-的部署"><a href="#2-1-Spark-的部署" class="headerlink" title="2.1 Spark 的部署"></a>2.1 Spark 的部署</h3><p>Spark 支持三种不同类型的部署方式，包括 Standalone、Spark on Mesos 和 Spark on YARN。在Standalone 模式中，Spark 本身自带了完整的资源调度管理服务，可以独立部署到一个集群中，并且以槽（slot）作为资源分配的单位。在 Spark on Mesos 模式中，Mesos 本身是一种资源调度管理框架，可为运行在综上面的 Spark 提供服务。相对而言，Spark 运行在 Mesos 上，要比运行在 YARN 上更加灵活和自然。该模式是官方推荐的模式，也有许多公司在实际应用中使用这种模式。在 Spark on Mesos 模式中，资源管理和调度依赖 YARN，分布式存储则依赖HDFS，国内阿里巴巴等公司采用此种模式。  </p>
-<h3 id="2-2-Spark-的应用架构"><a href="#2-2-Spark-的应用架构" class="headerlink" title="2.2 Spark 的应用架构"></a>2.2 Spark 的应用架构</h3><p>由于 Hadoop 生态系统中的一些组件所实现的功能，目前还是无法由 Spark 取代的，比如，Storm 可以实现毫秒级响应的计算，但是 Spark 则无法做到毫秒级响应。加之基于现有的 Hadoop 组件开发的应用，完全转移到Spark 上需要一定的成本。因此，在许多企业实际应用中，Hadoop 与 Spark 统一部署架构是一种比较合理的选择。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYlsYnQOQa6CPdkloAC83YAfpGrVIr9HAhkCCQJRm0pFWVagYHkJmGJ5HlJnxkHvULWe42X.rRvDuA*iMZsyp.w!/b&bo=TgOeAQAAAAADB*A!&rf=viewer_4" alt="">  </p>
-<p>如上图所示，把不同的计算框架统一运行在 YARN 中，可以带来好处如下：  </p>
+<p>举个栗子：  </p>
+<pre><code>&gt;&gt;&gt; x = np.array([[0.1, 0.8, 0.1], [0.3, 0.1, 0.6],
+... [0.2, 0.5, 0.3], [0.8, 0.1, 0.1]])
+&gt;&gt;&gt; y = np.argmax(x, axis=1)
+&gt;&gt;&gt; print(y)
+[1 2 1 0]    </code></pre><p>在这个例子中，若axis=0，则看列最大的值的索引；若axis=1，则看行中最大的值的索引。并且两种都是从0索引开始的。   </p>
+<pre><code>0.1 0.8 0.1
+0.3 0.1 0.6 
+0.2 0.5 0.3
+0.8 0.1 0.1   </code></pre><p>若axis=0，则输出[3,2,1];若axis=1，则输出[1,2,1,0]。    </p>
 <ul>
-<li>计算资源按需伸缩；</li>
-<li>不用负载应用混搭，集群利用率高；</li>
-<li>共享底层存储，避免数据跨集群迁移。  </li>
+<li>最后，比较一下以批为单位进行分类的结果和实际的答案。为此，需要在NumPy数组之间使用比较运算符（==）生成由True/False构成的布尔型数组，并计算True的个数。    </li>
 </ul>
-<h2 id="3-Spark-集群的安装与配置"><a href="#3-Spark-集群的安装与配置" class="headerlink" title="3.Spark 集群的安装与配置"></a>3.Spark 集群的安装与配置</h2><p>安装 Spark 之前需要安装 Java 和 Hadoop 环境。本部分是在上一节部分的基础上，继续安装 Spark 集群。整体思路也是首先在一台虚拟器上修改，完成后再远程复制到另外两台虚拟机上。主要包括 spark 的安装与配置、scala 的安装与配置、远程复制和集群的启停等过程。  </p>
-<h3 id="3-1-Spark-的安装"><a href="#3-1-Spark-的安装" class="headerlink" title="3.1 Spark 的安装"></a>3.1 Spark 的安装</h3><p>Spark 的下载地址：<a href="http://spark.apache.org" target="_blank" rel="noopener">http://spark.apache.org</a>。进入下载页面后，点击主页右侧的“Download Spark”按钮进入下载页面，下载页面中提供了几个下载选项，主要是 Spark release 及 Package type 的选择,如图所示：  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEEbN2TZqJWrIzM2cXrPhfGpGbeEY6knOqdeM.PcV7DJMtmMB8Kln8Tm4rvrRXPRvzg8a1dUyzq1wXvOJ1WpYJ3A!/b&bo=gAcGBAAAAAADN5c!&rf=viewer_4" alt="">  </p>
-<p>我当时下载的是spark-2.4.5现在好像木得了，不过有2.4.6，差不太多。选好1和2，点击第三个下载。下载完成后移到hadoop目录，解压：  </p>
-<pre><code>[hadoop@cent88 ~]$ tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz /home/hadoop/   </code></pre><h3 id="3-2-Spark-的配置"><a href="#3-2-Spark-的配置" class="headerlink" title="3.2 Spark 的配置"></a>3.2 Spark 的配置</h3><p>Spark 解压后，主要涉及 3 个文件的配置。    </p>
-<ol>
-<li><p>配置 Spark 的 spark-env.sh。先执行下列操作：   </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/
-[hadoop@cent88 ~]$ mv spark-2.4.5-bin-hadoop2.7.tgz spark-2.4.5
-[hadoop@cent88 ~]$ cd spark-2.4.5/conf/
-[hadoop@cent88 conf]$ mv spark-env.sh.template spark-env.sh
-[hadoop@cent88 conf]$ vim spark-env.sh   </code></pre><p>版本按照你下载的版本更改，不要直接复制。然后，进一步更改 spark-env.sh 的内容如下：  </p>
-<pre><code>#指定默认 master 的 ip 或主机名
-export SPARK_MASTER_HOST=cent88
-#指定 maaster 提交任务的默认端口为 7077
-export SPARK_MASTER_PORT=7077
-#指定 masster 节点的 webui 端口
-export SPARK_MASTER_WEBUI_PORT=8080
-#每个 worker 从节点能够支配的内存数
-export SPARK_WORKER_MEMORY=1g
-#允许 Spark 应用程序在计算机上使用的核心总数（默认值：所有可用核心）
-export SPARK_WORKER_CORES=2
-#指向包含 Hadoop 集群的配置文件的目录，运行在 Yarn 上配置此项
-export HADOOP_CONF_DIR=/home/hadoop/hadoop-3.1.3/etc/hadoop
-#指定 JAVA_HOME 位置
-export JAVA_HOME=/usr/java/jdk1.8.0_231
-#指定 HADOOP_HOME 位置
-export HADOOP_HOME=/home/hadoop/hadoop-3.1.3
-#指定 hadoop 本地库位置
-export HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_HOME}/lib/native
-export HADOOP_OPTS=&quot;-Djava.library.path=${HADOOP_HOME}/lib&quot;
-#指定 SCALA_HOME 位置
-export SCALA_HOME=/home/spark/scala-2.12.2
-#指定 SPARK_HOME 位置
-export SPARK_HOME=/home/spark/spark-2.4.5
-#指定 CLASS_PATH 路径
-export CLASS_PATH=.:${JAVA_HOME}/lib:$CLASS_PATH
-#指定 PATH 路径
-export PATH=.:${JAVA_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${SPARK_HOME}/bin:${SCALA_HOME}/bin:$PATH   </code></pre></li>
-<li><p>配置 Spark 的 slaves 文件。更改的内容可以如下：  </p>
-<pre><code>[hadoop@cent88 conf]$ vim slaves
-cent88
-cent89
-cent90   </code></pre></li>
-<li><p>查看并修改配置文件/etc/profile。执行下列操作：  </p>
-<pre><code>[root@cent88 ~]# vi /etc/profile  </code></pre><p>添加如下内容:  </p>
-<pre><code>export SPARK_HOME=/home/hadoop/spark-2.4.5
-export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin  </code></pre><p>执行下列操作，使环境生效。  </p>
-<pre><code>[root@cent88 ~]# source /etc/profile  </code></pre></li>
-</ol>
-<h3 id="3-3-Scala-的安装与配置"><a href="#3-3-Scala-的安装与配置" class="headerlink" title="3.3 Scala 的安装与配置"></a>3.3 Scala 的安装与配置</h3><ol>
-<li>Scala 的安装  </li>
-</ol>
-<p>Scala 是 Spark 默认支持的语言，可以从 Scala 官方网址下载 2.11 版以上的安装包，选择 Scala 2.12.2，其下载链接为：<a href="https://www.scala-lang.org/download/2.12.2.html" target="_blank" rel="noopener">https://www.scala-lang.org/download/2.12.2.html</a>。选择 scala-2.12.2.tgz 文件下载。下载完成后，解压安装包 scala-2.12.2.tgz 至路径/home/hadoop/下。执行下列操作：  </p>
-<pre><code>[hadoop@cent88 ~]$ tar -zxvf scala-2.12.2.tgz /home/hadoop/  </code></pre><ol start="2">
-<li>Scala 的配置  </li>
-</ol>
-<p>修改配置文件/etc/profile。执行下列操作：  </p>
-<pre><code>[root@cent88 ~]# vi /etc/profile  </code></pre><p>添加如下内容:  </p>
-<pre><code>export SCALA_HOME=/home/hadoop/scala-2.12.2
-export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /etc/profile</code>，使环境生效。    </p>
-<h3 id="3-4-远程复制"><a href="#3-4-远程复制" class="headerlink" title="3.4 远程复制"></a>3.4 远程复制</h3><ol>
-<li><p>复制整个目录，把 cent88 虚拟机上的 spark-2.3.1 和 scala-2.12.2 目录远程复制到 cent89 和 cent90 两台虚拟机的相应位置上。  </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/
-[hadoop@cent88 ~]$ scp -r spark-2.3.1 scala-2.12.2 spark@cent89:/home/hadoop/
-[hadoop@cent88 ~]$ scp -r spark-2.3.1 scala-2.12.2 spark@cent90:/home/hadoop/   </code></pre></li>
-<li><p>复制配置文件，把 cent88 虚拟机上的/etc/profile 文件远程复制到 cent89 和 cent90 两台虚拟机的相应位置上。  </p>
-<pre><code>[hadoop@cent88 ~]$ su –
-[root@cent88 ~]# scp /etc/profile root@cent89:/etc/profile
-[root@cent88 ~]# scp /etc/profile root@cent90:/etc/profile  </code></pre></li>
-</ol>
-<h3 id="3-5-Spark-的启动和关闭"><a href="#3-5-Spark-的启动和关闭" class="headerlink" title="3.5  Spark 的启动和关闭"></a>3.5  Spark 的启动和关闭</h3><p>完成上述操作，就可以启动、运行 Spark 了。Spark 如果是基于 YARN，则在使用 Spark 前需要启动 Hadoop YARN，启动命令如下：  </p>
-<pre><code>[hadoop@cent88 ~]$ cd hadoop-3.1.3/
-[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-dfs.sh
-[hadoop@cent88 hadoop-3.1.3]$ ./sbin/start-yarn.sh   </code></pre><ol>
-<li><p>在主节点 Master 上执行启动命令：  </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5
-[hadoop@cent88 spark-2.4.5]$ ./sbin/start-all.sh  </code></pre></li>
-<li><p>检测进程是否启动，使用 jps 命令  </p>
-<pre><code>[hadoop@cent88 spark-2.4.5]$ jps
-14353 Master
-14514 Worker
-27924 Jps
-10792 NameNode
-11833 NodeManager
-11036 DataNode
-11388 SecondaryNameNode
-11710 ResourceManager    </code></pre><p>这里同样一个不能少，少了就有问题。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK.G7TrqbpbysgqUneSOlyheewWgwgnuMOFTEfBeRLmbbstknHA4kEPyhYgoa3iLLobUHdFbbXFUsSvfMbe0yUo!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4" alt="">  </p>
-</li>
-<li><p>浏览 Master 的 Web UI(默认 <a href="http://cent88:8080)，查看到所有的">http://cent88:8080)，查看到所有的</a> work 节点及其 CPU 个数和内存等信息，如图所示。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIh4RLzcmr0hpEGz*gdJq9mC63uXz9XfxDm5dE90dDpW*Wo0YD*C7mgYIPxeY541FET5nBL8.0Ziu13BlQgWiXM!/b&bo=gAcGBAAAAAADR.c!&rf=viewer_4" alt="">  </p>
-</li>
-<li><p>验证 Spark 集群  </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5  
-[hadoop@cent88 spark-2.3.1]$./bin/spark-submit --class org.apache.spark.examples.SparkPi --master yarn-–deploy-mode cluster examples/jars/spark-examples_2.11-2.4.5.jar  </code></pre><p>具体例子具体看examples文件夹里的名字哦。例子没报错就成功了。  </p>
-</li>
-<li><p>关闭 Spark  </p>
-<pre><code>[hadoop@cent88 ~]$ cd /home/hadoop/spark-2.4.5
-[hadoop@cent88 spark-2.3.1]$ ./sbin/stop-all.sh   </code></pre></li>
-</ol>
-<h1 id="博主寄语"><a href="#博主寄语" class="headerlink" title="博主寄语"></a>博主寄语</h1><p>有问题先找一下官方的文档，由于我用的是hadoop3，没有slaves文件夹，开始我就没有设置这个文件，之后看了官方文档的hadoop3的改动，要改works文件。其次要百度找答案。这次安装遇到了很多的问题，大部分都忘了，遇到问题解决就完事了，溜了溜了=。=</p>
+<p>举个栗子：   </p>
+<pre><code>&gt;&gt;&gt; y = np.array([1, 2, 1, 0])
+&gt;&gt;&gt; t = np.array([1, 2, 0, 0])
+&gt;&gt;&gt; print(y==t)
+[True True False True]
+&gt;&gt;&gt; np.sum(y==t)
+3</code></pre><p>批处理说完咯，这个之后很重要。   </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>神经网络中的激活函数使用平滑变化的sigmoid函数或ReLU函数。</li>
+<li>通过巧妙地使用NumPy多维数组，可以高效地实现神经网络。</li>
+<li>机器学习的问题大体上可以分为回归问题和分类问题。</li>
+<li>关于输出层的激活函数，回归问题中一般用恒等函数，分类问题中一般用softmax函数。</li>
+<li>分类问题中，输出层的神经元的数量设置为要分类的类别数。</li>
+<li>输入数据的集合称为批。通过以批为单位进行推理处理，能够实现高速的运算。</li>
+</ul>
 
       
 	<!--  自加的代码 -->
@@ -606,7 +577,11 @@ export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /et
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安装</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		
 		</ul>
@@ -662,7 +637,7 @@ export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /et
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/07/23/hadoop%E4%B8%8Espark%E9%9B%86%E7%BE%A4%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -676,18 +651,9 @@ export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /et
   
 <nav id="article-nav">
   
-    <a href="/2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          linux命令以及软件安装项目部署
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/20/VSCode%E9%85%8D%E7%BD%AEC%E7%9A%84%E7%8E%AF%E5%A2%83/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VSCode配置C的环境</div>
+    <a href="/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">人工智能原理与应用一：python与感知机</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -714,7 +680,7 @@ export PATH=$PATH:$SCALA_HOME/bin  </code></pre><p>执行命令 <code>source /et
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop-集群的安装与配置"><span class="toc-number">1.</span> <span class="toc-text">Hadoop 集群的安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-操作系统-CentOS-的安装"><span class="toc-number">1.1.</span> <span class="toc-text">1.操作系统 CentOS 的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-创建-Hadoop-用户与系统设置"><span class="toc-number">1.2.</span> <span class="toc-text">2.创建 Hadoop 用户与系统设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-创建-Hadoop-用户"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 创建 Hadoop 用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-系统设置"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 系统设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安装java"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安装-Hadoop"><span class="toc-number">1.4.</span> <span class="toc-text">4.安装 Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-下载解压-Hadoop-安装包"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 下载解压 Hadoop 安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-配置-hadoop-集群"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 配置 hadoop 集群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-克隆虚拟机与网络设置"><span class="toc-number">1.5.</span> <span class="toc-text">5.克隆虚拟机与网络设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-克隆虚拟机"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 克隆虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-网络设置"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 网络设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-SSH-无密码登录设置"><span class="toc-number">1.6.</span> <span class="toc-text">6. SSH 无密码登录设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-启停和验证集群"><span class="toc-number">1.7.</span> <span class="toc-text">7.启停和验证集群</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark"><span class="toc-number">2.</span> <span class="toc-text">Spark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Spark-简介"><span class="toc-number">2.1.</span> <span class="toc-text">1.Spark 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Spark-的部署和应用架构"><span class="toc-number">2.2.</span> <span class="toc-text">2.Spark 的部署和应用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Spark-的部署"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 Spark 的部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Spark-的应用架构"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 Spark 的应用架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Spark-集群的安装与配置"><span class="toc-number">2.3.</span> <span class="toc-text">3.Spark 集群的安装与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Spark-的安装"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 Spark 的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Spark-的配置"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 Spark 的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Scala-的安装与配置"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 Scala 的安装与配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-远程复制"><span class="toc-number">2.3.4.</span> <span class="toc-text">3.4 远程复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Spark-的启动和关闭"><span class="toc-number">2.3.5.</span> <span class="toc-text">3.5  Spark 的启动和关闭</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主寄语"><span class="toc-number">3.</span> <span class="toc-text">博主寄语</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主要内容"><span class="toc-number">1.</span> <span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-神经网络"><span class="toc-number">2.</span> <span class="toc-text">第三章 神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-从感知机到神经网络"><span class="toc-number">2.1.</span> <span class="toc-text">1 从感知机到神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-神经网络的示例"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 神经网络的示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-感知机简化"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 感知机简化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-激活函数初见"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3 激活函数初见</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-激活函数"><span class="toc-number">2.2.</span> <span class="toc-text">2.激活函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-阶跃函数的实现"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 阶跃函数的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-sigmoid函数的实现"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 sigmoid函数的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-比较"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-非线性函数"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.4 非线性函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-ReLU函数"><span class="toc-number">2.2.5.</span> <span class="toc-text">2.5 ReLU函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-多维数组的运算"><span class="toc-number">2.3.</span> <span class="toc-text">3.多维数组的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-多维数组"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 多维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-矩阵乘法"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 矩阵乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-神经网络的内积"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 神经网络的内积</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-三层神经网络的实现"><span class="toc-number">2.4.</span> <span class="toc-text">4.三层神经网络的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-符号的确认"><span class="toc-number">2.4.1.</span> <span class="toc-text">4.1 符号的确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-各层间信号传递的实现"><span class="toc-number">2.4.2.</span> <span class="toc-text">4.2 各层间信号传递的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-输出层的设计"><span class="toc-number">2.5.</span> <span class="toc-text">5.输出层的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-恒等函数和softmax函数"><span class="toc-number">2.5.1.</span> <span class="toc-text">5.1 恒等函数和softmax函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-实现-softmax函数时的注意事项"><span class="toc-number">2.5.2.</span> <span class="toc-text">5.2 实现 softmax函数时的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-softmax函数的特征"><span class="toc-number">2.5.3.</span> <span class="toc-text">5.3 softmax函数的特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-输出层的神经元数量"><span class="toc-number">2.5.4.</span> <span class="toc-text">5.4 输出层的神经元数量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-手写数字识别"><span class="toc-number">2.6.</span> <span class="toc-text">6.手写数字识别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-MNIST数据集"><span class="toc-number">2.6.1.</span> <span class="toc-text">6.1 MNIST数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-读入MNIST数据"><span class="toc-number">2.6.1.1.</span> <span class="toc-text">6.1.1 读入MNIST数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-显示图片"><span class="toc-number">2.6.1.2.</span> <span class="toc-text">6.1.2 显示图片</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-神经网络的推理处理"><span class="toc-number">2.6.2.</span> <span class="toc-text">6.2 神经网络的推理处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-批处理"><span class="toc-number">2.7.</span> <span class="toc-text">6.3 批处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">2.8.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
