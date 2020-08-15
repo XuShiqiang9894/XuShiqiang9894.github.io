@@ -6,17 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 深度学习 | 徐仕强的博客</title>
+  <title>LaTex与TeXstudio安装与配置 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机学生一枚，没啥特点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐仕强的博客">
-<meta property="og:url" content="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.html">
+  <meta name="description" content="LaTeX（LATEX，音译“拉泰赫”）是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由TeX所提供的强大功能，能在几天、甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTex与TeXstudio安装与配置">
+<meta property="og:url" content="http://yoursite.com/2020/08/15/LaTex%E4%B8%8ETeXstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="计算机学生一枚，没啥特点">
+<meta property="og:description" content="LaTeX（LATEX，音译“拉泰赫”）是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由TeX所提供的强大功能，能在几天、甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqTq8tCqpEdEmCUeT2XT5nqMOTZzA1ztLAbTdLmfAev0T4Wcx7MRAH19imtBDCDaHtwWd0rAn1fLWkuG6lb0Lw04!/b&bo=6wJSAgAAAAADB5s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEL73XttjgjaoGsJy0.cA1xH.mQFYeB69ejIT7yRJ4Ym8kwUkzDW8D3FeIXZjGUIsTQyO7b8xW0MLPSGBcIB5UaI!/b&bo=6wJSAgAAAAADF4s!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdbyPbuKh7WKj*n3ox7BSAY8apfwR7U9WqQgLWbhbr5L6xXgrqg**FJbf1TNC3CBWX5*aPJ6m1gXyiPrV5Ulnmo!/b&bo=jQN*AgAAAAADB9E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaQcmz..aC5YXOB.D2EziF0LkbvtmucSUTnpIhb5WS9gKgOB0oYJKnxtFmy5pPUW3IWRMqC985CvZ8N*uIgjEvM!/b&bo=jQN*AgAAAAADB9E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGc2z*WVNFSpGY*lUOH*zl*WO60B6E.IKko7AackuMbU86yky2j58kfdZUOKYq2fTbQlrcn4pwDL2BCal5z2T5s!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELb6ZXCSkcnq8jE5KCbHXjecIxbysuYkDIBIlsoEdqufS1Csgkifun23NZSHpf7*qtKTRn6sqBYIjzufwjwn7x8!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOc5KttIHTJAruYQOv*9zOXKupy4Y0mprYzzS4FTuWOtnQsMqn8vHvlKNboxiM9*smCHLP60WFxmaPHJriMQaAg!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRsz1YP*6UyNToKCTJnccEk6zgnmoyPuCOaKGTeC4tXLM6JTQ61OCqCjOj.uZl6Z.jQvX.zlBFuzzP0oz34Yg0A!/b&bo=ngGKAAAAAAADBzc!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcBoDx4uNnkpgHYFJdis4azPuGj0hN7H2AYjjTrTk3MCgl2AfH1iHrlocppFdc2vJcUzDjDBUs6*fQ9XpXjhpzs!/b&bo=xwR*AgAAAAADB5w!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeD4gRxLw9SNrdw*k5rTlmEmzD4gOv4FQK24pgZsDkSyUTNppAIWc0GyWLr9Bmhdieh4VTBj90Hax2.TptX1*2g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqTT.Gveo*MFJKwJ4Bm0H1QHtDN0HdlvAEaZknWjntCZ4zM0McyKDXBZupPty2Ge8yTL8qrYAx.b1JH1LfaHhP7c!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbmcMCvvWGxle9.bq3u*PIB.Fv2BHosewHFAQwpIdQUCBoB3ZYLOfQkCl6CZor4hpeMeoipR0BmOzpEj898vs1g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRXux.R4JqbywrzXmitmyJHJJEqMdXKS1wBPW8KkimOcgOgs4tF2QjUl2DrH3uYiI8uD2CfvnutCJUGSbc.y1Bc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-08-15T02:07:10.000Z">
+<meta property="article:modified_time" content="2020-08-15T02:07:56.356Z">
 <meta property="article:author" content="徐仕强">
+<meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqTq8tCqpEdEmCUeT2XT5nqMOTZzA1ztLAbTdLmfAev0T4Wcx7MRAH19imtBDCDaHtwWd0rAn1fLWkuG6lb0Lw04!/b&bo=6wJSAgAAAAADB5s!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -171,107 +188,277 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-LaTex与TeXstudio安装与配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2020-08-03T06:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">人工智能原理与应用二：神经网络</a>
+    <h1 class="article-title" itemprop="name">
+      LaTex与TeXstudio安装与配置
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+         
+        <!-- 不蒜子统计 -->
+        <span  class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/08/15/LaTex%E4%B8%8ETeXstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-08-15T02:07:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-15</time>
+</a>
+		<!-- 需要添加的位置 -->
+         <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.3k字</span>
+      </span>
+    </span>
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
           
+          <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LaTeX（LATEX，音译“拉泰赫”）是一种基于ΤΕΧ的排版系统，由美国计算机学家莱斯利·兰伯特（Leslie Lamport）在20世纪80年代初期开发，利用这种格式，即使使用者没有排版和程序设计的知识也可以充分发挥由TeX所提供的强大功能，能在几天、甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。   </p>
+<a id="more"></a>
+
+<h1 id="Tex的介绍"><a href="#Tex的介绍" class="headerlink" title="Tex的介绍"></a>Tex的介绍</h1><p>TeX是一个排版系统，使用代码编写，将排版工作都交给程序去做，达到所想即所得的效果，TeX 非常适合科学家用来写学术论文和书籍，如公式的输入会比word方便得多。<br><strong>TeX,LaTeX,MikTex,CTeX等等众多版本看起来很令人迷惑，其实和linux的各种版本有点像</strong>，它们的宏有点不太一样。Knuth 创造了 TeX 之后，免费公布了 TeX 程序的源代码。所以任何人都可以在保证不修改那个文件的情况下把它编译成程序，然后跟其它很多程序一起打包发行。这样就有了很多发行版本，比如 Windows 下有 MikTeX，fpTeX等，而Linux 和 UNIX 下有 teTeX. 这些简称“发行”。        </p>
+<blockquote>
+<p>在我看来，安装这个需要先下载一个内核Tex,再下载一个相当于IDE的软件。类似与下载python3.7后，再下载一个pycharm。大概可能是这个关系吧=。=     </p>
+</blockquote>
+<h2 id="Tex的优点"><a href="#Tex的优点" class="headerlink" title="Tex的优点"></a>Tex的优点</h2><ol>
+<li>丰富易用的数学公式和特殊符号；  </li>
+<li>容易生成图表编号、引用、交叉引用、目录；  </li>
+<li>可以输出PostScript、PDF、HTML等格式；  </li>
+<li>Tex和LaTeX完全免费，支持中文，支持各种操作系统。  </li>
+<li>很多杂志期刊接受LaTeX电子版时会提供自己的模板，只要使用他们的模板即可完美地展现在对应的刊物中</li>
+</ol>
+<h1 id="MikTex下载安装"><a href="#MikTex下载安装" class="headerlink" title="MikTex下载安装"></a>MikTex下载安装</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>MiKTex可以在使用时下载所需要的包，这样可以减少安装是的存储空间，但有一个弊端是没网的情况下无法在需要时下载相应的包，不过当今怕是没有没网的弊端了吧。    </p>
+<p>进入<a href="https://miktex.org/download" target="_blank" rel="noopener">MikTex下载地址</a>选择对应的版本下载安装。进去之后选择自动选择了windows，下面有三个版本，直接下载第一个install安装就行了，这个起码有个界面，要是命令行的话估计还要学习他的命令行，废点空间就废点吧，毕竟机械硬盘那么大。     </p>
+<p>下载过程中，我发现两点问题：1.他自动用的是<a href="https://mirrors.hit.edu.cn/" target="_blank" rel="noopener">哈尔滨工业大学开源镜像站</a>x下载速度可以说是相当快了。2.下载过程一直断，显示网络错误，我在下载过程中点了好多次继续下载。   </p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>仔细阅读协议<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqTq8tCqpEdEmCUeT2XT5nqMOTZzA1ztLAbTdLmfAev0T4Wcx7MRAH19imtBDCDaHtwWd0rAn1fLWkuG6lb0Lw04!/b&bo=6wJSAgAAAAADB5s!&rf=viewer_4" alt="">    </li>
+<li>改一下位子<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEL73XttjgjaoGsJy0.cA1xH.mQFYeB69ejIT7yRJ4Ym8kwUkzDW8D3FeIXZjGUIsTQyO7b8xW0MLPSGBcIB5UaI!/b&bo=6wJSAgAAAAADF4s!&rf=viewer_4" alt=""><br>之后会安装很多包，最好不放C盘。      </li>
+<li>最后选择update什么的，默认是勾上的，不要取消    </li>
+<li>由于上一步，会出现更新包的情况<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqdbyPbuKh7WKj*n3ox7BSAY8apfwR7U9WqQgLWbhbr5L6xXgrqg**FJbf1TNC3CBWX5*aPJ6m1gXyiPrV5Ulnmo!/b&bo=jQN*AgAAAAADB9E!&rf=viewer_4" alt=""><br>别急着点update now！不然速度很慢。   </li>
+<li>设置settings，将包源换成上海交通大学开元镜象地址。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaQcmz..aC5YXOB.D2EziF0LkbvtmucSUTnpIhb5WS9gKgOB0oYJKnxtFmy5pPUW3IWRMqC985CvZ8N*uIgjEvM!/b&bo=jQN*AgAAAAADB9E!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEGc2z*WVNFSpGY*lUOH*zl*WO60B6E.IKko7AackuMbU86yky2j58kfdZUOKYq2fTbQlrcn4pwDL2BCal5z2T5s!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrELb6ZXCSkcnq8jE5KCbHXjecIxbysuYkDIBIlsoEdqufS1Csgkifun23NZSHpf7*qtKTRn6sqBYIjzufwjwn7x8!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOc5KttIHTJAruYQOv*9zOXKupy4Y0mprYzzS4FTuWOtnQsMqn8vHvlKNboxiM9*smCHLP60WFxmaPHJriMQaAg!/b&bo=jQN*AgAAAAADF8E!&rf=viewer_4" alt=""><br>开始愉快的下载之旅。     </li>
+</ol>
+<p>经过漫长的等待，到这里，MikTex已经安装完成，安装后会在开始菜单中显示这俩货。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRsz1YP*6UyNToKCTJnccEk6zgnmoyPuCOaKGTeC4tXLM6JTQ61OCqCjOj.uZl6Z.jQvX.zlBFuzzP0oz34Yg0A!/b&bo=ngGKAAAAAAADBzc!&rf=viewer_4" alt=""><br>进一步验证一下，win+R输入cmd打开命令行，输入<code>tex --version</code><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcBoDx4uNnkpgHYFJdis4azPuGj0hN7H2AYjjTrTk3MCgl2AfH1iHrlocppFdc2vJcUzDjDBUs6*fQ9XpXjhpzs!/b&bo=xwR*AgAAAAADB5w!&rf=viewer_4" alt="">   </p>
+<h1 id="TexStudio下载和配置"><a href="#TexStudio下载和配置" class="headerlink" title="TexStudio下载和配置"></a>TexStudio下载和配置</h1><h2 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h2><p>上上图的开始菜单有TeXworks，打开这个也可以编辑。但是，用着不方便。主要是不会报错。TexStudio可以很好地定位编辑时的错误位置，显示文中所有添加的label，方便快速定位需要引用的内容，同时有很好地参考文献bibtex文件的显示；另外推荐bibtex文件的管理使用JabRef，此工具可以根据title自动获得doi等信息，解决了手动一个个地添加的麻烦。      </p>
+<p>接点击<a href="http://texstudio.sourceforge.net/" target="_blank" rel="noopener">下载地址</a>，点下载，这个只要86.8mb。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>安装就是改个安装地址，无脑下一步。  </p>
+<ul>
+<li>第一步改成中文<br>点击Options后选择第一个<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeD4gRxLw9SNrdw*k5rTlmEmzD4gOv4FQK24pgZsDkSyUTNppAIWc0GyWLr9Bmhdieh4VTBj90Hax2.TptX1*2g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </li>
+<li>第二步改编辑器<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqTT.Gveo*MFJKwJ4Bm0H1QHtDN0HdlvAEaZknWjntCZ4zM0McyKDXBZupPty2Ge8yTL8qrYAx.b1JH1LfaHhP7c!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br>将默认编译器设置成XeLaTeX，XeLaTeX才能编译中文文档   </li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>文件-&gt;新建   </p>
+<pre><code>\documentclass{ctexart}
+\title{Hello World}
+\begin{document}
+\maketitle
+\section{Hello China} 
+曾经的LaTeX的中文支持是比较麻烦的一件事，但是现在使用MikTeX+texStudio的中文支持非常容易。
+只需要把开头的 documentclass \{atricle\} 换成 documentclass \{ctexart\} 就可以了。 
+如果是第一次使用ctexart的话，会自动下载和安装宏包和模板，之后就不会再下载了。
+\end{document}   </code></pre><p>点击双绿箭头，然后安装所需要的包，大概装三个。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbmcMCvvWGxle9.bq3u*PIB.Fv2BHosewHFAQwpIdQUCBoB3ZYLOfQkCl6CZor4hpeMeoipR0BmOzpEj898vs1g!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">    </p>
+<p>下完之后，大功告成。各大期刊可以下载LaTex的格式的文件<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRXux.R4JqbywrzXmitmyJHJJEqMdXKS1wBPW8KkimOcgOgs4tF2QjUl2DrH3uYiI8uD2CfvnutCJUGSbc.y1Bc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""></p>
+
+      
+	<!--  自加的代码 -->
+	
+       
+         <div class="essayending">
+           <div>
+            <div style="text-align:center;color: #ccc;font-size:22px;">
+            <br/>
+            <br/>
+ -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+            <br/>
+            <br/>
+             <br/>
+             <br/>
+            </div>
+           </div>
+         </div>
+         
+  
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zfbs.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wxs.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安装</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/08/15/LaTex%E4%B8%8ETeXstudio%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2020-08-01T02:32:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">人工智能原理与应用二：神经网络</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/">人工智能原理与应用一：python与感知机</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tex的介绍"><span class="toc-number">1.</span> <span class="toc-text">Tex的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tex的优点"><span class="toc-number">1.1.</span> <span class="toc-text">Tex的优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MikTex下载安装"><span class="toc-number">2.</span> <span class="toc-text">MikTex下载安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TexStudio下载和配置"><span class="toc-number">3.</span> <span class="toc-text">TexStudio下载和配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载-1"><span class="toc-number">3.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">3.3.</span> <span class="toc-text">测试</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -308,9 +495,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
