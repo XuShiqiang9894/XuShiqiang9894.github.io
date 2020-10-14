@@ -6,52 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>人工智能原理与应用一：python与感知机 | 徐仕强的博客</title>
+  <title>Archives: 2020/10 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="人工智能原理与应用一：python与感知机">
-<meta property="og:url" content="http://yoursite.com/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/index.html">
+  <meta name="description" content="计算机学生一枚，没啥特点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="徐仕强的博客">
+<meta property="og:url" content="http://yoursite.com/archives/2020/10/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。">
+<meta property="og:description" content="计算机学生一枚，没啥特点">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbHNeOEt.sNKzKWTHJVEuJebh32uunmLSqBdPfXWYgciESnPiaSxx36tCmiX*HbanEj5Wew2gpfMRNmnHBeVkB8!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfkuMIM7RZ*EPnmF8wz5kXApZhRbop6UheweLdqFX3zM4Y.1IzZdfF7B52xasen7frWs*s11lwqwv.xN.oJQayo!/b&bo=RAWXAQAAAAADB*U!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrENch2E1upBtMJI4GxgEblhaK9AlJYM26lQ*ZVzw2.fkJmYh9o8y2qwON35dxdp6D7EGZmUig3juRg4HGKeyntLI!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaw1xAhq4RibrrnnM6f7oB49yMz8j9FHRV3QTlJx2tzixLrz.0nEDtRcNO891LBB1QRW6vrjQEdEKfkjG8nGejs!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWZ.meOa0PlK049b5yK3MyoUO2yl.gyZlk03.ngj3AkrEQTW*Vi0n3VGBkpti8Eut*7GYBevHWTnNbBtwtZtWEc!/b&bo=pAL9AAAAAAADB3k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqViH1KFp36SVR98Hp6Hf.bw3NuR0PFfpV84OqDDmYqKiLPGfdFXkdmXIwanryOxLW7K6uzVWffilO3TBW*hep4o!/b&bo=IgJKAQAAAAADB0k!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKcVZniZAigXWcB3gbHsZg2nJHYlZnlCqG5fIHNfxQ1Qq76JVw1fDrlFhrxfPZ*veEdPwgPVcq.oeVLQWXw*LyM!/b&bo=KQTSAAAAAAADF80!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEA2.XQFCWfZt9v9J9QOEASvdMNT5yF2Tvc*TLjgZojw3HScuNdLNnLLgUr5GOIEAondXp8b6LjpX.b5gWYafkwg!/b&bo=BQXyAAAAAAADF8A!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVXXgxn0P1DX7wMqihCYL33W4nbUi6quYhTiyQVLUmkZTUd6ihvww2LN3vSqr3ZHzrhXW2RslqVC*rPJXZcxJB4!/b&bo=bAJKAgAAAAADBwQ!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqT*suRg.7mNjLfDT4ID.RSHrknD4wKwlwjFMEeTk5VZfXjCiMyz55vL5g715PqFE1*41Cpa*ykBbKFyFVVQJ9gg!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQcv1ICpYBbghjVhXw6pK4ZtnUEsyvLlzkiVQB.wJ2BdBEoZCRJko8Ur5IPsFPzjPdMtd942ZySbFcB*W2vKZho!/b&bo=mwSnAQAAAAADBxs!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcv.qYOXlilVvqTOTHhyr88kIsNlaPCzeI8b6eerp4*V5wMfbiyVS3qG1dwHMoEFVunTazaXgYvd85Jqe98z6ZA!/b&bo=ZARoAQAAAAADBys!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZeVkRnxEomi0mcz7T9KxxXIuK.8OBzxB*VgfAO1gVynFMPhtAOBj0A77wh89PSIv*eYM4rRYAUKBhPJ4d*Q2Eg!/b&bo=TgQGAQAAAAADB28!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOv6lRbIrcxMfaSfaaNDzf*lXw*lyhC5qJF4*Kmujs1oOIBeg6z6XuCnXOyfrnscfWJGx6JRie0bVs3cLQ358JE!/b&bo=iAKyAQAAAAADFws!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRxOjG.hjz7CmB6fS.Cjs.6w42oQ1qFfNruCotJ6JblW*qaPyTF5Y4R*hGi2zvjxBeTPZJRGMGUYVvHRWmYoHSw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWbDd2AcVES7Y2l9mALRiNN1BbgmQRGt4lbdfkcnsAzpWrHnYxegq33IGKV49iiQwl7bYoji3eeMrtaamFvHDmc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeGlAbfPYEejSG0e2C5QGh.FbaNkIfSVmkTzCfzI0gyBut13oBnH9*9sWRFXp2.oG8udNoYtJvKoGFhTwAPgBME!/b&bo=RQOsAAAAAAADB8g!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcQvMZpLmEz8A1FEJ5ebafZtIxPLZlfcjEAI04AeQkaSJo*sD5*y45.KPNfv9oaGVam9u13BzHclTcEN.iQTHAc!/b&bo=rQKDAQAAAAADBw8!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYbwfmVN6SweN36.rQ4H4fbj6SXNM9EeHn9Gla0fpBSyt74NX8wBPdqu9jCoMx0y4ROC4iaw0UOs8GzNxClV.UE!/b&bo=LAPIAAAAAAADB8U!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQBdPYvCpFq.2GNfS0Y6sEweC1Ls3OH6Chlj6vg1tdzcdWD4yEWtURre0LrjDMTzrWzBSLUaiAOf8kf2nx.TRuQ!/b&bo=uAKlAgAAAAADBz8!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBWpUBZe0CZxM2Ud4gCsUX7rvmdgi98eMw0zqEHZtQfG7xI5wc7FjfWmyBptpVj4MSdTTm.cGqWtgtCwzkHml6A!/b&bo=owJ*AgAAAAADF.4!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEADG6wO8jo19A.DqBr048Tff2*a01n96E1IJ0gWM0i.rsUysRX2VD7BKjrqw*lzoxwWiFmQUItuCX18V.EA1DPc!/b&bo=iAIhAgAAAAADF5s!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqS7nEGoGkv2oRag63iq24BhEk8rA2Gd9Vn2e21us5PIV8scBjdus8LNapISt5Z2htLTIvsWbbm3ufxajU1KZvq4!/b&bo=WwPKAAAAAAADB7A!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECTNopRSluTcauxp6IrlpPluQ6*BxhwJfPwzMJPN.5lQEI72QfTu1QA2kCWDuBsLCjK3jycNymTcHWFU4B4em2M!/b&bo=KQPeAAAAAAADF8Y!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSeIlyjXqkDZR6l3Cdh5v.7H9LbgVvZNtGUyBEfRe7yqGNZMhu48HbcLVQeQBhD2p4.*JtMV8fGcDZS5Ff.CCow!/b&bo=0gFgAQAAAAADB5A!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIQNci0ZPyjuXFOLnvPfMz5pxeiV3k1CVvxHCSSV14xUqRl2vESpTylLS*VXfGQF.Kc8lMzrN964sqXN5UKRtZs!/b&bo=.wLvAQAAAAADFyU!&rf=viewer_4">
-<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH5qmiAwIITxJ7iTThVq2eaqKH9BwkpkdHdOegGjFz3ztjJrVk5f0wAnYQHitNgDgGdPzF6T3qAQkU3JKwSnzKE!/b&bo=OQN.AQAAAAADF3c!&rf=viewer_4">
-<meta property="article:published_time" content="2020-08-01T02:32:16.000Z">
-<meta property="article:modified_time" content="2020-08-01T03:16:51.639Z">
 <meta property="article:author" content="徐仕强">
-<meta property="article:tag" content="人工智能">
-<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -206,295 +171,40 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-人工智能原理与应用一：python与感知机" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      人工智能原理与应用一：python与感知机
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	 
+<a href="/2020/10/14/%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E7%9A%84%E6%A6%82%E6%8B%AC/" class="archive-article-date">
+  	<time datetime="2020-10-14T10:14:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/10/14/%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E7%9A%84%E6%A6%82%E6%8B%AC/">本地的深度学习环境的概括</a>
     </h1>
   
 
-        
-         
-        <!-- 不蒜子统计 -->
-        <span  class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2020-08-01T02:32:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-		<!-- 需要添加的位置 -->
-         <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.3k字</span>
-      </span>
-    </span>
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
-      </span>
-    </span>
-</div>
+        <div class="article-info info-on-right">
           
-          <!-- 添加完成 -->
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在上半年选修了人工智能原理和应用的课，当时在课上听懂了，现在已经有一部分忘记了，趁着还有点印象写一篇blog做一下笔记，也方便日后能快速回忆起来。  </p>
-<a id="more"></a> 
-<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><p>1.python的介绍（介绍主要用到的python语法）<br>2.感知机  </p>
-<h1 id="第一章-python的介绍"><a href="#第一章-python的介绍" class="headerlink" title="第一章 python的介绍"></a>第一章 python的介绍</h1><h2 id="1-python是什么"><a href="#1-python是什么" class="headerlink" title="1.python是什么"></a>1.python是什么</h2><ul>
-<li>Python是一个简单、易读、易记的编程语言，而且是开源的，可以免费地自由使用。   </li>
-<li>使用Python不仅可以写出可读性高的代码，还可以写出性能高（处理速度快）的代码。在需要处理大规模数据或者要求快速响应的情况下，使用Python可以稳妥地完成。   </li>
-<li>在科学领域，特别是在机器学习、数据科学领域，Python也被大量使用。   </li>
-<li>深度学习的框架中也有很多使用Python的场景，比如Caffe、TensorFlow、Chainer、Theano等著名的深度学习框架都提供了Python接口。   </li>
-<li>Python是最适合数据科学领域的编程语言。   </li>
-</ul>
-<h2 id="2-python的版本"><a href="#2-python的版本" class="headerlink" title="2.python的版本"></a>2.python的版本</h2><ul>
-<li>Python有Python 2.x和Python 3.x两个版本   </li>
-<li>两个版本之间没有兼容性</li>
-</ul>
-<h2 id="3-python解释器"><a href="#3-python解释器" class="headerlink" title="3.python解释器"></a>3.python解释器</h2><ul>
-<li>Python解释器也被称为“对话模式”，用户能够以和Python对话的方式进行编程。<br>在pycharm中，下面的的python Console 就是对话模式，Terminal是命令行模式，如下图：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXBjzL1TuLsU1zvrGt7PBeKeD.ZwWzTjdtMWP9xfCdchVN8q*1bcNOzT.E9YQDfIi98dAvvr.12UPQZrYvBN0LI!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </li>
-</ul>
-<h3 id="3-1-算术计算"><a href="#3-1-算术计算" class="headerlink" title="3.1 算术计算"></a>3.1 算术计算</h3><ul>
-<li>加、减、乘、除、平方等。<br>如上图<code>+ - * / **</code>,3的平方是<code>3**2</code>。  </li>
-</ul>
-<blockquote>
-<p>注：在Python 2.x中，整数除以整数的结果是整数，比如，7/5的结果是1。但在Python 3.x中，整数除以整数的结果是小数（浮点数）</p>
-</blockquote>
-<h3 id="3-2-数据类型"><a href="#3-2-数据类型" class="headerlink" title="3.2 数据类型"></a>3.2 数据类型</h3><ul>
-<li>数据类型表示数据的性质，有整数、小数、字符串等类型。Python中的type()函数可以用来查看数据类型。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqbHNeOEt.sNKzKWTHJVEuJebh32uunmLSqBdPfXWYgciESnPiaSxx36tCmiX*HbanEj5Wew2gpfMRNmnHBeVkB8!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </li>
-</ul>
-<h3 id="3-3-变量"><a href="#3-3-变量" class="headerlink" title="3.3 变量"></a>3.3 变量</h3><ul>
-<li><p>可以使用x或y等字母定义变量（variable）。<br>和java、c中的差不多。    </p>
-<pre><code>&gt;&gt;&gt; x = 10 
-&gt;&gt;&gt; y = 2 
-&gt;&gt;&gt; x + y 
-12  </code></pre></li>
-</ul>
-<h3 id="3-4-列表"><a href="#3-4-列表" class="headerlink" title="3.4 列表"></a>3.4 列表</h3><ul>
-<li>可以用列表（数组）汇总数据。  </li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqfkuMIM7RZ*EPnmF8wz5kXApZhRbop6UheweLdqFX3zM4Y.1IzZdfF7B52xasen7frWs*s11lwqwv.xN.oJQayo!/b&bo=RAWXAQAAAAADB*U!&rf=viewer_4" alt=""></p>
-<h3 id="3-5-字典"><a href="#3-5-字典" class="headerlink" title="3.5 字典"></a>3.5 字典</h3><ul>
-<li>字典以键值对的形式存储数据。类似与Java中的map<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrENch2E1upBtMJI4GxgEblhaK9AlJYM26lQ*ZVzw2.fkJmYh9o8y2qwON35dxdp6D7EGZmUig3juRg4HGKeyntLI!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">  </li>
-</ul>
-<h3 id="3-6-布尔型"><a href="#3-6-布尔型" class="headerlink" title="3.6 布尔型"></a>3.6 布尔型</h3><ul>
-<li>bool型取True或False中的一个值。针对bool型的运算符包括and、or和not。<br>例子如上图。  </li>
-</ul>
-<h3 id="3-7-if语句"><a href="#3-7-if语句" class="headerlink" title="3.7 if语句"></a>3.7 if语句</h3><ul>
-<li>根据不同的条件选择不同的处理分支时可以使用if/else语句。<br>例子如上图。</li>
-</ul>
-<h3 id="3-8-for语句"><a href="#3-8-for语句" class="headerlink" title="3.8 for语句"></a>3.8 for语句</h3><ul>
-<li>进行循环处理时可以使用for语句。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqaw1xAhq4RibrrnnM6f7oB49yMz8j9FHRV3QTlJx2tzixLrz.0nEDtRcNO891LBB1QRW6vrjQEdEKfkjG8nGejs!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </li>
-</ul>
-<h3 id="3-9-函数"><a href="#3-9-函数" class="headerlink" title="3.9 函数"></a>3.9 函数</h3><ul>
-<li>可以将一连串的处理定义成函数（function）。<br>例子如上图。     </li>
-</ul>
-<h3 id="3-10-类"><a href="#3-10-类" class="headerlink" title="3.10 类"></a>3.10 类</h3><ul>
-<li>Python中使用class关键字来定义类，类要遵循下述格式（模板）。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWZ.meOa0PlK049b5yK3MyoUO2yl.gyZlk03.ngj3AkrEQTW*Vi0n3VGBkpti8Eut*7GYBevHWTnNbBtwtZtWEc!/b&bo=pAL9AAAAAAADB3k!&rf=viewer_4" alt="">    </li>
-</ul>
-<h2 id="4-python的脚本文件"><a href="#4-python的脚本文件" class="headerlink" title="4.python的脚本文件"></a>4.python的脚本文件</h2><ul>
-<li>Python解释器能够以对话模式执行程序，非常便于进行简单的实验。但是，想进行一连串的处理时，因为每次都需要输入程序，所以不太方便。   </li>
-<li>这时，可以将Python程序保存为文件，然后（集中地）运行这个文件。  </li>
-<li>后缀为.py文件。   </li>
-</ul>
-<h2 id="5-Numpy"><a href="#5-Numpy" class="headerlink" title="5.Numpy"></a>5.Numpy</h2><ul>
-<li>在深度学习的实现中，经常出现数组和矩阵的计算。NumPy的数组（numpy.array）中提供了很多便捷的方法。  </li>
-</ul>
-<h3 id="5-1-生成NumPy数组"><a href="#5-1-生成NumPy数组" class="headerlink" title="5.1 生成NumPy数组"></a>5.1 生成NumPy数组</h3><ul>
-<li>要生成NumPy数组，需要使用np.array()方法。np.array()接收Python列表作为参数，生成NumPy数组（numpy.ndarray）<br>使用要先导包<code>import numpy as np</code></li>
-</ul>
-<h3 id="5-2-NumPy-的算术运算"><a href="#5-2-NumPy-的算术运算" class="headerlink" title="5.2 NumPy 的算术运算"></a>5.2 NumPy 的算术运算</h3><pre><code>&gt;&gt;&gt; x=np.array（[1.0，2.0，3.0]）
-&gt;&gt;&gt; y=np，array（[2.0，4.0，6.0]）  
-&gt;&gt;&gt; x+y  #对应元素的加法
-array（[3.，6.，9.]）
-&gt;&gt;&gt; x*y   #element-wise product
-array([2.,8.,18.])
-&gt;&gt;&gt; x/y 
-array（[0.5，0.5，0.5]）   </code></pre><blockquote>
-<p>NumPy数组不仅可以进行element-wise运算，也可以和单一的数值（标量）组合起来进行运算。此时，需要在NumPy数组的各个元素和标量之间进行运算。这个功能也被称为<strong>广播</strong>。也就是一个数组乘以一个数字，每个元素乘以数字。</p>
-</blockquote>
-<h3 id="5-3-NumPy的N维数组"><a href="#5-3-NumPy的N维数组" class="headerlink" title="5.3 NumPy的N维数组"></a>5.3 NumPy的N维数组</h3><ul>
-<li>NumPy不仅可以生成一维数组（排成一列的数组），也可以生成多维数组。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqViH1KFp36SVR98Hp6Hf.bw3NuR0PFfpV84OqDDmYqKiLPGfdFXkdmXIwanryOxLW7K6uzVWffilO3TBW*hep4o!/b&bo=IgJKAQAAAAADB0k!&rf=viewer_4" alt=""></li>
-</ul>
-<h3 id="5-4-广播"><a href="#5-4-广播" class="headerlink" title="5.4 广播"></a>5.4 广播</h3><ul>
-<li><p>广播的例子：标量10被当作2 × 2的矩阵<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEKcVZniZAigXWcB3gbHsZg2nJHYlZnlCqG5fIHNfxQ1Qq76JVw1fDrlFhrxfPZ*veEdPwgPVcq.oeVLQWXw*LyM!/b&bo=KQTSAAAAAAADF80!&rf=viewer_4" alt="">      </p>
-<pre><code>&gt;&gt;&gt; A=np.array([[1,2],[3,4]])
-&gt;&gt;&gt; B=np.array([10,20])
-&gt;&gt;&gt; A*B 
-array([[10,40],
-       [30,80]])</code></pre></li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEA2.XQFCWfZt9v9J9QOEASvdMNT5yF2Tvc*TLjgZojw3HScuNdLNnLLgUr5GOIEAondXp8b6LjpX.b5gWYafkwg!/b&bo=BQXyAAAAAAADF8A!&rf=viewer_4" alt="">    </p>
-<h3 id="5-5-访问元素"><a href="#5-5-访问元素" class="headerlink" title="5.5 访问元素"></a>5.5 访问元素</h3><ul>
-<li>元素的索引从0开始<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqVXXgxn0P1DX7wMqihCYL33W4nbUi6quYhTiyQVLUmkZTUd6ihvww2LN3vSqr3ZHzrhXW2RslqVC*rPJXZcxJB4!/b&bo=bAJKAgAAAAADBwQ!&rf=viewer_4" alt="">    </li>
-</ul>
-<h2 id="6-Matplotlib"><a href="#6-Matplotlib" class="headerlink" title="6.Matplotlib"></a>6.Matplotlib</h2><ul>
-<li>Matplotlib是用于绘制图形的库，使用Matplotlib可以轻松地绘制图形和实现数据的可视化。这里我只举一个例子。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqT*suRg.7mNjLfDT4ID.RSHrknD4wKwlwjFMEeTk5VZfXjCiMyz55vL5g715PqFE1*41Cpa*ykBbKFyFVVQJ9gg!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQcv1ICpYBbghjVhXw6pK4ZtnUEsyvLlzkiVQB.wJ2BdBEoZCRJko8Ur5IPsFPzjPdMtd942ZySbFcB*W2vKZho!/b&bo=mwSnAQAAAAADBxs!&rf=viewer_4" alt=""><br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcv.qYOXlilVvqTOTHhyr88kIsNlaPCzeI8b6eerp4*V5wMfbiyVS3qG1dwHMoEFVunTazaXgYvd85Jqe98z6ZA!/b&bo=ZARoAQAAAAADBys!&rf=viewer_4" alt=""></li>
-</ul>
-<h2 id="7-补充小技巧"><a href="#7-补充小技巧" class="headerlink" title="7.补充小技巧"></a>7.补充小技巧</h2><p>python加载包用的是国外的源，很慢，介绍一下永久更改源的方法。   </p>
-<p>1.win+R在窗口输入<code>%HOMEPATH%</code><br>2.在打开的文件夹中新建pip文件夹，在里面创建pip.ini文件。<br>3.在文件中输入以下内容改用清华源    </p>
-<pre><code>[global]
-
-timeout = 6000
-
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-
-trusted-host = pypi.tuna.tsinghua.edu.cn   </code></pre><p>4.保存，然后体验飞一般的感觉。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>Python是一种简单易记的编程语言。</li>
-<li>Python是开源的，可以自由使用。</li>
-<li>本课程中将使用Python 3.x实现深度学习。</li>
-<li>本课程中将使用NumPy和Matplotlib这两种外部库。</li>
-<li>Python有“解释器”和“脚本文件”两种运行模式。</li>
-<li>Python能够将一系列处理集成为函数或类等模块。</li>
-<li>NumPy中有很多用于操作多维数组的便捷方法。   </li>
-</ul>
-<h1 id="第二章-感知机"><a href="#第二章-感知机" class="headerlink" title="第二章 感知机"></a>第二章 感知机</h1><h2 id="1-感知机是什么"><a href="#1-感知机是什么" class="headerlink" title="1.感知机是什么"></a>1.感知机是什么</h2><ul>
-<li>感知机（perceptron），由美国学者Frank Rosenblatt在1957年提出来的</li>
-<li>感知机是作为神经网络（深度学习）的起源的算法</li>
-<li>例如以下有两个输入的感知机：   </li>
-</ul>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqZeVkRnxEomi0mcz7T9KxxXIuK.8OBzxB*VgfAO1gVynFMPhtAOBj0A77wh89PSIv*eYM4rRYAUKBhPJ4d*Q2Eg!/b&bo=TgQGAQAAAAADB28!&rf=viewer_4" alt=""><br>感知机接收多个输入信号，输出一个信号。这里所说的“信号”可以想象成电流或河流那样具备“流动性”的东西。像电流流过导线，向前方输送电子一样，感知机的信号也会形成流，向前方输送信息。但是，和实际的电流不同的是，感知机的信号只有“流/不流”（1/0）两种取值。0对应“不传递信号”，1对应“传递信号”。<br>如上图中x1、x2是<strong>输入信号</strong>，y是<strong>输出信号</strong>，w1、w2是<strong>权重</strong>（w 是 weight 的首字母）。<br>图中的包裹信号的O称为<strong>“神经元”</strong>或者<strong>“节点”</strong>。   </p>
-<p>输入信号被送往神经元时，会被分别乘以固定的权重（w1 x1 、w2 x2 ）。神经元会计算传送过来的信号的总和，只有当这个总和超过了某个界限值时，才会输出1。这也称为<strong>“神经元被激活”</strong>。这里将这个界限值称为阈值，用符号θ表示。</p>
-<p>感知机的多个输入信号都有各自固有的权重，这些权重发挥着控制各个信号的重要性的作用。也就是说，<strong>权重越大，该权重对应的信号的重要性就越高</strong>。   </p>
-<h2 id="2-简单逻辑电路"><a href="#2-简单逻辑电路" class="headerlink" title="2.简单逻辑电路"></a>2.简单逻辑电路</h2><h3 id="2-1-与门（AND-gate）"><a href="#2-1-与门（AND-gate）" class="headerlink" title="2.1 与门（AND gate）"></a>2.1 与门（AND gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4" alt=""></p>
-<p>使用感知机来表示这个与门。我们需要做的就是确定能满足真值表的w1 、w2 、θ的值。</p>
-<p>满足真值表条件的参数的选择方法有无数多个，比如0.5 0.5 0.8。  </p>
-<h3 id="2-2-与非门（NAND：Not-AND的意思"><a href="#2-2-与非门（NAND：Not-AND的意思" class="headerlink" title="2.2 与非门（NAND：Not AND的意思)"></a>2.2 与非门（NAND：Not AND的意思)</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECZj4zOan*D2j.B1o9J6Za.qQK7ZCl6StKBbJ.dX*H5.AWaOKH8kFO.MvxcFlJ2RUZ3vLAqt5cpuny07U*UMqDQ!/b&bo=hgKdAQAAAAADFyo!&rf=viewer_4" alt="">     </p>
-<p>要表示与非门，可以用 (w 1 , w 2 , θ) = (−0.5, −0.5, −0.8) 这样的组合（其他的组合也是无限存在的）。   </p>
-<p>实际上，只要把实现与门的参数值的符号取反，就可以实现与非门。   </p>
-<h3 id="2-3-或门（OR-gate）"><a href="#2-3-或门（OR-gate）" class="headerlink" title="2.3 或门（OR gate）"></a>2.3 或门（OR gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOv6lRbIrcxMfaSfaaNDzf*lXw*lyhC5qJF4*Kmujs1oOIBeg6z6XuCnXOyfrnscfWJGx6JRie0bVs3cLQ358JE!/b&bo=iAKyAQAAAAADFws!&rf=viewer_4" alt="">    </p>
-<p>感知机可以表示与门、与非门、或门的逻辑电路。</p>
-<p>这里重要的一点是：与门、与非门、或门的感知机构造是一样的。</p>
-<p>实际上，3个门电路只有参数的值（权重和阈值）不同。也就是说，相同构造的感知机，只需通过适当地调整参数的值，就可以变为与门、与非门、或门。</p>
-<h2 id="3-感知机的实现"><a href="#3-感知机的实现" class="headerlink" title="3.感知机的实现"></a>3.感知机的实现</h2><ul>
-<li><p>简单的实现<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqRxOjG.hjz7CmB6fS.Cjs.6w42oQ1qFfNruCotJ6JblW*qaPyTF5Y4R*hGi2zvjxBeTPZJRGMGUYVvHRWmYoHSw!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
-</li>
-<li><p>导入权重和偏置<br>θ换成−b，则b称为<strong>偏置</strong>，w1和w2称为<strong>权重</strong>。<br>感知机会计算输入 信号和权重的乘积，然后加上偏置，如果这个值大于0则输出1，否则输出0。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWbDd2AcVES7Y2l9mALRiNN1BbgmQRGt4lbdfkcnsAzpWrHnYxegq33IGKV49iiQwl7bYoji3eeMrtaamFvHDmc!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">  </p>
-</li>
-</ul>
-<p>在NumPy数组的乘法运算中，当两个数组的元素个数相同时， 各个元素将分别相乘。因此 wx 的结果就是它们的各个元素分别相乘（ [0, 1] * [0.5, 0.5] =&gt; [0, 0.5] ）。之后， 再计算相乘后的各个元素的总和。<strong>np.sum(wx)</strong></p>
-<p>最后再把偏置加到这个加权总和上，就完成了下图的计算计算。  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqeGlAbfPYEejSG0e2C5QGh.FbaNkIfSVmkTzCfzI0gyBut13oBnH9*9sWRFXp2.oG8udNoYtJvKoGFhTwAPgBME!/b&bo=RQOsAAAAAAADB8g!&rf=viewer_4" alt="">    </p>
-<p>而偏置是调整神经元被激活的容易程度（输出信号为 1 的程度）的参数。比如，若 b 为 −0.1， 则只要输入信号的加权总和超过0.1，神经元就会被激活。    </p>
-<h2 id="4-感知机的局限性"><a href="#4-感知机的局限性" class="headerlink" title="4.感知机的局限性"></a>4.感知机的局限性</h2><ul>
-<li>用感知机可以实现与门、与非门、或门三种逻辑电路。    </li>
-</ul>
-<h3 id="4-1-异或门（XOR-gate）"><a href="#4-1-异或门（XOR-gate）" class="headerlink" title="4.1 异或门（XOR gate）"></a>4.1 异或门（XOR gate）</h3><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqcQvMZpLmEz8A1FEJ5ebafZtIxPLZlfcjEAI04AeQkaSJo*sD5*y45.KPNfv9oaGVam9u13BzHclTcEN.iQTHAc!/b&bo=rQKDAQAAAAADBw8!&rf=viewer_4" alt="">  </p>
-<p>实际上，用前面介绍的感知机是无法实现这个异或门的。   </p>
-<h3 id="4-2-或门形象化表示"><a href="#4-2-或门形象化表示" class="headerlink" title="4.2 或门形象化表示"></a>4.2 或门形象化表示</h3><p>或门的情况下，当权重参数 (b, w 1 , w 2 ) = (−0.5, 1.0, 1.0)时，可满足 或门 的真值表条件。<br>此时，感知机 可用下图的公式表示。<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqYbwfmVN6SweN36.rQ4H4fbj6SXNM9EeHn9Gla0fpBSyt74NX8wBPdqu9jCoMx0y4ROC4iaw0UOs8GzNxClV.UE!/b&bo=LAPIAAAAAAADB8U!&rf=viewer_4" alt="">    </p>
-<p>该公式表示的感知机会生成由直线−0.5 + x1 + x2 = 0分割开的两个空间。其中一个空间输出1，另一个空间输出0，如下图所示。   </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqQBdPYvCpFq.2GNfS0Y6sEweC1Ls3OH6Chlj6vg1tdzcdWD4yEWtURre0LrjDMTzrWzBSLUaiAOf8kf2nx.TRuQ!/b&bo=uAKlAgAAAAADBz8!&rf=viewer_4" alt="">   </p>
-<p>感知机的可视化图：灰色区域是感知机输出0的区域，这个区域与或门的性质一致。</p>
-<p>或门在 (x1,x2) = (0, 0) 时输出 0，在 (x1,x2) 为 (0, 1)、(1, 0)、(1, 1) 时输 出1。感知机的可视化图中，○表示0，△表示1。现在需要用直线将上图中的○和△分开。实际上，刚才的那条直线就将这4个点正确地分开了（归类）。   </p>
-<p>换成异或门的话如下图所示   </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEBWpUBZe0CZxM2Ud4gCsUX7rvmdgi98eMw0zqEHZtQfG7xI5wc7FjfWmyBptpVj4MSdTTm.cGqWtgtCwzkHml6A!/b&bo=owJ*AgAAAAADF.4!&rf=viewer_4" alt="">   </p>
-<p>想要用一条直线将 上图 中的○和△分开，无论如何都做不到。事实上， 用一条直线是无法将○和△分开的。但是如果将 “直线” 这个限制去掉，就可以实现了。  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEADG6wO8jo19A.DqBr048Tff2*a01n96E1IJ0gWM0i.rsUysRX2VD7BKjrqw*lzoxwWiFmQUItuCX18V.EA1DPc!/b&bo=iAIhAgAAAAADF5s!&rf=viewer_4" alt="">  </p>
-<h3 id="4-3-线性和非线性"><a href="#4-3-线性和非线性" class="headerlink" title="4.3 线性和非线性"></a>4.3 线性和非线性</h3><p>感知机的局限性就在于它只能表示由<strong>一条直线</strong>分割的空间。<br>上图中 这样弯曲的曲线是无法用感知机表示的。<br>由曲线分割 而成的空间称为<strong>非线性空间</strong>；<br>由直线分割 而成的空间称为<strong>线性空间</strong>。<br>线性、非线性这两个术语在机器学习领域很常见，可以将其想象成上图所示的直线和曲线分割而成的空间。   </p>
-<h2 id="5-多层感知机"><a href="#5-多层感知机" class="headerlink" title="5.多层感知机"></a>5.多层感知机</h2><p>“单层感知机无法表示异或门”或者“单层感知机无法分离非线性空间”。但感知机 的绝妙之处在于它可以“叠加层”（通过叠加层来表示异或门）。  </p>
-<p>异或门的制作方法有很多，其中之一就是组合我们前面做好的与门、与 非门、或门进行配置。<br>与门、与非门、或门的符号:   </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqS7nEGoGkv2oRag63iq24BhEk8rA2Gd9Vn2e21us5PIV8scBjdus8LNapISt5Z2htLTIvsWbbm3ufxajU1KZvq4!/b&bo=WwPKAAAAAAADB7A!&rf=viewer_4" alt="">  </p>
-<p>通过组合与门、与非门、或门实现异或门:    </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECTNopRSluTcauxp6IrlpPluQ6*BxhwJfPwzMJPN.5lQEI72QfTu1QA2kCWDuBsLCjK3jycNymTcHWFU4B4em2M!/b&bo=KQPeAAAAAAADF8Y!&rf=viewer_4" alt="">    </p>
-<p>由此得到异或门的实现：<br><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqSeIlyjXqkDZR6l3Cdh5v.7H9LbgVvZNtGUyBEfRe7yqGNZMhu48HbcLVQeQBhD2p4.*JtMV8fGcDZS5Ff.CCow!/b&bo=0gFgAQAAAAADB5A!&rf=viewer_4" alt=""></p>
-<p>这里，把s1 作为与非门的输出，把s2作为或门的输出，填入真值表中。结果如图所示，观察x1、x2 、y，可以发现确实符合异或门的输出。   </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEIQNci0ZPyjuXFOLnvPfMz5pxeiV3k1CVvxHCSSV14xUqRl2vESpTylLS*VXfGQF.Kc8lMzrN964sqXN5UKRtZs!/b&bo=.wLvAQAAAAADFyU!&rf=viewer_4" alt="">  </p>
-<p>异或门是一种多层结构的神经网络。与门、或门是单层感知机，而异或门是2层感知机。叠加了多层的感知机也称为多层感知机（multi-layered perceptron）。  </p>
-<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH5qmiAwIITxJ7iTThVq2eaqKH9BwkpkdHdOegGjFz3ztjJrVk5f0wAnYQHitNgDgGdPzF6T3qAQkU3JKwSnzKE!/b&bo=OQN.AQAAAAADF3c!&rf=viewer_4" alt="">   </p>
-<p>上图中的感知机总共由3层构成，但是因为拥有权重的层实质上只有2层（第0层和第1层之间，第1层和第2层之间），所以称为“2层感知机”。不过，有的文献认为上图的感知机是由3层构成的，因而将其称为“3层感知机”。    </p>
-<h2 id="6-从与非门到计算机"><a href="#6-从与非门到计算机" class="headerlink" title="6.从与非门到计算机"></a>6.从与非门到计算机</h2><p>实际上只需要通过与非门的组合，就能再现计算机进行的处理。<br>使用感知机也可以表示计算机，已有研究证明，2层感知机（严格地说是激活函数使用了非线性的sigmoid函数的感知机）可以表示任意函数。</p>
-<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>感知机是具有输入和输出的算法。给定一个输入后，将输出一个既定的值。</li>
-<li>感知机将权重和偏置设定为参数。</li>
-<li>使用感知机可以表示与门和或门等逻辑电路。</li>
-<li>异或门无法通过单层感知机来表示。</li>
-<li>使用2层感知机可以表示异或门。</li>
-<li>单层感知机只能表示线性空间，而多层感知机可以表示非线性空间。</li>
-<li>多层感知机（在理论上）可以表示计算机。   </li>
-</ul>
-<h1 id="博主小结"><a href="#博主小结" class="headerlink" title="博主小结"></a>博主小结</h1><p>由于这一内容有点多，原本想一个博客写完，但是由于内容有点多，怕之后翻阅麻烦，就两章一写吧。</p>
-
-      
-	<!--  自加的代码 -->
-	
-       
-         <div class="essayending">
-           <div>
-            <div style="text-align:center;color: #ccc;font-size:22px;">
-            <br/>
-            <br/>
- -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
-            <br/>
-            <br/>
-             <br/>
-             <br/>
-            </div>
-           </div>
-         </div>
-         
-  
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/zfbs.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/wxs.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
@@ -502,128 +212,19 @@ trusted-host = pypi.tuna.tsinghua.edu.cn   </code></pre><p>4.保存，然后体�
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/08/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%80%EF%BC%9Apython%E4%B8%8E%E6%84%9F%E7%9F%A5%E6%9C%BA/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/08/03/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BA%8C%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          人工智能原理与应用二：神经网络
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/07/29/linux%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux命令以及软件安装项目部署</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主要内容"><span class="toc-number">1.</span> <span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-python的介绍"><span class="toc-number">2.</span> <span class="toc-text">第一章 python的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-python是什么"><span class="toc-number">2.1.</span> <span class="toc-text">1.python是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-python的版本"><span class="toc-number">2.2.</span> <span class="toc-text">2.python的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-python解释器"><span class="toc-number">2.3.</span> <span class="toc-text">3.python解释器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-算术计算"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 算术计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-数据类型"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-变量"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-列表"><span class="toc-number">2.3.4.</span> <span class="toc-text">3.4 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-字典"><span class="toc-number">2.3.5.</span> <span class="toc-text">3.5 字典</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-布尔型"><span class="toc-number">2.3.6.</span> <span class="toc-text">3.6 布尔型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-if语句"><span class="toc-number">2.3.7.</span> <span class="toc-text">3.7 if语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-for语句"><span class="toc-number">2.3.8.</span> <span class="toc-text">3.8 for语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-函数"><span class="toc-number">2.3.9.</span> <span class="toc-text">3.9 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10-类"><span class="toc-number">2.3.10.</span> <span class="toc-text">3.10 类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-python的脚本文件"><span class="toc-number">2.4.</span> <span class="toc-text">4.python的脚本文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Numpy"><span class="toc-number">2.5.</span> <span class="toc-text">5.Numpy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-生成NumPy数组"><span class="toc-number">2.5.1.</span> <span class="toc-text">5.1 生成NumPy数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-NumPy-的算术运算"><span class="toc-number">2.5.2.</span> <span class="toc-text">5.2 NumPy 的算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-NumPy的N维数组"><span class="toc-number">2.5.3.</span> <span class="toc-text">5.3 NumPy的N维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-广播"><span class="toc-number">2.5.4.</span> <span class="toc-text">5.4 广播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-访问元素"><span class="toc-number">2.5.5.</span> <span class="toc-text">5.5 访问元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Matplotlib"><span class="toc-number">2.6.</span> <span class="toc-text">6.Matplotlib</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-补充小技巧"><span class="toc-number">2.7.</span> <span class="toc-text">7.补充小技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">2.8.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-感知机"><span class="toc-number">3.</span> <span class="toc-text">第二章 感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-感知机是什么"><span class="toc-number">3.1.</span> <span class="toc-text">1.感知机是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-简单逻辑电路"><span class="toc-number">3.2.</span> <span class="toc-text">2.简单逻辑电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-与门（AND-gate）"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.1 与门（AND gate）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-与非门（NAND：Not-AND的意思"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2 与非门（NAND：Not AND的意思)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-或门（OR-gate）"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.3 或门（OR gate）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-感知机的实现"><span class="toc-number">3.3.</span> <span class="toc-text">3.感知机的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-感知机的局限性"><span class="toc-number">3.4.</span> <span class="toc-text">4.感知机的局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-异或门（XOR-gate）"><span class="toc-number">3.4.1.</span> <span class="toc-text">4.1 异或门（XOR gate）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-或门形象化表示"><span class="toc-number">3.4.2.</span> <span class="toc-text">4.2 或门形象化表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-线性和非线性"><span class="toc-number">3.4.3.</span> <span class="toc-text">4.3 线性和非线性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-多层感知机"><span class="toc-number">3.5.</span> <span class="toc-text">5.多层感知机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-从与非门到计算机"><span class="toc-number">3.6.</span> <span class="toc-text">6.从与非门到计算机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结-1"><span class="toc-number">3.7.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#博主小结"><span class="toc-number">4.</span> <span class="toc-text">博主小结</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -660,8 +261,8 @@ trusted-host = pypi.tuna.tsinghua.edu.cn   </code></pre><p>4.保存，然后体�
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
