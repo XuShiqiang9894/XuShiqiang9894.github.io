@@ -6,17 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/9 | 徐仕强的博客</title>
+  <title>Ubuntu系统docker的安装与加速 | 徐仕强的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机学生一枚，没啥特点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐仕强的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/09/index.html">
+  <meta name="description" content="在分布式系统中，配置运行环境是一个十分麻烦的事情。但是docker的出现大大减轻了配置环境的压力，并且只要在一台机器上可以运行出来，那么在其他机器上也可以运行出来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu系统docker的安装与加速">
+<meta property="og:url" content="http://yoursite.com/2020/11/17/Ubuntu%E7%B3%BB%E7%BB%9Fdocker%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8A%A0%E9%80%9F/index.html">
 <meta property="og:site_name" content="徐仕强的博客">
-<meta property="og:description" content="计算机学生一枚，没啥特点">
+<meta property="og:description" content="在分布式系统中，配置运行环境是一个十分麻烦的事情。但是docker的出现大大减轻了配置环境的压力，并且只要在一台机器上可以运行出来，那么在其他机器上也可以运行出来。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXiXelhoU4BuKs4uh.pYzaCXwGitDWSzBVqMwosLJ7XSsXWR3OWyZhJ2v9PPSZRlbqZLme9MidjLoCzqMzwdFVk!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMMUHldL8oZj2oYlbVHOuw2IJP*19p033*r3IFYcb*n2YSbestpd5oYOAqvkeQIijaLNWtXJo0Sa39ZcAeacTTg!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECE2TyiPAxz8160jVc.s4qorEa69YtVQUHLLv17uycK*kKSRs2aF5rGVO2v.QElMErNa1WccXCjiJ9C91hVesSU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWwHUasfH5HJfm75q3m0n7*n6DfD*WhfHrREJt8WuEcsqNIPTX7cz4O59303B8hucOXE.b4pYqz4gDAhrKfgFz4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="article:published_time" content="2020-11-17T03:17:38.000Z">
+<meta property="article:modified_time" content="2020-11-17T03:18:54.164Z">
 <meta property="article:author" content="徐仕强">
+<meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXiXelhoU4BuKs4uh.pYzaCXwGitDWSzBVqMwosLJ7XSsXWR3OWyZhJ2v9PPSZRlbqZLme9MidjLoCzqMzwdFVk!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
   
     <link rel="alternative" href="/atom.xml" title="徐仕强的博客" type="application/atom+xml">
   
@@ -171,64 +179,276 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-Ubuntu系统docker的安装与加速" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2020/09/29/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%89%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-09-29T08:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/29/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E4%B8%89%EF%BC%9A%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0/">人工智能原理与应用三：神经网络的学习</a>
+    <h1 class="article-title" itemprop="name">
+      Ubuntu系统docker的安装与加速
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+         
+        <!-- 不蒜子统计 -->
+        <span  class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/11/17/Ubuntu%E7%B3%BB%E7%BB%9Fdocker%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8A%A0%E9%80%9F/" class="archive-article-date">
+  	<time datetime="2020-11-17T03:17:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-17</time>
+</a>
+		<!-- 需要添加的位置 -->
+         <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">584字</span>
+      </span>
+    </span>
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
           
+          <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta name="referrer" content="no-referrer"/>
+在分布式系统中，配置运行环境是一个十分麻烦的事情。但是docker的出现大大减轻了配置环境的压力，并且只要在一台机器上可以运行出来，那么在其他机器上也可以运行出来。
+<a id="more"></a>
+
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>maven可以让开发环境保持一致，docker可以让运行环境保持一致。果然，懒是人类找到更简便的方法的必备的精神啊。   </p>
+<h2 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1.安装docker"></a>1.安装docker</h2><h3 id="1-1卸载旧版本"><a href="#1-1卸载旧版本" class="headerlink" title="1.1卸载旧版本"></a>1.1卸载旧版本</h3><p>由于我新建了一个Ubuntu系统的虚拟机，就不用删除旧版本了。   </p>
+<pre><code>apt-get remove docker \
+               docker-engine \
+               docker.io</code></pre><h3 id="1-2安装"><a href="#1-2安装" class="headerlink" title="1.2安装"></a>1.2安装</h3><p>linux一般是使用<code>apt</code>安装的，这个命令就像windows的<code>pip</code>。   </p>
+<p>更新apt的镜像地址的数据，这样可以下载到最新的版本:   </p>
+<pre><code>apt-get update   </code></pre><p>安装一些必要的系统工具:      </p>
+<pre><code>apt-get -y install apt-transport-https ca-certificates curl software-properties-common   </code></pre><blockquote>
+<p>由于安装系统的时候配置了阿里云的镜像地址，所以下载速度还是挺快的。    </p>
+</blockquote>
+<p>安装GPG证书：</p>
+<pre><code>curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -  </code></pre><blockquote>
+<p>GPG类似与MD5，一种加密的技术。软件发布时会有一个MD5，用户可与官方的比对来确定下载的是否是官方版本。   </p>
+</blockquote>
+<p>写入软件源信息：   </p>
+<pre><code>add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot;   </code></pre><blockquote>
+<p><code>lsb_release -cs</code>是查看linux系统的版本，不是数字的那种，每个版本都有一个英文代号。   </p>
+</blockquote>
+<p>安装docker-ce：   </p>
+<pre><code>apt-get update &amp;&amp; apt-get -y install docker-ce      </code></pre><p>安装成功后可用<code>docker version</code>来验证是否成功。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqXiXelhoU4BuKs4uh.pYzaCXwGitDWSzBVqMwosLJ7XSsXWR3OWyZhJ2v9PPSZRlbqZLme9MidjLoCzqMzwdFVk!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt=""></p>
+<h2 id="2-配置加速"><a href="#2-配置加速" class="headerlink" title="2.配置加速"></a>2.配置加速</h2><p>虽然docker有中国区的加速镜像，但是速度不尽人意。还是用国内的阿里云的吧。      </p>
+<h3 id="2-1得到专属地址"><a href="#2-1得到专属地址" class="headerlink" title="2.1得到专属地址"></a>2.1得到专属地址</h3><p>进入<a href="https://cr.console.aliyun.com/" target="_blank" rel="noopener">阿里云</a>官网，登陆，搜索<code>容器镜像服务</code>。再点击左边最下面的<strong>镜像加速器</strong>，自动有了一个地址。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMMUHldL8oZj2oYlbVHOuw2IJP*19p033*r3IFYcb*n2YSbestpd5oYOAqvkeQIijaLNWtXJo0Sa39ZcAeacTTg!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4" alt="">      </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECE2TyiPAxz8160jVc.s4qorEa69YtVQUHLLv17uycK*kKSRs2aF5rGVO2v.QElMErNa1WccXCjiJ9C91hVesSU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4" alt="">    </p>
+<h3 id="2-2配置"><a href="#2-2配置" class="headerlink" title="2.2配置"></a>2.2配置</h3><p>通过修改daemon配置文件/etc/docker/daemon.json来使用加速器：    </p>
+<pre><code>tee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;
+{
+  &quot;registry-mirrors&quot;: [&quot;https://xxxxxxxxx.mirror.aliyuncs.com&quot;]
+}
+EOF</code></pre><blockquote>
+<p>这里填写刚申请的地址。    </p>
+</blockquote>
+<p>重启服务:   </p>
+<pre><code>systemctl daemon-reload
+systemctl restart docker</code></pre><p>最后通过<code>docker info</code>验证是否成功。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWwHUasfH5HJfm75q3m0n7*n6DfD*WhfHrREJt8WuEcsqNIPTX7cz4O59303B8hucOXE.b4pYqz4gDAhrKfgFz4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>地址最好用自己申请的，所有地址已打码=。=</p>
+
+      
+	<!--  自加的代码 -->
+	
+       
+         <div class="essayending">
+           <div>
+            <div style="text-align:center;color: #ccc;font-size:22px;">
+            <br/>
+            <br/>
+ -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+            <br/>
+            <br/>
+             <br/>
+             <br/>
+            </div>
+           </div>
+         </div>
+         
+  
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zfbs.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wxs.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人工智能</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件安装</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">     <!-- github:https://xushiqiang9894.github.io/    gitee: https://saylessdomore.gitee.io/ -->
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xushiqiang9894.github.io/ 2020/11/17/Ubuntu%E7%B3%BB%E7%BB%9Fdocker%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8A%A0%E9%80%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/11/13/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8Fhadoop%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">虚拟机与分布式hadoop问题集锦</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1卸载旧版本"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1卸载旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置加速"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置加速</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1得到专属地址"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1得到专属地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2配置"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -265,8 +485,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
