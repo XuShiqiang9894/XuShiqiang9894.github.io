@@ -19,8 +19,12 @@
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEMMUHldL8oZj2oYlbVHOuw2IJP*19p033*r3IFYcb*n2YSbestpd5oYOAqvkeQIijaLNWtXJo0Sa39ZcAeacTTg!/b&bo=gAcGBAAAAAADJ4c!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrECE2TyiPAxz8160jVc.s4qorEa69YtVQUHLLv17uycK*kKSRs2aF5rGVO2v.QElMErNa1WccXCjiJ9C91hVesSU!/b&bo=gAcGBAAAAAADF7c!&rf=viewer_4">
 <meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWwHUasfH5HJfm75q3m0n7*n6DfD*WhfHrREJt8WuEcsqNIPTX7cz4O59303B8hucOXE.b4pYqz4gDAhrKfgFz4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOcRxZAuvfs0E0YF.MqIwYkiwwPgl*Gs2S4AV2rg4TX9C3bPVglrstBSr2jPlCUE0MVxfuz2f13EG7dmkI2ezYY!/b&bo=NgM5AQAAAAADFz8!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEM6IBUjNkfqPTv.HlkDvk9NwBPL3iQCDRj*akY5L5sMMugmiIYzqMw7PX.KWCDQzxioWOWU9tSDeiHb9QYGZYbQ!/b&bo=WgNNAAAAAAADFyY!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK9ut*sGKrNnF0y7*zbfhcAiv8YMM.kjmj8oroQYzVXodld5M3IlR6dC6mpsi1U1OEnxjzBPAxlTh7V7dHcEv2s!/b&bo=gwalAgAAAAADFxA!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH4V7mdiN7bFE9fUuRlqizxXg09ahjf6gnJVL75BIfYfUwm.buiG5gNoEgXaSmjHRQH5N8IBiwcq2qOBEudwVUU!/b&bo=dwQkAgAAAAADF2c!&rf=viewer_4">
 <meta property="article:published_time" content="2020-11-17T03:17:38.000Z">
-<meta property="article:modified_time" content="2020-11-17T03:18:54.164Z">
+<meta property="article:modified_time" content="2020-11-17T07:39:23.986Z">
 <meta property="article:author" content="徐仕强">
 <meta property="article:tag" content="软件安装">
 <meta name="twitter:card" content="summary">
@@ -208,7 +212,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">584字</span>
+        <span class="post-count">735字</span>
       </span>
     </span>
     <span class="post-time">
@@ -268,7 +272,17 @@ EOF</code></pre><blockquote>
 <pre><code>systemctl daemon-reload
 systemctl restart docker</code></pre><p>最后通过<code>docker info</code>验证是否成功。   </p>
 <p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/bqQfVz5yrrGYSXMvKr.cqWwHUasfH5HJfm75q3m0n7*n6DfD*WhfHrREJt8WuEcsqNIPTX7cz4O59303B8hucOXE.b4pYqz4gDAhrKfgFz4!/b&bo=gAcGBAAAAAADB6c!&rf=viewer_4" alt="">   </p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>地址最好用自己申请的，所有地址已打码=。=</p>
+<h2 id="3-测试docker"><a href="#3-测试docker" class="headerlink" title="3.测试docker"></a>3.测试docker</h2><p>测试安装一个tomcat，普通安装tomcat都要先安装java，使用了docker之后，由于它是容器化引擎，并且具有隔离机制，那么只要安装tomcat一个即可。   </p>
+<h3 id="3-1安装运行tomcat"><a href="#3-1安装运行tomcat" class="headerlink" title="3.1安装运行tomcat"></a>3.1安装运行tomcat</h3><p>直接运行：    </p>
+<pre><code>docker pull tomcat</code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEOcRxZAuvfs0E0YF.MqIwYkiwwPgl*Gs2S4AV2rg4TX9C3bPVglrstBSr2jPlCUE0MVxfuz2f13EG7dmkI2ezYY!/b&bo=NgM5AQAAAAADFz8!&rf=viewer_4" alt="">    </p>
+<p>查看docker仓库：   </p>
+<pre><code>docker images  </code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEM6IBUjNkfqPTv.HlkDvk9NwBPL3iQCDRj*akY5L5sMMugmiIYzqMw7PX.KWCDQzxioWOWU9tSDeiHb9QYGZYbQ!/b&bo=WgNNAAAAAAADFyY!&rf=viewer_4" alt="">    </p>
+<h3 id="3-2运行tomcat"><a href="#3-2运行tomcat" class="headerlink" title="3.2运行tomcat"></a>3.2运行tomcat</h3><p>使用8080端口运行：   </p>
+<pre><code>docker run -p 8080:8080 tomcat   </code></pre><p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEK9ut*sGKrNnF0y7*zbfhcAiv8YMM.kjmj8oroQYzVXodld5M3IlR6dC6mpsi1U1OEnxjzBPAxlTh7V7dHcEv2s!/b&bo=gwalAgAAAAADFxA!&rf=viewer_4" alt="">   </p>
+<p>由于下载的这个tomcat的webapp中没有ROOT所以没法访问到Tomcat的猫咪页面，但是还是显示了tomcat的版本。   </p>
+<p><img src="http://m.qpic.cn/psc?/V549Zse20wxUHw2CXSa50pUVbs4J2GtA/TmEUgtj9EK6.7V8ajmQrEH4V7mdiN7bFE9fUuRlqizxXg09ahjf6gnJVL75BIfYfUwm.buiG5gNoEgXaSmjHRQH5N8IBiwcq2qOBEudwVUU!/b&bo=dwQkAgAAAAADF2c!&rf=viewer_4" alt="">   </p>
+<p>看之后有没有时间更新一篇docker的命令记录一下吧。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>阿里云镜像地址最好用自己申请的，所有地址已打码=。=</p>
 
       
 	<!--  自加的代码 -->
@@ -429,7 +443,7 @@ systemctl restart docker</code></pre><p>最后通过<code>docker info</code>验�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1卸载旧版本"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1卸载旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置加速"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置加速</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1得到专属地址"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1得到专属地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2配置"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装docker"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1卸载旧版本"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1卸载旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置加速"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置加速</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1得到专属地址"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1得到专属地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2配置"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-测试docker"><span class="toc-number">1.3.</span> <span class="toc-text">3.测试docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1安装运行tomcat"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1安装运行tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2运行tomcat"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2运行tomcat</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
